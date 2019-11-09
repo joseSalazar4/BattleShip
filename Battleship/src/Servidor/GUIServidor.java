@@ -16,6 +16,12 @@ public class GUIServidor extends javax.swing.JPanel {
      */
     public GUIServidor() {
         initComponents();
+        
+        
+        //Generar las opciones de los jugadores
+        jComboBoxCantJugadores.addItem("2");
+        jComboBoxCantJugadores.addItem("3");
+        jComboBoxCantJugadores.addItem("4");
     }
 
     /**
@@ -27,18 +33,31 @@ public class GUIServidor extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jButtonStart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jComboBoxCantJugadores = new javax.swing.JComboBox();
 
-        jButton1.setText("jButton1");
+        jButtonStart.setText("Iniciar Partida");
+        jButtonStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStartActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Iniciar Partida");
+        jLabel1.setText("Indicar cantidad de jugadores:");
 
         jLabel2.setText("Alguna otra funcion de esta empanada, apagar servidor? idk");
 
         jLabel3.setText("BattleShip Server GUI");
+
+        jComboBoxCantJugadores.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxCantJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxCantJugadoresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,13 +70,16 @@ public class GUIServidor extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(352, 352, 352)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(310, 310, 310)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(352, 352, 352)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxCantJugadores, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -65,19 +87,33 @@ public class GUIServidor extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
-                .addGap(50, 50, 50)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxCantJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jButtonStart)
                 .addGap(67, 67, 67)
                 .addComponent(jLabel2)
                 .addContainerGap(193, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+         String eleccion = (jComboBoxCantJugadores.getSelectedItem() ).toString();
+         // Cliente dice cuantos jugadores?? o eso esta en el server? 
+         //CUALQUIERA SE DEBE USAR ESTO PARA SABER LA OPCION DEL COMBOBOX
+         
+    }//GEN-LAST:event_jButtonStartActionPerformed
+
+    private void jComboBoxCantJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCantJugadoresActionPerformed
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxCantJugadoresActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonStart;
+    private javax.swing.JComboBox jComboBoxCantJugadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
