@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package Cliente;
+import battleship.Fabrica;
+import battleship.Componente;
+import battleship.Arma;
 import Cliente.*;
 /**
  *
