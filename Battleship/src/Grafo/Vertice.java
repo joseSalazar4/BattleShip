@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import battleship.Componente;
+import java.awt.Point;
 
 public class Vertice {
     private Componente componente;
     private List<Arista> aristas;
+    private Point coordenada;
 
     public Vertice(Componente componente) {
         this.componente = componente;
@@ -33,6 +35,12 @@ public class Vertice {
         if(aristas == null) aristas = new ArrayList<>();
         aristas.add(arista);
     }
-    
-    
+
+    public Point getCoordenada() {
+        return coordenada;
+    }
+
+    public void setCoordenada(Point coordenada) {
+        this.coordenada = coordenada;
+    } 
 }

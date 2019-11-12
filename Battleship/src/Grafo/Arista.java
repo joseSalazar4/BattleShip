@@ -1,10 +1,13 @@
 
 package Grafo;
 
+import java.awt.Point;
+
 public class Arista {
     private Vertice origin;
     private Vertice destination;
     private double distance;
+    private Point coordenada;
  
     public Arista(Vertice origin, Vertice destination, double distance) {
         this.origin = origin;
@@ -35,10 +38,12 @@ public class Arista {
     public void setDistance(double distance) {
         this.distance = distance;
     }
- 
-    @Override
-    public String toString() {
-        return "\n Arista [origin=" + origin.getComponente()+ ", destination=" + destination.getComponente()+ ", distance="
-                + distance + "]";
+
+    public Point getCoordenada() {
+        return coordenada;
+    }
+
+    public void setCoordenada(Point coordenada) {
+        this.coordenada = coordenada;
     }
 }
