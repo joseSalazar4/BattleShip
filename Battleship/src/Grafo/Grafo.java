@@ -34,9 +34,4 @@ public class Grafo {
             }
         }
     }
-    
-    @Override
-    public String toString(){
-        return "Grafo: {Vertices: " + vertices + "}";
-    }
 }

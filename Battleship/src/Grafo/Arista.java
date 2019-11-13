@@ -1,6 +1,5 @@
 
 package Grafo;
-
 import java.awt.Point;
 
 public class Arista {

@@ -5,6 +5,14 @@
  */
 package battleship;
 
+import Cliente_Servidor.Cliente.Cliente;
+import Cliente_Servidor.Servidor.Servidor;
+import Vista.GUIServidor;
+import Vista.GUIStartUp;
+import static java.lang.Thread.sleep;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jose
@@ -15,7 +23,7 @@ public class Battleship {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+
     }
     
 }
