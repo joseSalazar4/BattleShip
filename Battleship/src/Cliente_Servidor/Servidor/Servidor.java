@@ -55,9 +55,10 @@ public class Servidor extends Thread{
                     this.pantalla.addStatus(".::Cliente #" + String.valueOf(numeroCliente) + socketCliente.getInetAddress().getHostAddress());
                     numeroCliente++;
                 }
-
+                
                 this.pantalla.addStatus("Jugadores Completos");
                 this.pantalla.addStatus("Empezando partida...");
+                
                 
             } catch (IOException ex) {
                 Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);

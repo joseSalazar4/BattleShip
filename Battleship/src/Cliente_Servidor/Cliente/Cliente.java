@@ -20,6 +20,10 @@ public class Cliente {
     private Socket socketCliente;
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
+    
+    private ObjectInputStream objectInputStream;
+    private ObjectOutputStream objectOutputStream;    
+    
     private String nickName;
     private String HOST;
     private int PORT_HOST;
@@ -44,6 +48,8 @@ public class Cliente {
         try {
             inputStream = new DataInputStream(socketCliente.getInputStream());
             outputStream = new DataOutputStream(socketCliente.getOutputStream());
+            
+            
             this.nickName = nick;
             System.out.println("NICKNAME: "+ nick);
             //Enviamos el nickname del jugador al servidor
