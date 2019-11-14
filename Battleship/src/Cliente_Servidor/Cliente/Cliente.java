@@ -16,9 +16,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class Cliente {
-    //public Jugador jugador;
+    public Jugador jugador;
+    public Controlador.Controlador_Cliente controlador;
+    
     private Socket socketCliente;
    
     private ObjectInputStream inputStream;
@@ -27,18 +28,14 @@ public class Cliente {
     private String nickName;
     private String HOST;
     private int PORT_HOST;
-    private GUICliente pantallaPrincipal;
-    private GUIStartUp pantallaStartUp;
-    private GUIAdquisicion pantallaAdquisicion;
-    private ArrayList<String> enemigos;
+    private ThreadCliente thread;
     
 
-    public Cliente(String HOST, int PORT_HOST, GUIStartUp pantalla) {
-        //jugador = new Jugador("");
+    public Cliente(String HOST, int PORT_HOST, Controlador.Controlador_Cliente controlador) {
+        this.jugador = new Jugador("");
         this.HOST = HOST;
         this.PORT_HOST = PORT_HOST;
-        this.pantallaStartUp = pantalla;
-        this.pantallaStartUp.show();
+        this.controlador = controlador;
     }
     
     public void iniciarCliente(String nick){
@@ -48,9 +45,10 @@ public class Cliente {
             inputStream  = new ObjectInputStream(socketCliente.getInputStream());
             
             nickName = nick;
+            this.jugador.setNombre(nick);
             outputStream.writeObject(nick);             //Enviamos el nickname del jugador al servidor
-            pantallaStartUp.setTitle(nick);
-            new ThreadCliente(this, inputStream).start();
+            thread = new ThreadCliente(this, inputStream);
+            thread.start();
             
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,38 +70,6 @@ public class Cliente {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public GUICliente getPantallaPrincipal() {
-        return pantallaPrincipal;
-    }
-
-    public void setPantallaPrincipal(GUICliente pantallaPrincipal) {
-        this.pantallaPrincipal = pantallaPrincipal;
-    }
-
-    public GUIStartUp getPantallaStartUp() {
-        return pantallaStartUp;
-    }
-
-    public void setPantallaStartUp(GUIStartUp pantallaStartUp) {
-        this.pantallaStartUp = pantallaStartUp;
-    }
-
-    public GUIAdquisicion getPantallaAdquisicion() {
-        return pantallaAdquisicion;
-    }
-
-    public void setPantallaAdquisicion(GUIAdquisicion pantallaAdquisicion) {
-        this.pantallaAdquisicion = pantallaAdquisicion;
-    }
-
-    public ArrayList<String> getEnemigos() {
-        return enemigos;
-    }
-
-    public void setEnemigos(ArrayList<String> enemigos) {
-        this.enemigos = enemigos;
     }
 
     public ObjectInputStream getInputStream() {

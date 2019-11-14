@@ -16,9 +16,10 @@ public class GUICliente extends javax.swing.JFrame {
 
     JLabel [][] matrizLabels = new JLabel [20][20];
     Componente [][] matrizLogica;
-    
-    public GUICliente(Componente [][] _matrizLogica) {
+    Controlador.Controlador_Cliente controlador;
+    public GUICliente(Componente [][] _matrizLogica, Controlador.Controlador_Cliente controlador) {
         initComponents();
+        this.controlador = controlador;
         matrizLogica = _matrizLogica;
        
     }

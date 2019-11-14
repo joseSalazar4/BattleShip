@@ -33,8 +33,9 @@ public class ThreadCliente extends Thread{
                         break;
                         
                     case 1:
-                        cliente.setEnemigos((ArrayList<String>) inputStream.readObject());
-                        for(String enemigo: cliente.getEnemigos()) System.out.println(enemigo + ", ");
+                        cliente.jugador.setEnemigos((ArrayList<String>) inputStream.readObject());
+                        for(String enemigo: cliente.jugador.getEnemigos()) System.out.println(enemigo + ", ");
+                        cliente.controlador.inciarAdquisicion();
                         break;
                         
                         

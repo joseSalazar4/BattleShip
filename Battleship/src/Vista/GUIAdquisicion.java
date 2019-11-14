@@ -6,6 +6,7 @@
 package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
+import Controlador.Controlador_Cliente;
 import javax.swing.JLabel;
 
 /**
@@ -15,12 +16,12 @@ import javax.swing.JLabel;
 public class GUIAdquisicion extends javax.swing.JFrame {
 
     
-    Cliente cliente;
+    Controlador_Cliente controlador;
     JLabel [][] matrizLabels = new JLabel [20][20];
     
-    public GUIAdquisicion(Cliente _cliente) {
+    public GUIAdquisicion(Controlador_Cliente controlador) {
         initComponents();
-        this.cliente = _cliente;
+        this.controlador = controlador;
         rellenarMatriz();
     }    
     

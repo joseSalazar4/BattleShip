@@ -6,6 +6,7 @@
 package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
+import Controlador.Controlador_Cliente;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,12 +19,16 @@ public class GUIStartUp extends javax.swing.JFrame {
      * Creates new form GUIStartUp
      */
     
-    Cliente cliente; //Controlador
+    Controlador_Cliente controlador;
     
-    public GUIStartUp() {
+    public GUIStartUp(Controlador_Cliente controlador){
         initComponents();
-        this.cliente = new Cliente("localhost", 9999, this);
         this.jLabelLoadGIF.setVisible(false);
+        this.controlador = controlador;
+    }
+
+    private GUIStartUp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -133,7 +138,7 @@ public class GUIStartUp extends javax.swing.JFrame {
         String nickName = txtUserName.getText();
         if(!nickName.isEmpty()){
             this.jLabelLoadGIF.setVisible(true);
-            cliente.iniciarCliente(nickName);
+            controlador.iniciarCliente(nickName);
             System.out.println( nickName + " esta esperando jugadores");
 //            while(true){
 //                //mensaje de que ya estan todos
