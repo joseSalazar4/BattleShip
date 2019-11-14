@@ -139,6 +139,8 @@ public class GUIServidor extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         int eleccion = Integer.valueOf(spinnerCtdJugadores.getValue().toString());
+        
+        
         // Cliente dice cuantos jugadores?? o eso esta en el server?
         //CUALQUIERA SE DEBE USAR ESTO PARA SABER LA OPCION DEL COMBOBOX
         servidor.setNumeroClientes(eleccion);

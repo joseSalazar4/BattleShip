@@ -6,6 +6,7 @@
 package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,6 +23,7 @@ public class GUIStartUp extends javax.swing.JFrame {
     public GUIStartUp() {
         initComponents();
         this.cliente = new Cliente("localhost", 9999, this);
+        this.jLabelLoadGIF.setVisible(false);
     }
 
     /**
@@ -37,7 +39,7 @@ public class GUIStartUp extends javax.swing.JFrame {
         btnStart = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelLoadGIF = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +61,7 @@ public class GUIStartUp extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("GIF DE CARGA");
+        jLabelLoadGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ezgif.com-resize.gif"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 3, 36)); // NOI18N
         jLabel3.setText("Bienvenido");
@@ -73,7 +75,6 @@ public class GUIStartUp extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -81,7 +82,10 @@ public class GUIStartUp extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(192, 192, 192)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jLabelLoadGIF)))
                 .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,9 +97,9 @@ public class GUIStartUp extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabelLoadGIF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -113,12 +117,12 @@ public class GUIStartUp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+            .addGap(0, 361, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 18, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 18, Short.MAX_VALUE)))
         );
 
         pack();
@@ -127,13 +131,20 @@ public class GUIStartUp extends javax.swing.JFrame {
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         String nickName = txtUserName.getText();
         if(!nickName.isEmpty()){
+            this.jLabelLoadGIF.setVisible(true);
             cliente.iniciarCliente(nickName);
             System.out.println( nickName + " esta esperando jugadores");
+            while(true){
+                //mensaje de que ya estan todos
+                if(true) return;
+            }
         }
+        else JOptionPane.showMessageDialog(null, "No ha ingresado un nombre de usuario!                              \nIntentelo de nuevo.        ");
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
+        //ESTO? PA QUE ES O KE
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     /**
@@ -175,8 +186,8 @@ public class GUIStartUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelLoadGIF;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
