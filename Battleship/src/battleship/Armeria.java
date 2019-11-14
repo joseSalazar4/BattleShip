@@ -9,8 +9,10 @@ package battleship;
  *
  * @author mikom
  */
-public class Arma {
-    Arma(){
+
+//USAR FACTORY METHOD
+public class Armeria extends Componente{
+    Armeria(){
         
     }
 }

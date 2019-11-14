@@ -7,7 +7,7 @@ package battleship;
  */
 
 //Las dimensiones son 2x1 o 1x2
-public class Fabrica {
+public class Fabrica extends Componente {
     
     String nombre;
     final int costo;

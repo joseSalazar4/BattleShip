@@ -6,6 +6,7 @@
 package Vista;
 
 import javax.swing.JLabel;
+import battleship.*;
 
 /**
  *
@@ -14,34 +15,23 @@ import javax.swing.JLabel;
 public class GUICliente extends javax.swing.JFrame {
 
     JLabel [][] matrizLabels = new JLabel [20][20];
+    Componente [][] matrizLogica;
     
-    
-    public GUICliente() {
+    public GUICliente(Componente [][] _matrizLogica) {
         initComponents();
+        matrizLogica = _matrizLogica;
        
-        rellenarMatriz();
     }
-
     @SuppressWarnings("unchecked")
     
-    private void rellenarMatriz(){
-        int TAMANNO = 30;
-        for(int i = 0; i<20 ;i++){
-            for(int j = 0; j<20 ;j++){
-                JLabel labelNuevo = new JLabel();
-                int m = (int) Math.floor(Math.random()*(6));
-                if(m==1) labelNuevo.setSize(TAMANNO,TAMANNO);
-                labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
-                labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
-                matrizLabels[i][j] = labelNuevo;
-                labelNuevo.repaint();
-                jPanelJugador.add(labelNuevo);
-            }
-        }
-    }
+    
     public static void main(String args[]) {
         GUICliente gui = new GUICliente(); 
         gui.setVisible(true);
+    }
+
+    private GUICliente() {
+        initComponents();
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,6 +47,7 @@ public class GUICliente extends javax.swing.JFrame {
         jPanelJugador = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,7 +86,7 @@ public class GUICliente extends javax.swing.JFrame {
         getContentPane().add(jTextFieldMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 703, 465, 41));
 
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(600, 600));
-        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 28, -1, 605));
+        getContentPane().add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 25, -1, 610));
 
         jPanelJugador.setBackground(new java.awt.Color(255, 102, 102));
         jPanelJugador.setOpaque(false);
@@ -121,6 +112,10 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel3.setText("Mi Oceano");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/oceanEnemigo.PNG"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 28, 600, 604));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,6 +134,7 @@ public class GUICliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEnvMensaje;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

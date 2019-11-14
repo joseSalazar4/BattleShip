@@ -6,14 +6,14 @@
 package Cliente;
 import battleship.Fabrica;
 import battleship.Componente;
-import battleship.Arma;
+import battleship.Armeria;
 /**
  *
  * @author mikom
  */
 public class Jugador {
     int dinero;
-    Arma armas[];
+    Armeria armas[];
     String nombre;
     boolean perdio;
     Fabrica fabricas[];
