@@ -49,7 +49,7 @@ public class Cliente {
             //Enviamos el nickname del jugador al servidor
             outputStream.writeUTF(nick);
             this.pantallaStartUp.setTitle(nick);
-            new ThreadCliente(this).start();
+            //new ThreadCliente(this).start();
             
             //outputStream.close();
   

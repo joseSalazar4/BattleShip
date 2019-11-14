@@ -36,23 +36,25 @@ public class ThreadServidor extends Thread{
     
     @Override
     public void run(){                
-        try {
-            System.out.println("ENTRO AL THREAD SERVIDOR");
-            inputStream = new ObjectInputStream(cliente.getInputStream());
-            outputStream = new ObjectOutputStream(cliente.getOutputStream());
-            
-            //Leemos el nickName que ingreso el usuario
-            setNickName((String) inputStream.readUTF());
-            servidor.getPantalla().addStatus(".::" + ip + " = " + nickName);
-            System.out.println("ENTRO EL " + nickName);
-                        
-        } catch (IOException ex) {
-            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("ASÍ ESTÁ LA PICHA: " + ex);
-        } 
+//        try {
+//            System.out.println("ENTRO AL THREAD SERVIDOR");
+////            inputStream = new ObjectInputStream(cliente.getInputStream());
+////           // outputStream = new ObjectOutputStream(cliente.getOutputStream());
+////            
+////            //Leemos el nickName que ingreso el usuario
+////            String nick = (String) inputStream.readUTF();
+////            setNickName(nick);
+////            servidor.getPantalla().addStatus(".::" + ip + " = " + nickName);
+//            System.out.println("ENTRO EL " + nickName);
+//                        
+//        } catch (IOException ex) {
+//            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println("ASÍ ESTÁ LA PICHA: " + ex);
+//        } 
     }
     
     public void makeFirstHandshake(){try {
+        outputStream = new ObjectOutputStream(cliente.getOutputStream());
         /*
         mensajeGenerico mensaje = new mensajeGenerico();
         mensaje.setContenido(new ArrayList<>());
@@ -70,6 +72,7 @@ public class ThreadServidor extends Thread{
         }*/
         outputStream.writeInt(1);
         outputStream.writeUTF("HOli");
+        outputStream.close();
         } catch (IOException ex) {
             Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
         }

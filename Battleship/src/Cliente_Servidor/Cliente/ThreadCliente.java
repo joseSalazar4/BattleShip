@@ -11,10 +11,6 @@ import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Personal
- */
 public class ThreadCliente extends Thread{
     Cliente cliente;
     boolean isReady = false;
@@ -23,42 +19,37 @@ public class ThreadCliente extends Thread{
         this.cliente = cliente;
     }
     
+    @Override
     public void run(){
-        try {
-            this.cliente.setInputStream(new ObjectInputStream(this.cliente.getSocketCliente().getInputStream()));
-        } catch (IOException ex) {
-            Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        while(!isReady){
-            try {
-                int opcion = (Integer)cliente.getInputStream().readInt();
-                if(opcion == 1){
-                    //mensajeGenerico mensaje = null;
-                    String holi = (String) cliente.getInputStream().readUTF();
-                    //cliente.setEnemigos(mensaje.getContenido());
-                    //this.isReady = mensaje.isIs();
-                    isReady = true;
-                    //for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
-                    System.out.println(holi);
-                }
-                
-            } catch (IOException ex) {
-                    Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        }
-    }
-        
-        //Todos los jugadores estan conectados y empieza el juego
-                   
-          
-          
-          while(true){
-          
+//        try {
+//            this.cliente.setInputStream(new ObjectInputStream(this.cliente.getSocketCliente().getInputStream()));
+//        } catch (IOException ex) {
+//            Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//        while(!isReady){
+//            try {
+//                int opcion = (Integer)cliente.getInputStream().readInt();
+//                if(opcion == 1){
+//                    //mensajeGenerico mensaje = null;
+//                    String holi = (String) cliente.getInputStream().readUTF();
+//                    //cliente.setEnemigos(mensaje.getContenido());
+//                    //this.isReady = mensaje.isIs();
+//                    isReady = true;
+//                    //for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
+//                    System.out.println(holi);
+//                }
+//                
+//            } catch (IOException ex) {
+//                    Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//        }
+//    }
+//      
+//        //Todos los jugadores estan conectados y empieza el juego
+        while(true){
             
         }
+
     }
-    
-    
-    
-}
+} 
