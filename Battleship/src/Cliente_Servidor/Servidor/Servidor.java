@@ -51,7 +51,7 @@ public class Servidor extends Thread{
                     ThreadServidor thread = new ThreadServidor(socketCliente, numeroCliente, this);
                     clientes.add(thread);
                     thread.start();
-                    this.pantalla.addStatus(".::Cliente #" + String.valueOf(numeroCliente) + socketCliente.getInetAddress().getHostAddress());
+                    this.pantalla.addStatus(".::Cliente #" + String.valueOf(numeroCliente)+"  IP: " + socketCliente.getInetAddress().getHostAddress());
                     numeroCliente++;
                 }
                 

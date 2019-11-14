@@ -47,7 +47,6 @@ public class ThreadCliente extends Thread{
                     Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
         }
-    }
         
         //Todos los jugadores estan conectados y empieza el juego
                    
@@ -58,7 +57,4 @@ public class ThreadCliente extends Thread{
             
         }
     }
-    
-    
-    
 }
