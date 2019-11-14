@@ -37,18 +37,12 @@ public class Cliente {
         this.PORT_HOST = PORT_HOST;
         this.pantallaStartUp = pantalla;
         this.pantallaStartUp.show();
-        try {
-            socketCliente = new Socket(HOST, PORT_HOST);    
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
     public void iniciarCliente(String nick){
         try { 
+            socketCliente = new Socket(HOST, PORT_HOST); 
             outputStream = new ObjectOutputStream(socketCliente.getOutputStream());
-
             this.nickName = nick;
             System.out.println("NICKNAME: "+ nick);
             //Enviamos el nickname del jugador al servidor
