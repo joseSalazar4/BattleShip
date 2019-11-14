@@ -6,6 +6,7 @@
 package Cliente_Servidor.Cliente;
 
 import Cliente.Jugador;
+import Cliente_Servidor.mensajeGenerico;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import Vista.GUIAdquisicion;
@@ -54,6 +55,11 @@ public class Cliente {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Servidor no disponible" + ex);
         }
+    }
+    
+    public void enviarMensaje(mensajeGenerico mensaje) throws IOException{
+        outputStream.writeInt(2);
+        outputStream.writeObject(mensaje);
     }
 
     public Socket getSocketCliente() {

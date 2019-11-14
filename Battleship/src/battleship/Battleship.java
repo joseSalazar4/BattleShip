@@ -16,7 +16,8 @@ public class Battleship {
         GUIServidor server = new GUIServidor();
         Controlador_Cliente c1 = new Controlador_Cliente();
         Controlador_Cliente c2 = new Controlador_Cliente();
-        
+//        Controlador_Cliente c3 = new Controlador_Cliente();
+//        Controlador_Cliente c4 = new Controlador_Cliente();   
     }
     
 }

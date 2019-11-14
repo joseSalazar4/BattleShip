@@ -32,12 +32,15 @@ public class ThreadCliente extends Thread{
                         System.out.println("ESPERANDO JUGADORES");
                         break;
                         
-                    case 1:
+                    case 1: //Inicia el Juego y Recibe un Array con los nicknames de los enemigos
                         cliente.jugador.setEnemigos((ArrayList<String>) inputStream.readObject());
                         for(String enemigo: cliente.jugador.getEnemigos()) System.out.println(enemigo + ", ");
                         cliente.controlador.inciarAdquisicion();
                         break;
-                        
+                    case 2: //Recibe un mensaje
+                        mensajeGenerico mensaje = (mensajeGenerico) inputStream.readObject();
+                        cliente.controlador.recibirMensaje(mensaje);
+                        break;
                         
                 }
             } catch (IOException ex) {

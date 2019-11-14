@@ -2,9 +2,11 @@
 package Controlador;
 
 import Cliente_Servidor.Cliente.Cliente;
+import Cliente_Servidor.mensajeGenerico;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,16 +33,39 @@ public class Controlador_Cliente {
     }
     
     public void inciarAdquisicion(){
-        this.pantallaStartUp.getTxtInfo().setText("Inciando Partida!");
+        this.pantallaStartUp.getTxtInfo().setText("Inciando Partida!\n");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ex) {
             Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.pantallaStartUp.dispose();
-        this.pantallaAdquisicion = new GUIAdquisicion(this);
-        this.pantallaAdquisicion.setVisible(true);
+        //this.pantallaAdquisicion = new GUIAdquisicion(this);
+        //this.pantallaAdquisicion.setVisible(true);
+        
+        this.pantallaPrincipal = new GUICliente(this);
+        this.pantallaPrincipal.setVisible(true);
     }
     
     
+    
+    
+    //Metodos del Chat
+    
+    public void enviarMensaje() throws IOException{
+        String cuerpoMensaje = this.pantallaPrincipal.getTxtFieldMensajes().getText();
+        this.pantallaPrincipal.getTxtFieldMensajes().setText("");  
+        String emisor = this.cliente.getNickName();
+        mensajeGenerico mensaje = new mensajeGenerico(cuerpoMensaje, emisor);
+        this.cliente.enviarMensaje(mensaje);
+    }
+    
+    public void recibirMensaje(mensajeGenerico mensaje){
+        String mensajeCompleto = "";
+        if(mensaje.emisor.equals(cliente.jugador.getNombre())) mensajeCompleto += "Yo: ";
+        else mensajeCompleto += mensaje.emisor + ": ";
+        mensajeCompleto += mensaje.mensaje;
+        
+        this.pantallaPrincipal.getTxtAreaChat().append(mensajeCompleto + "\n");
+    }
 }

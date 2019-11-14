@@ -27,6 +27,7 @@ public class ThreadServidor extends Thread{
     String ip;
     GUIServidor pantalla;
     boolean activo = true;
+    int opcion;
     
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream; 
@@ -51,7 +52,18 @@ public class ThreadServidor extends Thread{
             pantalla.addStatus(".::" + ip + " = " + nickName);
             
             while(activo){
-                sleep(1);
+                opcion = inputStream.readInt();
+                
+                switch(opcion){
+                    case 1:
+                        System.out.println("IDK");
+                    break;
+                    case 2:
+                        mensajeGenerico mensaje = (mensajeGenerico) inputStream.readObject();
+                        for(ThreadServidor cliente: servidor.getClientes())
+                            cliente.enviarMensaje(mensaje);    
+                    break;
+                }
             }
                         
         } catch (IOException ex) {
@@ -59,17 +71,23 @@ public class ThreadServidor extends Thread{
             System.out.println("ASÍ ESTÁ LA PICHA: " + ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
     
     public void enviarEnemigos() throws IOException{
         ArrayList<String> enemigos = new ArrayList<>();
-        for(ThreadServidor enemigo: servidor.getClientes()) enemigos.add(enemigo.getNickName());
+        for(ThreadServidor enemigo: servidor.getClientes()){
+            if(!(enemigo.getNickName().equals(this.nickName)))
+                enemigos.add(enemigo.getNickName());
+        }
         outputStream.writeInt(1);
         outputStream.writeObject(enemigos);
         
+    }
+    
+    public void enviarMensaje(mensajeGenerico mensaje) throws IOException{
+        outputStream.writeInt(2);
+        outputStream.writeObject(mensaje);
     }
     
     public int getNumeroCliente() {

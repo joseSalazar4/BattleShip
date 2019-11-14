@@ -1,65 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Cliente_Servidor;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-
-/**
- *
- * @author Personal
- */
 
 public class mensajeGenerico implements Serializable{
-    int tipoMensaje;
-    String descripcion;
-    ArrayList<String> contenido;
-    boolean is;
+    public String mensaje;
+    public String emisor;
+    public String destinatario;
 
-    public mensajeGenerico() {
-        tipoMensaje = 0;
-        this.descripcion = "";
-        this.contenido = null;
-        is = false;
+    public mensajeGenerico(String mensaje, String emisor) {
+        this.mensaje = mensaje;
+        this.emisor = emisor;
     }
 
-    public int getTipoMensaje() {
-        return tipoMensaje;
-    }
-
-    public void setTipoMensaje(int tipoMensaje) {
-        this.tipoMensaje = tipoMensaje;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public ArrayList<String> getContenido() {
-        return contenido;
-    }
-
-    public void setContenido(ArrayList<String> contenido) {
-        this.contenido = contenido;
-    }
-
-    public boolean isIs() {
-        return is;
-    }
-
-    public void setIs(boolean is) {
-        this.is = is;
-    }
-    
-    
-    
-    
-    
+    public mensajeGenerico(String mensaje, String emisor, String destinatario) {
+        this.mensaje = mensaje;
+        this.emisor = emisor;
+        this.destinatario = destinatario;
+    }  
 }
