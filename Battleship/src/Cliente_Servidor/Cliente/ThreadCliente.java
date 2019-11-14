@@ -51,5 +51,14 @@ public class ThreadCliente extends Thread{
         
         //Todos los jugadores estan conectados y empieza el juego
                    
+          
+          
+          while(true){
+          
+            
+        }
     }
     
+    
+    
+}

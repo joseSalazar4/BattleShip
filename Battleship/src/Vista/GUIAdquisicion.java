@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Cliente_Servidor.Cliente.Cliente;
 import javax.swing.JLabel;
 
 /**
@@ -17,11 +18,16 @@ public class GUIAdquisicion extends javax.swing.JFrame {
      * Creates new form GUIAdquisicion
      */
     
-    
+    Cliente cliente;
     JLabel [][] matrizLabels = new JLabel [20][20];
     
-    public GUIAdquisicion() {
+    public GUIAdquisicion(Cliente _cliente) {
         initComponents();
+        this.cliente = _cliente;
+    }
+
+    private GUIAdquisicion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -142,7 +148,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 230, 330));

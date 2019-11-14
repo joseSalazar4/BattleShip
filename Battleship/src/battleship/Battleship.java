@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class Battleship {
 
     public static void main(String[] args) {
-    
+        
     }
     
 }
