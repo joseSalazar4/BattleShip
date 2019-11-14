@@ -27,48 +27,43 @@ public class Servidor extends Thread{
     @Override
     public void run(){
         iniciarServidor(this.numeroClientes);
-//        while(encendido){
-//            try {
-//                sleep(1);
-//            } catch (InterruptedException ex) {
-//                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
     }
         
     //Param: numero Clientes 
     public void iniciarServidor(int numeroClientes){
-        if(numeroClientes > 1 && numeroClientes < 5){
-            try {
-                //Crea el socket del servidor en el puerto
-                this.socketServidor = new ServerSocket(PORT);
-                System.out.println("ENTRO A INCIAR SERVIDOR");
-                this.pantalla.addStatus("----Iniciando servidor----");
-                this.pantalla.addStatus("Esperando usuarios... ");
-                int numeroCliente = 1; 
-                while(numeroCliente <= numeroClientes){
-                    Socket socketCliente = socketServidor.accept();
-                    ThreadServidor thread = new ThreadServidor(socketCliente, numeroCliente, this);
-                    clientes.add(thread);
-                    thread.start();
-                    this.pantalla.addStatus(".::Cliente #" + String.valueOf(numeroCliente)+"  IP: " + socketCliente.getInetAddress().getHostAddress());
-                    numeroCliente++;
-                }
-                
-                this.pantalla.addStatus("Jugadores Completos");
-                this.pantalla.addStatus("Empezando partida...");
-                
-                //Hacemos el primer handShake de todos los clientes
-                //for(ThreadServidor tc: this.clientes) tc.makeFirstHandshake();
-                              
-            } catch (IOException ex) {
-                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-                this.pantalla.addStatus("Error en el servidor: " + ex);
+        try {
+            this.socketServidor = new ServerSocket(PORT);
+            System.out.println("ENTRO A INCIAR SERVIDOR");
+            this.pantalla.addStatus("----Iniciando servidor----");
+            this.pantalla.addStatus("Esperando usuarios... ");
+            int numeroCliente = 1; 
+
+            while(numeroCliente <= numeroClientes){
+                Socket socketCliente = socketServidor.accept();
+                ThreadServidor thread = new ThreadServidor(socketCliente, numeroCliente, this, this.pantalla);
+                clientes.add(thread);
+                thread.start();
+                this.pantalla.addStatus(".::Cliente #" + String.valueOf(numeroCliente)+"  IP: " + socketCliente.getInetAddress().getHostAddress());
+                numeroCliente++;
             }
+            try {
+                sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.pantalla.addStatus("Jugadores Completos");
+            this.pantalla.addStatus("Empezando partida...");
             
-        }else{
-               this.pantalla.addStatus("Solo de 2 - 4 jugadores");
-        }       
+            for(ThreadServidor thread: clientes) thread.enviarEnemigos();
+
+            //Hacemos el primer handShake de todos los clientes
+
+
+        } catch (IOException ex) {
+            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            this.pantalla.addStatus("Error en el servidor: " + ex);
+        }
+                
     }
    
     

@@ -5,6 +5,8 @@
  */
 package Cliente_Servidor.Servidor;
 import Cliente_Servidor.mensajeGenerico;
+import Vista.GUIServidor;
+import Vista.GUIStartUp;
 import java.io.*;
 import java.net.*;
 
@@ -21,64 +23,55 @@ public class ThreadServidor extends Thread{
     Servidor servidor;
     Socket cliente;
     int numeroCliente;
-    String nickName = "puto";
+    String nickName = "";
     String ip;
+    GUIServidor pantalla;
+    boolean activo = true;
     
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream; 
 
-    public ThreadServidor(Socket cliente, int numeroCliente, Servidor servidor) {
+    public ThreadServidor(Socket cliente, int numeroCliente, Servidor servidor, GUIServidor pantalla) {
         this.numeroCliente = numeroCliente;
         this.cliente = cliente;
         this.servidor = servidor;
         this.ip = cliente.getInetAddress().getHostAddress();  
+        this.pantalla = pantalla;
+        
     }
     
     @Override
     public void run(){                
-//        try {
-//            System.out.println("ENTRO AL THREAD SERVIDOR");
-////            inputStream = new ObjectInputStream(cliente.getInputStream());
-////           // outputStream = new ObjectOutputStream(cliente.getOutputStream());
-////            
-////            //Leemos el nickName que ingreso el usuario
-////            String nick = (String) inputStream.readUTF();
-////            setNickName(nick);
-////            servidor.getPantalla().addStatus(".::" + ip + " = " + nickName);
-//            System.out.println("ENTRO EL " + nickName);
-//                        
-//        } catch (IOException ex) {
-//            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-//            System.out.println("ASÍ ESTÁ LA PICHA: " + ex);
-//        } 
-    }
-    
-    public void makeFirstHandshake(){try {
-        outputStream = new ObjectOutputStream(cliente.getOutputStream());
-        /*
-        mensajeGenerico mensaje = new mensajeGenerico();
-        mensaje.setContenido(new ArrayList<>());
-        mensaje.setIs(true);
-        mensaje.setTipoMensaje(1);
-        for (ThreadServidor tc : servidor.getClientes()){
-        if(!tc.getNickName().equals(this.nickName))
-        mensaje.getContenido().add(tc.nickName);
-        }
         try {
-        outputStream.writeInt(1);
-        outputStream.writeObject(mensaje);
-        } catch (IOException ex) {
-        Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        outputStream.writeInt(1);
-        outputStream.writeUTF("HOli");
-        outputStream.close();
+            inputStream = new ObjectInputStream(cliente.getInputStream());
+            outputStream = new ObjectOutputStream(cliente.getOutputStream());
+            
+            String nick = (String) inputStream.readObject();
+            setNickName(nick);
+            pantalla.addStatus(".::" + ip + " = " + nickName);
+            
+            while(activo){
+                sleep(1);
+            }
+                        
         } catch (IOException ex) {
             Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            System.out.println("ASÍ ESTÁ LA PICHA: " + ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void enviarEnemigos() throws IOException{
+        ArrayList<String> enemigos = new ArrayList<>();
+        for(ThreadServidor enemigo: servidor.getClientes()) enemigos.add(enemigo.getNickName());
+        outputStream.writeInt(1);
+        outputStream.writeObject(enemigos);
         
     }
-
+    
     public int getNumeroCliente() {
         return numeroCliente;
     }

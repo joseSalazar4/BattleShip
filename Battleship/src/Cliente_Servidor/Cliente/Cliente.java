@@ -18,11 +18,9 @@ import java.util.logging.Logger;
 
 
 public class Cliente {
-    public Jugador jugador;
+    //public Jugador jugador;
     private Socket socketCliente;
-    //private DataInputStream inputStream;
-    //private DataOutputStream outputStream;
-    
+   
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream;    
     
@@ -36,7 +34,7 @@ public class Cliente {
     
 
     public Cliente(String HOST, int PORT_HOST, GUIStartUp pantalla) {
-        jugador = new Jugador("");
+        //jugador = new Jugador("");
         this.HOST = HOST;
         this.PORT_HOST = PORT_HOST;
         this.pantallaStartUp = pantalla;
@@ -47,16 +45,13 @@ public class Cliente {
         try { 
             socketCliente = new Socket(HOST, PORT_HOST); 
             outputStream = new ObjectOutputStream(socketCliente.getOutputStream());
-            this.nickName = nick;
-            jugador.nombre = nick;
-            System.out.println("NICKNAME: "+ nick);
-            //Enviamos el nickname del jugador al servidor
-            outputStream.writeUTF(nick);
-            this.pantallaStartUp.setTitle(nick);
-            //new ThreadCliente(this).start();
+            inputStream  = new ObjectInputStream(socketCliente.getInputStream());
             
-            //outputStream.close();
-  
+            nickName = nick;
+            outputStream.writeObject(nick);             //Enviamos el nickname del jugador al servidor
+            pantallaStartUp.setTitle(nick);
+            new ThreadCliente(this, inputStream).start();
+            
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Servidor no disponible" + ex);

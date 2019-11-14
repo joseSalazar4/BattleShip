@@ -1,55 +1,50 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Cliente_Servidor.Cliente;
 
 import Cliente_Servidor.mensajeGenerico;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ThreadCliente extends Thread{
     Cliente cliente;
-    boolean isReady = false;
+    ObjectInputStream inputStream;
+    boolean activo = true;
+    int opcion;
+    
 
-    public ThreadCliente(Cliente cliente) {
+    public ThreadCliente(Cliente cliente, ObjectInputStream inputStream) {
         this.cliente = cliente;
+        this.inputStream = inputStream;
     }
     
     @Override
     public void run(){
-//        try {
-//            this.cliente.setInputStream(new ObjectInputStream(this.cliente.getSocketCliente().getInputStream()));
-//        } catch (IOException ex) {
-//            Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        while(!isReady){
-//            try {
-//                int opcion = (Integer)cliente.getInputStream().readInt();
-//                if(opcion == 1){
-//                    //mensajeGenerico mensaje = null;
-//                    String holi = (String) cliente.getInputStream().readUTF();
-//                    //cliente.setEnemigos(mensaje.getContenido());
-//                    //this.isReady = mensaje.isIs();
-//                    isReady = true;
-//                    //for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
-//                    System.out.println(holi);
-//                }
-//                
-//            } catch (IOException ex) {
-//                    Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//        }
-//    }
-//      
-//        //Todos los jugadores estan conectados y empieza el juego
-        while(true){
+        while(activo){
+            try {
+                opcion = inputStream.readInt();
+                
+                switch(opcion){
+                    
+                    case 0:
+                        System.out.println("ESPERANDO JUGADORES");
+                        break;
+                        
+                    case 1:
+                        cliente.setEnemigos((ArrayList<String>) inputStream.readObject());
+                        for(String enemigo: cliente.getEnemigos()) System.out.println(enemigo + ", ");
+                        break;
+                        
+                        
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
-
     }
 } 
