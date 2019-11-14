@@ -55,6 +55,7 @@ public class GUIStartUp extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 3, 24)); // NOI18N
         jLabel1.setText("Indique el nombre usuario:");
 
+        txtUserName.setText("chapi");
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);

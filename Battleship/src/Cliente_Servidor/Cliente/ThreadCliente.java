@@ -21,42 +21,35 @@ public class ThreadCliente extends Thread{
 
     public ThreadCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public void run(){
         try {
             this.cliente.setInputStream(new ObjectInputStream(this.cliente.getSocketCliente().getInputStream()));
         } catch (IOException ex) {
             Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    public void run(){
-        while(!isReady){    
+        
+        while(!isReady){
             try {
-                mensajeGenerico mensaje = null;
-                try {
-                    mensaje = (mensajeGenerico) cliente.getInputStream().readObject();
-                } catch (IOException ex) {
+                int opcion = (Integer)cliente.getInputStream().readInt();
+                if(opcion == 1){
+                    //mensajeGenerico mensaje = null;
+                    String holi = (String) cliente.getInputStream().readUTF();
+                    //cliente.setEnemigos(mensaje.getContenido());
+                    //this.isReady = mensaje.isIs();
+                    isReady = true;
+                    //for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
+                    System.out.println(holi);
+                }
+                
+            } catch (IOException ex) {
                     Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                cliente.setEnemigos(mensaje.getContenido());
-                this.isReady = mensaje.isIs();
-                
-                for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
-
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-              
-        }
-          //Todos los jugadores estan conectados y empieza el juego
-                   
-          
-          
-          while(true){
-          
-            
         }
     }
+        
+        //Todos los jugadores estan conectados y empieza el juego
+                   
+    }
     
-    
-    
-}

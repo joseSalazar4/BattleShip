@@ -47,7 +47,6 @@ public class Servidor extends Thread{
                 this.pantalla.addStatus("Esperando usuarios... ");
                 int numeroCliente = 1; 
                 while(numeroCliente <= numeroClientes){
-                    System.out.println("ENTRO AL WHILE");
                     Socket socketCliente = socketServidor.accept();
                     ThreadServidor thread = new ThreadServidor(socketCliente, numeroCliente, this);
                     clientes.add(thread);
@@ -60,7 +59,7 @@ public class Servidor extends Thread{
                 this.pantalla.addStatus("Empezando partida...");
                 
                 //Hacemos el primer handShake de todos los clientes
-                for(ThreadServidor tc: this.clientes) tc.makeFirstHandshake();
+                //for(ThreadServidor tc: this.clientes) tc.makeFirstHandshake();
                               
             } catch (IOException ex) {
                 Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
