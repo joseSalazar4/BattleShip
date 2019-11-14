@@ -31,6 +31,7 @@ public class Cliente {
     private GUIStartUp pantallaStartUp;
     private GUIAdquisicion pantallaAdquisicion;
     private ArrayList<String> enemigos;
+    
 
     public Cliente(String HOST, int PORT_HOST, GUIStartUp pantalla) {
         this.HOST = HOST;

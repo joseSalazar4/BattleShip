@@ -7,7 +7,6 @@ package Cliente;
 import battleship.Fabrica;
 import battleship.Componente;
 import battleship.Arma;
-import Cliente.*;
 /**
  *
  * @author mikom

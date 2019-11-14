@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  * @author Personal
  */
+
 public class mensajeGenerico implements Serializable{
     int tipoMensaje;
     String descripcion;
