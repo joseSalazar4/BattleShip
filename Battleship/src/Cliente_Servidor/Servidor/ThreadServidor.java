@@ -45,6 +45,10 @@ public class ThreadServidor extends Thread{
             //inputStream = new DataInputStream(this.cliente.getInputStream());
             //outputStream = new DataOutputStream(this.cliente.getOutputStream());
             
+            
+            //Just to get it commited
+            
+            
             inputStream = new ObjectInputStream(cliente.getInputStream());
             //outputStream = new ObjectOutputStream(cliente.getOutputStream());
             
