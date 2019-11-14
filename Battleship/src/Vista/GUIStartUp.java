@@ -7,7 +7,10 @@ package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
 import Controlador.Controlador_Cliente;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -42,14 +45,19 @@ public class GUIStartUp extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnStart = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabelLoadGIF = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        txtInfo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnStart.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
+        jPanel1.setOpaque(false);
+
+        btnStart.setBackground(new java.awt.Color(102, 0, 102));
+        btnStart.setFont(new java.awt.Font("Haettenschweiler", 2, 24)); // NOI18N
+        btnStart.setForeground(new java.awt.Color(255, 255, 255));
         btnStart.setText("Buscar Jugadores");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,10 +65,10 @@ public class GUIStartUp extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 3, 24)); // NOI18N
-        jLabel1.setText("Indique el nombre usuario:");
-
-        txtUserName.setText("chapi");
+        txtUserName.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 12)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(102, 0, 102));
+        txtUserName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUserName.setOpaque(false);
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);
@@ -69,8 +77,10 @@ public class GUIStartUp extends javax.swing.JFrame {
 
         jLabelLoadGIF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ezgif.com-resize.gif"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 3, 36)); // NOI18N
-        jLabel3.setText("Bienvenido");
+        txtInfo.setFont(new java.awt.Font("Haettenschweiler", 0, 18)); // NOI18N
+        txtInfo.setForeground(new java.awt.Color(102, 0, 102));
+        txtInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtInfo.setText("Conectando con el servidor.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,57 +89,41 @@ public class GUIStartUp extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
+                        .addGap(74, 74, 74)
+                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabelLoadGIF)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                        .addGap(188, 188, 188)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(jLabelLoadGIF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(txtInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelLoadGIF)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelLoadGIF))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76)
+                        .addComponent(txtInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))
+                .addGap(26, 26, 26))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 586, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 361, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 18, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 18, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 400));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/startUp.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 401, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,14 +131,7 @@ public class GUIStartUp extends javax.swing.JFrame {
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         String nickName = txtUserName.getText();
         if(!nickName.isEmpty()){
-            this.jLabelLoadGIF.setVisible(true);
             controlador.iniciarCliente(nickName);
-            System.out.println( nickName + " esta esperando jugadores");
-//            while(true){
-//                //mensaje de que ya estan todos
-//                if(true) return;
-//            }
-
         }
       //  else JOptionPane.showMessageDialog(null, "No ha ingresado un nombre de usuario!                              \nIntentelo de nuevo.        ");
     }//GEN-LAST:event_btnStartActionPerformed
@@ -192,10 +179,46 @@ public class GUIStartUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnStart;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelLoadGIF;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel txtInfo;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnStart() {
+        return btnStart;
+    }
+
+    public void setBtnStart(JButton btnStart) {
+        this.btnStart = btnStart;
+    }
+
+    public JLabel getjLabelLoadGIF() {
+        return jLabelLoadGIF;
+    }
+
+    public void setjLabelLoadGIF(JLabel jLabelLoadGIF) {
+        this.jLabelLoadGIF = jLabelLoadGIF;
+    }
+
+    public JTextField getTxtUserName() {
+        return txtUserName;
+    }
+
+    public void setTxtUserName(JTextField txtUserName) {
+        this.txtUserName = txtUserName;
+    }
+
+    public JLabel getTxtInfo() {
+        return txtInfo;
+    }
+
+    public void setTxtInfo(JLabel txtInfo) {
+        this.txtInfo = txtInfo;
+    }
+    
+    
+
+    
 }
