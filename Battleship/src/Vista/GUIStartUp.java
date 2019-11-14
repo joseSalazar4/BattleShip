@@ -139,6 +139,7 @@ public class GUIStartUp extends javax.swing.JFrame {
 //                //mensaje de que ya estan todos
 //                if(true) return;
 //            }
+
         }
       //  else JOptionPane.showMessageDialog(null, "No ha ingresado un nombre de usuario!                              \nIntentelo de nuevo.        ");
     }//GEN-LAST:event_btnStartActionPerformed

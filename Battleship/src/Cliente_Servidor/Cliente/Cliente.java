@@ -5,6 +5,7 @@
  */
 package Cliente_Servidor.Cliente;
 
+import Cliente.Jugador;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import Vista.GUIAdquisicion;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 
 
 public class Cliente {
+    public Jugador jugador;
     private Socket socketCliente;
     //private DataInputStream inputStream;
     //private DataOutputStream outputStream;
@@ -34,6 +36,7 @@ public class Cliente {
     
 
     public Cliente(String HOST, int PORT_HOST, GUIStartUp pantalla) {
+        jugador = new Jugador("");
         this.HOST = HOST;
         this.PORT_HOST = PORT_HOST;
         this.pantallaStartUp = pantalla;
@@ -45,6 +48,7 @@ public class Cliente {
             socketCliente = new Socket(HOST, PORT_HOST); 
             outputStream = new ObjectOutputStream(socketCliente.getOutputStream());
             this.nickName = nick;
+            jugador.nombre = nick;
             System.out.println("NICKNAME: "+ nick);
             //Enviamos el nickname del jugador al servidor
             outputStream.writeUTF(nick);

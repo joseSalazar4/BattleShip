@@ -14,9 +14,6 @@ import javax.swing.JLabel;
  */
 public class GUIAdquisicion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUIAdquisicion
-     */
     
     Cliente cliente;
     JLabel [][] matrizLabels = new JLabel [20][20];
@@ -24,7 +21,26 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     public GUIAdquisicion(Cliente _cliente) {
         initComponents();
         this.cliente = _cliente;
+        rellenarMatriz();
+    }    
+    
+private void rellenarMatriz(){
+        int TAMANNO = 30;
+        for(int i = 0; i<20 ;i++){
+            for(int j = 0; j<20 ;j++){
+                JLabel labelNuevo = new JLabel();
+                int m = (int) Math.floor(Math.random()*(6));
+                if(m==1) labelNuevo.setSize(TAMANNO,TAMANNO);
+                labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
+                labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
+                matrizLabels[i][j] = labelNuevo;
+                labelNuevo.repaint();
+                jPanelJugador.add(labelNuevo);
+            }
+        }
     }
+
+
 
     private GUIAdquisicion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -53,9 +69,14 @@ public class GUIAdquisicion extends javax.swing.JFrame {
         jPanelJugador = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,6 +89,11 @@ public class GUIAdquisicion extends javax.swing.JFrame {
         });
 
         jButton2.setText("Templo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Armeria");
 
@@ -151,7 +177,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 50, 230, 330));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 290, 230, 330));
 
         jPanelJugador.setBackground(new java.awt.Color(255, 102, 102));
         jPanelJugador.setOpaque(false);
@@ -183,14 +209,30 @@ public class GUIAdquisicion extends javax.swing.JFrame {
         jLabel2.setText("Previsualizacion del Oceano ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 9, -1, 20));
 
-        jLabel5.setText("Why idk pero revisar");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 570, 160, 50));
+        jLabel8.setFont(new java.awt.Font("Ebrima", 0, 20)); // NOI18N
+        jLabel8.setText("Dinero Actual: $4000");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
 
-        jLabel6.setText("ACA MAS OPCIONES QUE NO PUSIMOS");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 470, 230, 50));
+        jLabel9.setText("Mina: 0");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, -1, -1));
 
-        jLabel7.setText("Coompras o algo ahi, lo de arriba esta en un panel");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 320, 50));
+        jLabel10.setText("Templos: 0");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 100, -1, -1));
+
+        jLabel11.setText("Mecados: 0");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, -1, -1));
+
+        jLabel12.setText("Mina: 0");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, -1, -1));
+
+        jLabel13.setText("Mina: 0");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 190, -1, -1));
+
+        jLabel14.setText("Mina: 0");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 150, -1, -1));
+
+        jLabel15.setText("Mina: 0");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -200,12 +242,16 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+         //LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        cliente 
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -252,12 +298,17 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelJugador;
     // End of variables declaration//GEN-END:variables
