@@ -17,38 +17,39 @@ import java.util.logging.Logger;
  */
 public class ThreadCliente extends Thread{
     Cliente cliente;
-    DataInputStream inputStream;
     boolean isReady = false;
 
-    public ThreadCliente(Cliente cliente, DataInputStream inputStream) {
+    public ThreadCliente(Cliente cliente) {
         this.cliente = cliente;
-        this.inputStream = inputStream;
+        try {
+            this.cliente.setInputStream(new ObjectInputStream(this.cliente.getSocketCliente().getInputStream()));
+        } catch (IOException ex) {
+            Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void run(){
-        /*
-        int firstHandShake;
-          while(!isReady){
-              try {
-                  System.out.println("CLIENTE RUN");
-                  firstHandShake = inputStream.readInt();
-                  if(firstHandShake == 1){
-                      try {
-                          mensajeGenerico mensaje = (mensajeGenerico) inputStream.readObject();
-                          cliente.setEnemigos(mensaje.getContenido());
-                          this.isReady = mensaje.isIs();
-                          
-                      } catch (ClassNotFoundException ex) {
-                          Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                  }
-              } catch (IOException ex) {
-                  Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
-              }
+        while(!isReady){    
+            try {
+                mensajeGenerico mensaje = null;
+                try {
+                    mensaje = (mensajeGenerico) cliente.getInputStream().readObject();
+                } catch (IOException ex) {
+                    Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                cliente.setEnemigos(mensaje.getContenido());
+                this.isReady = mensaje.isIs();
+                
+                for(String nickEnemigo: cliente.getEnemigos()) System.out.println("Enemigo: " + nickEnemigo);
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
               
-          }*/
-          
+        }
           //Todos los jugadores estan conectados y empieza el juego
+                   
+          
           
           while(true){
           

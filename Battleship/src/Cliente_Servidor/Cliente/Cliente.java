@@ -18,11 +18,11 @@ import java.util.logging.Logger;
 
 public class Cliente {
     private Socket socketCliente;
-    private DataInputStream inputStream;
-    private DataOutputStream outputStream;
+    //private DataInputStream inputStream;
+    //private DataOutputStream outputStream;
     
-    private ObjectInputStream objectInputStream;
-    private ObjectOutputStream objectOutputStream;    
+    private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream;    
     
     private String nickName;
     private String HOST;
@@ -38,25 +38,26 @@ public class Cliente {
         this.pantallaStartUp = pantalla;
         this.pantallaStartUp.show();
         try {
-            socketCliente = new Socket(HOST, PORT_HOST);
+            socketCliente = new Socket(HOST, PORT_HOST);    
+            
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
     public void iniciarCliente(String nick){
-        try {
-            inputStream = new DataInputStream(socketCliente.getInputStream());
-            outputStream = new DataOutputStream(socketCliente.getOutputStream());
-            
-            
+        try { 
+            outputStream = new ObjectOutputStream(socketCliente.getOutputStream());
+
             this.nickName = nick;
             System.out.println("NICKNAME: "+ nick);
             //Enviamos el nickname del jugador al servidor
             outputStream.writeUTF(nick);
             this.pantallaStartUp.setTitle(nick);
-            new ThreadCliente(this, inputStream).start();
+            new ThreadCliente(this).start();
             
+            outputStream.close();
+  
         } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Servidor no disponible" + ex);
@@ -69,22 +70,6 @@ public class Cliente {
 
     public void setSocketCliente(Socket socketCliente) {
         this.socketCliente = socketCliente;
-    }
-
-    public DataInputStream getInputStream() {
-        return inputStream;
-    }
-
-    public void setInputStream(DataInputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    public DataOutputStream getOutputStream() {
-        return outputStream;
-    }
-
-    public void setOutputStream(DataOutputStream outputStream) {
-        this.outputStream = outputStream;
     }
 
     public String getNickName() {
@@ -126,6 +111,23 @@ public class Cliente {
     public void setEnemigos(ArrayList<String> enemigos) {
         this.enemigos = enemigos;
     }
+
+    public ObjectInputStream getInputStream() {
+        return inputStream;
+    }
+
+    public void setInputStream(ObjectInputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
+    public ObjectOutputStream getOutputStream() {
+        return outputStream;
+    }
+
+    public void setOutputStream(ObjectOutputStream outputStream) {
+        this.outputStream = outputStream;
+    }
+    
     
     
 }

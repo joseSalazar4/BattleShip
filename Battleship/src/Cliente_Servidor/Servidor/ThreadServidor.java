@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 package Cliente_Servidor.Servidor;
+import Cliente_Servidor.mensajeGenerico;
 import java.io.*;
 import java.net.*;
 
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,43 +24,55 @@ public class ThreadServidor extends Thread{
     String nickName;
     String ip;
     
-    DataInputStream inputStream;
-    DataOutputStream outputStream;
+    //DataInputStream inputStream;
+    //DataOutputStream outputStream;
+    
+    private ObjectInputStream inputStream;
+    private ObjectOutputStream outputStream; 
+    
+    
     
     public ThreadServidor(Socket cliente, int numeroCliente, Servidor servidor) {
         this.numeroCliente = numeroCliente;
         this.cliente = cliente;
         this.servidor = servidor;
-        this.ip = cliente.getInetAddress().getHostAddress();
+        this.ip = cliente.getInetAddress().getHostAddress();  
     }
     
     @Override
     public void run(){                
         try {
-            inputStream = new DataInputStream(this.cliente.getInputStream());
-            outputStream = new DataOutputStream(this.cliente.getOutputStream());
+            //inputStream = new DataInputStream(this.cliente.getInputStream());
+            //outputStream = new DataOutputStream(this.cliente.getOutputStream());
+            
+            inputStream = new ObjectInputStream(cliente.getInputStream());
+            //outputStream = new ObjectOutputStream(cliente.getOutputStream());
             
             //Leemos el nickName que ingreso el usuario
-            setNickName(inputStream.readUTF());
-            
+            setNickName((String) inputStream.readUTF());
             servidor.getPantalla().addStatus(".::" + ip + " = " + nickName);
             System.out.println("ENTRO EL " + nickName);
-            
-            while(true){
-                try {
-                    sleep(2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-            
-   
+            inputStream.close();
+                        
+        } catch (IOException ex) {
+            Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+    }
+    
+    public void makeFirstHandshake(){
+        mensajeGenerico mensaje = new mensajeGenerico();
+        mensaje.setContenido(new ArrayList<>());
+        mensaje.setIs(true);
+        mensaje.setTipoMensaje(1);
+        for (ThreadServidor tc : servidor.getClientes()){
+            if(!tc.getNickName().equals(this.nickName))
+                mensaje.getContenido().add(tc.nickName);
+        }
+        try {
+            outputStream.writeObject(mensaje);
         } catch (IOException ex) {
             Logger.getLogger(ThreadServidor.class.getName()).log(Level.SEVERE, null, ex);
         }
-              
-        
     }
 
     public int getNumeroCliente() {
@@ -77,22 +91,5 @@ public class ThreadServidor extends Thread{
         this.nickName = nickName;
     }
 
-    public DataInputStream getInputStream() {
-        return inputStream;
-    }
-
-    public void setInputStream(DataInputStream inputStream) {
-        this.inputStream = inputStream;
-    }
-
-    public DataOutputStream getOutputStream() {
-        return outputStream;
-    }
-
-    public void setOutputStream(DataOutputStream outputStream) {
-        this.outputStream = outputStream;
-    }
-
-    
     
 }

@@ -21,7 +21,7 @@ public class GUIStartUp extends javax.swing.JFrame {
     
     public GUIStartUp() {
         initComponents();
-        this.cliente = new Cliente("192.168.0.18", 9999, this);
+        this.cliente = new Cliente("localhost", 9999, this);
     }
 
     /**

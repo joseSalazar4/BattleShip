@@ -27,13 +27,13 @@ public class Servidor extends Thread{
     @Override
     public void run(){
         iniciarServidor(this.numeroClientes);
-        while(encendido){
-            try {
-                sleep(1);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+//        while(encendido){
+//            try {
+//                sleep(1);
+//            } catch (InterruptedException ex) {
+//                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
     }
         
     //Param: numero Clientes 
@@ -59,7 +59,9 @@ public class Servidor extends Thread{
                 this.pantalla.addStatus("Jugadores Completos");
                 this.pantalla.addStatus("Empezando partida...");
                 
-                
+                //Hacemos el primer handShake de todos los clientes
+                for(ThreadServidor tc: this.clientes) tc.makeFirstHandshake();
+                              
             } catch (IOException ex) {
                 Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
                 this.pantalla.addStatus("Error en el servidor: " + ex);
