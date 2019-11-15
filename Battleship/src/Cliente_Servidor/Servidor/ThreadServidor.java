@@ -55,13 +55,18 @@ public class ThreadServidor extends Thread{
                 opcion = inputStream.readInt();
                 
                 switch(opcion){
-                    case 1:
+                    case 1: //IDK
                         System.out.println("IDK");
                     break;
-                    case 2:
+                    case 2: //Envia un mensaje del chat a todos los jugadores
                         mensajeGenerico mensaje = (mensajeGenerico) inputStream.readObject();
                         for(ThreadServidor cliente: servidor.getClientes())
                             cliente.enviarMensaje(mensaje);    
+                    break;
+                    case 3: //Envia un mensaje del juego a todos los jugadores
+                        mensajeGenerico mensajeJuego = (mensajeGenerico) inputStream.readObject();
+                        for(ThreadServidor cliente: servidor.getClientes())
+                            cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
                 }
             }
@@ -89,6 +94,14 @@ public class ThreadServidor extends Thread{
         outputStream.writeInt(2);
         outputStream.writeObject(mensaje);
     }
+    
+    public void enviarMensajeJuego(mensajeGenerico mensaje) throws IOException{
+        outputStream.writeInt(3);
+        outputStream.writeObject(mensaje);
+    }
+
+    
+    //----Getter && Setter----
     
     public int getNumeroCliente() {
         return numeroCliente;

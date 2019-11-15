@@ -37,9 +37,14 @@ public class ThreadCliente extends Thread{
                         for(String enemigo: cliente.jugador.getEnemigos()) System.out.println(enemigo + ", ");
                         cliente.controlador.inciarAdquisicion();
                         break;
-                    case 2: //Recibe un mensaje
+                    case 2: //Recibe un mensaje del chat
                         mensajeGenerico mensaje = (mensajeGenerico) inputStream.readObject();
                         cliente.controlador.recibirMensaje(mensaje);
+                        break;
+                        
+                    case 3: //Recibe un mensaje del juego
+                        mensajeGenerico mensajeJuego = (mensajeGenerico) inputStream.readObject();
+                        cliente.controlador.recibirMensajeJuego(mensajeJuego);
                         break;
                         
                 }

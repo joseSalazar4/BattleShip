@@ -6,7 +6,7 @@
 package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
-import Controlador.Controlador_Cliente;
+import Controlador.Controlador_Adquisicion;
 import javax.swing.JLabel;
 
 /**
@@ -16,10 +16,10 @@ import javax.swing.JLabel;
 public class GUIAdquisicion extends javax.swing.JFrame {
 
     
-    Controlador_Cliente controlador;
+    Controlador_Adquisicion controlador;
     JLabel [][] matrizLabels = new JLabel [20][20];
     
-    public GUIAdquisicion(Controlador_Cliente controlador) {
+    public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         this.controlador = controlador;
         rellenarMatriz();
@@ -68,9 +68,6 @@ private void rellenarMatriz(){
         jButton6 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanelJugador = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -78,8 +75,15 @@ private void rellenarMatriz(){
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblnickName = new javax.swing.JLabel();
+        lblDinero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1080, 720));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Mina");
@@ -129,8 +133,10 @@ private void rellenarMatriz(){
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
@@ -145,7 +151,7 @@ private void rellenarMatriz(){
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6)))
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -184,35 +190,18 @@ private void rellenarMatriz(){
         jPanelJugador.setOpaque(false);
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ocean2.PNG"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jLabel3.setMaximumSize(new java.awt.Dimension(600, 600));
-
         javax.swing.GroupLayout jPanelJugadorLayout = new javax.swing.GroupLayout(jPanelJugador);
         jPanelJugador.setLayout(jPanelJugadorLayout);
         jPanelJugadorLayout.setHorizontalGroup(
             jPanelJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelJugadorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
         jPanelJugadorLayout.setVerticalGroup(
             jPanelJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelJugadorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 600, 600));
-
-        jLabel2.setText("Previsualizacion del Oceano ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 9, -1, 20));
-
-        jLabel8.setFont(new java.awt.Font("Ebrima", 0, 20)); // NOI18N
-        jLabel8.setText("Dinero Actual: $4000");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, -1));
+        getContentPane().add(jPanelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 600, 600));
 
         jLabel9.setText("Mina: 0");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 240, -1, -1));
@@ -234,6 +223,46 @@ private void rellenarMatriz(){
 
         jLabel15.setText("Mina: 0");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 150, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ocean2.PNG"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setMaximumSize(new java.awt.Dimension(600, 600));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 600, 600));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setText("Previsualizacion del Oceano ");
+
+        lblnickName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblnickName.setText("nickName");
+
+        lblDinero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblDinero.setText("Dinero: ");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addComponent(lblnickName)
+                .addGap(104, 104, 104)
+                .addComponent(lblDinero)
+                .addGap(76, 76, 76))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblnickName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -308,9 +337,30 @@ private void rellenarMatriz(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelJugador;
+    private javax.swing.JLabel lblDinero;
+    private javax.swing.JLabel lblnickName;
     // End of variables declaration//GEN-END:variables
+
+    public JLabel getLblDinero() {
+        return lblDinero;
+    }
+
+    public void setLblDinero(JLabel lblDinero) {
+        this.lblDinero = lblDinero;
+    }
+
+    public JLabel getLblnickName() {
+        return lblnickName;
+    }
+
+    public void setLblnickName(JLabel lblnickName) {
+        this.lblnickName = lblnickName;
+    }
+
+
+
 }

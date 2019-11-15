@@ -47,17 +47,20 @@ public class GUICliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAreaChat = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        txtAreaJuego = new javax.swing.JTextArea();
+        jTextArea3 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        btnEnviarMensaje = new javax.swing.JButton();
+        jButtonEnvMensaje = new javax.swing.JButton();
         txtFieldMensajes = new javax.swing.JTextField();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanelJugador = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1366, 768));
+        setPreferredSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAreaChat.setEditable(false);
@@ -67,10 +70,10 @@ public class GUICliente extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 634, 600, 63));
 
-        txtAreaJuego.setEditable(false);
-        txtAreaJuego.setColumns(20);
-        txtAreaJuego.setRows(5);
-        jScrollPane3.setViewportView(txtAreaJuego);
+        jTextArea3.setEditable(false);
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(618, 639, 600, 96));
 
@@ -78,13 +81,13 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel2.setText("Enemigos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, -1, 20));
 
-        btnEnviarMensaje.setText("Enviar mensaje");
-        btnEnviarMensaje.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEnvMensaje.setText("Enviar mensaje");
+        jButtonEnvMensaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEnviarMensajeActionPerformed(evt);
+                jButtonEnvMensajeActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnviarMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 703, 130, 41));
+        getContentPane().add(jButtonEnvMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(477, 703, 130, 41));
 
         txtFieldMensajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,17 +126,18 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/oceanEnemigo.PNG"))); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 28, 600, 604));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 260, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEnviarMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarMensajeActionPerformed
+    private void jButtonEnvMensajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnvMensajeActionPerformed
         try {
             controlador.enviarMensaje();
         } catch (IOException ex) {
             Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnEnviarMensajeActionPerformed
+    }//GEN-LAST:event_jButtonEnvMensajeActionPerformed
 
     private void txtFieldMensajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldMensajesActionPerformed
         // TODO add your handling code here:
@@ -145,26 +149,27 @@ public class GUICliente extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEnviarMensaje;
+    private javax.swing.JButton jButtonEnvMensaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelJugador;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea txtAreaChat;
-    private javax.swing.JTextArea txtAreaJuego;
     private javax.swing.JTextField txtFieldMensajes;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtnEnviarMensaje() {
-        return btnEnviarMensaje;
+        return jButtonEnvMensaje;
     }
 
     public void setBtnEnviarMensaje(JButton btnEnviarMensaje) {
-        this.btnEnviarMensaje = btnEnviarMensaje;
+        this.jButtonEnvMensaje = btnEnviarMensaje;
     }
 
     public JTextArea getTxtAreaChat() {
@@ -176,11 +181,11 @@ public class GUICliente extends javax.swing.JFrame {
     }
 
     public JTextArea getTxtAreaJuego() {
-        return txtAreaJuego;
+        return jTextArea3;
     }
 
     public void setTxtAreaJuego(JTextArea txtAreaJuego) {
-        this.txtAreaJuego = txtAreaJuego;
+        this.jTextArea3 = txtAreaJuego;
     }
 
     public JTextField getTxtFieldMensajes() {

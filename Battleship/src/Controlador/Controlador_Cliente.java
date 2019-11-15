@@ -16,6 +16,8 @@ public class Controlador_Cliente {
     private GUICliente pantallaPrincipal;
     private Cliente cliente;
     
+    private Controlador_Adquisicion controladorAdquisicion;
+    
     public Controlador_Cliente(){
         this.cliente = new Cliente("localhost", 9999, this);
         this.pantallaStartUp = new GUIStartUp(this);
@@ -40,11 +42,24 @@ public class Controlador_Cliente {
             Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.pantallaStartUp.dispose();
-        //this.pantallaAdquisicion = new GUIAdquisicion(this);
-        //this.pantallaAdquisicion.setVisible(true);
         
+        this.controladorAdquisicion = new Controlador_Adquisicion(cliente);
+        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();
+       
+        
+        //SOLO PARA PRUEBA
+        //empezarAJugar();
+        
+    }
+    
+    public void empezarAJugar(){
         this.pantallaPrincipal = new GUICliente(this);
         this.pantallaPrincipal.setVisible(true);
+        String enemigos = "---Empiza la Batalla---\n";
+        enemigos += "Tus enemigos: \n";
+        for(String enemigo: cliente.jugador.getEnemigos())
+            enemigos += enemigo + "\n";
+        this.pantallaPrincipal.getTxtAreaJuego().append(enemigos);
     }
     
     
@@ -67,5 +82,10 @@ public class Controlador_Cliente {
         mensajeCompleto += mensaje.mensaje;
         
         this.pantallaPrincipal.getTxtAreaChat().append(mensajeCompleto + "\n");
+    }
+     
+    //Metodos de los mensajes de informacion del juego
+    public void recibirMensajeJuego(mensajeGenerico mensaje){
+        
     }
 }
