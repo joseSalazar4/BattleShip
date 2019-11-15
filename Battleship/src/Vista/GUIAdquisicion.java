@@ -7,6 +7,7 @@ package Vista;
 
 import Cliente_Servidor.Cliente.Cliente;
 import Controlador.Controlador_Adquisicion;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 /**
@@ -132,7 +133,7 @@ private void rellenarMatriz(){
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -145,7 +146,7 @@ private void rellenarMatriz(){
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3))
-                        .addGap(18, 18, 18)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -361,6 +362,22 @@ private void rellenarMatriz(){
         this.lblnickName = lblnickName;
     }
 
+    
+    public JComboBox getComboBoxMina(){
+        return this.jComboBox1;
+    }
+    
+    public void setComboBoxMina(JComboBox comboBoxMina){
+        this.jComboBox1 = comboBoxMina;
+    }
+    
+    public JComboBox getComboBoxArmeria(){
+        return this.jComboBox2;
+    }
+    
+    public void setComboBoxArmeria(JComboBox comboBoxArmeria){
+        this.jComboBox2 = comboBoxArmeria;
+    }
 
 
 }

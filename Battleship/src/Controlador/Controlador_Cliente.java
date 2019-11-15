@@ -9,6 +9,7 @@ import Vista.GUIStartUp;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
     private GUIStartUp pantallaStartUp;
@@ -48,7 +49,7 @@ public class Controlador_Cliente {
        
         
         //SOLO PARA PRUEBA
-        //empezarAJugar();
+        empezarAJugar();
         
     }
     
@@ -60,6 +61,9 @@ public class Controlador_Cliente {
         for(String enemigo: cliente.jugador.getEnemigos())
             enemigos += enemigo + "\n";
         this.pantallaPrincipal.getTxtAreaJuego().append(enemigos);
+       
+        DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
+        caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
     
     
