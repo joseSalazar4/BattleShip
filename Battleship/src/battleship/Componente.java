@@ -1,9 +1,7 @@
 
 package battleship;
 
-
-
-public class Componente {
+public class Componente implements Cloneable{
     String nombre;
     int costo;
     
