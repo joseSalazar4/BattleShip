@@ -59,9 +59,9 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
-        setSize(new java.awt.Dimension(1100, 760));
+        setMinimumSize(new java.awt.Dimension(1400, 780));
+        setPreferredSize(new java.awt.Dimension(1300, 780));
+        setSize(new java.awt.Dimension(1300, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAreaChat.setEditable(false);

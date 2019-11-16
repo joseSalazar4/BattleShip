@@ -19,8 +19,8 @@ public class Controlador_Cliente {
     
     private Controlador_Adquisicion controladorAdquisicion;
     
-    public Controlador_Cliente(){
-        this.cliente = new Cliente("localhost", 9999, this);
+    public Controlador_Cliente(){ 
+        this.cliente = new Cliente("localhost", 9999, this); 
         this.pantallaStartUp = new GUIStartUp(this);
         this.pantallaStartUp.setVisible(true);
         this.pantallaAdquisicion = null;
@@ -30,7 +30,7 @@ public class Controlador_Cliente {
     public void iniciarCliente(String nickName){
         cliente.iniciarCliente(nickName);
         pantallaStartUp.setTitle(nickName);
-        pantallaStartUp.getTxtInfo().setText("Esperando Jugadores...");
+        pantallaStartUp.getTxtInfo().setText("Buscando...");
         pantallaStartUp.getBtnStart().setVisible(false);
         pantallaStartUp.getjLabelLoadGIF().setVisible(true);
     }
@@ -49,7 +49,7 @@ public class Controlador_Cliente {
        
         
         //SOLO PARA PRUEBA
-        empezarAJugar();
+        //empezarAJugar();
         
     }
     
