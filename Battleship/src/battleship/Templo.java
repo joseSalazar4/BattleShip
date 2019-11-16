@@ -10,5 +10,7 @@ package battleship;
  * @author mikom
  */
 public class Templo extends Componente{
-    
+    public Templo(){
+        
+    }
 }

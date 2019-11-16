@@ -134,7 +134,7 @@ public class GUIStartUp extends javax.swing.JFrame {
         if(!nickName.isEmpty()){
             controlador.iniciarCliente(nickName);
         }
-      //  else JOptionPane.showMessageDialog(null, "No ha ingresado un nombre de usuario!                              \nIntentelo de nuevo.        ");
+        else JOptionPane.showMessageDialog(null, "No ha ingresado un nombre de usuario!                              \nIntentelo de nuevo.        ");
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed

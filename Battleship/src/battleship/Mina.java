@@ -11,5 +11,8 @@ package battleship;
  */
 
 public class Mina extends Componente{
-    
+ 
+    public Mina(){
+        
+    }
 }
