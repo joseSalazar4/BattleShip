@@ -68,6 +68,8 @@ public class ThreadServidor extends Thread{
                         for(ThreadServidor cliente: servidor.getClientes())
                             cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
+                        
+                    // Opcion es el metodo que quiere que el servidor haga 
                 }
             }
                         

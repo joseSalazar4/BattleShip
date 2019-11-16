@@ -17,6 +17,7 @@ public class Controlador_Adquisicion {
         this.cliente = cliente;
         this.pantalla = new GUIAdquisicion(this);
         this.pantalla.setVisible(true);
+        cargarDatosDelJugador();
         
         
         JComboBox comboBoxMina = new JComboBox();
