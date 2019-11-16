@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import Cliente_Servidor.Cliente.Cliente;
 import Controlador.Controlador_Adquisicion;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -18,12 +17,26 @@ public class GUIAdquisicion extends javax.swing.JFrame {
 
     
     Controlador_Adquisicion controlador;
+    JLabel imagenMina = new JLabel();
+    JLabel imagenFuente = new JLabel();
+    JLabel imagenTemplo = new JLabel();
+    JLabel imagenMercado = new JLabel();
+    JLabel imagenArmeria = new JLabel();
+    JLabel imagenTornado = new JLabel();
+    
+    
     JLabel [][] matrizLabels = new JLabel [20][20];
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         this.controlador = controlador;
         rellenarMatriz();
+        imagenMina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
+        imagenFuente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+        imagenTemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png")));
+        imagenMercado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+        imagenArmeria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png")));        
+        imagenTornado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png")));        
     }    
     
 private void rellenarMatriz(){

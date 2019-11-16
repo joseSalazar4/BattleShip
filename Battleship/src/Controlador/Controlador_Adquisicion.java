@@ -28,17 +28,17 @@ public class Controlador_Adquisicion {
         comboBoxMina.addItem("Nivel 4");
         comboBoxMina.addItem("Nivel 5");
         
-        
+
         JComboBox comboBoxArmeria = new JComboBox();
         comboBoxArmeria.addItem("Bomba"); 
         comboBoxArmeria.addItem("Torpedo");
         comboBoxArmeria.addItem("Trumpedo");
         comboBoxArmeria.addItem("Multi-shot");
         
-        
-        
         this.pantalla.setComboBoxArmeria(comboBoxArmeria);
         this.pantalla.setComboBoxMina(comboBoxMina);
+        
+        this.pantalla.repaint();
     }
 
     public void cargarDatosDelJugador(){
@@ -55,4 +55,6 @@ public class Controlador_Adquisicion {
     public void setPantalla(GUIAdquisicion pantalla) {
         this.pantalla = pantalla;
     }
+    
+     
 }
