@@ -7,10 +7,13 @@ package Controlador;
 
 import Cliente_Servidor.Cliente.Cliente;
 import Vista.GUIAdquisicion;
+import battleship.Componente;
+import java.util.ArrayList;
 
 public class Controlador_Adquisicion {
     Cliente cliente;
     GUIAdquisicion pantalla;
+    ArrayList<Componente> prototipos;
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
