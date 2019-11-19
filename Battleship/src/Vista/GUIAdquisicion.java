@@ -5,8 +5,9 @@
  */
 package Vista;
 
-import Cliente_Servidor.Cliente.Cliente;
 import Controlador.Controlador_Adquisicion;
+import Controlador.Movimiento;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 /**
@@ -17,12 +18,35 @@ public class GUIAdquisicion extends javax.swing.JFrame {
 
     
     Controlador_Adquisicion controlador;
-    JLabel [][] matrizLabels = new JLabel [20][20];
+    
+    
+    public JLabel imagenMina = new JLabel();
+    public JLabel imagenFuente = new JLabel();
+    public JLabel imagenTemplo = new JLabel();
+    public JLabel imagenMercado = new JLabel();
+    public JLabel imagenArmeria = new JLabel();
+    public JLabel imagenTornado = new JLabel();
+    
+    
+    public JLabel [][] matrizLabels = new JLabel [20][20];
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         this.controlador = controlador;
         rellenarMatriz();
+        
+        
+        imagenMina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));    
+        imagenFuente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+        imagenTemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png")));
+        imagenMercado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+        imagenArmeria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png")));        
+        imagenTornado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png")));        
+        
+        matrizLabels[7][16].setIcon(imagenTornado.getIcon());
+        matrizLabels[7][16].setSize(30,30);
+        matrizLabels[7][16].setVisible(true);
+        Movimiento m = new Movimiento(matrizLabels[7][16]);
     }    
     
 private void rellenarMatriz(){
@@ -102,6 +126,11 @@ private void rellenarMatriz(){
         });
 
         jButton3.setText("Armeria");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Conector");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +162,7 @@ private void rellenarMatriz(){
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
@@ -143,7 +172,7 @@ private void rellenarMatriz(){
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3))
-                        .addGap(18, 18, 18)
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -278,12 +307,16 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        controlador.adquirirMina();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //cliente 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,6 +396,22 @@ private void rellenarMatriz(){
         this.lblnickName = lblnickName;
     }
 
+    
+    public JComboBox getComboBoxMina(){
+        return this.jComboBox1;
+    }
+    
+    public void setComboBoxMina(JComboBox comboBoxMina){
+        this.jComboBox1 = comboBoxMina;
+    }
+    
+    public JComboBox getComboBoxArmeria(){
+        return this.jComboBox2;
+    }
+    
+    public void setComboBoxArmeria(JComboBox comboBoxArmeria){
+        this.jComboBox2 = comboBoxArmeria;
+    }
 
 
 }

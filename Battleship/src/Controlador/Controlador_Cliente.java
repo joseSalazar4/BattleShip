@@ -9,6 +9,7 @@ import Vista.GUIStartUp;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
     private GUIStartUp pantallaStartUp;
@@ -18,8 +19,8 @@ public class Controlador_Cliente {
     
     private Controlador_Adquisicion controladorAdquisicion;
     
-    public Controlador_Cliente(){
-        this.cliente = new Cliente("localhost", 9999, this);
+    public Controlador_Cliente(){ 
+        this.cliente = new Cliente("localhost", 9999, this); 
         this.pantallaStartUp = new GUIStartUp(this);
         this.pantallaStartUp.setVisible(true);
         this.pantallaAdquisicion = null;
@@ -29,7 +30,7 @@ public class Controlador_Cliente {
     public void iniciarCliente(String nickName){
         cliente.iniciarCliente(nickName);
         pantallaStartUp.setTitle(nickName);
-        pantallaStartUp.getTxtInfo().setText("Esperando Jugadores...");
+        pantallaStartUp.getTxtInfo().setText("Buscando...");
         pantallaStartUp.getBtnStart().setVisible(false);
         pantallaStartUp.getjLabelLoadGIF().setVisible(true);
     }
@@ -60,6 +61,9 @@ public class Controlador_Cliente {
         for(String enemigo: cliente.jugador.getEnemigos())
             enemigos += enemigo + "\n";
         this.pantallaPrincipal.getTxtAreaJuego().append(enemigos);
+       
+        DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
+        caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
     
     
