@@ -33,7 +33,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         this.controlador = controlador;
-        rellenarMatriz();
+        rellenarMatriz(); 
         
         
         imagenMina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));    
@@ -43,10 +43,6 @@ public class GUIAdquisicion extends javax.swing.JFrame {
         imagenArmeria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png")));        
         imagenTornado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png")));        
         
-        matrizLabels[7][16].setIcon(imagenTornado.getIcon());
-        matrizLabels[7][16].setSize(30,30);
-        matrizLabels[7][16].setVisible(true);
-        Movimiento m = new Movimiento(matrizLabels[7][16]);
     }    
     
 private void rellenarMatriz(){
@@ -59,10 +55,11 @@ private void rellenarMatriz(){
                 labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
-                
+                Movimiento movimiento = new Movimiento(labelNuevo);
                 labelNuevo.repaint();
                 jPanelJugador.add(labelNuevo);
             }
+            //} Hacer MovimientoL en la Colocar el for dentro
         }
     }
 

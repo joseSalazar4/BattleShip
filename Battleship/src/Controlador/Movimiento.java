@@ -21,6 +21,7 @@ public class Movimiento implements MouseListener, MouseMotionListener {
     public Movimiento(  JLabel labelM){
         labelM.addMouseListener(this);
         labelM.addMouseMotionListener(this);
+        
     }
     @Override
     public void mouseClicked(MouseEvent e) {

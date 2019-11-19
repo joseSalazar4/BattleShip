@@ -13,7 +13,7 @@ import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
     private GUIStartUp pantallaStartUp;
-    private GUIAdquisicion pantallaAdquisicion;
+    private GUIAdquisicion pantallaAdquisicion; 
     private GUICliente pantallaPrincipal;
     private Cliente cliente;
     
