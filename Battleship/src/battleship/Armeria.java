@@ -15,4 +15,8 @@ public class Armeria extends Componente{
     public Armeria(){
         
     }
+    
+    public void setTipoComponente(tipoComponente comp){
+        this.tipoComponente = comp;
+    }
 }
