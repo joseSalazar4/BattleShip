@@ -16,10 +16,11 @@ import javax.swing.JLabel;
 public class Controlador_Adquisicion {
     Cliente cliente;
     GUIAdquisicion pantalla; 
-    public static boolean isComprado = false;
-    public static boolean isMover = false;
-    public static Componente componenteAux = null;
+    
+    public static boolean isComprado = false, isMover = false, isArrIzq = false;
+    public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
+ 
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
