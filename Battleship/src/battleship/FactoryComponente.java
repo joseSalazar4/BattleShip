@@ -9,20 +9,29 @@ package battleship;
  *
  * @author mikom
  */
+
+//{Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia
 public class FactoryComponente {
     public static Componente crearComponente(int num){
         switch(num){
             case 1:
-                
-                break;
+                return new Armeria();
+                    
             case 2:
-                break;
+                return new Mina();
+                
             case 3:
-                break;
+                return new Templo();
+                
             case 4:
-                break;
-            default:
-                break;
+                return new Fabrica();
+                //CREO QUE LAS DE ABAJO NO SON NECESARIAS
+            case 5:
+              //  return new Fuente();
+            case 6:
+              //  return new Conector();
         }
+        System.out.println("ERROR AL CREAR EN FctoryComponente REVISAR ");
+        return null;
     }    
 }
