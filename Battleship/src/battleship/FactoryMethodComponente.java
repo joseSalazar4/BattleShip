@@ -12,3 +12,5 @@ package battleship;
 public class FactoryMethodComponente {
     
 }
+
+

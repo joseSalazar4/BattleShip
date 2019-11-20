@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Controlador_Adquisicion {
     Cliente cliente;
@@ -70,6 +71,11 @@ public class Controlador_Adquisicion {
     
     public void adquirirMercado(){
         
+    }
+    
+    public void ejecutarCompra(int precio){
+        if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
+        //else factory.Comprar();
     }
     
     public void adquirirArma(){
