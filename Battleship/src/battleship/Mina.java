@@ -11,8 +11,37 @@ package battleship;
  */
 
 public class Mina extends Componente{
- 
-    public Mina(){
+    int costo, aceroGenerado, tiempo;
+    
+    public Mina(int nivelSeleccionado){
+        switch(nivelSeleccionado){
+            
+            case 1:
+                costo = 1000;
+                aceroGenerado = 50;
+                tiempo = 60;
+                break;
+            case 2:
+                costo = 1700;
+                aceroGenerado = 120;
+                tiempo = 50;
+                break;
+            case 3:
+                costo  = 2700;
+                aceroGenerado = 180;
+                tiempo = 450;
+                break;
+            case 4:
+                costo = 3200;
+                aceroGenerado = 210;
+                tiempo = 40;
+                break;
+            case 5:    
+                costo = 4800;
+                aceroGenerado = 260;
+                tiempo = 35;
+                break;
+        }
         
     }
 }

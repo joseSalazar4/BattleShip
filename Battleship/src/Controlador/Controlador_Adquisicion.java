@@ -5,13 +5,10 @@
  */
 package Controlador;
 
-import battleship.*;
 import Vista.GUIAdquisicion;
 import battleship.Componente;
-import java.util.ArrayList;
 import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Controlador_Adquisicion {
@@ -26,7 +23,7 @@ public class Controlador_Adquisicion {
         this.pantalla.setVisible(true);
         cargarDatosDelJugador();
         
-        JComboBox comboBoxMina = this.pantalla.getComboBoxMina();;
+        JComboBox comboBoxMina = this.pantalla.getComboBoxMina();
         comboBoxMina.removeAllItems(); //Eliminar los default
         
         comboBoxMina.addItem("Nivel 1");
@@ -57,28 +54,15 @@ public class Controlador_Adquisicion {
         
     }
     
-    public void adquirirMina(){
-        Mina mina = new Mina(); 
-        pantalla.matrizLabels[7][14].setIcon(pantalla.imagenMina.getIcon());
-    }
-    
-    public void adquirirTemplo(){
-        Templo templo = new Templo();
-    }
-    public void adquirirMercado(){
-        
-    }
     
     public void ejecutarCompra(int precio){
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
-        //else factory.Comprar();
+        else{
+        cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
+        pantalla.getLabelInstruccion().setVisible(true);
+        //factory.Comprar();
+        }
     }
-    
-    public void adquirirArma(){
-        Armeria armeria = new Armeria();
-    }
-    
-    
     
     //Getter && Settter
     public GUIAdquisicion getPantalla() {

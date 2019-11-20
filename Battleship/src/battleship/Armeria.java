@@ -12,7 +12,7 @@ package battleship;
 
 //USAR FACTORY METHOD
 public class Armeria extends Componente{
-    public Armeria(){
+    public Armeria(int tipoArmaProducir){
         
     }
     

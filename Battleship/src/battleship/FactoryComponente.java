@@ -12,13 +12,14 @@ package battleship;
 
 //{Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia
 public class FactoryComponente {
-    public static Componente crearComponente(int num){
+    
+    public static Componente crearComponente(int num, int opcionExtra){
         switch(num){
             case 1:
-                return new Armeria();
+                return new Armeria(opcionExtra);
                     
             case 2:
-                return new Mina();
+                return new Mina(opcionExtra);
                 
             case 3:
                 return new Templo();
