@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Controlador_Adquisicion;
+import Controlador.PosicionarComponente;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -45,14 +46,14 @@ private void rellenarMatriz(){
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
-                int m = (int) Math.floor(Math.random()*(6));
-                if(m==1) labelNuevo.setSize(TAMANNO,TAMANNO);
+                labelNuevo.setSize(TAMANNO, TAMANNO);
+                if(j == 2)
                 labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
                 jPanelJugador.add(labelNuevo);
+                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels);
             }
-            //} Hacer MovimientoL en la Colocar el for dentro
         }
     }
 

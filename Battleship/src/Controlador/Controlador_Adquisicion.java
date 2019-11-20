@@ -14,8 +14,11 @@ import javax.swing.JOptionPane;
 public class Controlador_Adquisicion {
     Cliente cliente;
     GUIAdquisicion pantalla; 
-    public static boolean isComprado = false;
-    public static Componente componenteAux = null;
+    
+    public static boolean isComprado = false, isMover = false, isArrIzq = false;
+    public static Componente componenteAux = null, componenteAux2 = null;
+    public static Componente[][] matrizComponentes = new Componente[20][20];
+ 
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
@@ -55,6 +58,14 @@ public class Controlador_Adquisicion {
     }
     
     
+    public void adquirirTemplo(){
+        Templo templo = new Templo();
+    }
+    
+    public void adquirirMercado(){
+        
+    }
+    
     public void ejecutarCompra(int precio){
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
         else{
@@ -64,6 +75,14 @@ public class Controlador_Adquisicion {
         }
     }
     
+    public void adquirirArma(){
+        Armeria armeria = new Armeria();
+    }
+    
+    public static Componente getComponente(int i, int j){
+        return matrizComponentes[i][j]; 
+    }
+      
     //Getter && Settter
     public GUIAdquisicion getPantalla() {
         return pantalla;
