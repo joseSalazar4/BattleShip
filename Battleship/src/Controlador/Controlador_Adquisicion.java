@@ -39,6 +39,13 @@ public class Controlador_Adquisicion {
         comboBoxArmeria.addItem("Torpedo");
         comboBoxArmeria.addItem("Trumpedo");
         comboBoxArmeria.addItem("Multi-shot");
+        
+        JComboBox comboBoxPosicion = this.pantalla.getComboBoxPos();
+        
+        comboBoxArmeria.removeAllItems();//Eliminar los defaults
+
+        comboBoxPosicion.addItem("Horizontal");
+        comboBoxPosicion.addItem("Vertical");
     }
 
     public void cargarDatosDelJugador(){
