@@ -144,8 +144,18 @@ private void rellenarMatriz(){
         jLabel1.setText("Compras antes del juego:");
 
         jButton5.setText("Mercado");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Fuente Poder");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Haga click sobre el elemento que desea");
 
@@ -309,20 +319,28 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         //LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO  LLAMAR AL CONTROLADOR/MODELO
+        controlador.ejecutarCompra(100);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador.adquirirMina();
+        controlador.ejecutarCompra(1000);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //controlador.
+        controlador.ejecutarCompra(2500);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        controlador.ejecutarCompra(1500);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        controlador.ejecutarCompra(2000);    
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        controlador.ejecutarCompra(2000);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
