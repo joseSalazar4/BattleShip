@@ -17,7 +17,9 @@ public class Controlador_Adquisicion {
     Cliente cliente;
     GUIAdquisicion pantalla; 
     public static boolean isComprado = false;
+    public static boolean isMover = false;
     public static Componente componenteAux = null;
+    public static Componente[][] matrizComponentes = new Componente[20][20];
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
@@ -64,6 +66,7 @@ public class Controlador_Adquisicion {
     public void adquirirTemplo(){
         Templo templo = new Templo();
     }
+    
     public void adquirirMercado(){
         
     }
@@ -72,8 +75,10 @@ public class Controlador_Adquisicion {
         Armeria armeria = new Armeria();
     }
     
-    
-    
+    public static Componente getComponente(int i, int j){
+        return matrizComponentes[i][j]; 
+    }
+      
     //Getter && Settter
     public GUIAdquisicion getPantalla() {
         return pantalla;

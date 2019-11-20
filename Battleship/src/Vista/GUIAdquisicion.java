@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.Controlador_Adquisicion;
+import Controlador.PosicionarComponente;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -51,6 +52,7 @@ private void rellenarMatriz(){
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
                 jPanelJugador.add(labelNuevo);
+                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels);
             }
             //} Hacer MovimientoL en la Colocar el for dentro
         }

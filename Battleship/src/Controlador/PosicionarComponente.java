@@ -11,20 +11,45 @@ import javax.swing.JLabel;
 
 public class PosicionarComponente implements MouseListener{
     JLabel label;
-    public PosicionarComponente(JLabel label){
+    int i, j;
+    public PosicionarComponente(JLabel label, JLabel[][] matrizLabels){
         this.label = label;
         label.addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(Controlador_Adquisicion.isComprado == true){
-            
+        
+        if(Controlador_Adquisicion.isComprado){ //Compro un componente y lo va a posicionar
+            if(Controlador_Adquisicion.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
+                if(Controlador_Adquisicion.getComponente(i, j) == null){
+                    //Mover 
+                    Controlador_Adquisicion.isComprado = false;
+                }
+                //ERROR
+            }
+            //ERROR
         }
         else{
+            if(Controlador_Adquisicion.isMover){ //Va a mover un componente de la matriz a este label
+                if(Controlador_Adquisicion.componenteAux != null){ 
+                    if(Controlador_Adquisicion.getComponente(i, j) == null){
+                        //Mover
+                        Controlador_Adquisicion.isMover = false;
+                    }
+                }
+                //ERROR
+            }
             
+            if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
+                Controlador_Adquisicion.isMover = true;
+                Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
+            }
+        }
     }
-        Controlador_Adquisicion.isComprado=false;
+    
+    public void mover(){
+        
     }
 
     @Override
