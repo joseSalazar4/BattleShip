@@ -7,6 +7,8 @@ package Controlador;
 
 import battleship.*;
 import Vista.GUIAdquisicion;
+import battleship.Componente;
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
 import javax.swing.JLabel;
