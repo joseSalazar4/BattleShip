@@ -6,14 +6,9 @@
 package Vista;
 
 import Controlador.Controlador_Adquisicion;
-import Controlador.Movimiento;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
-/**
- *
- * @author Personal
- */
 public class GUIAdquisicion extends javax.swing.JFrame {
 
     
@@ -55,8 +50,6 @@ private void rellenarMatriz(){
                 labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
-                Movimiento movimiento = new Movimiento(labelNuevo);
-                labelNuevo.repaint();
                 jPanelJugador.add(labelNuevo);
             }
             //} Hacer MovimientoL en la Colocar el for dentro

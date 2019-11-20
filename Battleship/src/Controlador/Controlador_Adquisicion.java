@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 public class Controlador_Adquisicion {
     Cliente cliente;
     GUIAdquisicion pantalla; 
+    public static boolean isComprado = false;
+    public static Componente componenteAux = null;
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
@@ -57,8 +59,6 @@ public class Controlador_Adquisicion {
     public void adquirirMina(){
         Mina mina = new Mina(); 
         pantalla.matrizLabels[7][14].setIcon(pantalla.imagenMina.getIcon());
-        
-        Movimiento movilidad = new Movimiento(pantalla.matrizLabels[7][14]);
     }
     
     public void adquirirTemplo(){
