@@ -1,11 +1,13 @@
 
 package battleship;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Componente implements Cloneable{
     String nombre;
     int costo;
+    ArrayList aristas;
     private boolean isVertical, is1x1;  
     public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia}
     tipoComponente tipoComponente;
@@ -14,6 +16,8 @@ public class Componente implements Cloneable{
     public Componente(){
         nombre = "";
     }
+    
+    
     public void setTipoComponente(tipoComponente comp){
         this.tipoComponente = comp;
     }

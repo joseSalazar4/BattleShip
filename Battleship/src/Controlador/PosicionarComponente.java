@@ -5,15 +5,15 @@
  */
 package Controlador;
 
-import Vista.GUIAdquisicion;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 
 public class PosicionarComponente implements MouseListener{
+    int i, j;
     JLabel label;
     JLabel[][] matrizLabels;
-    int i, j;
+    
     public PosicionarComponente(JLabel label, JLabel[][] matrizLabels, int i, int j){
         this.label = label;
         this.matrizLabels = matrizLabels;
@@ -28,14 +28,17 @@ public class PosicionarComponente implements MouseListener{
         if(Controlador_Adquisicion.isComprado){ //Compro un componente y lo va a posicionar
             if(Controlador_Adquisicion.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
                 if(Controlador_Adquisicion.getComponente(i, j) == null){
+                        
                     mover();
                     Controlador_Adquisicion.isComprado=false;
                     Controlador_Adquisicion.componenteAux=null;
                     Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
                 }
                 //ERROR
+                System.out.println("Error Mouse clicked Method Linea 37");
             }
             //ERROR
+            System.out.println("Error Mouse clicked Method Linea 40");
         }
         else{
             if(Controlador_Adquisicion.isMover){ //Va a mover un componente de la matriz a este label
@@ -46,7 +49,7 @@ public class PosicionarComponente implements MouseListener{
                         Controlador_Adquisicion.componenteAux=null; 
                     }
                 }
-                //ERROR
+                System.out.println("Error Mouse clicked Method linea 51");                       
             }
             
             else if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
@@ -93,19 +96,19 @@ public class PosicionarComponente implements MouseListener{
     }
     
     public void posicionar_ij(JLabel label){
-        return;
         //this.i = (int) label.getLocation().getY();
         //this.j = (int) label.getLocation().getX();
+        
     }
     
     public void mover(){
+       // QUE NO SE PUEDA PONER EN EL 20;
         if(Controlador_Adquisicion.componenteAux.isIs1x1()){
             posicionar_ij(this.label);
             this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
             Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
         }
         else{
-            
             posicionar_ij(this.label);
             this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
             //this.label.setOpaque(true);
@@ -144,7 +147,7 @@ public class PosicionarComponente implements MouseListener{
                     //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
-                else if(!Controlador_Adquisicion.isArrIzq && j<19 && Controlador_Adquisicion.getComponente(i, j+1) == null){
+                else if(!Controlador_Adquisicion.isArrIzq && j<18 && Controlador_Adquisicion.getComponente(i, j+1) == null){
                     //LA SEGUNDO LABEL ES EL DE DERECHA
                     JLabel otroLabel = matrizLabels[i][j+1];
                     posicionar_ij(otroLabel);

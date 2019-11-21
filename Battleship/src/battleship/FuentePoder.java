@@ -9,6 +9,9 @@ package battleship;
  *
  * @author mikom
  */
-public class FuentePoder {
+public class FuentePoder extends Componente {
+    FuentePoder(){
+        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png"));
+    }
     
 }

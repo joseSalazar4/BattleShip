@@ -19,13 +19,13 @@ public class FactoryComponente {
                 return new Armeria(opcionExtra);
                     
             case MINA:
-                return new Mina(opcionExtra);
+                return new Mina(opcionExtra+1);  //Porque viene index desde 0-4
                 
             case TEMPLO:
                 return new Templo();
                 
             case MERCADO:
-                //return new Mercado();
+                return new Mercado();
             
         }
         System.out.println("ERROR AL CREAR EN FctoryComponente REVISAR ");

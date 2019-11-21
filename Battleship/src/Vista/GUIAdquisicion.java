@@ -8,6 +8,7 @@ package Vista;
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
 import battleship.ItemCompra;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -74,15 +75,15 @@ private void rellenarMatriz(){
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonMina = new javax.swing.JButton();
+        jButtonTemplo = new javax.swing.JButton();
+        jButtonArmeria = new javax.swing.JButton();
+        jButtonConector = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jButtonMercado = new javax.swing.JButton();
+        jButtonFuente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
@@ -106,37 +107,39 @@ private void rellenarMatriz(){
         lblDinero = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabelInstruccionColocado = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1080, 720));
         setPreferredSize(new java.awt.Dimension(1080, 720));
+        setSize(new java.awt.Dimension(1080, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("$1000");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMina.setText("$1000");
+        jButtonMina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonMinaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("$2500");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTemplo.setText("$2500");
+        jButtonTemplo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonTemploActionPerformed(evt);
             }
         });
 
-        jButton3.setText("$1500");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonArmeria.setText("$1500");
+        jButtonArmeria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonArmeriaActionPerformed(evt);
             }
         });
 
-        jButton4.setText("$100");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConector.setText("$100");
+        jButtonConector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonConectorActionPerformed(evt);
             }
         });
 
@@ -152,17 +155,17 @@ private void rellenarMatriz(){
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel1.setText("Compras antes del juego:");
 
-        jButton5.setText("$2000");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonMercado.setText("$2000");
+        jButtonMercado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonMercadoActionPerformed(evt);
             }
         });
 
-        jButton6.setText("$12000");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFuente.setText("$12000");
+        jButtonFuente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButtonFuenteActionPerformed(evt);
             }
         });
 
@@ -205,12 +208,12 @@ private void rellenarMatriz(){
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonMercado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
-                                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jButtonFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 66, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -218,27 +221,29 @@ private void rellenarMatriz(){
                                 .addComponent(jLabel5))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel21))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel21)
+                                .addGap(36, 36, 36))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonTemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButtonConector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,27 +266,27 @@ private void rellenarMatriz(){
                     .addComponent(jLabel20))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4))
+                    .addComponent(jButtonTemplo)
+                    .addComponent(jButtonConector))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(jButtonMercado)
+                    .addComponent(jButtonFuente))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonMina)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(jButtonArmeria)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -375,6 +380,14 @@ private void rellenarMatriz(){
         jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
         getContentPane().add(jLabelInstruccionColocado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 610, 350, 30));
 
+        jButton7.setText("Listo");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 650, 78, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -382,29 +395,39 @@ private void rellenarMatriz(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonConectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectorActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(100, ItemCompra.CONECTOR);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonConectorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonMinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinaActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(1000, ItemCompra.MINA);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonMinaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonTemploActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTemploActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2500, ItemCompra.TEMPLO);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonTemploActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonArmeriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeriaActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(1500, ItemCompra.ARMERIA);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jButtonArmeriaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMercadoActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2000, ItemCompra.MERCADO);    
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonMercadoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jButtonFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuenteActionPerformed
+        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jButtonFuenteActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -442,12 +465,13 @@ private void rellenarMatriz(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButtonArmeria;
+    private javax.swing.JButton jButtonConector;
+    private javax.swing.JButton jButtonFuente;
+    private javax.swing.JButton jButtonMercado;
+    private javax.swing.JButton jButtonMina;
+    private javax.swing.JButton jButtonTemplo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
@@ -520,5 +544,51 @@ private void rellenarMatriz(){
     
     public void setLabelInstruccion(JLabel nuevaInstr){
         this.jLabelInstruccionColocado = nuevaInstr;
+    }
+    
+    public JButton getButtonArmeria(){
+        return this.jButtonArmeria;
+    }
+    
+    public void setButtonArmeria(JButton botonNuevo){
+        this.jButtonArmeria = botonNuevo;
+    }
+    
+    public JButton getButtonTemplo(){
+        return this.jButtonArmeria;
+    }
+    
+    public void setButtonTemplo(JButton botonNuevo){
+        this.jButtonTemplo = botonNuevo;
+    }
+    
+    public JButton getButtonMina(){
+        return this.jButtonMina;
+    }
+    
+    public void setButtonMina(JButton botonNuevo){
+        this.jButtonMina = botonNuevo;
+    }
+    
+    public JButton getButtonMercado(){
+        return this.jButtonMercado;
+    }
+    
+    public void setButtonMercado(JButton botonNuevo){
+        this.jButtonMercado = botonNuevo;
+    }
+    public JButton getButtonFuente(){
+        return this.jButtonFuente;
+    }
+    
+    public void setButtonFuente(JButton botonNuevo){
+        this.jButtonFuente = botonNuevo;
+    }
+    public JButton getButtonConector(){
+        return this.jButtonConector;
+    }
+    
+    public void setButtonConector(JButton botonNuevo){
+        this.jButtonConector = botonNuevo;
     }
 }

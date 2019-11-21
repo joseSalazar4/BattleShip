@@ -48,7 +48,7 @@ public class Controlador_Adquisicion {
         
         JComboBox comboBoxPosicion = this.pantalla.getComboBoxPos();
         
-        comboBoxPosicion.removeAllItems();//Eliminar los defaults
+        comboBoxPosicion.removeAllItems();//Eliminar los defaults 
         
         comboBoxPosicion.addItem("Horizontal");
         comboBoxPosicion.addItem("Vertical");
@@ -69,19 +69,46 @@ public class Controlador_Adquisicion {
         
     }
     
+    public void iniciarPartida(){
+        pantalla.getButtonMina().setEnabled(false);
+        pantalla.getButtonTemplo().setEnabled(false);        
+        pantalla.getButtonArmeria().setEnabled(false);
+        pantalla.getButtonMercado().setEnabled(false);
+    }
+    
     public void ejecutarCompra(int precio, ItemCompra item){
+        
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
         else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
         else{
             cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
-            componenteAux = FactoryComponente.crearComponente(item, 0);
+            int extra = verificarOpcionExtra(item);
+            componenteAux = FactoryComponente.crearComponente(item, extra);
             isComprado=true;
             pantalla.getLabelInstruccion().setVisible(true);
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
             //factory.Comprar();
         }
     }
+    public void activarBotonesCompra(){
+        Controlador_Adquisicion.pantalla.getButtonMina().setEnabled(true);
+        Controlador_Adquisicion.pantalla.getButtonFuente().setEnabled(true);        
+        Controlador_Adquisicion.pantalla.getButtonTemplo().setEnabled(true);        
+        Controlador_Adquisicion.pantalla.getButtonArmeria().setEnabled(true);
+        Controlador_Adquisicion.pantalla.getButtonMercado().setEnabled(true);
+        Controlador_Adquisicion.pantalla.getButtonConector().setEnabled(true);
+
+    }
     
+    public void desactivarBotonesCompra(){
+        Controlador_Adquisicion.pantalla.getButtonMina().setEnabled(false);
+        Controlador_Adquisicion.pantalla.getButtonFuente().setEnabled(false);
+        Controlador_Adquisicion.pantalla.getButtonTemplo().setEnabled(false);        
+        Controlador_Adquisicion.pantalla.getButtonArmeria().setEnabled(false);
+        Controlador_Adquisicion.pantalla.getButtonMercado().setEnabled(false);
+        Controlador_Adquisicion.pantalla.getButtonConector().setEnabled(false);
+        
+    }
     public void adquirirArma(){
         //Armeria armeria = new Armeria();
     }
@@ -90,6 +117,13 @@ public class Controlador_Adquisicion {
         return matrizComponentes[i][j]; 
     }
       
+    public int verificarOpcionExtra(ItemCompra item){
+        if(item.equals("ARMERIA")) return pantalla.getComboBoxArmeria().getSelectedIndex();
+        else if(item.equals("MINA"))  return pantalla.getComboBoxMina().getSelectedIndex();
+        //Si no es ninguna no debemos hacer nada difernete
+        else return 0;
+    }
+    
     //Getter && Settter
     public GUIAdquisicion getPantalla() {
         return pantalla;

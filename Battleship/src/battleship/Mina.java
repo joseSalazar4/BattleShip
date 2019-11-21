@@ -14,6 +14,7 @@ public class Mina extends Componente{
     int costo, aceroGenerado, tiempo;
     
     public Mina(int nivelSeleccionado){
+        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));
         switch(nivelSeleccionado){
             
             case 1:
