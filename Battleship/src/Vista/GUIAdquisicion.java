@@ -51,8 +51,6 @@ private void rellenarMatriz(){
                 labelNuevo.setOpaque(false);
                 PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
-                if(j == 2)
-                labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
                 pcs[i][j]=pc;
