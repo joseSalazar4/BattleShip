@@ -48,6 +48,7 @@ private void rellenarMatriz(){
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
+                labelNuevo.setOpaque(false);
                 PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 if(j == 2)
