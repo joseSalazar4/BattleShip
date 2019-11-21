@@ -10,12 +10,10 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Battleship {
+public class BattleshipCliente1 {
 
     public static void main(String[] args) {
-        GUIServidor server = new GUIServidor();
         Controlador_Cliente c1 = new Controlador_Cliente();
-        Controlador_Cliente c2 = new Controlador_Cliente();
 //        Controlador_Cliente c3 = new Controlador_Cliente();
 //        Controlador_Cliente c4 = new Controlador_Cliente();   
     }
