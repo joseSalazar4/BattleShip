@@ -48,8 +48,8 @@ public class Controlador_Adquisicion {
         
         JComboBox comboBoxPosicion = this.pantalla.getComboBoxPos();
         
-        comboBoxArmeria.removeAllItems();//Eliminar los defaults
-
+        comboBoxPosicion.removeAllItems();//Eliminar los defaults
+        
         comboBoxPosicion.addItem("Horizontal");
         comboBoxPosicion.addItem("Vertical");
     }
@@ -73,12 +73,12 @@ public class Controlador_Adquisicion {
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
         else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
         else{
-        cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
-        componenteAux = FactoryComponente.crearComponente(item, 0);
-        isComprado=true;
-        pantalla.getLabelInstruccion().setVisible(true);
-        pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
-        //factory.Comprar();
+            cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
+            componenteAux = FactoryComponente.crearComponente(item, 0);
+            isComprado=true;
+            pantalla.getLabelInstruccion().setVisible(true);
+            pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
+            //factory.Comprar();
         }
     }
     

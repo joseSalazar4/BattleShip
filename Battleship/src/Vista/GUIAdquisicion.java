@@ -40,7 +40,6 @@ public class GUIAdquisicion extends javax.swing.JFrame {
         imagenMercado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         imagenArmeria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png")));        
         imagenTornado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png")));        
-        
     }    
     
 private void rellenarMatriz(){
@@ -53,9 +52,8 @@ private void rellenarMatriz(){
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
-                pcs[i][j]=pc;
+                pcs[i][j] = pc;
                 jPanelJugador.add(labelNuevo);
-
             }
         }
     }
