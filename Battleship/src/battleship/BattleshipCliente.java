@@ -10,12 +10,11 @@ import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BattleshipCliente1 {
+public class BattleshipCliente {
 
     public static void main(String[] args) {
         Controlador_Cliente c1 = new Controlador_Cliente();
 //        Controlador_Cliente c3 = new Controlador_Cliente();
 //        Controlador_Cliente c4 = new Controlador_Cliente();   
     }
-    
 }
