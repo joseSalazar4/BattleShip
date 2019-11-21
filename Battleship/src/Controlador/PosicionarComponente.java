@@ -57,15 +57,15 @@ public class PosicionarComponente implements MouseListener{
                         if(i>0 && Controlador_Adquisicion.getComponente(i-1, j).getTipoComponente() == Controlador_Adquisicion.componenteAux.getTipoComponente()){
                             Controlador_Adquisicion.isArrIzq = true;
                             Controlador_Adquisicion.matrizComponentes[i-1][j] = null;
-                            matrizLabels[i-1][j].setOpaque(false);
+                            matrizLabels[i-1][j].setIcon(null);
                             
                         }else{
                             Controlador_Adquisicion.isArrIzq = false;
                             Controlador_Adquisicion.matrizComponentes[i+1][j] = null;
-                            matrizLabels[i+1][j].setOpaque(false);
+                            matrizLabels[i+1][j].setIcon(null);
                         }
                         Controlador_Adquisicion.matrizComponentes[i][j] = null;
-                        matrizLabels[i][j].setOpaque(false);
+                        matrizLabels[i][j].setIcon(null);
                         
                     }
                     else{
@@ -75,19 +75,19 @@ public class PosicionarComponente implements MouseListener{
                                 Controlador_Adquisicion.componenteAux.getTipoComponente()){
                             Controlador_Adquisicion.isArrIzq = true;
                             Controlador_Adquisicion.matrizComponentes[i][j-1] = null;
-                            matrizLabels[i][j-1].setOpaque(false);
+                            matrizLabels[i][j-1].setIcon(null);
                             
                         }else{
                             Controlador_Adquisicion.isArrIzq = false;
                             Controlador_Adquisicion.matrizComponentes[i][j+1] = null;
-                            matrizLabels[i][j+1].setOpaque(false);
+                            matrizLabels[i][j+1].setIcon(null);
                         }
                         Controlador_Adquisicion.matrizComponentes[i][j] = null;
-                        matrizLabels[i][j].setOpaque(false);
+                        matrizLabels[i][j].setIcon(null);
                     }
                 }
                 Controlador_Adquisicion.matrizComponentes[i][j] = null;
-                matrizLabels[i][j].setOpaque(false);
+                matrizLabels[i][j].setIcon(null);
             }
         }
     }
@@ -108,7 +108,7 @@ public class PosicionarComponente implements MouseListener{
             
             posicionar_ij(this.label);
             this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-            this.label.setOpaque(true);
+            //this.label.setOpaque(true);
             Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
             
             if(Controlador_Adquisicion.componenteAux.isIsVertical()){
@@ -118,7 +118,7 @@ public class PosicionarComponente implements MouseListener{
                     JLabel otroLabel = matrizLabels[i-1][j];
                     posicionar_ij(otroLabel);
                     otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    otroLabel.setOpaque(true);
+                    //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
                 else if(!Controlador_Adquisicion.isArrIzq && i<19 && Controlador_Adquisicion.getComponente(i+1, j) == null){
@@ -126,7 +126,7 @@ public class PosicionarComponente implements MouseListener{
                     JLabel otroLabel = matrizLabels[i+1][j];
                     posicionar_ij(otroLabel);
                     otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    otroLabel.setOpaque(true);
+                    //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
                 else{//NO HAY CAMPO}
@@ -141,7 +141,7 @@ public class PosicionarComponente implements MouseListener{
                     JLabel otroLabel = matrizLabels[i][j-1];
                     posicionar_ij(otroLabel);
                     otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    otroLabel.setOpaque(true);
+                    //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
                 else if(!Controlador_Adquisicion.isArrIzq && j<19 && Controlador_Adquisicion.getComponente(i, j+1) == null){
@@ -149,7 +149,7 @@ public class PosicionarComponente implements MouseListener{
                     JLabel otroLabel = matrizLabels[i][j+1];
                     posicionar_ij(otroLabel);
                     otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    otroLabel.setOpaque(true);
+                    //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
                 else{//NO HAY CAMPO}
