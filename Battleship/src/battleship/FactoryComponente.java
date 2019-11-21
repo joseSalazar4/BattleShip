@@ -13,24 +13,20 @@ package battleship;
 //{Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia
 public class FactoryComponente {
     
-    public static Componente crearComponente(int num, int opcionExtra){
+    public static Componente crearComponente(ItemCompra num, int opcionExtra){
         switch(num){
-            case 1:
+            case ARMERIA:
                 return new Armeria(opcionExtra);
                     
-            case 2:
+            case MINA:
                 return new Mina(opcionExtra);
                 
-            case 3:
+            case TEMPLO:
                 return new Templo();
                 
-            case 4:
-                return new Fabrica();
-                //CREO QUE LAS DE ABAJO NO SON NECESARIAS
-            case 5:
-              //  return new Fuente();
-            case 6:
-              //  return new Conector();
+            case MERCADO:
+                //return new Mercado();
+            
         }
         System.out.println("ERROR AL CREAR EN FctoryComponente REVISAR ");
         return null;

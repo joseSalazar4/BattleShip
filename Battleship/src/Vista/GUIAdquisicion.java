@@ -7,6 +7,7 @@ package Vista;
 
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
+import battleship.ItemCompra;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -25,6 +26,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     
     
     public JLabel [][] matrizLabels = new JLabel [20][20];
+    public PosicionarComponente [][] pcs = new PosicionarComponente[20][20];
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
@@ -46,13 +48,15 @@ private void rellenarMatriz(){
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
+                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 if(j == 2)
                 labelNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
+                pcs[i][j]=pc;
                 jPanelJugador.add(labelNuevo);
-                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels);
+
             }
         }
     }
@@ -289,7 +293,7 @@ private void rellenarMatriz(){
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 230, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 300, 390));
 
         jPanelJugador.setBackground(new java.awt.Color(255, 102, 102));
         jPanelJugador.setOpaque(false);
@@ -382,27 +386,27 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        controlador.ejecutarCompra(100);
+        controlador.ejecutarCompra(100, ItemCompra.CONECTOR);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador.ejecutarCompra(1000);
+        controlador.ejecutarCompra(1000, ItemCompra.MINA);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controlador.ejecutarCompra(2500);
+        controlador.ejecutarCompra(2500, ItemCompra.TEMPLO);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controlador.ejecutarCompra(1500);
+        controlador.ejecutarCompra(1500, ItemCompra.ARMERIA);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        controlador.ejecutarCompra(2000);    
+        controlador.ejecutarCompra(2000, ItemCompra.MERCADO);    
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        controlador.ejecutarCompra(2000);
+        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

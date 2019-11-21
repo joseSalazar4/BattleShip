@@ -9,11 +9,14 @@ import Vista.GUIAdquisicion;
 import battleship.Componente;
 import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
+import battleship.FactoryComponente;
+import battleship.ItemCompra;
 import javax.swing.JOptionPane;
 
 public class Controlador_Adquisicion {
     Cliente cliente;
-    GUIAdquisicion pantalla; 
+    static GUIAdquisicion pantalla; 
+    FactoryComponente factoryComponente;
     
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
     public static Componente componenteAux = null, componenteAux2 = null;
@@ -59,24 +62,28 @@ public class Controlador_Adquisicion {
     
     
     public void adquirirTemplo(){
-        Templo templo = new Templo();
+        //Templo templo = new Templo();
     }
     
     public void adquirirMercado(){
         
     }
     
-    public void ejecutarCompra(int precio){
+    public void ejecutarCompra(int precio, ItemCompra item){
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
+        else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
         else{
         cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
+        componenteAux = FactoryComponente.crearComponente(item, 0);
+        isComprado=true;
         pantalla.getLabelInstruccion().setVisible(true);
+        pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
         //factory.Comprar();
         }
     }
     
     public void adquirirArma(){
-        Armeria armeria = new Armeria();
+        //Armeria armeria = new Armeria();
     }
     
     public static Componente getComponente(int i, int j){

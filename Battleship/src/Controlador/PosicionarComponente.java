@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Vista.GUIAdquisicion;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
@@ -13,10 +14,12 @@ public class PosicionarComponente implements MouseListener{
     JLabel label;
     JLabel[][] matrizLabels;
     int i, j;
-    public PosicionarComponente(JLabel label, JLabel[][] matrizLabels){
+    public PosicionarComponente(JLabel label, JLabel[][] matrizLabels, int i, int j){
         this.label = label;
         this.matrizLabels = matrizLabels;
         label.addMouseListener(this);
+        this.i=i;
+        this.j=j;
     }
 
     @Override
@@ -26,6 +29,9 @@ public class PosicionarComponente implements MouseListener{
             if(Controlador_Adquisicion.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
                 if(Controlador_Adquisicion.getComponente(i, j) == null){
                     mover();
+                    Controlador_Adquisicion.isComprado=false;
+                    Controlador_Adquisicion.componenteAux=null;
+                    Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
                 }
                 //ERROR
             }
@@ -36,12 +42,14 @@ public class PosicionarComponente implements MouseListener{
                 if(Controlador_Adquisicion.componenteAux != null){ 
                     if(Controlador_Adquisicion.getComponente(i, j) == null){
                         mover();
+                        Controlador_Adquisicion.isMover=false;
+                        Controlador_Adquisicion.componenteAux=null; 
                     }
                 }
                 //ERROR
             }
             
-            if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
+            else if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
                 Controlador_Adquisicion.isMover = true;
                 Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
                 if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
@@ -61,7 +69,10 @@ public class PosicionarComponente implements MouseListener{
                         
                     }
                     else{
-                        if(j>0 && Controlador_Adquisicion.getComponente(i, j-1).getTipoComponente() == Controlador_Adquisicion.componenteAux.getTipoComponente()){
+                        if(j>0 &&
+                                Controlador_Adquisicion.getComponente(i, j-1)!=null&&
+                                Controlador_Adquisicion.getComponente(i, j-1).getTipoComponente() == 
+                                Controlador_Adquisicion.componenteAux.getTipoComponente()){
                             Controlador_Adquisicion.isArrIzq = true;
                             Controlador_Adquisicion.matrizComponentes[i][j-1] = null;
                             matrizLabels[i][j-1].setOpaque(false);
@@ -82,8 +93,9 @@ public class PosicionarComponente implements MouseListener{
     }
     
     public void posicionar_ij(JLabel label){
-        this.i = (int) label.getLocation().getY();
-        this.j = (int) label.getLocation().getX();
+        return;
+        //this.i = (int) label.getLocation().getY();
+        //this.j = (int) label.getLocation().getX();
     }
     
     public void mover(){
@@ -152,21 +164,21 @@ public class PosicionarComponente implements MouseListener{
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

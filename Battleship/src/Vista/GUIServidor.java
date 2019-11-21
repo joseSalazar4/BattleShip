@@ -59,7 +59,7 @@ public class GUIServidor extends javax.swing.JFrame {
         jPanel1.add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(209, 46, 165, 26));
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 233, -1, -1));
 
-        spinnerCtdJugadores.setModel(new javax.swing.SpinnerNumberModel(0, 0, 4, 1));
+        spinnerCtdJugadores.setModel(new javax.swing.SpinnerNumberModel(2, 2, 4, 1));
         spinnerCtdJugadores.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel1.add(spinnerCtdJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 46, 52, -1));
 

@@ -11,6 +11,6 @@ package battleship;
  */
 public class Templo extends Componente{
     public Templo(){
-        
+        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png"));
     }
 }
