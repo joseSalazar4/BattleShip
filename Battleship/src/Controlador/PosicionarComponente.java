@@ -147,7 +147,7 @@ public class PosicionarComponente implements MouseListener{
                     //otroLabel.setOpaque(true);
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                 }
-                else if(!Controlador_Adquisicion.isArrIzq && j<18 && Controlador_Adquisicion.getComponente(i, j+1) == null){
+                else if(!Controlador_Adquisicion.isArrIzq && j<19 && Controlador_Adquisicion.getComponente(i, j+1) == null){
                     //LA SEGUNDO LABEL ES EL DE DERECHA
                     JLabel otroLabel = matrizLabels[i][j+1];
                     posicionar_ij(otroLabel);
