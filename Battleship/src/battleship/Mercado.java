@@ -20,5 +20,6 @@ public class Mercado extends Componente {
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png"));
         objetoVenta = objetoComprado = null;
         comprador = vendedor = null;
+        this.is1x1 = false;
     }
 }

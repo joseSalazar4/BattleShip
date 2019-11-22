@@ -11,6 +11,8 @@ package battleship;
  */
 public class FuentePoder extends Componente {
     FuentePoder(){
+        this.is2x2 = true;
+        this.is1x1 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png"));
     }
     

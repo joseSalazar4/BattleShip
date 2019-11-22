@@ -8,7 +8,7 @@ public class Componente implements Cloneable{
     String nombre;
     int costo;
     ArrayList aristas;
-    public boolean isVertical=false, is1x1;  
+    public boolean isVertical=false, is1x1, is2x2;  
     public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia}
     tipoComponente tipoComponente;
     ImageIcon imagen;

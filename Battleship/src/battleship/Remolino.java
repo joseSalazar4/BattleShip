@@ -13,8 +13,10 @@ package battleship;
 public class Remolino extends Componente{
     
     Armeria armaUsada;
+    
     public Remolino(){
         armaUsada = null;
+        this.is1x1 = true;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));
     }
 }
