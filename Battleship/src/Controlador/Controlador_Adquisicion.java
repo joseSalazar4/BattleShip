@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Controlador_Adquisicion {
@@ -28,30 +29,8 @@ public class Controlador_Adquisicion {
         this.pantalla = new GUIAdquisicion(this);
         this.pantalla.setVisible(true);
         cargarDatosDelJugador();
+        colocarRemolino();
         
-        JComboBox comboBoxMina = this.pantalla.getComboBoxMina();
-        comboBoxMina.removeAllItems(); //Eliminar los default
-        
-        comboBoxMina.addItem("Nivel 1");
-        comboBoxMina.addItem("Nivel 2");
-        comboBoxMina.addItem("Nivel 3");
-        comboBoxMina.addItem("Nivel 4");
-        comboBoxMina.addItem("Nivel 5");
-        
-        JComboBox comboBoxArmeria = this.pantalla.getComboBoxArmeria();
-        comboBoxArmeria.removeAllItems();//Eliminar los defaults
-        
-        comboBoxArmeria.addItem("Bomba"); 
-        comboBoxArmeria.addItem("Torpedo");
-        comboBoxArmeria.addItem("Trumpedo");
-        comboBoxArmeria.addItem("Multi-shot");
-        
-        JComboBox comboBoxPosicion = this.pantalla.getComboBoxPos();
-        
-        comboBoxPosicion.removeAllItems();//Eliminar los defaults 
-        
-        comboBoxPosicion.addItem("Horizontal");
-        comboBoxPosicion.addItem("Vertical");
     }
 
     public void cargarDatosDelJugador(){
@@ -91,25 +70,7 @@ public class Controlador_Adquisicion {
             //factory.Comprar();
         }
     }
-    public void activarBotonesCompra(){
-        Controlador_Adquisicion.pantalla.getButtonMina().setEnabled(true);
-        Controlador_Adquisicion.pantalla.getButtonFuente().setEnabled(true);        
-        Controlador_Adquisicion.pantalla.getButtonTemplo().setEnabled(true);        
-        Controlador_Adquisicion.pantalla.getButtonArmeria().setEnabled(true);
-        Controlador_Adquisicion.pantalla.getButtonMercado().setEnabled(true);
-        Controlador_Adquisicion.pantalla.getButtonConector().setEnabled(true);
-
-    }
-    
-    public void desactivarBotonesCompra(){
-        Controlador_Adquisicion.pantalla.getButtonMina().setEnabled(false);
-        Controlador_Adquisicion.pantalla.getButtonFuente().setEnabled(false);
-        Controlador_Adquisicion.pantalla.getButtonTemplo().setEnabled(false);        
-        Controlador_Adquisicion.pantalla.getButtonArmeria().setEnabled(false);
-        Controlador_Adquisicion.pantalla.getButtonMercado().setEnabled(false);
-        Controlador_Adquisicion.pantalla.getButtonConector().setEnabled(false);
-        
-    }
+   
     public void adquirirArma(){
         //Armeria armeria = new Armeria();
     }
@@ -117,6 +78,22 @@ public class Controlador_Adquisicion {
     public static Componente getComponente(int i, int j){
         return matrizComponentes[i][j]; 
     }
+    
+    public void colocarRemolino(){
+        //Colocar el tornado
+        //Obtener un numero realmente aleatorio al darle un seed
+        //Primero Remolino
+        int numero = 0;
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        //pantalla.matrizComponentes[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png"))); 
+        
+        //Segundo Remolino
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        //pantalla.matrizComponentes[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png"))); 
+    }
+        
       
     public int verificarOpcionExtra(ItemCompra item){
         if(item.equals("ARMERIA")) return pantalla.getComboBoxArmeria().getSelectedIndex();
@@ -134,5 +111,8 @@ public class Controlador_Adquisicion {
         this.pantalla = pantalla;
     }
     
+    public String getNomJugador(){
+       return cliente.jugador.getNombre();
+    }
      
 }

@@ -10,8 +10,10 @@ package battleship;
  * @author mikom
  */
 
-public class Mina extends Componente{
-    int costo, aceroGenerado, tiempo;
+
+public class Mina extends Componente implements Runnable{
+    int costo, aceroGenerado,aceroTotal, tiempo;
+    
     
     public Mina(int nivelSeleccionado){
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));
@@ -44,5 +46,20 @@ public class Mina extends Componente{
                 break;
         }
         
+    }
+
+    //La mina produce una cantidad de acero cada cierto tiempo.
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(tiempo);
+            aceroTotal+=aceroGenerado;
+        }
+        catch (InterruptedException e) {
+            System.out.println("Se cayó el thread de mina.java");
+            e.printStackTrace();
+        }
+
+
     }
 }

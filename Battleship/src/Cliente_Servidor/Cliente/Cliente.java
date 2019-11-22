@@ -7,13 +7,8 @@ package Cliente_Servidor.Cliente;
 
 import Cliente.Jugador;
 import Cliente_Servidor.mensajeGenerico;
-import Vista.GUICliente;
-import Vista.GUIStartUp;
-import Vista.GUIAdquisicion;
 import java.io.*;
-import java.net.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

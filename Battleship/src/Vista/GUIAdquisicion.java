@@ -31,16 +31,9 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
-        this.controlador = controlador;
         rellenarMatriz(); 
-        
-        this.jLabelInstruccionColocado.setVisible(false);
-        imagenMina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png")));    
-        imagenFuente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
-        imagenTemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png")));
-        imagenMercado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
-        imagenArmeria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png")));        
-        imagenTornado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png")));        
+        this.controlador = controlador;        
+        this.jLabelInstruccionColocado.setVisible(false);  
     }    
     
 private void rellenarMatriz(){
@@ -84,7 +77,6 @@ private void rellenarMatriz(){
         jLabel1 = new javax.swing.JLabel();
         jButtonMercado = new javax.swing.JButton();
         jButtonFuente = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -92,6 +84,9 @@ private void rellenarMatriz(){
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jPanelJugador = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -101,23 +96,24 @@ private void rellenarMatriz(){
         jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         lblnickName = new javax.swing.JLabel();
         lblDinero = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabelInstruccionColocado = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
+        jLabelInstruccionColocado = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         lblnickName1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(126, 3, 65));
-        setMinimumSize(new java.awt.Dimension(1080, 720));
-        setPreferredSize(new java.awt.Dimension(1080, 720));
-        setSize(new java.awt.Dimension(1080, 720));
+        setBackground(new java.awt.Color(0, 61, 101));
+        setMinimumSize(new java.awt.Dimension(1000, 720));
+        setSize(new java.awt.Dimension(1000, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 63, 65));
+        jPanel1.setBackground(new java.awt.Color(0, 61, 101));
 
+        jButtonMina.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonMina.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMina.setText("$1000");
         jButtonMina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +121,8 @@ private void rellenarMatriz(){
             }
         });
 
+        jButtonTemplo.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonTemplo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonTemplo.setText("$2500");
         jButtonTemplo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +130,8 @@ private void rellenarMatriz(){
             }
         });
 
+        jButtonArmeria.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonArmeria.setForeground(new java.awt.Color(255, 255, 255));
         jButtonArmeria.setText("$1500");
         jButtonArmeria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,6 +139,8 @@ private void rellenarMatriz(){
             }
         });
 
+        jButtonConector.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonConector.setForeground(new java.awt.Color(255, 255, 255));
         jButtonConector.setText("$100");
         jButtonConector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,19 +148,26 @@ private void rellenarMatriz(){
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setBackground(new java.awt.Color(204, 0, 51));
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nivel 1", "Nivel 2", "Nivel 3", "Nivel 4", "Nivel5" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setBackground(new java.awt.Color(204, 0, 51));
+        jComboBox2.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Torpedo", "Multi-Shot", "Bomba", "Trumpedo" }));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 2, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Compras antes del juego:");
 
+        jButtonMercado.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonMercado.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMercado.setText("$2000");
         jButtonMercado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,14 +175,14 @@ private void rellenarMatriz(){
             }
         });
 
+        jButtonFuente.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonFuente.setForeground(new java.awt.Color(255, 255, 255));
         jButtonFuente.setText("$12000");
         jButtonFuente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFuenteActionPerformed(evt);
             }
         });
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 2, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,16 +195,30 @@ private void rellenarMatriz(){
         jLabel19.setText("Mina");
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Fuente Poder");
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Conectores");
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Templos");
 
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Mercados");
+
+        jComboBox3.setBackground(new java.awt.Color(204, 0, 51));
+        jComboBox3.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Horizontal", "Vertical" }));
+
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Nivel");
+
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Tipo Armeria");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -212,28 +235,11 @@ private void rellenarMatriz(){
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonMercado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jButtonFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonMercado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -242,21 +248,28 @@ private void rellenarMatriz(){
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jButtonTemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jButtonConector, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel22)
+                                    .addComponent(jLabel5))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonFuente, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jButtonConector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                .addGap(28, 28, 28))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel22)
-                .addGap(0, 237, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +284,7 @@ private void rellenarMatriz(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTemplo)
                     .addComponent(jButtonConector))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(jLabel22))
@@ -280,25 +293,29 @@ private void rellenarMatriz(){
                     .addComponent(jButtonMercado)
                     .addComponent(jButtonFuente))
                 .addGap(10, 10, 10)
-                .addComponent(jLabel19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonMina)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonArmeria)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addContainerGap(10, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 300, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 230, 360));
 
         jPanelJugador.setBackground(new java.awt.Color(255, 102, 102));
         jPanelJugador.setOpaque(false);
@@ -318,21 +335,27 @@ private void rellenarMatriz(){
         getContentPane().add(jPanelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 600, 600));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Adquisiciones");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 170, -1));
 
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Mercados: 0");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, -1, -1));
 
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Fuente Poder: 0");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Armeria: 0");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, -1, -1));
 
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Conectores: 0");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
 
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Mina: 0");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, -1, -1));
 
@@ -341,56 +364,74 @@ private void rellenarMatriz(){
         jLabel3.setMaximumSize(new java.awt.Dimension(600, 600));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 600, 600));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel2.setText("Previsualizacion del Oceano ");
+        jPanel2.setBackground(new java.awt.Color(0, 61, 101));
 
         lblnickName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblnickName.setForeground(new java.awt.Color(255, 255, 255));
         lblnickName.setText("nickName");
 
         lblDinero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblDinero.setForeground(new java.awt.Color(255, 255, 255));
         lblDinero.setText("Dinero: ");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
-                .addComponent(lblnickName)
-                .addGap(80, 80, 80)
-                .addComponent(lblDinero)
-                .addGap(100, 100, 100))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblnickName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14))
-        );
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Previsualización del Oceano ");
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 50));
-
-        jLabel16.setText("Templos: 0");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
-
-        jLabelInstruccionColocado.setFont(new java.awt.Font("Georgia", 2, 20)); // NOI18N
-        jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
-        getContentPane().add(jLabelInstruccionColocado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 580, 350, 30));
-
+        jButton7.setBackground(new java.awt.Color(0, 61, 101));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Listo");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 610, 130, 40));
+
+        jLabelInstruccionColocado.setFont(new java.awt.Font("Georgia", 2, 20)); // NOI18N
+        jLabelInstruccionColocado.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel2)
+                .addGap(245, 245, 245)
+                .addComponent(lblnickName)
+                .addGap(70, 70, 70)
+                .addComponent(lblDinero)
+                .addContainerGap(110, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelInstruccionColocado)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
+                .addGap(50, 50, 50))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblnickName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 538, Short.MAX_VALUE)
+                .addComponent(jLabelInstruccionColocado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 700));
+
+        jLabel16.setText("Templos: 0");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
 
         lblnickName1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         getContentPane().add(lblnickName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 670, 50, 20));
@@ -403,32 +444,28 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButtonConectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectorActionPerformed
-        controlador.desactivarBotonesCompra();
+        
         controlador.ejecutarCompra(100, ItemCompra.CONECTOR, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonConectorActionPerformed
 
     private void jButtonMinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinaActionPerformed
-        controlador.desactivarBotonesCompra();
+        
         controlador.ejecutarCompra(1000, ItemCompra.MINA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonMinaActionPerformed
 
     private void jButtonTemploActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTemploActionPerformed
-        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2500, ItemCompra.TEMPLO, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonTemploActionPerformed
 
     private void jButtonArmeriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeriaActionPerformed
-        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(1500, ItemCompra.ARMERIA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonArmeriaActionPerformed
 
     private void jButtonMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMercadoActionPerformed
-        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2000, ItemCompra.MERCADO, jComboBox3.getSelectedIndex()==1);    
     }//GEN-LAST:event_jButtonMercadoActionPerformed
 
     private void jButtonFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuenteActionPerformed
-        controlador.desactivarBotonesCompra();
         controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonFuenteActionPerformed
 
@@ -497,6 +534,8 @@ private void rellenarMatriz(){
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelInstruccionColocado;
