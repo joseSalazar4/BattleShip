@@ -26,6 +26,8 @@ public class FactoryComponente {
                 
             case MERCADO:
                 return new Mercado();
+            case CONECTOR:
+                return new Conector();
             
         }
         System.out.println("ERROR AL CREAR EN FctoryComponente REVISAR ");
