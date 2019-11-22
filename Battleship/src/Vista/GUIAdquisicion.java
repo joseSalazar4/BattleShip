@@ -216,39 +216,37 @@ private void rellenarMatriz(){
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonTemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel20)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButtonConector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jButtonMercado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
                                     .addComponent(jButtonFuente, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(25, 25, 25)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel21)
+                                        .addGap(36, 36, 36))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButtonTemplo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel20)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jButtonConector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -406,32 +404,32 @@ private void rellenarMatriz(){
 
     private void jButtonConectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConectorActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(100, ItemCompra.CONECTOR);
+        controlador.ejecutarCompra(100, ItemCompra.CONECTOR, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonConectorActionPerformed
 
     private void jButtonMinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinaActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(1000, ItemCompra.MINA);
+        controlador.ejecutarCompra(1000, ItemCompra.MINA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonMinaActionPerformed
 
     private void jButtonTemploActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTemploActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(2500, ItemCompra.TEMPLO);
+        controlador.ejecutarCompra(2500, ItemCompra.TEMPLO, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonTemploActionPerformed
 
     private void jButtonArmeriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeriaActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(1500, ItemCompra.ARMERIA);
+        controlador.ejecutarCompra(1500, ItemCompra.ARMERIA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonArmeriaActionPerformed
 
     private void jButtonMercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMercadoActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(2000, ItemCompra.MERCADO);    
+        controlador.ejecutarCompra(2000, ItemCompra.MERCADO, jComboBox3.getSelectedIndex()==1);    
     }//GEN-LAST:event_jButtonMercadoActionPerformed
 
     private void jButtonFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuenteActionPerformed
         controlador.desactivarBotonesCompra();
-        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA);
+        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonFuenteActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

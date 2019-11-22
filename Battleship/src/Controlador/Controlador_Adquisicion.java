@@ -76,7 +76,7 @@ public class Controlador_Adquisicion {
         pantalla.getButtonMercado().setEnabled(false);
     }
     
-    public void ejecutarCompra(int precio, ItemCompra item){
+    public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
         
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
         else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
@@ -84,6 +84,7 @@ public class Controlador_Adquisicion {
             cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
+            if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
             pantalla.getLabelInstruccion().setVisible(true);
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());

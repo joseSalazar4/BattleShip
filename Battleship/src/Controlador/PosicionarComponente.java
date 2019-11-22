@@ -30,9 +30,9 @@ public class PosicionarComponente implements MouseListener{
                 if(Controlador_Adquisicion.getComponente(i, j) == null){
                         
                     mover();
-                    Controlador_Adquisicion.isComprado=false;
-                    Controlador_Adquisicion.componenteAux=null;
-                    Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
+//                    Controlador_Adquisicion.isComprado=false;
+//                    Controlador_Adquisicion.componenteAux=null;
+//                    Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
                 }
                 //ERROR
                 System.out.println("Error Mouse clicked Method Linea 37");
@@ -45,8 +45,8 @@ public class PosicionarComponente implements MouseListener{
                 if(Controlador_Adquisicion.componenteAux != null){ 
                     if(Controlador_Adquisicion.getComponente(i, j) == null){
                         mover();
-                        Controlador_Adquisicion.isMover=false;
-                        Controlador_Adquisicion.componenteAux=null; 
+                        //Controlador_Adquisicion.isMover=false;
+                        //Controlador_Adquisicion.componenteAux=null; 
                     }
                 }
                 System.out.println("Error Mouse clicked Method linea 51");                       
@@ -57,7 +57,9 @@ public class PosicionarComponente implements MouseListener{
                 Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
                 if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
                     if(Controlador_Adquisicion.componenteAux.isIsVertical()){
-                        if(i>0 && Controlador_Adquisicion.getComponente(i-1, j).getTipoComponente() == Controlador_Adquisicion.componenteAux.getTipoComponente()){
+                        if(i>0 && 
+                                Controlador_Adquisicion.getComponente(i-1, j)!=null && 
+                                Controlador_Adquisicion.getComponente(i-1, j).getTipoComponente() == Controlador_Adquisicion.componenteAux.getTipoComponente()){
                             Controlador_Adquisicion.isArrIzq = true;
                             Controlador_Adquisicion.matrizComponentes[i-1][j] = null;
                             matrizLabels[i-1][j].setIcon(null);
@@ -110,6 +112,9 @@ public class PosicionarComponente implements MouseListener{
         }
         else{
             posicionar_ij(this.label);
+            if((Controlador_Adquisicion.componenteAux.isIsVertical()&&i==19)||(!Controlador_Adquisicion.componenteAux.isIsVertical()&&j==19))
+                return;
+            
             this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
             //this.label.setOpaque(true);
             Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
@@ -163,6 +168,7 @@ public class PosicionarComponente implements MouseListener{
         Controlador_Adquisicion.componenteAux = null;
         Controlador_Adquisicion.isComprado = false;
         Controlador_Adquisicion.isMover = false;
+        Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
     }
 
     @Override
