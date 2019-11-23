@@ -24,7 +24,6 @@ public class Controlador_Adquisicion {
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
     public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
-    public Graphics g = pantalla.getPanelJugador().getGraphics();
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
@@ -34,13 +33,8 @@ public class Controlador_Adquisicion {
         X2=  Y2 = 900;
         
         cargarDatosDelJugador();
+        JPanel PANELPRUEBA = new ConexionesGraficas();
          
-
-         
-
-        g.setColor(Color.red);
-        g.drawLine(X1, Y1, X2, Y2);
-        g.drawRect(X1, X1, 20, 40);
         colocarRemolino();
         
     }
@@ -52,22 +46,10 @@ public class Controlador_Adquisicion {
         
     }
     
-    JPanel panel = new JPanel() {
-       @Override
-    public void paintComponent(Graphics g) {
-           super.paintComponent(g);
-           g.setColor(Color.BLACK);                   
-           g.drawLine(0,0,300,300);
-       }
-    }
-    
     public void adquirirTemplo(){
         //Templo templo = new Templo();
     }
     
-    public void adquirirMercado(){
-        
-    }
     
     public void iniciarPartida(){
         pantalla.getButtonMina().setEnabled(false);
@@ -75,6 +57,13 @@ public class Controlador_Adquisicion {
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
     }
+    
+    public void agregarElementoComprado(String nombreElemento){
+        aumentar el contador de cada pinga para que en el label de GUIAdqiusocion arriba salga
+                Templo: 4
+        Mina: 2 y asi tons que cuando se compre algo se agregue esto se llama abajo
+    }
+    
     
     public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
         
@@ -87,6 +76,7 @@ public class Controlador_Adquisicion {
             componenteAux = FactoryComponente.crearComponente(item, extra);
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
+            componenteAux.getNombre();
             pantalla.getLabelInstruccion().setVisible(true);
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
             

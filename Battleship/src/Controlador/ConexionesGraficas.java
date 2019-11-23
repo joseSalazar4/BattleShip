@@ -5,10 +5,19 @@
  */
 package Controlador;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.JPanel;
+
 /**
  *
  * @author mikom
  */
-public class ConexionesGraficas {
-    
-}
+public class ConexionesGraficas extends JPanel{
+    @Override
+    public void paintComponent(Graphics g) {
+           super.paintComponent(g); 
+           g.setColor(Color.BLACK);                   
+           g.drawLine(0,0,300,300);
+       }
+};
