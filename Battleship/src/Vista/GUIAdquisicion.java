@@ -87,17 +87,15 @@ private void rellenarMatriz(){
         jComboBox3 = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jButtonArmeria1 = new javax.swing.JButton();
         jPanelJugador = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jLabelCantMercado = new javax.swing.JLabel();
+        jLabelCantFuentePoder = new javax.swing.JLabel();
+        jLabelCantArmeria = new javax.swing.JLabel();
+        jLabelCantConectores = new javax.swing.JLabel();
+        jLabelCantMina = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        jLabelCantTemplos = new javax.swing.JLabel();
         lblnickName1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabelInstruccionColocado = new javax.swing.JLabel();
@@ -106,6 +104,8 @@ private void rellenarMatriz(){
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabelCantMina1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 51));
@@ -223,18 +223,6 @@ private void rellenarMatriz(){
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Tipo Armeria");
 
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Barcos espía");
-
-        jButtonArmeria1.setBackground(new java.awt.Color(0, 61, 101));
-        jButtonArmeria1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonArmeria1.setText("$1500");
-        jButtonArmeria1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonArmeria1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -250,16 +238,14 @@ private void rellenarMatriz(){
                             .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel18)
-                            .addComponent(jLabel25)
                             .addComponent(jLabel19)
                             .addComponent(jLabel22)
                             .addComponent(jLabel21))
-                        .addGap(19, 19, 19)))
+                        .addGap(30, 30, 30)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButtonArmeria1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -318,13 +304,7 @@ private void rellenarMatriz(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonArmeria)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonArmeria1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -354,34 +334,34 @@ private void rellenarMatriz(){
         jLabel10.setText("Adquisiciones");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 170, -1));
 
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Mercados: 0");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, -1, -1));
+        jLabelCantMercado.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantMercado.setText("Mercados: 0");
+        getContentPane().add(jLabelCantMercado, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 100, -1, -1));
 
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Fuente Poder: 0");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
+        jLabelCantFuentePoder.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantFuentePoder.setText("Fuente Poder: 0");
+        getContentPane().add(jLabelCantFuentePoder, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 170, -1, -1));
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Armeria: 0");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, -1, -1));
+        jLabelCantArmeria.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantArmeria.setText("Armeria: 0");
+        getContentPane().add(jLabelCantArmeria, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 170, -1, -1));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Conectores: 0");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
+        jLabelCantConectores.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantConectores.setText("Conectores: 0");
+        getContentPane().add(jLabelCantConectores, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, -1, -1));
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Mina: 0");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
+        jLabelCantMina.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantMina.setText("Mina: 0");
+        getContentPane().add(jLabelCantMina, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ocean2.PNG"))); // NOI18N
         jLabel3.setText("jLabel3");
         jLabel3.setMaximumSize(new java.awt.Dimension(600, 600));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 600, 600));
 
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Templos: 0");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, -1, -1));
+        jLabelCantTemplos.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantTemplos.setText("Templos: 0");
+        getContentPane().add(jLabelCantTemplos, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, -1, -1));
 
         lblnickName1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         getContentPane().add(lblnickName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 670, 50, 20));
@@ -395,7 +375,7 @@ private void rellenarMatriz(){
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 670, -1, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 670, 120, -1));
 
         jLabelInstruccionColocado.setFont(new java.awt.Font("Georgia", 2, 20)); // NOI18N
         jLabelInstruccionColocado.setForeground(new java.awt.Color(255, 255, 255));
@@ -421,10 +401,16 @@ private void rellenarMatriz(){
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(0, 61, 101));
-        jLabel6.setForeground(new java.awt.Color(0, 61, 101));
-        jLabel6.setText("Fondo de pantalla azul");
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setOpaque(true);
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 720));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 770));
+
+        jLabelCantMina1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCantMina1.setText("Mina: 0");
+        getContentPane().add(jLabelCantMina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
+
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 110, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -464,10 +450,6 @@ private void rellenarMatriz(){
         controlador.iniciarPartida();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButtonArmeria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeria1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonArmeria1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -506,7 +488,6 @@ private void rellenarMatriz(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonArmeria;
-    private javax.swing.JButton jButtonArmeria1;
     private javax.swing.JButton jButtonConector;
     private javax.swing.JButton jButtonFuente;
     private javax.swing.JButton jButtonMercado;
@@ -517,12 +498,6 @@ private void rellenarMatriz(){
     private javax.swing.JComboBox jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -532,11 +507,18 @@ private void rellenarMatriz(){
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelCantArmeria;
+    private javax.swing.JLabel jLabelCantConectores;
+    private javax.swing.JLabel jLabelCantFuentePoder;
+    private javax.swing.JLabel jLabelCantMercado;
+    private javax.swing.JLabel jLabelCantMina;
+    private javax.swing.JLabel jLabelCantMina1;
+    private javax.swing.JLabel jLabelCantTemplos;
     private javax.swing.JLabel jLabelInstruccionColocado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelJugador;
