@@ -7,6 +7,8 @@ package Vista;
 
 import javax.swing.JLabel;
 import battleship.*;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -21,16 +23,21 @@ import javax.swing.JTextField;
  * @author mikom
  */
 public class GUICliente extends javax.swing.JFrame {
-
+    int X1, Y1, X2, Y2;
     JLabel [][] matrizLabels = new JLabel [20][20];
     Componente [][] matrizLogica;
     Controlador.Controlador_Cliente controlador;
    // public GUICliente(Componente [][] _matrizLogica, Controlador.Controlador_Cliente controlador) {
     public GUICliente(Controlador.Controlador_Cliente controlador){
+        X1= Y1 = 0;
+        X2=  Y2 = 200;
         initComponents();
         this.controlador = controlador;
+        
+        Graphics g = this.jPanelJugador.getGraphics();
+        g.setColor(Color.white);
+        g.drawLine(X1, Y1, X2, Y2);
        // matrizLogica = _matrizLogica;
-       
     }
     @SuppressWarnings("unchecked")
     
@@ -60,11 +67,20 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1400, 780));
@@ -133,7 +149,7 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ocean2.PNG"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 26, 600, 604));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         jLabel3.setText("Mi Oceano");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 260, -1, -1));
@@ -141,14 +157,11 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel6.setText("Dinero:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, -1));
 
-        jLabel7.setText("Armas Compradas");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
-        jLabel8.setText("Recursos");
+        jLabel8.setText("Mis Recursos");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
 
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 260, 100, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 230, 100, -1));
 
         jLabel9.setText("Acero:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, -1, -1));
@@ -159,7 +172,37 @@ public class GUICliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, 100, 40));
+
+        jLabel12.setText("Armas Compradas");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
+
+        jButton2.setText("Bomba");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 560, 90, -1));
+
+        jButton3.setText("Torpedo");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 500, 90, -1));
+
+        jButton4.setText("Trumpedo");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 440, -1, -1));
+
+        jButton5.setText("Multi-Shot");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 90, -1));
+
+        jLabel10.setText("Click para fabricar!");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, -1, -1));
+
+        jLabel11.setText("5000Kg Acero");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, -1, -1));
+
+        jLabel13.setText("2000Kg Acero");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, -1, -1));
+
+        jLabel14.setText("1000Kg Acero");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 610, -1, -1));
+
+        jLabel15.setText("500Kg Acero");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,15 +230,24 @@ public class GUICliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonEnvMensaje;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanelJugador;

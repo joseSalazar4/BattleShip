@@ -60,10 +60,13 @@ public class Controlador_Cliente {
         pantallaPrincipal.setVisible(true);
         for(int i = 0;i<cliente.jugador.getArmasCompradas().size();i++)
             pantallaPrincipal.getComboBoxArmas().addItem(cliente.jugador.getArmasCompradas().get(i).getNombre());
+        
         String enemigos = "---Empiza la Batalla---\n";
         enemigos += "Tus enemigos: \n";
+        
         for(String enemigo: cliente.jugador.getEnemigos())
             enemigos += enemigo + "\n";
+        
         pantallaPrincipal.getTxtAreaJuego().append(enemigos);
        
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
@@ -71,9 +74,27 @@ public class Controlador_Cliente {
     }
     
     public void usarArma(){
-        Componente armaAactivada = pantallaPrincipal.getComboBoxArmas().getSelectedItem();
+        String armaUtilizada = (String) pantallaPrincipal.getComboBoxArmas().getSelectedItem();
+        if(armaUtilizada == "Torpedo"){
+            
+        }
+        else if (armaUtilizada == "Trumpedo"){
+            
+        }
+        else if(armaUtilizada == "Bomba"){
+            
+        }
         
-         
+        else if(armaUtilizada == "Multi-shot"){
+            
+        }
+        
+        else if(armaUtilizada == "Barco"){
+            
+        }
+        else{
+            System.out.println("ERROR AL UTILIZAR ARMA");
+        }
     }
     
     

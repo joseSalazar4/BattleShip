@@ -7,38 +7,59 @@ package Controlador;
 
 import Vista.GUIAdquisicion;
 import battleship.Componente;
-import javax.swing.JComboBox;
 import Cliente_Servidor.Cliente.Cliente;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Controlador_Adquisicion {
     Cliente cliente;
     static GUIAdquisicion pantalla; 
     FactoryComponente factoryComponente;
-    
+    private int X1, Y1, X2, Y2;
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
     public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
- 
+    public Graphics g = pantalla.getPanelJugador().getGraphics();
 
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
         this.pantalla = new GUIAdquisicion(this);
         this.pantalla.setVisible(true);
+        X1= Y1 = 0;
+        X2=  Y2 = 900;
+        
         cargarDatosDelJugador();
+         
+
+         
+
+        g.setColor(Color.red);
+        g.drawLine(X1, Y1, X2, Y2);
+        g.drawRect(X1, X1, 20, 40);
         colocarRemolino();
         
     }
 
+    
     public void cargarDatosDelJugador(){
         pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
         
     }
     
+    JPanel panel = new JPanel() {
+       @Override
+    public void paintComponent(Graphics g) {
+           super.paintComponent(g);
+           g.setColor(Color.BLACK);                   
+           g.drawLine(0,0,300,300);
+       }
+    }
     
     public void adquirirTemplo(){
         //Templo templo = new Templo();
