@@ -108,7 +108,7 @@ private void rellenarMatriz(){
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(0, 61, 101));
+        setBackground(new java.awt.Color(51, 255, 51));
         setMinimumSize(new java.awt.Dimension(1000, 720));
         setSize(new java.awt.Dimension(1000, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -333,8 +333,7 @@ private void rellenarMatriz(){
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 230, 410));
 
-        jPanelJugador.setBackground(new java.awt.Color(255, 102, 102));
-        jPanelJugador.setOpaque(false);
+        jPanelJugador.setBackground(new java.awt.Color(25, 102, 102));
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout jPanelJugadorLayout = new javax.swing.GroupLayout(jPanelJugador);
@@ -390,7 +389,7 @@ private void rellenarMatriz(){
         jButton7.setBackground(new java.awt.Color(0, 61, 101));
         jButton7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Listo");
+        jButton7.setText("Iniciar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -401,7 +400,7 @@ private void rellenarMatriz(){
         jLabelInstruccionColocado.setFont(new java.awt.Font("Georgia", 2, 20)); // NOI18N
         jLabelInstruccionColocado.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
-        getContentPane().add(jLabelInstruccionColocado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 630, -1, -1));
+        getContentPane().add(jLabelInstruccionColocado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 620, -1, -1));
 
         lblDinero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDinero.setForeground(new java.awt.Color(255, 255, 255));
@@ -424,7 +423,8 @@ private void rellenarMatriz(){
         jLabel6.setBackground(new java.awt.Color(0, 61, 101));
         jLabel6.setForeground(new java.awt.Color(0, 61, 101));
         jLabel6.setText("Fondo de pantalla azul");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 670, 180, 40));
+        jLabel6.setOpaque(true);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

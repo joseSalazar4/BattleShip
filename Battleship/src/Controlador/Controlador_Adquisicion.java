@@ -33,7 +33,9 @@ public class Controlador_Adquisicion {
         X2=  Y2 = 900;
         
         cargarDatosDelJugador();
-        JPanel PANELPRUEBA = new ConexionesGraficas();
+        
+        Graphics g = pantalla.getPanelJugador().getGraphics();
+        g.drawLine(X1, Y1, X2, Y2);
          
         colocarRemolino();
         
@@ -59,9 +61,9 @@ public class Controlador_Adquisicion {
     }
     
     public void agregarElementoComprado(String nombreElemento){
-        aumentar el contador de cada pinga para que en el label de GUIAdqiusocion arriba salga
-                Templo: 4
-        Mina: 2 y asi tons que cuando se compre algo se agregue esto se llama abajo
+       // aumentar el contador de cada pinga para que en el label de GUIAdqiusocion arriba salga
+         //      Templo: 4
+       // Mina: 2 y asi tons que cuando se compre algo se agregue esto se llama abajo
     }
     
     

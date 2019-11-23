@@ -45,6 +45,7 @@ public class GUICliente extends javax.swing.JFrame {
     public static void main(String args[]) {
         GUICliente gui = new GUICliente(); 
         gui.setVisible(true);
+        
     }
 
     private GUICliente() {
@@ -81,6 +82,7 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1400, 780));
@@ -204,6 +206,14 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel15.setText("500Kg Acero");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 480, -1, -1));
 
+        jCheckBox1.setText("Comprar");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -223,6 +233,10 @@ public class GUICliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,6 +249,7 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonEnvMensaje;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
