@@ -16,11 +16,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class Controlador_Adquisicion {
+    public class Controlador_Adquisicion {
     Cliente cliente;
     static GUIAdquisicion pantalla; 
     FactoryComponente factoryComponente;
     private int X1, Y1, X2, Y2;
+    private Controlador_Cliente controladorCliente;
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
     public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
@@ -62,10 +63,14 @@ public class Controlador_Adquisicion {
     
     
     public void iniciarPartida(){
+        controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
+        pantalla.getButtonFuente().setEnabled(false);
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
+        pantalla.getButtonConector().setEnabled(false);
+        
     }
         
     public void agregarElementoComprado(Componente.tipoComponente elemento){

@@ -10,6 +10,7 @@ import battleship.Componente;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
@@ -17,7 +18,8 @@ public class Controlador_Cliente {
     private GUIAdquisicion pantallaAdquisicion; 
     private GUICliente pantallaPrincipal;
     private Cliente cliente;
-    
+    private JLabel [][] matrizJugadorLbel, matrizEnemigoLbel;
+    private Componente [][] matrizJugadorComp, matrizEnemigoComp;
     private Controlador_Adquisicion controladorAdquisicion;
     
     public Controlador_Cliente(){ 
@@ -121,4 +123,13 @@ public class Controlador_Cliente {
     public void recibirMensajeJuego(mensajeGenerico mensaje){
         
     }
+    
+    public void setMatrizJugadorLbl(JLabel [][] matrizN){
+        matrizJugadorLbel = matrizN;
+    
+    }
+    public void setMatrizJugadorComp(Componente [][] matrizN){
+        matrizJugadorComp = matrizN;
+    }
+    
 }
