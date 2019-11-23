@@ -13,11 +13,9 @@ package battleship;
 
 public class Mina extends Componente implements Runnable{
     int aceroGenerado,aceroTotal, tiempo;
-    
-
-    
-    
+   
     public Mina(int nivelSeleccionado){
+        nombre = "Mina";
         aceroTotal = 0;        
         this.is1x1 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));

@@ -9,10 +9,9 @@ package battleship;
  *
  * @author mikom
  */
-public class Templo extends Componente{
+public class BarcoEspia extends Componente {
     
-    public Templo(){
-        this.nombre = "Templo";
-        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png"));
+    BarcoEspia(){
+        
     }
 }

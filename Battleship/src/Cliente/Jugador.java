@@ -4,9 +4,7 @@
  * and open the template in the editor.
  */
 package Cliente;
-import battleship.Fabrica;
 import battleship.Componente;
-import battleship.Armeria;
 import java.util.ArrayList;
 /**
  *
@@ -18,21 +16,29 @@ public class Jugador {
     private int dinero;
     //public Armeria armas[];
     private String nombre;
-    private boolean perdio;
+    private boolean perdio, turnoAtacar;
     private ArrayList<String> enemigos;
-   // public Fabrica fabricas[];
-   // public Componente componentes[];
-
-    //Creo que este nunca se usaria, lo mejor seria pasarle los parametros
+    private ArrayList<Componente> armasCompradas;
+    
     
     
     public Jugador(String nombreJugador){
-        nombre = nombreJugador;
-        perdio = false;
         dinero = 4000;
+        perdio = false;
         enemigos = null;
+        nombre = nombreJugador;
+        enemigos = new ArrayList<String>();
+        armasCompradas = new ArrayList<Componente>();
 
     }
+    
+    public ArrayList<Componente>getArmasCompradas(){
+        return armasCompradas;
+    }
+    
+    public void setArmasCompradas(ArrayList<Componente> armasCompradasN){
+        armasCompradas = armasCompradasN;
+    }    
 
     public int getDinero() {
         return dinero;

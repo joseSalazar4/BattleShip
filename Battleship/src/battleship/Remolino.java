@@ -14,9 +14,10 @@ public class Remolino extends Componente{
     
     Armeria armaUsada;
     
-    public Remolino(){
+    public Remolino(){        
         armaUsada = null;
         this.is1x1 = true;
+        nombre = "Remolino";
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));
     }
 }

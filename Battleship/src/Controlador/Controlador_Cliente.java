@@ -6,6 +6,7 @@ import Cliente_Servidor.mensajeGenerico;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
+import battleship.Componente;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ public class Controlador_Cliente {
     
     public void iniciarCliente(String nickName){
         cliente.iniciarCliente(nickName);
+        
         pantallaStartUp.setTitle(nickName);
         pantallaStartUp.getTxtInfo().setText("Buscando...");
         pantallaStartUp.getBtnStart().setVisible(false);
@@ -54,19 +56,25 @@ public class Controlador_Cliente {
     }
     
     public void empezarAJugar(){
-        this.pantallaPrincipal = new GUICliente(this);
-        this.pantallaPrincipal.setVisible(true);
+        pantallaPrincipal = new GUICliente(this);
+        pantallaPrincipal.setVisible(true);
+        for(int i = 0;i<cliente.jugador.getArmasCompradas().size();i++)
+            pantallaPrincipal.getComboBoxArmas().addItem(cliente.jugador.getArmasCompradas().get(i).getNombre());
         String enemigos = "---Empiza la Batalla---\n";
         enemigos += "Tus enemigos: \n";
         for(String enemigo: cliente.jugador.getEnemigos())
             enemigos += enemigo + "\n";
-        this.pantallaPrincipal.getTxtAreaJuego().append(enemigos);
+        pantallaPrincipal.getTxtAreaJuego().append(enemigos);
        
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
     
-    
+    public void usarArma(){
+        Componente armaAactivada = pantallaPrincipal.getComboBoxArmas().getSelectedItem();
+        
+         
+    }
     
     
     //Metodos del Chat

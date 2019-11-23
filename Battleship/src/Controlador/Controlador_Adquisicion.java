@@ -61,13 +61,19 @@ public class Controlador_Adquisicion {
         else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
         else{
             cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
+            
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
             pantalla.getLabelInstruccion().setVisible(true);
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
-            //factory.Comprar();
+            
+            //Agregar el arma comprada al jugador
+            cliente.jugador.getArmasCompradas().add(componenteAux);
+            
+            
+                    
         }
     }
    

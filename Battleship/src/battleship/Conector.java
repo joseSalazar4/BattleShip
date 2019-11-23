@@ -12,6 +12,7 @@ package battleship;
 public class Conector extends Componente {
     
     Conector(){
+        nombre = "Conector";
         this.is1x1 = true;
         this.imagen = new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Conector.png"));
         

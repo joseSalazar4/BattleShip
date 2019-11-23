@@ -16,12 +16,13 @@ public class Servidor extends Thread{
     private int PORT;
     private boolean encendido = true;
     private int numeroClientes;
+    private String jugadorTurnoActual;
     
     public Servidor(int PORT, GUIServidor pantalla){
         clientes = new ArrayList<>();
         this.PORT = PORT;
         this.pantalla = pantalla;
-        this.pantalla.show();
+        this.pantalla.setVisible(true);
     }
     
     @Override
