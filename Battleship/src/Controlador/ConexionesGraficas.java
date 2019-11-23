@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class ConexionesGraficas extends JPanel{
     @Override
     public void paintComponent(Graphics g) {
-           super.paintComponent(g);    //a
+           super.paintComponent(g);   
            g.setColor(Color.BLACK);                   
            g.drawLine(0,0,300,300);
        }

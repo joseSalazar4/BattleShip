@@ -124,7 +124,14 @@ public class Controlador_Adquisicion {
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
         //pantalla.matrizComponentes[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png"))); 
     }
+    
+    public void colocarFuentePoder(){
+        int numero = 0;
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
         
+    }
+     
       
     public int verificarOpcionExtra(ItemCompra item){
         if(item.equals("ARMERIA")) return pantalla.getComboBoxArmeria().getSelectedIndex();

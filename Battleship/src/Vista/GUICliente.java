@@ -29,7 +29,7 @@ public class GUICliente extends javax.swing.JFrame {
     Controlador.Controlador_Cliente controlador;
    // public GUICliente(Componente [][] _matrizLogica, Controlador.Controlador_Cliente controlador) {
     public GUICliente(Controlador.Controlador_Cliente controlador){
-        X1= Y1 = 0;
+        X1 = Y1 = 0;
         X2=  Y2 = 200;
         initComponents();
         this.controlador = controlador;
@@ -91,9 +91,9 @@ public class GUICliente extends javax.swing.JFrame {
         jButtonArmeria1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1400, 780));
-        setPreferredSize(new java.awt.Dimension(1300, 780));
-        setSize(new java.awt.Dimension(1300, 780));
+        setMinimumSize(new java.awt.Dimension(1400, 800));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setSize(new java.awt.Dimension(1300, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtAreaChat.setEditable(false);
@@ -163,16 +163,16 @@ public class GUICliente extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 260, -1, -1));
 
         jLabel6.setText("Dinero:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel8.setText("Mis Recursos");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
 
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 100, -1));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, 100, -1));
 
         jLabel9.setText("Acero:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 140, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
 
         jButton1.setText("Usar Arma!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,13 +180,13 @@ public class GUICliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 100, 40));
 
         jLabel12.setText("Armas Compradas");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 180, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
 
         jLabel10.setText("Click para fabricar!");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 360, -1, -1));
 
         jCheckBox1.setText("Comprar");
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +194,7 @@ public class GUICliente extends javax.swing.JFrame {
                 jCheckBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 710, -1, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -226,7 +226,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, 110, 70));
+        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, 110, 70));
 
         jPanelTorpedo.setLayout(null);
 
@@ -238,7 +238,7 @@ public class GUICliente extends javax.swing.JFrame {
         jPanelTorpedo.add(jButton3);
         jButton3.setBounds(20, 30, 80, 32);
 
-        getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 110, 70));
+        getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, 110, 70));
 
         jLabel13.setText("2000Kg Acero");
 
@@ -265,7 +265,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        getContentPane().add(jPanelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 580, 110, 60));
+        getContentPane().add(jPanelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, 110, 60));
 
         jLabel14.setText("1000Kg Acero");
 
@@ -292,11 +292,11 @@ public class GUICliente extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
-        getContentPane().add(jPanelMultiShot, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 650, 110, 70));
+        getContentPane().add(jPanelMultiShot, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 620, 110, 70));
 
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Barcos espía");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, -1, -1));
+        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
 
         jButtonArmeria1.setBackground(new java.awt.Color(0, 61, 101));
         jButtonArmeria1.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,7 +306,7 @@ public class GUICliente extends javax.swing.JFrame {
                 jButtonArmeria1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonArmeria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, -1, -1));
+        getContentPane().add(jButtonArmeria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

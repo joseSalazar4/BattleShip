@@ -123,6 +123,7 @@ public class PosicionarComponente implements MouseListener{
                 //COMPONENTE ES VERTICAL
                  if(Controlador_Adquisicion.isArrIzq && i>0 && Controlador_Adquisicion.getComponente(i-1, j) == null){
                     //LA SEGUNDO LABEL ES EL DE ARRIBA
+                    
                     JLabel otroLabel = matrizLabels[i-1][j];
                     posicionar_ij(otroLabel);
                     otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
