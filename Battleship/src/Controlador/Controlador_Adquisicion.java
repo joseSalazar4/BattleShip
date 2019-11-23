@@ -66,6 +66,8 @@ public class Controlador_Adquisicion {
     public void cargarDatos(){
         this.pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         this.pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
+        this.pantalla.
+        
     }
     
     public void agregarElementoComprado(Componente.tipoComponente elemento){
@@ -74,7 +76,9 @@ public class Controlador_Adquisicion {
         else if(elemento == Componente.tipoComponente.Mercado) this.ctdMercados++;
         else if(elemento == Componente.tipoComponente.Templo) this.ctdTemplos++;
         else if(elemento == Componente.tipoComponente.Conectores) this.ctdConectores++;
-        else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;                 
+        else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;
+        
+        
     }
     
     
