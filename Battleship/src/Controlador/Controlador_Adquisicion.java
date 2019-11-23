@@ -24,7 +24,9 @@ public class Controlador_Adquisicion {
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
     public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
-
+   
+    private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0;
+    
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
         this.pantalla = new GUIAdquisicion(this);
@@ -58,11 +60,22 @@ public class Controlador_Adquisicion {
         pantalla.getButtonMercado().setEnabled(false);
     }
     
-    public void agregarElementoComprado(String nombreElemento){
-        aumentar el contador de cada pinga para que en el label de GUIAdqiusocion arriba salga
-                Templo: 4
-        Mina: 2 y asi tons que cuando se compre algo se agregue esto se llama abajo
+    //Cargar datos del jugador y la cantidad de componenetes que posee
+    public void cargarDatos(){
+        this.pantalla.getLblnickName().setText(cliente.jugador.getNombre());
+        this.pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
     }
+    
+    public void agregarElementoComprado(Componente.tipoComponente elemento){
+        if(elemento == Componente.tipoComponente.Armeria) this.ctdArmerias++;
+        else if(elemento == Componente.tipoComponente.Mina) this.ctdMinas++;
+        else if(elemento == Componente.tipoComponente.Mercado) this.ctdMercados++;
+        else if(elemento == Componente.tipoComponente.Templo) this.ctdTemplos++;
+        else if(elemento == Componente.tipoComponente.Conectores) this.ctdConectores++;
+        else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;                 
+    }
+    
+    
     
     
     public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
