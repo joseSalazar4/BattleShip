@@ -50,37 +50,6 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="jButtonTemplo" alignment="2" min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="jButtonMercado" alignment="2" min="-2" pref="73" max="-2" attributes="0"/>
-                              <Component id="jButtonMina" alignment="2" min="-2" pref="78" max="-2" attributes="0"/>
-                              <Component id="jButtonArmeria" alignment="2" min="-2" pref="78" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="2" attributes="0">
-                              <Component id="jLabel18" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel19" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel22" alignment="2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="103" groupAlignment="2" attributes="0">
-                      <Component id="jComboBox2" alignment="2" max="32767" attributes="0"/>
-                      <Component id="jComboBox1" alignment="2" max="32767" attributes="0"/>
-                      <Component id="jButtonFuente" alignment="2" max="32767" attributes="0"/>
-                      <Component id="jButtonConector" alignment="2" min="-2" pref="114" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
                   <EmptySpace min="127" pref="127" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabel20" alignment="2" min="-2" max="-2" attributes="0"/>
@@ -89,15 +58,49 @@
                       <Component id="jLabel24" alignment="2" min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="102" alignment="2" attributes="0">
-                  <EmptySpace min="106" pref="106" max="-2" attributes="0"/>
-                  <Component id="jComboBox3" max="32767" attributes="0"/>
-                  <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
-              </Group>
               <Component id="jLabel1" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="2" attributes="0">
+                                      <Component id="jButtonTemplo" alignment="2" min="-2" pref="79" max="-2" attributes="0"/>
+                                      <Component id="jButtonMercado" alignment="2" min="-2" pref="73" max="-2" attributes="0"/>
+                                      <Component id="jButtonMina" alignment="2" min="-2" pref="78" max="-2" attributes="0"/>
+                                      <Component id="jButtonArmeria" alignment="2" min="-2" pref="78" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="2" attributes="0">
+                                      <Component id="jLabel18" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel19" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel22" alignment="2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel21" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="2" attributes="0">
+                              <Component id="jComboBox2" alignment="2" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" alignment="2" max="32767" attributes="0"/>
+                              <Component id="jButtonFuente" alignment="2" max="32767" attributes="0"/>
+                              <Component id="jButtonConector" alignment="2" min="-2" pref="114" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="2" attributes="0">
+                          <EmptySpace min="106" pref="106" max="-2" attributes="0"/>
+                          <Component id="jComboBox3" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

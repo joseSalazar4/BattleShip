@@ -47,6 +47,12 @@ public class Controlador_Adquisicion {
     public void cargarDatosDelJugador(){
         pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
+        this.pantalla.getjLabelCantArmeria().setText("Armerias: " + this.ctdArmerias);
+        this.pantalla.getjLabelCantMina().setText("Minas: " + this.ctdMinas);
+        this.pantalla.getjLabelCantTemplos().setText("Templos: " + this.ctdTemplos);
+        this.pantalla.getjLabelCantMercado().setText("Mercados: " + this.ctdMercados);
+        this.pantalla.getjLabelCantConectores().setText("Conectores: " + this.ctdConectores);
+        this.pantalla.getjLabelCantFuentePoder().setText("Fuentes de Poder: " + this.ctdFuentesPoder);
         
     }
     
@@ -61,15 +67,7 @@ public class Controlador_Adquisicion {
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
     }
-    
-    //Cargar datos del jugador y la cantidad de componenetes que posee
-    public void cargarDatos(){
-        this.pantalla.getLblnickName().setText(cliente.jugador.getNombre());
-        this.pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
-        this.pantalla.
         
-    }
-    
     public void agregarElementoComprado(Componente.tipoComponente elemento){
         if(elemento == Componente.tipoComponente.Armeria) this.ctdArmerias++;
         else if(elemento == Componente.tipoComponente.Mina) this.ctdMinas++;
@@ -78,7 +76,7 @@ public class Controlador_Adquisicion {
         else if(elemento == Componente.tipoComponente.Conectores) this.ctdConectores++;
         else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;
         
-        
+        cargarDatosDelJugador();
     }
     
     
@@ -100,10 +98,7 @@ public class Controlador_Adquisicion {
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
             
             //Agregar el arma comprada al jugador
-            cliente.jugador.getArmasCompradas().add(componenteAux);
-            
-            
-                    
+            cliente.jugador.getArmasCompradas().add(componenteAux);             
         }
     }
    

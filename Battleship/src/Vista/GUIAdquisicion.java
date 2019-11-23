@@ -621,5 +621,38 @@ private void rellenarMatriz(){
     public JPanel getPanelJugador(){
         return this.jPanelJugador;
     }
+
+    public JLabel getjLabelCantArmeria() {
+        return jLabelCantArmeria;
+    }
+
+    public JLabel getjLabelCantConectores() {
+        return jLabelCantConectores;
+    }
+
+    public JLabel getjLabelCantFuentePoder() {
+        return jLabelCantFuentePoder;
+    }
+
+    public JLabel getjLabelCantMercado() {
+        return jLabelCantMercado;
+    }
+
+    public JLabel getjLabelCantMina() {
+        return jLabelCantMina;
+    }
+
+    public JLabel getjLabelCantMina1() {
+        return jLabelCantMina1;
+    }
+
+    public JLabel getjLabelCantTemplos() {
+        return jLabelCantTemplos;
+    }
+
+    public JLabel getjLabelInstruccionColocado() {
+        return jLabelInstruccionColocado;
+    }
+    
     
 }
