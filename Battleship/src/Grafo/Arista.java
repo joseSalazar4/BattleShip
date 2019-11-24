@@ -1,12 +1,14 @@
 
 package Grafo;
+import battleship.Conector;
 import java.awt.Point;
 
 public class Arista {
     private Vertice origin;
     private Vertice destination;
+    private Conector conector;
     private double distance;
-    private Point coordenada;
+    
  
     public Arista(Vertice origin, Vertice destination, double distance) {
         this.origin = origin;
@@ -38,11 +40,13 @@ public class Arista {
         this.distance = distance;
     }
 
-    public Point getCoordenada() {
-        return coordenada;
+    public Conector getConector() {
+        return conector;
     }
 
-    public void setCoordenada(Point coordenada) {
-        this.coordenada = coordenada;
+    public void setConector(Conector conector) {
+        this.conector = conector;
     }
+
+    
 }

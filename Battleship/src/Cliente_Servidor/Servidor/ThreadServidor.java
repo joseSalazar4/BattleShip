@@ -62,7 +62,7 @@ public class ThreadServidor extends Thread{
                             cliente.enviarMensaje(mensaje);    
                     break;
                     case 3: //Envia un mensaje del juego a todos los jugadores
-                        mensajeGenerico mensajeJuego = (mensajeGenerico) inputStream.readObject();
+                        String mensajeJuego = (String) inputStream.readUTF();
                         for(ThreadServidor cliente: servidor.getClientes())
                             cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
@@ -79,6 +79,10 @@ public class ThreadServidor extends Thread{
                                 cliente2.reanudarJuego();
                         }
                         
+                    break;
+                        
+                    case 5: //Terminar mi turno
+                        servidor.siguienteTurno();
                     break;
                         
                     // Opcion es el metodo que quiere que el servidor haga 
@@ -109,14 +113,24 @@ public class ThreadServidor extends Thread{
         outputStream.writeObject(mensaje);
     }
     
+    public void enviarMensajeJuego(String mensaje) throws IOException{
+        outputStream.writeInt(3);
+        outputStream.writeUTF(mensaje);
+    }
+    
     public void reanudarJuego() throws IOException{
         outputStream.writeInt(4);
     }
     
-    public void enviarMensajeJuego(mensajeGenerico mensaje) throws IOException{
-        outputStream.writeInt(3);
-        outputStream.writeObject(mensaje);
+    void empezarTurno() throws IOException {
+        outputStream.writeInt(5);
     }
+    
+    public void reanudarAdquisicion() throws IOException{
+        outputStream.writeInt(6);
+    }
+    
+   
 
     
     //----Getter && Setter----
@@ -136,6 +150,8 @@ public class ThreadServidor extends Thread{
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
+
+    
 
     
 }

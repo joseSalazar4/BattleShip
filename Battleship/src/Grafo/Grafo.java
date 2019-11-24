@@ -22,14 +22,16 @@ public class Grafo {
     }
     
     public void addArista(Vertice origen, Vertice destino){
-        origen.addArista(new Arista(origen, destino, origen.getCoordenada().distance(destino.getCoordenada())));
-        origen.addArista(new Arista(destino, origen, destino.getCoordenada().distance(origen.getCoordenada())));
+        origen.addArista
+        (new Arista(origen, destino, origen.getComponente().getPoint().distance(destino.getComponente().getPoint())));
+        destino.addArista
+        (new Arista(destino, origen, destino.getComponente().getPoint().distance(origen.getComponente().getPoint())));
     }
    
     public void removeArista(Point point){
         for (Vertice vertice : vertices){
             for (Arista arista : vertice.getAristas()) {
-              if(arista.getCoordenada().x == point.x && arista.getCoordenada().y == point.y) 
+              if(arista.getConector().getPoint().x == point.x && arista.getConector().getPoint().y == point.y) 
                   vertice.getAristas().remove(arista);
             }
         }

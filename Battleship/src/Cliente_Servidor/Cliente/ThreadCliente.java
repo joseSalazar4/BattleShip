@@ -42,13 +42,20 @@ public class ThreadCliente extends Thread{
                         break;
                         
                     case 3: //Recibe un mensaje del juego
-                        mensajeGenerico mensajeJuego = (mensajeGenerico) inputStream.readObject();
+                        String mensajeJuego = (String) inputStream.readUTF();
                         cliente.controlador.recibirMensajeJuego(mensajeJuego);
                         break;
                     case 4: 
                         //cliente.controlador; pregunt
                         cliente.controlador.setTodosListos(true);
                         break;
+                    case 5: //Comienza el turno de este Jugador
+                        cliente.controlador.empezarTurno();
+                        break;
+                    case 6:
+                        cliente.controlador.reanudarPantallaAdquisicion();
+                        break;
+                        
                         
                 }
             } catch (IOException ex) {

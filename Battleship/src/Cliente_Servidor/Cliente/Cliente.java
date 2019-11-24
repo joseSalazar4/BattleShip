@@ -56,6 +56,22 @@ public class Cliente {
         outputStream.writeInt(2);
         outputStream.writeObject(mensaje);
     }
+    
+    public void enviarMensajeJuego(String mensaje) throws IOException{
+        outputStream.writeInt(3);
+        outputStream.writeUTF(mensaje);
+    }
+    
+    public void finalizoAdquisicion() throws IOException{ //EStoy Listo
+         outputStream.writeInt(4);
+    }
+    
+    public void finalizarTurno() throws IOException{
+        outputStream.writeInt(5);
+    }
+    
+    
+    //Getter && Setter
 
     public Socket getSocketCliente() {
         return socketCliente;
