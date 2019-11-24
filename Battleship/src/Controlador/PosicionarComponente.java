@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Grafo.Vertice;
 import battleship.FuentePoder;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -249,8 +250,14 @@ public class PosicionarComponente implements MouseListener{
                  
             }
         }
-        System.out.println("Cordenada Label: " + i + "," + j);
-        System.out.println("Cordenada Otro Label: " +  this.otroI +"," + this.OtroJ);
+        Controlador_Adquisicion.componenteAux.getPoint().setLocation(j, i);
+        if(Controlador_Adquisicion.isComprado){ //Creo el vertice
+            Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
+            Controlador_Adquisicion.componenteAux.setVertice(vertice);
+            Controlador_Adquisicion.grafo.addVertice(vertice);
+            System.out.println("Se creo un Vertice:  Cordenada: " +  vertice.getComponente().getPoint().y + "," + vertice.getComponente().getPoint().x);
+        }
+        
         Controlador_Adquisicion.componenteAux = null;
         Controlador_Adquisicion.isComprado = false;
         Controlador_Adquisicion.isMover = false;

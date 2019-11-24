@@ -8,11 +8,16 @@ package Controlador;
 import Vista.GUIAdquisicion;
 import battleship.Componente;
 import Cliente_Servidor.Cliente.Cliente;
+import Grafo.Grafo;
+import static battleship.Componente.tipoComponente.Remolino;
 import static battleship.Componente.tipoComponente.Conector;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
 import static battleship.ItemCompra.REMOLINO;
 import java.awt.Graphics;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -23,8 +28,9 @@ import javax.swing.JOptionPane;
     private int X1, Y1, X2, Y2;
     private Controlador_Cliente controladorCliente;
     public static boolean isComprado = false, isMover = false, isArrIzq = false;
-    public static Componente componenteAux = null, componenteAux2 = null;
+    public static Componente componenteAux = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
+    public static Grafo grafo = new Grafo();
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
@@ -66,8 +72,12 @@ import javax.swing.JOptionPane;
         pantalla.getButtonMercado().setEnabled(false);
         pantalla.getButtonConector().setEnabled(false);
         
-        cliente.controlador.esperarEnemigos();
-        //Conectar con el servidor y decir que listo.
+        try {
+            cliente.controlador.esperarEnemigos();
+            //Conectar con el servidor y decir que listo.
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador_Adquisicion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
         
     public void agregarElementoComprado(Componente.tipoComponente elemento){

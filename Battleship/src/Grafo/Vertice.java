@@ -9,11 +9,10 @@ import java.awt.Point;
 public class Vertice {
     private Componente componente;
     private List<Arista> aristas;
-    private Point coordenada;
-    private Point coordenada2;
 
     public Vertice(Componente componente) {
         this.componente = componente;
+        this.aristas = new ArrayList<>();
     }
 
     public Componente getComponente() {
@@ -33,23 +32,6 @@ public class Vertice {
     }
     
     public void addArista(Arista arista){
-        if(aristas == null) aristas = new ArrayList<>();
         aristas.add(arista);
     }
-
-    public Point getCoordenada() {
-        return coordenada;
-    }
-
-    public void setCoordenada(Point coordenada) {
-        this.coordenada = coordenada;
-    } 
-
-    public Point getCoordenada2() {
-        return coordenada2;
-    }
-
-    public void setCoordenada2(Point coordenada2) {
-        this.coordenada2 = coordenada2;
-    }  
 }

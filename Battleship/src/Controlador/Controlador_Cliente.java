@@ -17,6 +17,7 @@ import javax.swing.text.DefaultCaret;
 public class Controlador_Cliente {
     private Cliente cliente;
     private boolean todosListos;
+    private boolean miTurno = false;
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
@@ -43,7 +44,7 @@ public class Controlador_Cliente {
         pantallaStartUp.getjLabelLoadGIF().setVisible(true);
     }
     
-    public void inciarAdquisicion(){
+    public void inciarAdquisicion(){ //SOLO LA PRIMERA VEZ AL INICIAR EL JUEGO
         this.pantallaStartUp.getTxtInfo().setText("Inciando Partida!\n");
         try {
             Thread.sleep(2000);
@@ -53,15 +54,10 @@ public class Controlador_Cliente {
         this.pantallaStartUp.dispose();
         
         this.controladorAdquisicion = new Controlador_Adquisicion(cliente);
-        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();
-       
-        
-        //SOLO PARA PRUEBA
-        //empezarAJugar();
-        
+        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();        
     }
     
-    public void empezarAJugar(){
+    public void empezarAJugar(){ //SOLO LA PRIMERA VEZ
         pantallaPrincipal = new GUICliente(this);
         pantallaPrincipal.setVisible(true);
         for(int i = 0;i<cliente.jugador.getArmasCompradas().size();i++)
@@ -78,6 +74,36 @@ public class Controlador_Cliente {
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
+    
+    public void reanudarPantallaPrincipal(){
+        this.pantallaAdquisicion.setVisible(false);
+        this.pantallaPrincipal.setVisible(true);
+        
+        //Agregar 
+    }
+    
+    public void reanudarPantallaAdquisicion(){
+        this.pantallaAdquisicion.setVisible(true);
+        this.pantallaPrincipal.setVisible(false);
+        
+        //Agregar
+    }
+    
+    
+    //Codigo de renovar juego 
+    public void esperarEnemigos() throws InterruptedException, IOException{
+        cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
+        while(!todosListos){
+              sleep(2000);
+        }
+        
+        //Codigo de reanudar juego
+        todosListos = false;
+
+        reanudarPantallaPrincipal();
+    }
+    
+    
     
     public void usarArma(){
         String armaUtilizada = (String) pantallaPrincipal.getComboBoxArmas().getSelectedItem();
@@ -124,9 +150,27 @@ public class Controlador_Cliente {
     }
      
     //Metodos de los mensajes de informacion del juego
-    public void recibirMensajeJuego(mensajeGenerico mensaje){
-        
+    
+    public void enviarMensajeJuego(String mensaje) throws IOException{
+        cliente.enviarMensajeJuego(mensaje);
     }
+    
+    public void recibirMensajeJuego(String mensaje){
+       this.pantallaPrincipal.getTxtAreaJuego().append(mensaje + "\n");
+    }
+    
+    public void empezarTurno(){
+        //Activar turno
+        this.miTurno = true;
+    }
+    
+    public void finalizarTurno() throws IOException{
+        this.miTurno = false;
+        cliente.finalizarTurno();
+    }
+       
+    
+    //Getter && Setter
     
     public void setMatrizJugadorLbl(JLabel [][] matrizN){
         matrizJugadorLbel = matrizN;
@@ -143,15 +187,14 @@ public class Controlador_Cliente {
     public void setTodosListos(boolean todosListos) {
         this.todosListos = todosListos;
     }
-   
-    //Codigo de renovar juego 
-    public void esperarEnemigos() throws InterruptedException{
-      while(!todosListos){
-            sleep(2000);
-        }
-            //Codigo de reanudar juego
-            todosListos = false;
+
+    public boolean isMiTurno() {
+        return miTurno;
     }
-    
-    
+
+
+    public void setMiTurno(boolean miTurno) {
+        this.miTurno = miTurno;
+    }
+       
 }

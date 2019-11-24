@@ -17,6 +17,7 @@ public class Servidor extends Thread{
     private boolean encendido = true;
     private int numeroClientes;
     private String jugadorTurnoActual;
+    private int turno = 0;
     
     public Servidor(int PORT, GUIServidor pantalla){
         clientes = new ArrayList<>();
@@ -67,6 +68,22 @@ public class Servidor extends Thread{
                 
     }
    
+    public void broadcastHistorial(String mensaje) throws IOException{
+        for(ThreadServidor thread: clientes)
+            thread.enviarMensajeJuego(mensaje);
+    
+    }
+    
+    public void siguienteTurno() throws IOException{
+        clientes.get(turno).empezarTurno();
+        if(turno == 0){
+            for(ThreadServidor thread: clientes)
+                thread.reanudarAdquisicion();
+        }
+        broadcastHistorial("Comienza el turno de " + clientes.get(turno).nickName);
+        if(turno < numeroClientes-1) turno++;
+        else turno = 0;
+    }
     
     //Getter & Setter
 
