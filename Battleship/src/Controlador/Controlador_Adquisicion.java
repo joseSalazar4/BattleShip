@@ -9,6 +9,7 @@ import Vista.GUIAdquisicion;
 import battleship.Componente;
 import Cliente_Servidor.Cliente.Cliente;
 import Grafo.Grafo;
+import Grafo.Vertice;
 import static battleship.Componente.tipoComponente.Remolino;
 import static battleship.Componente.tipoComponente.Conector;
 import battleship.FactoryComponente;
@@ -123,30 +124,16 @@ import javax.swing.JOptionPane;
         return matrizComponentes[i][j]; 
     }
     
-    public void colocarRemolino(){
-        //Colocar el tornado
-        //Obtener un numero realmente aleatorio al darle un seed
-        //Primero Remolino
-        int numero = 0;
-        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);
-        
-        //Segundo Remolino
-        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
-    }
-    
     public void trazarConexiones(){
         for(int i =0 ;i<this.ctdTotalElementos;i++){
             for(int j = 0 ;j<this.ctdTotalElementos ;j++){
                 
-                Componente compTmp = matrizComponentes[1][1];
-                if(compTmp.getTipoComponente() != Conector){
-                    //
-                    for(int k = 0 ;k<20  ;k++){
-                        pintarConexion(1,1,1,1);
+                Componente comp = matrizComponentes[i][j];
+                Vertice vertice= comp.getVertice();
+                if(comp.getTipoComponente() != Conector && matrizComponentes[i][j]!=null){
+                    for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
+                        Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
+                        pintarConexion(comp.getPoint().x,comp.getPoint().y,dest.getPoint().x,dest.getPoint().y);
                     }
                 }
             }
@@ -164,16 +151,54 @@ import javax.swing.JOptionPane;
     
     public void colocarFuentePoder(){
         int numero = 0;
-     
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null
-                && pantalla.matrizLabels[numero][numero].getIcon() == null
-                && pantalla.matrizLabels[numero][numero].getIcon() == null
-                && pantalla.matrizLabels[numero][numero].getIcon() == null)  pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png"))); 
+                && pantalla.matrizLabels[numero][numero+1].getIcon() == null
+                && pantalla.matrizLabels[numero+1][numero].getIcon() == null
+                && pantalla.matrizLabels[numero+1][numero+1].getIcon() == null){
+            
+            pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+            pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+            pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+            pantalla.matrizLabels[numero+1][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
+            
+        } 
         else colocarFuentePoder();
     }
-    
+    public void colocarRemolino(){
+        //Colocar el tornado
+        //Obtener un numero realmente aleatorio al darle un seed
+        //Primero Remolino
+        int numero = 0;
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        if(pantalla.matrizLabels[numero][numero].getIcon() == null){
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);
+        }
+        else colocarRemolino();
+        //Segundo Remolino
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        if(pantalla.matrizLabels[numero][numero].getIcon() == null){
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
+        }
+        else colocarRemolino();        
+    }
     public void colocarMercado(){
+        int numero = 0;
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        if(numero<19 &&
+                pantalla.matrizLabels[numero][numero].getIcon() == null
+                && pantalla.matrizLabels[numero][numero+1].getIcon() == null
+                && pantalla.matrizLabels[numero+1][numero].getIcon() == null
+                && pantalla.matrizLabels[numero+1][numero+1].getIcon() == null){
+                
+                pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+                pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+                pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+                pantalla.matrizLabels[numero+1][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
+        }
+        else colocarMercado();
         
     }
      
