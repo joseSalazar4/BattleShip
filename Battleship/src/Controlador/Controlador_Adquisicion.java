@@ -8,15 +8,13 @@ package Controlador;
 import Vista.GUIAdquisicion;
 import battleship.Componente;
 import Cliente_Servidor.Cliente.Cliente;
-import static battleship.Componente.tipoComponente.Remolino;
+import static battleship.Componente.tipoComponente.Conector;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
 import static battleship.ItemCompra.REMOLINO;
-import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -28,7 +26,7 @@ import javax.swing.JPanel;
     public static Componente componenteAux = null, componenteAux2 = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
    
-    private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0;
+    private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
     public Controlador_Adquisicion(Cliente cliente) {
         this.cliente = cliente;
@@ -39,14 +37,12 @@ import javax.swing.JPanel;
         
         cargarDatosDelJugador();
         
-        DibujoLinea d = new DibujoLinea(pantalla);
         
-        d.border = 5;
-        d.DrawLine(X1, X1, X2, X2);
          
-         
-        
-        //colocarRemolino();
+        colocarMercado();
+        colocarRemolino();
+        colocarFuentePoder();
+
         
     }
     public void cargarDatosDelJugador(){
@@ -81,8 +77,9 @@ import javax.swing.JPanel;
         else if(elemento == Componente.tipoComponente.Templo) this.ctdTemplos++;
         else if(elemento == Componente.tipoComponente.Conector) this.ctdConectores++;
         else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;
+        ctdTotalElementos++;
         cargarDatosDelJugador();
-        System.out.println(ctdMinas + ctdConectores + ctdMercados +ctdFuentesPoder + ctdTemplos + ctdArmerias);
+        System.out.println(ctdMinas +" "+ ctdConectores +" "+ ctdMercados +" "+ ctdFuentesPoder +" "+ ctdTemplos +" "+ ctdArmerias);
     }
     
     
@@ -131,10 +128,42 @@ import javax.swing.JPanel;
         matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
     }
     
+    public void trazarConexiones(){
+        for(int i =0 ;i<this.ctdTotalElementos;i++){
+            for(int j = 0 ;j<this.ctdTotalElementos ;j++){
+                
+                Componente compTmp = matrizComponentes[1][1];
+                if(compTmp.getTipoComponente() != Conector){
+                    //
+                    for(int k = 0 ;k<20  ;k++){
+                        pintarConexion(1,1,1,1);
+                    }
+                }
+            }
+        }
+    }
+    
+    public void pintarConexion(int x1,int  y1,int x2,int y2){
+        Graphics graf = pantalla.getPanelJugador().getGraphics();
+        graf.drawLine(x1, y1, x2, y2);
+    }
+    
+    public void trazarConexionesConectores(){
+        
+    }
+    
     public void colocarFuentePoder(){
         int numero = 0;
+     
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        if(pantalla.matrizLabels[numero][numero].getIcon() == null
+                && pantalla.matrizLabels[numero][numero].getIcon() == null
+                && pantalla.matrizLabels[numero][numero].getIcon() == null
+                && pantalla.matrizLabels[numero][numero].getIcon() == null)  pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png"))); 
+        else colocarFuentePoder();
+    }
+    
+    public void colocarMercado(){
         
     }
      

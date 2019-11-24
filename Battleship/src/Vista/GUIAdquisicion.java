@@ -8,6 +8,7 @@ package Vista;
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
 import battleship.ItemCompra;
+import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -18,29 +19,20 @@ import javax.swing.JPanel;
 public class GUIAdquisicion extends javax.swing.JFrame {
 
     Controlador_Adquisicion controlador;
-    
-    
-    public JLabel imagenMina = new JLabel();
-    public JLabel imagenFuente = new JLabel();
-    public JLabel imagenTemplo = new JLabel();
-    public JLabel imagenMercado = new JLabel();
-    public JLabel imagenArmeria = new JLabel();
-    public JLabel imagenTornado = new JLabel();
-    
+    int TAMANNO = 30;
     
     public JLabel [][] matrizLabels = new JLabel [20][20];
     public PosicionarComponente [][] pcs = new PosicionarComponente[20][20];
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
-        //rellenarMatriz(); 
+        rellenarMatriz(); 
         this.controlador=controlador;        
         jLabelCarga.setVisible(false);  
         jLabelInstruccionColocado.setVisible(false);
     }    
     
 private void rellenarMatriz(){
-        int TAMANNO = 30;
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
@@ -48,8 +40,6 @@ private void rellenarMatriz(){
                 PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
-                labelNuevo.setOpaque(false);
-                labelNuevo.setVisible(false);
                 matrizLabels[i][j] = labelNuevo;
                 pcs[i][j] = pc;
                 jPanelJugador.add(labelNuevo);
@@ -446,8 +436,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButtonMercadoActionPerformed
 
     private void jButtonFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuenteActionPerformed
-        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);
-        
+        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);      
     }//GEN-LAST:event_jButtonFuenteActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

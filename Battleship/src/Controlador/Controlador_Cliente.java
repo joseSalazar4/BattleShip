@@ -152,4 +152,6 @@ public class Controlador_Cliente {
             //Codigo de reanudar juego
             todosListos = false;
     }
+    
+    
 }
