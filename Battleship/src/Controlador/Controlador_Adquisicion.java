@@ -43,18 +43,15 @@ import javax.swing.JPanel;
         colocarRemolino();
         
     }
-
-    
     public void cargarDatosDelJugador(){
         pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
-        this.pantalla.getjLabelCantArmeria().setText("Armerias: " + this.ctdArmerias);
-        this.pantalla.getjLabelCantMina().setText("Minas: " + this.ctdMinas);
-        this.pantalla.getjLabelCantTemplos().setText("Templos: " + this.ctdTemplos);
-        this.pantalla.getjLabelCantMercado().setText("Mercados: " + this.ctdMercados);
-        this.pantalla.getjLabelCantConectores().setText("Conectores: " + this.ctdConectores);
-        this.pantalla.getjLabelCantFuentePoder().setText("Fuentes de Poder: " + this.ctdFuentesPoder);
-        
+        pantalla.getjLabelCantArmeria().setText("Armerias: " + this.ctdArmerias);
+        pantalla.getjLabelCantMina().setText("Minas: " + this.ctdMinas);
+        pantalla.getjLabelCantTemplos().setText("Templos: " + this.ctdTemplos);
+        pantalla.getjLabelCantMercado().setText("Mercados: " + this.ctdMercados);
+        pantalla.getjLabelCantConectores().setText("Conectores: " + this.ctdConectores);
+        pantalla.getjLabelCantFuentePoder().setText("Fuente Poder: " + this.ctdFuentesPoder);    
     }
     
     public void adquirirTemplo(){
@@ -78,10 +75,10 @@ import javax.swing.JPanel;
         else if(elemento == Componente.tipoComponente.Mina) this.ctdMinas++;
         else if(elemento == Componente.tipoComponente.Mercado) this.ctdMercados++;
         else if(elemento == Componente.tipoComponente.Templo) this.ctdTemplos++;
-        else if(elemento == Componente.tipoComponente.Conectores) this.ctdConectores++;
+        else if(elemento == Componente.tipoComponente.Conector) this.ctdConectores++;
         else if(elemento == Componente.tipoComponente.FuenteEnergia) this.ctdFuentesPoder++;
-        
         cargarDatosDelJugador();
+        System.out.println(ctdMinas + ctdConectores + ctdMercados +ctdFuentesPoder + ctdTemplos + ctdArmerias);
     }
     
     
@@ -96,10 +93,14 @@ import javax.swing.JPanel;
             
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
+            
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
+            
             componenteAux.getNombre();
             pantalla.getLabelInstruccion().setVisible(true);
+            
+            agregarElementoComprado(componenteAux.getTipoComponente());
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
             
             //Agregar el arma comprada al jugador

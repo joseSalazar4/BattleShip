@@ -9,14 +9,13 @@ public class Componente implements Cloneable{
     int costo;
     ArrayList aristas;
     public boolean isVertical=false, is1x1, is2x2;  
-    public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conectores, FuenteEnergia}
+    public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conector, FuenteEnergia, Remolino}
     tipoComponente tipoComponente;
     ImageIcon imagen;
             
     public Componente(){
         nombre = "";
     }
-    
     
     public void setTipoComponente(tipoComponente comp){
         this.tipoComponente = comp;

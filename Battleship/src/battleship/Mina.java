@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import static battleship.Componente.tipoComponente.Mina;
+
 /**
  *
  * @author mikom
@@ -15,6 +17,7 @@ public class Mina extends Componente implements Runnable{
     int aceroGenerado,aceroTotal, tiempo;
    
     public Mina(int nivelSeleccionado){
+        tipoComponente = Mina;
         nombre = "Mina";
         aceroTotal = 0;        
         this.is1x1 = false;

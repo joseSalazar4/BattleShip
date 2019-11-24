@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import static battleship.Componente.tipoComponente.Templo;
+
 /**
  *
  * @author mikom
@@ -12,6 +14,7 @@ package battleship;
 public class Templo extends Componente{
     
     public Templo(){
+        tipoComponente = Templo;
         this.nombre = "Templo";
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Templo.png"));
     }

@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import static battleship.Componente.tipoComponente.Remolino;
+
 /**
  *
  * @author mikom
@@ -14,7 +16,8 @@ public class Remolino extends Componente{
     
     Armeria armaUsada;
     
-    public Remolino(){        
+    public Remolino(){      
+        this.tipoComponente = Remolino;
         armaUsada = null;
         this.is1x1 = true;
         nombre = "Remolino";
