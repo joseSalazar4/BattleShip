@@ -45,6 +45,9 @@ public class PosicionarComponente implements MouseListener{
             }
             
             else if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
+                Controlador_Adquisicion.isMover = true;
+                Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
+                
                 if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
                     if(Controlador_Adquisicion.componenteAux.isIsVertical()){
                         if(i>=0 && 
@@ -55,7 +58,7 @@ public class PosicionarComponente implements MouseListener{
                         {
                                 Controlador_Adquisicion.isArrIzq = true;
                                 Controlador_Adquisicion.matrizComponentes[i+1][j] = null;
-                                matrizLabels[i-1][j].setIcon(null);  
+                                matrizLabels[i+1][j].setIcon(null);  
                                 
                                 Controlador_Adquisicion.matrizComponentes[i][j] = null;
                                 matrizLabels[i][j].setIcon(null);
@@ -71,7 +74,7 @@ public class PosicionarComponente implements MouseListener{
                         {
                             Controlador_Adquisicion.isArrIzq = true;
                             Controlador_Adquisicion.matrizComponentes[i][j+1] = null;
-                            matrizLabels[i][j-1].setIcon(null);
+                            matrizLabels[i][j+1].setIcon(null);
                             
                             Controlador_Adquisicion.matrizComponentes[i][j] = null;
                             matrizLabels[i][j].setIcon(null);
@@ -79,10 +82,7 @@ public class PosicionarComponente implements MouseListener{
                         } else return;       
                     }
                 }
-                
-                Controlador_Adquisicion.isMover = true;
-                Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
-                
+                               
                 Controlador_Adquisicion.matrizComponentes[i][j] = null;
                 matrizLabels[i][j].setIcon(null);
             }
@@ -136,6 +136,7 @@ public class PosicionarComponente implements MouseListener{
                     Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
                 }
                 else return;
+        
             }
             
             else{
