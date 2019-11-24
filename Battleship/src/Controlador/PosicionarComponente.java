@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import battleship.FuentePoder;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -48,7 +49,34 @@ public class PosicionarComponente implements MouseListener{
                 Controlador_Adquisicion.isMover = true;
                 Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
                 
-                if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
+                //CUANDO ES 4X4 
+                if(Controlador_Adquisicion.componenteAux instanceof FuentePoder){
+                    if(i<19 && j<19 &&
+                    Controlador_Adquisicion.getComponente(i, j) instanceof FuentePoder &&
+                    Controlador_Adquisicion.getComponente(i, j+1) instanceof FuentePoder &&
+                    Controlador_Adquisicion.getComponente(i+1, j) instanceof FuentePoder &&
+                    Controlador_Adquisicion.getComponente(i+1, j+1) instanceof FuentePoder )
+                    {
+                        Controlador_Adquisicion.matrizComponentes[i][j] = null;
+                        matrizLabels[i][j].setIcon(null);  
+                        
+                        Controlador_Adquisicion.matrizComponentes[i][j+1] = null;
+                        matrizLabels[i][j+1].setIcon(null);  
+                        
+                        Controlador_Adquisicion.matrizComponentes[i+1][j] = null;
+                        matrizLabels[i+1][j].setIcon(null);  
+                        
+                        Controlador_Adquisicion.matrizComponentes[i+1][j+1] = null;
+                        matrizLabels[i+1][j+1].setIcon(null);  
+                    
+                    } else {
+                        Controlador_Adquisicion.componenteAux = null;
+                        Controlador_Adquisicion.isMover = false;
+                        return;
+                    }
+                }
+                
+                else if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
                     if(Controlador_Adquisicion.componenteAux.isIsVertical()){
                         if(i>=0 && 
                         Controlador_Adquisicion.getComponente(i+1, j)!=null && 
@@ -63,7 +91,11 @@ public class PosicionarComponente implements MouseListener{
                                 Controlador_Adquisicion.matrizComponentes[i][j] = null;
                                 matrizLabels[i][j].setIcon(null);
                                 
-                        } else return;
+                        } else{
+                            Controlador_Adquisicion.componenteAux = null;
+                            Controlador_Adquisicion.isMover = false;
+                            return;
+                        }
    
                     }
                     else{ //ES HORIZONTAL
@@ -79,7 +111,11 @@ public class PosicionarComponente implements MouseListener{
                             Controlador_Adquisicion.matrizComponentes[i][j] = null;
                             matrizLabels[i][j].setIcon(null);
                             
-                        } else return;       
+                        } else{
+                            Controlador_Adquisicion.componenteAux = null;
+                            Controlador_Adquisicion.isMover = false;
+                            return;
+                        }       
                     }
                 }
                                
@@ -109,6 +145,53 @@ public class PosicionarComponente implements MouseListener{
             }
             else return;
         }
+        //CUANDO ES 4X4 TODO TERRENO TOYOTA FUENTE DE PODER
+        
+        else if(Controlador_Adquisicion.componenteAux instanceof FuentePoder){
+            if(i<19 && j<19 &&
+            Controlador_Adquisicion.getComponente(i, j) == null &&
+            Controlador_Adquisicion.getComponente(i, j+1) == null &&
+            Controlador_Adquisicion.getComponente(i+1, j) == null &&
+            Controlador_Adquisicion.getComponente(i+1, j+1) == null){
+                
+                JLabel otroLabel;
+                Point otroPoint;
+                
+                //Muevo las primer casilla
+                Point pointThis = posicionar_ij(this.label);
+                this.i = (int) pointThis.getY();
+                this.y = (int) pointThis.getX();
+                this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+                Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
+                
+                //Muevo j+1
+                otroLabel = matrizLabels[i][j+1];
+                otroPoint = posicionar_ij(otroLabel);
+                this.otroI = (int) otroPoint.getY();
+                this.OtroJ = (int) otroPoint.getX();         
+                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                
+                //Muevo i+1
+                otroLabel = matrizLabels[i+1][j];
+                otroPoint = posicionar_ij(otroLabel);
+                this.otroI = (int) otroPoint.getY();
+                this.OtroJ = (int) otroPoint.getX();         
+                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                
+                //Muevo i+1, j+1
+                otroLabel = matrizLabels[i+1][j+1];
+                otroPoint = posicionar_ij(otroLabel);
+                this.otroI = (int) otroPoint.getY();
+                this.OtroJ = (int) otroPoint.getX();         
+                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                
+            } else return;
+        }
+        
+        //TODOS LOS DEMÁS
         else{
                       
             if(Controlador_Adquisicion.componenteAux.isIsVertical()){

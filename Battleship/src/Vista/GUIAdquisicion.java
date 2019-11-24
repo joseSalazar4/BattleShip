@@ -34,7 +34,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         rellenarMatriz(); 
-        controlador=controlador;        
+        this.controlador=controlador;        
         jLabelCarga.setVisible(false);  
         jLabelInstruccionColocado.setVisible(false);
     }    
@@ -426,7 +426,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButtonConectorActionPerformed
 
     private void jButtonMinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMinaActionPerformed
-        
+  
         controlador.ejecutarCompra(1000, ItemCompra.MINA, jComboBox3.getSelectedIndex()==1);
     }//GEN-LAST:event_jButtonMinaActionPerformed
 

@@ -150,7 +150,6 @@ public class Controlador_Cliente {
             sleep(2000);
         }
             //Codigo de reanudar juego
-            
             todosListos = false;
     }
 }
