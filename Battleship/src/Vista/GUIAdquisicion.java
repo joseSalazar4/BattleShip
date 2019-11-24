@@ -83,7 +83,7 @@ private void rellenarMatriz(){
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabelInstruccionColocado = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnConectar = new javax.swing.JButton();
         jPanelJugador = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabelCantMercado = new javax.swing.JLabel();
@@ -222,10 +222,10 @@ private void rellenarMatriz(){
         jLabelInstruccionColocado.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
 
-        jButton1.setText("Conectar :3");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConectar.setText("Conectar :3");
+        btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConectarActionPerformed(evt);
             }
         });
 
@@ -278,7 +278,7 @@ private void rellenarMatriz(){
                         .addComponent(jLabelInstruccionColocado))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(jButton1)))
+                        .addComponent(btnConectar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -323,7 +323,7 @@ private void rellenarMatriz(){
                     .addComponent(jLabel5)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnConectar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelInstruccionColocado))
         );
@@ -463,9 +463,9 @@ private void rellenarMatriz(){
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
+       
+    }//GEN-LAST:event_btnConectarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,7 +503,7 @@ private void rellenarMatriz(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConectar;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonArmeria;
     private javax.swing.JButton jButtonConector;
