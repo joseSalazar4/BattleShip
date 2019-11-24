@@ -39,10 +39,14 @@ import javax.swing.JPanel;
         
         cargarDatosDelJugador();
         
-        Graphics g = pantalla.getPanelJugador().getGraphics();
-        g.drawLine(X1, Y1, X2, Y2);
+        DibujoLinea d = new DibujoLinea(pantalla);
+        
+        d.border = 5;
+        d.DrawLine(X1, X1, X2, X2);
          
-        colocarRemolino();
+         
+        
+        //colocarRemolino();
         
     }
     public void cargarDatosDelJugador(){
@@ -108,10 +112,6 @@ import javax.swing.JPanel;
         }
     }
    
-    public void adquirirArma(){
-        //Armeria armeria = new Armeria();
-    }
-    
     public static Componente getComponente(int i, int j){
         return matrizComponentes[i][j]; 
     }

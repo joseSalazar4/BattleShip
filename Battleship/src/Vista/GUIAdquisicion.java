@@ -33,7 +33,7 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
-        rellenarMatriz(); 
+        //rellenarMatriz(); 
         this.controlador=controlador;        
         jLabelCarga.setVisible(false);  
         jLabelInstruccionColocado.setVisible(false);
@@ -48,6 +48,8 @@ private void rellenarMatriz(){
                 PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
+                labelNuevo.setOpaque(false);
+                labelNuevo.setVisible(false);
                 matrizLabels[i][j] = labelNuevo;
                 pcs[i][j] = pc;
                 jPanelJugador.add(labelNuevo);
@@ -322,7 +324,8 @@ private void rellenarMatriz(){
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 290, 410));
 
-        jPanelJugador.setBackground(new java.awt.Color(25, 102, 102));
+        jPanelJugador.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelJugador.setForeground(new java.awt.Color(1, 1, 1));
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout jPanelJugadorLayout = new javax.swing.GroupLayout(jPanelJugador);
