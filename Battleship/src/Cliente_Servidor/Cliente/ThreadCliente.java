@@ -46,7 +46,7 @@ public class ThreadCliente extends Thread{
                         cliente.controlador.recibirMensajeJuego(mensajeJuego);
                         break;
                     case 4: 
-                        
+                        //cliente.controlador; pregunt
                         break;
                         
                 }

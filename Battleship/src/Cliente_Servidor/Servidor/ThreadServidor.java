@@ -18,13 +18,13 @@ import java.util.logging.Logger;
  * @author Personal
  */
 public class ThreadServidor extends Thread{
-    Servidor servidor;
-    Socket cliente;
+    Servidor servidor; //
+    Socket cliente; 
     int numeroCliente;
     String nickName = "";
     String ip;
     GUIServidor pantalla;
-    boolean activo = true;
+    boolean activo = true, estoyListo= false;
     int opcion;
     
     private ObjectInputStream inputStream;
@@ -67,6 +67,12 @@ public class ThreadServidor extends Thread{
                             cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
                         
+                    case 4:   //IniciarPartida enviar datos a los enemigos de cada jugador
+                        estoyListo = true; 
+                        for(ThreadServidor cliente: servidor.getClientes())
+                            cliente.reanudarJuego();
+                    break;
+                        
                     // Opcion es el metodo que quiere que el servidor haga 
                 }
             }
@@ -93,6 +99,10 @@ public class ThreadServidor extends Thread{
     public void enviarMensaje(mensajeGenerico mensaje) throws IOException{
         outputStream.writeInt(2);
         outputStream.writeObject(mensaje);
+    }
+    
+    public void reanudarJuego() throws IOException{
+        outputStream.writeInt(4);
     }
     
     public void enviarMensajeJuego(mensajeGenerico mensaje) throws IOException{

@@ -32,8 +32,9 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
         rellenarMatriz(); 
-        this.controlador = controlador;        
-        this.jLabelInstruccionColocado.setVisible(false);  
+        controlador=controlador;        
+        jLabelCarga.setVisible(false);  
+        jLabelInstruccionColocado.setVisible(false);
     }    
     
 private void rellenarMatriz(){
@@ -104,7 +105,7 @@ private void rellenarMatriz(){
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCantMina1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelCarga = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 51));
@@ -381,7 +382,7 @@ private void rellenarMatriz(){
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 630, 120, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 640, 120, -1));
 
         lblDinero.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblDinero.setForeground(new java.awt.Color(255, 255, 255));
@@ -407,8 +408,8 @@ private void rellenarMatriz(){
         jLabelCantMina1.setText("Mina: 0");
         getContentPane().add(jLabelCantMina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
 
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 110, -1, -1));
+        jLabelCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ezgif.com-resize.gif"))); // NOI18N
+        getContentPane().add(jLabelCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 630, 140, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -508,7 +509,6 @@ private void rellenarMatriz(){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelCantArmeria;
     private javax.swing.JLabel jLabelCantConectores;
     private javax.swing.JLabel jLabelCantFuentePoder;
@@ -516,6 +516,7 @@ private void rellenarMatriz(){
     private javax.swing.JLabel jLabelCantMina;
     private javax.swing.JLabel jLabelCantMina1;
     private javax.swing.JLabel jLabelCantTemplos;
+    private javax.swing.JLabel jLabelCarga;
     private javax.swing.JLabel jLabelInstruccionColocado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelJugador;
@@ -653,6 +654,10 @@ private void rellenarMatriz(){
     
     public JLabel [][] getMatrizLabel(){
         return this.matrizLabels;   
+    }
+    
+    public JLabel getjLabelCarga(){
+        return this.jLabelCarga;
     }
     
 }
