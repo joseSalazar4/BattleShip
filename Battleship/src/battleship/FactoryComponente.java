@@ -35,6 +35,8 @@ public class FactoryComponente {
             
             case ESPACIOMUERTO:
                 return new EspacioMuerto();
+            case REMOLINO:
+                return new Remolino();
             
         }
         System.out.println("ERROR AL CREAR EN FctoryComponente REVISAR ");

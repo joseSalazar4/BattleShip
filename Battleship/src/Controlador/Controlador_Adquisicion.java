@@ -8,8 +8,10 @@ package Controlador;
 import Vista.GUIAdquisicion;
 import battleship.Componente;
 import Cliente_Servidor.Cliente.Cliente;
+import static battleship.Componente.tipoComponente.Remolino;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
+import static battleship.ItemCompra.REMOLINO;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -121,12 +123,12 @@ import javax.swing.JPanel;
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        //pantalla.matrizComponentes[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png"))); 
+        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);
         
         //Segundo Remolino
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        //pantalla.matrizComponentes[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Tornado.png"))); 
+        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
     }
     
     public void colocarFuentePoder(){
