@@ -116,6 +116,7 @@ import javax.swing.JOptionPane;
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
             
             //Agregar el arma comprada al jugador
+            esta metiendo todo al combox armas , tenemos un array de todo lo que tiene el men?
             cliente.jugador.getArmasCompradas().add(componenteAux);             
         }
     }
@@ -189,14 +190,10 @@ import javax.swing.JOptionPane;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(numero<19 &&
                 pantalla.matrizLabels[numero][numero].getIcon() == null
-                && pantalla.matrizLabels[numero][numero+1].getIcon() == null
-                && pantalla.matrizLabels[numero+1][numero].getIcon() == null
-                && pantalla.matrizLabels[numero+1][numero+1].getIcon() == null){
-                
+                && pantalla.matrizLabels[numero][numero+1].getIcon() == null){
+                    
                 pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
                 pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
-                pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
-                pantalla.matrizLabels[numero+1][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         }
         else colocarMercado();
         
