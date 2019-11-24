@@ -6,6 +6,7 @@
 package Controlador;
 
 import Grafo.Vertice;
+import battleship.Conector;
 import battleship.FuentePoder;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
@@ -251,7 +252,7 @@ public class PosicionarComponente implements MouseListener{
             }
         }
         Controlador_Adquisicion.componenteAux.getPoint().setLocation(j, i);
-        if(Controlador_Adquisicion.isComprado){ //Creo el vertice
+        if(Controlador_Adquisicion.isComprado && !(Controlador_Adquisicion.componenteAux instanceof Conector)){ //Creo el vertice
             Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
             Controlador_Adquisicion.componenteAux.setVertice(vertice);
             Controlador_Adquisicion.grafo.addVertice(vertice);
