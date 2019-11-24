@@ -5,6 +5,8 @@
  */
 package battleship;
 
+import static battleship.Componente.tipoComponente.Armeria;
+
 /**
  *
  * @author mikom
@@ -13,8 +15,8 @@ package battleship;
 //USAR FACTORY METHOD
 public class Armeria extends Componente{
     
-    
     public Armeria(int tipoArmaProducir){
+        this.tipoComponente = Armeria;
         this.is1x1 = false;
         this.is2x2 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png"));

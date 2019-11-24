@@ -6,6 +6,7 @@
 package battleship;
 
 import Cliente.Jugador;
+import static battleship.Componente.tipoComponente.Mercado;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Mercado extends Componente {
 
             
    public Mercado(){
+       this.tipoComponente = Mercado;
         nombre = "Mercado";
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png"));
         objetoVenta = objetoComprado = null;

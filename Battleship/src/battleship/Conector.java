@@ -5,6 +5,7 @@
  */
 package battleship;
 
+import static battleship.Componente.tipoComponente.Conector;
 /**
  *
  * @author mikom
@@ -12,6 +13,7 @@ package battleship;
 public class Conector extends Componente {
     
     Conector(){
+        this.tipoComponente = Conector;
         nombre = "Conector";
         this.is1x1 = true;
         this.imagen = new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Conector.png"));
