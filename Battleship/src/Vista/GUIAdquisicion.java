@@ -8,6 +8,7 @@ package Vista;
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
 import battleship.ItemCompra;
+import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -18,15 +19,7 @@ import javax.swing.JPanel;
 public class GUIAdquisicion extends javax.swing.JFrame {
 
     Controlador_Adquisicion controlador;
-    
-    
-    public JLabel imagenMina = new JLabel();
-    public JLabel imagenFuente = new JLabel();
-    public JLabel imagenTemplo = new JLabel();
-    public JLabel imagenMercado = new JLabel();
-    public JLabel imagenArmeria = new JLabel();
-    public JLabel imagenTornado = new JLabel();
-    
+    int TAMANNO = 30;
     
     public JLabel [][] matrizLabels = new JLabel [20][20];
     public PosicionarComponente [][] pcs = new PosicionarComponente[20][20];
@@ -40,7 +33,6 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     }    
     
 private void rellenarMatriz(){
-        int TAMANNO = 30;
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
@@ -322,7 +314,8 @@ private void rellenarMatriz(){
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 290, 410));
 
-        jPanelJugador.setBackground(new java.awt.Color(25, 102, 102));
+        jPanelJugador.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelJugador.setForeground(new java.awt.Color(1, 1, 1));
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout jPanelJugadorLayout = new javax.swing.GroupLayout(jPanelJugador);
@@ -443,8 +436,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButtonMercadoActionPerformed
 
     private void jButtonFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFuenteActionPerformed
-        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);
-        
+        controlador.ejecutarCompra(2000, ItemCompra.FUENTEDEENERGIA, jComboBox3.getSelectedIndex()==1);      
     }//GEN-LAST:event_jButtonFuenteActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

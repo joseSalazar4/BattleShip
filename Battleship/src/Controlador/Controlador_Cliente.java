@@ -192,9 +192,9 @@ public class Controlador_Cliente {
         return miTurno;
     }
 
+
     public void setMiTurno(boolean miTurno) {
         this.miTurno = miTurno;
     }
-   
-    
+       
 }
