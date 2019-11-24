@@ -68,9 +68,17 @@ public class ThreadServidor extends Thread{
                     break;
                         
                     case 4:   //IniciarPartida enviar datos a los enemigos de cada jugador
+                        boolean estanTodosListos = true;
                         estoyListo = true; 
-                        for(ThreadServidor cliente: servidor.getClientes())
-                            cliente.reanudarJuego();
+                        for(ThreadServidor cliente: servidor.getClientes()){
+                            if(!cliente.estoyListo) estanTodosListos = false;
+                        }
+                        
+                        if(estanTodosListos){
+                            for(ThreadServidor cliente2: servidor.getClientes())
+                                cliente2.reanudarJuego();
+                        }
+                        
                     break;
                         
                     // Opcion es el metodo que quiere que el servidor haga 

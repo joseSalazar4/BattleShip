@@ -135,7 +135,15 @@ public class Controlador_Cliente {
     public void setMatrizJugadorComp(Componente [][] matrizN){
         matrizJugadorComp = matrizN;
     }
-    
+
+    public boolean isTodosListos() {
+        return todosListos;
+    }
+
+    public void setTodosListos(boolean todosListos) {
+        this.todosListos = todosListos;
+    }
+   
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException{
       while(!todosListos){

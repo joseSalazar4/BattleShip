@@ -47,6 +47,7 @@ public class ThreadCliente extends Thread{
                         break;
                     case 4: 
                         //cliente.controlador; pregunt
+                        cliente.controlador.setTodosListos(true);
                         break;
                         
                 }

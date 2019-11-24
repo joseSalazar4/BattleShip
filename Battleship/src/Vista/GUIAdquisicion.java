@@ -8,6 +8,8 @@ package Vista;
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
 import battleship.ItemCompra;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -446,7 +448,11 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButtonFuenteActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        controlador.iniciarPartida();        // TODO add your handling code here:
+        try {
+            controlador.iniciarPartida();        // TODO add your handling code here:
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUIAdquisicion.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
