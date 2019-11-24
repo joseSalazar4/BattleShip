@@ -45,6 +45,9 @@ public class ThreadCliente extends Thread{
                         mensajeGenerico mensajeJuego = (mensajeGenerico) inputStream.readObject();
                         cliente.controlador.recibirMensajeJuego(mensajeJuego);
                         break;
+                    case 4: 
+                        
+                        break;
                         
                 }
             } catch (IOException ex) {

@@ -136,7 +136,6 @@ public class PosicionarComponente implements MouseListener{
                     Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
                 }
                 else return;
-        
             }
             
             else{
