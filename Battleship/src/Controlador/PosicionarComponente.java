@@ -123,6 +123,7 @@ public class PosicionarComponente implements MouseListener{
                     if(Controlador_Adquisicion.getComponente(i, j) != null) return;
 
                     this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+
                     Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
                     
                     //LA SEGUNDO LABEL ES EL DE ABAJO
