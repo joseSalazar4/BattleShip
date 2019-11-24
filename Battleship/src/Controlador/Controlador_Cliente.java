@@ -131,5 +131,16 @@ public class Controlador_Cliente {
     public void setMatrizJugadorComp(Componente [][] matrizN){
         matrizJugadorComp = matrizN;
     }
-    
+//    
+//    //Codigo de renovar juego 
+//    public 
+//    {
+//        
+//        while(!listo){
+//            sleep(2000);
+//        }
+            //Codigo de reanudar juego
+            
+            //listo = false;
+//    }
 }
