@@ -53,13 +53,9 @@ import javax.swing.JPanel;
         pantalla.getjLabelCantConectores().setText("Conectores: " + this.ctdConectores);
         pantalla.getjLabelCantFuentePoder().setText("Fuente Poder: " + this.ctdFuentesPoder);    
     }
-    
-    public void adquirirTemplo(){
-        //Templo templo = new Templo();
-    }
-    
-    
-    public void iniciarPartida(){
+       
+    public void iniciarPartida() throws InterruptedException{
+        pantalla.getjLabelCarga().setVisible(true);
         controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
@@ -68,6 +64,8 @@ import javax.swing.JPanel;
         pantalla.getButtonMercado().setEnabled(false);
         pantalla.getButtonConector().setEnabled(false);
         
+        cliente.controlador.esperarEnemigos();
+        //Conectar con el servidor y decir que listo.
     }
         
     public void agregarElementoComprado(Componente.tipoComponente elemento){

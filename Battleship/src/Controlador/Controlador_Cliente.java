@@ -8,21 +8,25 @@ import Vista.GUICliente;
 import Vista.GUIStartUp;
 import battleship.Componente;
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
-    private GUIStartUp pantallaStartUp;
-    private GUIAdquisicion pantallaAdquisicion; 
-    private GUICliente pantallaPrincipal;
     private Cliente cliente;
+    private boolean todosListos;
+    private GUIStartUp pantallaStartUp; 
+    private GUICliente pantallaPrincipal;
+    private GUIAdquisicion pantallaAdquisicion;
+    private Controlador_Adquisicion controladorAdquisicion;
     private JLabel [][] matrizJugadorLbel, matrizEnemigoLbel;
     private Componente [][] matrizJugadorComp, matrizEnemigoComp;
-    private Controlador_Adquisicion controladorAdquisicion;
+
     
     public Controlador_Cliente(){ 
+        todosListos = false;
         this.cliente = new Cliente("localhost", 9999, this); 
         this.pantallaStartUp = new GUIStartUp(this);
         this.pantallaStartUp.setVisible(true);
@@ -131,16 +135,14 @@ public class Controlador_Cliente {
     public void setMatrizJugadorComp(Componente [][] matrizN){
         matrizJugadorComp = matrizN;
     }
-//    
-//    //Codigo de renovar juego 
-//    public 
-//    {
-//        
-//        while(!listo){
-//            sleep(2000);
-//        }
+    
+    //Codigo de renovar juego 
+    public void esperarEnemigos() throws InterruptedException{
+      while(!todosListos){
+            sleep(2000);
+        }
             //Codigo de reanudar juego
             
-            //listo = false;
-//    }
+            todosListos = false;
+    }
 }
