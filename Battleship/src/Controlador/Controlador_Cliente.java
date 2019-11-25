@@ -53,7 +53,7 @@ public class Controlador_Cliente {
         }
         this.pantallaStartUp.dispose();
         
-        this.controladorAdquisicion = new Controlador_Adquisicion(cliente);
+        this.controladorAdquisicion = new Controlador_Adquisicion(cliente, this);
         this.pantallaAdquisicion = controladorAdquisicion.getPantalla();        
     }
     
@@ -80,6 +80,11 @@ public class Controlador_Cliente {
         this.pantallaPrincipal.setVisible(true);
         
         //Agregar 
+    }
+    
+    public void cargarEnemigoComboBox(){
+        for(String enemigo: this.cliente.jugador.getEnemigos())
+        pantallaPrincipal.getjComboBoxEnemigos().addItem(enemigo);
     }
     
     public void reanudarPantallaAdquisicion(){
