@@ -25,7 +25,7 @@ import Cliente_Servidor.Cliente.Cliente;
     public class Controlador_Adquisicion {
     Cliente cliente;
     static GUIAdquisicion pantalla; 
-    FactoryComponente factoryComponente; 
+    FactoryComponente factoryComponente;  
     private Controlador_Cliente controladorCliente;
     public boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
     public  Componente componenteAux = null;
