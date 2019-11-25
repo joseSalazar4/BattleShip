@@ -122,9 +122,8 @@ import Cliente_Servidor.Cliente.Cliente;
     }
     
     public void trazarConexiones(){
-        
-        for(Vertice vertice: this.grafo.getVertices()){    
-            this.pantalla.getPanelJugador().setBackground(Color.BLUE);
+        this.pantalla.getPanelJugador().setBackground(Color.blue);
+        for(Vertice vertice: this.grafo.getVertices()){        
             for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                 Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
                 Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
@@ -203,7 +202,8 @@ import Cliente_Servidor.Cliente.Cliente;
                 pantalla.matrizLabels[numero][numero].getIcon() == null
                 && pantalla.matrizLabels[numero][numero+1].getIcon() == null){
                     
-                //matrizComponentes[numero][numero] = componenteNuevo;
+                matrizComponentes[numero][numero] = componenteNuevo;
+                matrizComponentes[numero][numero+1] = componenteNuevo;
                 pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
                 pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         }

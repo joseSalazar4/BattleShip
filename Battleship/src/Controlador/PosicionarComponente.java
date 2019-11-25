@@ -88,6 +88,7 @@ public class PosicionarComponente implements MouseListener{
                 if(controlador.componenteAux != null){ 
                     if(controlador.getComponente(i, j) == null){
                        mover(); 
+                       System.out.println(controlador.grafo.toString());
                        controlador.trazarConexiones();
                     }
                         
