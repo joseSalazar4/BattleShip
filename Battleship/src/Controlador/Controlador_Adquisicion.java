@@ -5,24 +5,22 @@
  */
 package Controlador;
 
-import Vista.GUIAdquisicion;
-import battleship.Componente;
-import Cliente_Servidor.Cliente.Cliente;
 import Grafo.Grafo;
 import Grafo.Vertice;
-import static battleship.Componente.tipoComponente.Remolino;
-import static battleship.Componente.tipoComponente.Conector;
-import battleship.Conector;
-import battleship.FactoryComponente;
-import battleship.ItemCompra;
-import static battleship.ItemCompra.REMOLINO;
 import java.awt.Color;
 import java.awt.Graphics;
+import Vista.GUIAdquisicion;
+import battleship.Componente;
+import battleship.Conector;
+import battleship.ItemCompra;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import battleship.FactoryComponente;
+import static battleship.ItemCompra.*;
+import Cliente_Servidor.Cliente.Cliente;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -47,12 +45,6 @@ import javax.swing.JOptionPane;
         
         cargarDatosDelJugador();
         
-//        if(Controlador_Adquisicion.isComprado && !(Controlador_Adquisicion.componenteAux instanceof Conector)){ //Creo el vertice
-//            Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
-//            Controlador_Adquisicion.componenteAux.setVertice(vertice);
-//            Controlador_Adquisicion.grafo.addVertice(vertice);
-//            System.out.println("Se creo un Vertice:  Cordenada: " +  vertice.getComponente().getPoint().y + "," + vertice.getComponente().getPoint().x);
-//        }
          
         colocarMercado();
         colocarRemolino();
@@ -117,7 +109,6 @@ import javax.swing.JOptionPane;
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
         
-            componenteAux.getNombre();
             pantalla.getLabelInstruccion().setVisible(true);
             
             agregarElementoComprado(componenteAux.getTipoComponente());
@@ -146,16 +137,15 @@ import javax.swing.JOptionPane;
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
         graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());
-        System.out.println("x1: " + x1 + " y1: " + y1);
-        System.out.println("x2: " + x2 + " y2: " + y2);
-        System.out.println("VERSION KORREKTA");
-    }
-    
-    public void trazarConexionesConectores(){
-        
     }
     
     public void colocarFuentePoder(){
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(FUENTEDEENERGIA, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null
@@ -172,6 +162,13 @@ import javax.swing.JOptionPane;
         else colocarFuentePoder();
     }
     public void colocarRemolino(){
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(REMOLINO, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
+        
         //Colocar el tornado
         //Obtener un numero realmente aleatorio al darle un seed
         //Primero Remolino
@@ -191,6 +188,12 @@ import javax.swing.JOptionPane;
         else colocarRemolino();        
     }
     public void colocarMercado(){
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(MERCADO, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(numero<19 &&

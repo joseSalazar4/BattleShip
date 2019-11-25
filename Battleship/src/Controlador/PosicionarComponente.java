@@ -8,6 +8,7 @@ package Controlador;
 import Grafo.Vertice;
 import battleship.Conector;
 import battleship.FuentePoder;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -300,6 +301,7 @@ public class PosicionarComponente implements MouseListener{
         Controlador_Adquisicion.componenteAux = null;
         Controlador_Adquisicion.isComprado = false;
         Controlador_Adquisicion.isMover = false;
+        Controlador_Adquisicion.pantalla.getPanelJugador().setBackground(Color.red);
         Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
        
     }
