@@ -7,12 +7,13 @@ package battleship;
 
 import Componentes.Componente;
 import Grafo.Grafo;
+import java.io.Serializable;
 
 /**
  *
  * @author Personal
  */
-public class Oceano {
+public class Oceano implements Serializable {
     public String enemigo;
     public Grafo grafo;
     public Componente[][] matrizComponentes;

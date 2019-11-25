@@ -6,6 +6,7 @@
 package Cliente_Servidor.Servidor;
 import Cliente_Servidor.mensajeGenerico;
 import Vista.GUIServidor;
+import battleship.Oceano;
 import java.io.*;
 
 import java.net.Socket;
@@ -24,9 +25,8 @@ public class ThreadServidor extends Thread{
     String nickName = "";
     String ip;
     GUIServidor pantalla;
-    boolean activo = true, estoyListo= false;
+    boolean activo = true, estoyListo= false, miTurno = false;
     int opcion;
-    
     private ObjectInputStream inputStream;
     private ObjectOutputStream outputStream; 
 
@@ -80,11 +80,22 @@ public class ThreadServidor extends Thread{
                         }
                     break;
                     case 5: //Terminar mi turno
+                        this.miTurno = false;
                         servidor.siguienteTurno();
                     break;
                         
                     case 7: //Buscar Oceano Enemigo
+                        String nickEnemigo = (String) inputStream.readUTF();
+                        for(ThreadServidor thread : servidor.getClientes()){
+                            if(thread.nickName.equals(nickEnemigo)) thread.enviarOceano();
+                        }
+                    break;
                         
+                    case 8: //Enviar mi Oceano
+                        Oceano oceano = (Oceano) inputStream.readObject();
+                        for(ThreadServidor thread : servidor.getClientes()){
+                            if(thread.isMiTurno()) thread.recibirOceano(oceano);
+                        }
                     break;
                         
                         
@@ -131,6 +142,7 @@ public class ThreadServidor extends Thread{
     }
     
     void empezarTurno() throws IOException {
+        this.miTurno = true;
         outputStream.writeInt(5);
         outputStream.flush();
     }
@@ -140,10 +152,19 @@ public class ThreadServidor extends Thread{
         outputStream.flush();
     }
 
+    //Busqueda de Oceano Enemigo
     
-   
+    public void recibirOceano(Oceano oceano) throws IOException{
+        outputStream.writeInt(7);
+        outputStream.writeObject(oceano);
+    }
+    
+    public void enviarOceano() throws IOException{
+        outputStream.writeInt(8);
+    }
+    
 
-    
+
     //----Getter && Setter----
     
     public int getNumeroCliente() {
@@ -162,6 +183,15 @@ public class ThreadServidor extends Thread{
         this.nickName = nickName;
     }
 
+    public boolean isMiTurno() {
+        return miTurno;
+    }
+
+    public void setMiTurno(boolean miTurno) {
+        this.miTurno = miTurno;
+    }
+    
+    
     
 
     

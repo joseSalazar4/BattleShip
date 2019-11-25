@@ -9,6 +9,9 @@ import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import Componentes.Componente;
+import Componentes.Conector;
+import Componentes.FuentePoder;
+import Grafo.Arista;
 import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -16,6 +19,7 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.text.DefaultCaret;
 
@@ -30,6 +34,9 @@ public class Controlador_Cliente {
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private Componente [][] matrizJugadorComp;
     private Oceano oceanoEnemigo;
+    
+    private JLabel labelEnemigoSeleccionado;
+    ImageIcon imageAnterior;
 
     
     public Controlador_Cliente(){ 
@@ -71,6 +78,7 @@ public class Controlador_Cliente {
             pantallaPrincipal.getComboBoxArmas().addItem(cliente.jugador.getArmasCompradas().get(i).getNombre());
         
         crearMatrizJugadorLabels();
+        crearMatrizEnemigoLabels();
         
         for(String enemigo: cliente.jugador.getEnemigos())
             this.pantallaPrincipal.getjComboBoxEnemigos().addItem(enemigo);
@@ -88,6 +96,21 @@ public class Controlador_Cliente {
                 labelNuevo.setLocation(j*30, i*30);
                 this.matrizJugadorLbel[i][j] = labelNuevo;
                 this.pantallaPrincipal.getjPanelJugador().add(labelNuevo);
+            }
+        }
+    }
+    
+    public void crearMatrizEnemigoLabels(){
+        ImageIcon imagen = new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Cursor.png"));
+        for(int i = 0; i<20 ;i++){
+            for(int j = 0; j<20 ;j++){
+                JLabel labelNuevo = new JLabel();
+                labelNuevo.setOpaque(false);
+                labelNuevo.setSize(30, 30);
+                labelNuevo.setLocation(j*30, i*30);
+                this.matrizEnemigoLbel[i][j] = labelNuevo;
+                this.pantallaPrincipal.getjPanelEnemigo().add(labelNuevo);
+                new marcarCasillaEnemigo(labelNuevo, i, j, this, imagen);
             }
         }
     }
@@ -134,12 +157,7 @@ public class Controlador_Cliente {
         
         
     }
-    
-    public void cargarEnemigoComboBox(){
-        for(String enemigo: this.cliente.jugador.getEnemigos())
-        pantallaPrincipal.getjComboBoxEnemigos().addItem(enemigo);
-    }
-    
+        
     public void reanudarPantallaAdquisicion(){
         this.pantallaAdquisicion.setVisible(true);
         this.pantallaPrincipal.setVisible(false);
@@ -147,24 +165,62 @@ public class Controlador_Cliente {
         //Agregar
     }
     
-    
     //METODOS DE PEDIR DATOS DEL ENEMIGO
     
     public void buscarOceanoEnemigo() throws IOException{
+        System.out.println("Buscando oceano enemigo");
         String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
         cliente.buscarOceanoEnemigo(enemigoBuscado);
     }
     
     public void setOceanoEnemigo(Oceano oceano){
         this.oceanoEnemigo = oceano;
+        //Pintar oceano enemigo
+        mostrarOceanoEnemigo();
+    }
+    
+    public void enviarMiOceano() throws IOException{
+        Oceano miOceano = new Oceano();
+        miOceano.grafo = this.controladorAdquisicion.grafo;
+        miOceano.matrizComponentes = this.matrizJugadorComp;
+        cliente.enviarMiOceano(miOceano);
     }
     
     public void mostrarOceanoEnemigo(){
-        //Recorrer la matriz o el grafo del enemigo y mostrar los componentes
-        //que no esten conectados a una fuente de poder.
+        for(int i = 0; i<20 ;i++){
+            for(int j = 0; j<20 ;j++){
+                Componente componenteEnemigo = oceanoEnemigo.matrizComponentes[i][j];
+                JLabel labelEnemigo = this.matrizEnemigoLbel[i][j];
+                if(componenteEnemigo != null){
+                    labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
+                    if(componenteEnemigo instanceof Conector){
+                        Conector conectorEnemigo = (Conector) componenteEnemigo;
+                        if(conectorEnemigo.getFuente() != null){
+                            labelEnemigo.setIcon(null); 
+                        }
+                                                       
+                    }
+                    else{ //Si no es un conector
+                        if(componenteEnemigo instanceof FuentePoder){
+                            labelEnemigo.setIcon(null);
+                        }
+                        else{
+                            //Cuando no es una Fuente de Poder
+                            if(componenteEnemigo.getVertice().getAristas() != null &&
+                            !componenteEnemigo.getVertice().getAristas().isEmpty()){
+                                for(Arista arista : componenteEnemigo.getVertice().getAristas()){
+                                    if(arista.getDestination().getComponente() instanceof FuentePoder){
+                                        labelEnemigo.setIcon(null);
+                                    }        
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-    
-    
+  
     
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
@@ -266,5 +322,23 @@ public class Controlador_Cliente {
     public void setMiTurno(boolean miTurno) {
         this.miTurno = miTurno;
     }
-       
+
+    public JLabel getLabelEnemigoSeleccionado() {
+        return labelEnemigoSeleccionado;
+    }
+
+    public void setLabelEnemigoSeleccionado(JLabel labelEnemigoSeleccionado) {
+        this.labelEnemigoSeleccionado = labelEnemigoSeleccionado;
+    }
+
+    public ImageIcon getImageAnterior() {
+        return imageAnterior;
+    }
+
+    public void setImageAnterior(ImageIcon imageAnterior) {
+        this.imageAnterior = imageAnterior;
+    }
+    
+    
+    
 }

@@ -5,8 +5,9 @@ import java.util.List;
 
 import Componentes.Componente;
 import java.awt.Point;
+import java.io.Serializable;
 
-public class Vertice {
+public class Vertice implements Serializable{
     private Componente componente;
     private List<Arista> aristas;
 

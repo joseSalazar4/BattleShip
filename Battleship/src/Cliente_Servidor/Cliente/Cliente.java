@@ -7,6 +7,7 @@ package Cliente_Servidor.Cliente;
 
 import Cliente.Jugador;
 import Cliente_Servidor.mensajeGenerico;
+import battleship.Oceano;
 import java.io.*;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -81,6 +82,12 @@ public class Cliente {
     public void buscarOceanoEnemigo(String enemigo) throws IOException{
         outputStream.writeInt(7);
         outputStream.writeUTF(enemigo);
+        outputStream.flush();
+    }
+    
+    public void enviarMiOceano(Oceano oceano) throws IOException{
+        outputStream.writeInt(8);
+        outputStream.writeObject(oceano);
         outputStream.flush();
     }
     

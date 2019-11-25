@@ -56,7 +56,9 @@ public class Servidor extends Thread{
             this.pantalla.addStatus("Empezando partida...");
             
             for(ThreadServidor thread: clientes) thread.enviarEnemigos();
-
+            
+            siguienteTurno();
+            
             //Hacemos el primer handShake de todos los clientes
 
 

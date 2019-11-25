@@ -3,10 +3,11 @@ package Componentes;
 
 import Grafo.Vertice;
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-public class Componente implements Cloneable{
+public class Componente implements Cloneable, Serializable{
     String nombre;
     int costo;
     public boolean isVertical=false, is1x1, is2x2;  

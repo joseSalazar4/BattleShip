@@ -2,6 +2,7 @@
 package Cliente_Servidor.Cliente;
 
 import Cliente_Servidor.mensajeGenerico;
+import battleship.Oceano;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -54,6 +55,13 @@ public class ThreadCliente extends Thread{
                         break;
                     case 6:
                         cliente.controlador.reanudarPantallaAdquisicion();
+                        break;
+                    case 7:
+                        Oceano oceanoEnemigo = (Oceano) inputStream.readObject();
+                        cliente.controlador.setOceanoEnemigo(oceanoEnemigo);
+                        break;
+                    case 8:
+                        cliente.controlador.enviarMiOceano();
                         break;
                         
                         

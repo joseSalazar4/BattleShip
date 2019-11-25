@@ -53,7 +53,6 @@ public class GUICliente extends javax.swing.JFrame {
 
     private GUICliente() {
         initComponents();
-        controlador.cargarEnemigoComboBox();
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -97,7 +96,6 @@ public class GUICliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
-        setPreferredSize(new java.awt.Dimension(1290, 800));
         setSize(new java.awt.Dimension(1290, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -325,6 +323,11 @@ public class GUICliente extends javax.swing.JFrame {
 
         getContentPane().add(jPanelEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
 
+        jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEnemigosActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBoxEnemigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 240, 30));
 
         pack();
@@ -357,6 +360,15 @@ public class GUICliente extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBoxEnemigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEnemigosActionPerformed
+        try {
+            //Selecciono un enemigo
+            controlador.buscarOceanoEnemigo();
+        } catch (IOException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jComboBoxEnemigosActionPerformed
 
     /**
      * @param args the command line arguments

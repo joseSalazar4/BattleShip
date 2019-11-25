@@ -2,8 +2,9 @@
 package Grafo;
 import Componentes.Conector;
 import java.awt.Point;
+import java.io.Serializable;
 
-public class Arista {
+public class Arista implements Serializable{
     private Vertice origin;
     private Vertice destination;
     private Conector conector;

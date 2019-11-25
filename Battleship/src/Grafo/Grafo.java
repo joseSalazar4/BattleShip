@@ -1,10 +1,11 @@
 package Grafo;
 import Componentes.Conector;
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Grafo {
+public class Grafo implements Serializable{
     private List<Vertice> vertices;
 
     public Grafo(){
