@@ -26,8 +26,8 @@ public class GUIAdquisicion extends javax.swing.JFrame {
     
     public GUIAdquisicion(Controlador_Adquisicion controlador) {
         initComponents();
-        rellenarMatriz(); 
-        this.controlador=controlador;        
+        this.controlador=controlador;  
+        rellenarMatriz();       
         jLabelCarga.setVisible(false);  
         jLabelInstruccionColocado.setVisible(false);
     }    
@@ -37,7 +37,7 @@ private void rellenarMatriz(){
             for(int j = 0; j<20 ;j++){
                 JLabel labelNuevo = new JLabel();
                 labelNuevo.setOpaque(false);
-                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j);
+                PosicionarComponente pc = new PosicionarComponente(labelNuevo, matrizLabels, i, j, controlador);
                 labelNuevo.setSize(TAMANNO, TAMANNO);
                 labelNuevo.setLocation(j*TAMANNO, i*TAMANNO);
                 matrizLabels[i][j] = labelNuevo;
@@ -464,8 +464,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-        Controlador.Controlador_Adquisicion.setIsConectar();
-        controlador.trazarConexiones();
+        controlador.setIsConectar();
     }//GEN-LAST:event_btnConectarActionPerformed
 
     /**

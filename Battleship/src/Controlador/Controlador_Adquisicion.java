@@ -5,24 +5,22 @@
  */
 package Controlador;
 
-import Vista.GUIAdquisicion;
-import battleship.Componente;
-import Cliente_Servidor.Cliente.Cliente;
 import Grafo.Grafo;
 import Grafo.Vertice;
-import static battleship.Componente.tipoComponente.Remolino;
-import static battleship.Componente.tipoComponente.Conector;
-import battleship.Conector;
-import battleship.FactoryComponente;
-import battleship.ItemCompra;
-import static battleship.ItemCompra.REMOLINO;
 import java.awt.Color;
 import java.awt.Graphics;
+import Vista.GUIAdquisicion;
+import battleship.Componente;
+import battleship.Conector;
+import battleship.ItemCompra;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import battleship.FactoryComponente;
+import static battleship.ItemCompra.*;
+import Cliente_Servidor.Cliente.Cliente;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -30,11 +28,11 @@ import javax.swing.JOptionPane;
     FactoryComponente factoryComponente;
     private int X1, Y1, X2, Y2;
     private Controlador_Cliente controladorCliente;
-    public static boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
-    public static Componente componenteAux = null;
-    public static Conector conectorAux = null;
-    public static Componente[][] matrizComponentes = new Componente[20][20];
-    public static Grafo grafo = new Grafo();
+    public boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
+    public  Componente componenteAux = null;
+    public  Conector conectorAux = null;
+    public Componente[][] matrizComponentes = new Componente[20][20];
+    public Grafo grafo = new Grafo();
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
@@ -47,16 +45,10 @@ import javax.swing.JOptionPane;
         
         cargarDatosDelJugador();
         
-//        if(Controlador_Adquisicion.isComprado && !(Controlador_Adquisicion.componenteAux instanceof Conector)){ //Creo el vertice
-//            Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
-//            Controlador_Adquisicion.componenteAux.setVertice(vertice);
-//            Controlador_Adquisicion.grafo.addVertice(vertice);
-//            System.out.println("Se creo un Vertice:  Cordenada: " +  vertice.getComponente().getPoint().y + "," + vertice.getComponente().getPoint().x);
-//        }
-         
+        
+        colocarFuentePoder();
         colocarMercado();
         colocarRemolino();
-        colocarFuentePoder();
 
         
     }
@@ -117,7 +109,6 @@ import javax.swing.JOptionPane;
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
         
-            componenteAux.getNombre();
             pantalla.getLabelInstruccion().setVisible(true);
             
             agregarElementoComprado(componenteAux.getTipoComponente());
@@ -126,14 +117,12 @@ import javax.swing.JOptionPane;
         }
     }
    
-    public static Componente getComponente(int i, int j){
-        
+    public  Componente getComponente(int i, int j){
         return matrizComponentes[i][j]; 
     }
     
     public void trazarConexiones(){
-        pantalla.getjPanelJugador().setBackground(Color.blue);
-        for(Vertice vertice: Controlador_Adquisicion.grafo.getVertices()){     
+        for(Vertice vertice: this.grafo.getVertices()){     
             for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                 Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
                 Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
@@ -147,22 +136,26 @@ import javax.swing.JOptionPane;
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
         graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());
-        System.out.println("x1: " + x1 + " y1: " + y1);
-        System.out.println("x2: " + x2 + " y2: " + y2);
-        System.out.println("VERSION KORREKTA");
-    }
-    
-    public void trazarConexionesConectores(){
-        
     }
     
     public void colocarFuentePoder(){
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(FUENTEDEENERGIA, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null
                 && pantalla.matrizLabels[numero][numero+1].getIcon() == null
                 && pantalla.matrizLabels[numero+1][numero].getIcon() == null
                 && pantalla.matrizLabels[numero+1][numero+1].getIcon() == null){
+            
+            matrizComponentes[numero][numero] = componenteNuevo;
+            matrizComponentes[numero][numero+1] = componenteNuevo;
+            matrizComponentes[numero+1][numero] = componenteNuevo;
+            matrizComponentes[numero+1][numero+1] = componenteNuevo;      
             
             pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
             pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
@@ -173,31 +166,42 @@ import javax.swing.JOptionPane;
         else colocarFuentePoder();
     }
     public void colocarRemolino(){
-        //Colocar el tornado
-        //Obtener un numero realmente aleatorio al darle un seed
-        //Primero Remolino
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(REMOLINO, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
+        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null){
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);
+        matrizComponentes[numero][numero] = componenteNuevo;
         }
         else colocarRemolino();
         //Segundo Remolino
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null){
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
+        matrizComponentes[numero][numero] = componenteNuevo;        
         }
         else colocarRemolino();        
     }
     public void colocarMercado(){
+        
+        Componente componenteNuevo = FactoryComponente.crearComponente(MERCADO, 0);
+        Vertice vertice = new Vertice(componenteNuevo);
+        componenteNuevo.setVertice(vertice);
+        grafo.addVertice(vertice);
+        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(numero<19 &&
                 pantalla.matrizLabels[numero][numero].getIcon() == null
                 && pantalla.matrizLabels[numero][numero+1].getIcon() == null){
                     
+                //matrizComponentes[numero][numero] = componenteNuevo;
                 pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
                 pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         }
@@ -215,12 +219,12 @@ import javax.swing.JOptionPane;
     
     //Getter && Settter
 
-    public static boolean isIsConectar() {
+    public  boolean isIsConectar() {
         return isConectar;
     }
 
-    public static void setIsConectar() {
-        Controlador_Adquisicion.isConectar = !isConectar;
+    public  void setIsConectar() {
+        this.isConectar = !isConectar;
         if(isConectar && !isMover && !isComprado){
            pantalla.getBtnConectar().setText("Conectando");
            pantalla.getBtnConectar().setBackground(Color.green);
