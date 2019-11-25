@@ -63,7 +63,7 @@ public class PosicionarComponente implements MouseListener{
                     
                     System.out.println(Controlador_Adquisicion.grafo.toString());
                     
-                    //Refresh lineas
+                    
                     
                 } else System.out.println("Ya habia sido agregado");
             }

@@ -465,6 +465,7 @@ private void rellenarMatriz(){
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
         Controlador.Controlador_Adquisicion.setIsConectar();
+        controlador.trazarConexiones();
     }//GEN-LAST:event_btnConectarActionPerformed
 
     /**
@@ -685,6 +686,22 @@ private void rellenarMatriz(){
 
     public void setBtnConectar(JButton btnConectar) {
         this.btnConectar = btnConectar;
+    }
+
+    public int getTAMANNO() {
+        return TAMANNO;
+    }
+
+    public void setTAMANNO(int TAMANNO) {
+        this.TAMANNO = TAMANNO;
+    }
+
+    public JPanel getjPanelJugador() {
+        return jPanelJugador;
+    }
+
+    public void setjPanelJugador(JPanel jPanelJugador) {
+        this.jPanelJugador = jPanelJugador;
     }
     
     

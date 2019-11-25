@@ -47,7 +47,12 @@ import javax.swing.JOptionPane;
         
         cargarDatosDelJugador();
         
-        
+//        if(Controlador_Adquisicion.isComprado && !(Controlador_Adquisicion.componenteAux instanceof Conector)){ //Creo el vertice
+//            Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
+//            Controlador_Adquisicion.componenteAux.setVertice(vertice);
+//            Controlador_Adquisicion.grafo.addVertice(vertice);
+//            System.out.println("Se creo un Vertice:  Cordenada: " +  vertice.getComponente().getPoint().y + "," + vertice.getComponente().getPoint().x);
+//        }
          
         colocarMercado();
         colocarRemolino();
@@ -105,22 +110,19 @@ import javax.swing.JOptionPane;
         else if(isComprado) JOptionPane.showMessageDialog(null, "Termine la compra antes de colocar otra ficha!"); //todo: cambiar esto para desactivar los botones o algo asi
         else{
             cliente.jugador.setDinero(cliente.jugador.getDinero()-precio);
-            
+        
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
-            
+        
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
-            
+        
             componenteAux.getNombre();
             pantalla.getLabelInstruccion().setVisible(true);
             
             agregarElementoComprado(componenteAux.getTipoComponente());
             pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
-            
-            //Agregar el arma comprada al jugador
-            esta metiendo todo al combox armas , tenemos un array de todo lo que tiene el men?
-            cliente.jugador.getArmasCompradas().add(componenteAux);             
+                         
         }
     }
    
@@ -129,24 +131,24 @@ import javax.swing.JOptionPane;
     }
     
     public void trazarConexiones(){
-        for(int i =0 ;i<this.ctdTotalElementos;i++){
-            for(int j = 0 ;j<this.ctdTotalElementos ;j++){
-                
-                Componente comp = matrizComponentes[i][j];
-                Vertice vertice= comp.getVertice();
-                if(comp.getTipoComponente() != Conector && matrizComponentes[i][j]!=null){
-                    for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
-                        Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
-                        pintarConexion(comp.getPoint().x,comp.getPoint().y,dest.getPoint().x,dest.getPoint().y);
-                    }
-                }
+        pantalla.getjPanelJugador().setBackground(Color.blue);
+        for(Vertice vertice: Controlador_Adquisicion.grafo.getVertices()){     
+            for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
+                Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
+                Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
+                pintarConexion(orig.getPoint().x, orig.getPoint().y, vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y);
+                pintarConexion(vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y, dest.getPoint().x, dest.getPoint().y);
             }
         }
     }
     
+    
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
-        graf.drawLine(x1, y1, x2, y2);
+        graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());
+        System.out.println("x1: " + x1 + " y1: " + y1);
+        System.out.println("x2: " + x2 + " y2: " + y2);
+        System.out.println("VERSION KORREKTA");
     }
     
     public void trazarConexionesConectores(){
@@ -224,7 +226,7 @@ import javax.swing.JOptionPane;
         }
             
         else{
-            isConectar = false;
+           isConectar = false;
            pantalla.getBtnConectar().setText("Conectar");
            pantalla.getBtnConectar().setBackground(Color.red);
         } 
