@@ -75,8 +75,10 @@ public class PosicionarComponente implements MouseListener{
         
         else if(controlador.isComprado){ //Compro un componente y lo va a posicionar
             if(controlador.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
-                if(controlador.getComponente(i, j) == null)                  
+                if(controlador.getComponente(i, j) == null){
                     mover();
+                    controlador.trazarConexiones();
+                }                                    
                 //ERROR
             }
             //ERROR
@@ -84,8 +86,11 @@ public class PosicionarComponente implements MouseListener{
         else{
             if(controlador.isMover){ //Va a mover un componente de la matriz a este label
                 if(controlador.componenteAux != null){ 
-                    if(controlador.getComponente(i, j) == null)
-                        mover();
+                    if(controlador.getComponente(i, j) == null){
+                       mover(); 
+                       controlador.trazarConexiones();
+                    }
+                        
                 }
             }
             
@@ -165,7 +170,7 @@ public class PosicionarComponente implements MouseListener{
                                
                 controlador.matrizComponentes[i][j] = null;
                 matrizLabels[i][j].setIcon(null);
-                controlador.getPantalla().getPanelJugador().setBackground(Color.red);
+                //controlador.getPantalla().getPanelJugador().setBackground(Color.red);
             }
         }
     }
@@ -306,10 +311,7 @@ public class PosicionarComponente implements MouseListener{
         controlador.isComprado = false;
         controlador.isMover = false;
         controlador.pantalla.getLabelInstruccion().setVisible(false);
-        
         controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
-        controlador.trazarConexiones();
-        System.out.println("LLEGUE AL FINAL DE MOVERSH");
     }
 
     @Override

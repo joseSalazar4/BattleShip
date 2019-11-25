@@ -122,7 +122,9 @@ import Cliente_Servidor.Cliente.Cliente;
     }
     
     public void trazarConexiones(){
-        for(Vertice vertice: this.grafo.getVertices()){     
+        
+        for(Vertice vertice: this.grafo.getVertices()){    
+            this.pantalla.getPanelJugador().setBackground(Color.BLUE);
             for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                 Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
                 Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
