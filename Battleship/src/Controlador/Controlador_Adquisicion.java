@@ -28,11 +28,11 @@ import Cliente_Servidor.Cliente.Cliente;
     FactoryComponente factoryComponente;
     private int X1, Y1, X2, Y2;
     private Controlador_Cliente controladorCliente;
-    public static boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
-    public static Componente componenteAux = null;
-    public static Conector conectorAux = null;
-    public static Componente[][] matrizComponentes = new Componente[20][20];
-    public static Grafo grafo = new Grafo();
+    public boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
+    public  Componente componenteAux = null;
+    public  Conector conectorAux = null;
+    public Componente[][] matrizComponentes = new Componente[20][20];
+    public Grafo grafo = new Grafo();
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
@@ -45,10 +45,10 @@ import Cliente_Servidor.Cliente.Cliente;
         
         cargarDatosDelJugador();
         
-         
+        
+        colocarFuentePoder();
         colocarMercado();
         colocarRemolino();
-        colocarFuentePoder();
 
         
     }
@@ -117,13 +117,12 @@ import Cliente_Servidor.Cliente.Cliente;
         }
     }
    
-    public static Componente getComponente(int i, int j){
+    public  Componente getComponente(int i, int j){
         return matrizComponentes[i][j]; 
     }
     
     public void trazarConexiones(){
-        pantalla.getjPanelJugador().setBackground(Color.blue);
-        for(Vertice vertice: Controlador_Adquisicion.grafo.getVertices()){     
+        for(Vertice vertice: this.grafo.getVertices()){     
             for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                 Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
                 Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
@@ -153,6 +152,11 @@ import Cliente_Servidor.Cliente.Cliente;
                 && pantalla.matrizLabels[numero+1][numero].getIcon() == null
                 && pantalla.matrizLabels[numero+1][numero+1].getIcon() == null){
             
+            matrizComponentes[numero][numero] = componenteNuevo;
+            matrizComponentes[numero][numero+1] = componenteNuevo;
+            matrizComponentes[numero+1][numero] = componenteNuevo;
+            matrizComponentes[numero+1][numero+1] = componenteNuevo;      
+            
             pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
             pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
             pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
@@ -169,21 +173,18 @@ import Cliente_Servidor.Cliente.Cliente;
         grafo.addVertice(vertice);
         
         
-        //Colocar el tornado
-        //Obtener un numero realmente aleatorio al darle un seed
-        //Primero Remolino
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null){
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);
+        matrizComponentes[numero][numero] = componenteNuevo;
         }
         else colocarRemolino();
         //Segundo Remolino
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         if(pantalla.matrizLabels[numero][numero].getIcon() == null){
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = FactoryComponente.crearComponente(REMOLINO, 0);        
+        matrizComponentes[numero][numero] = componenteNuevo;        
         }
         else colocarRemolino();        
     }
@@ -200,6 +201,7 @@ import Cliente_Servidor.Cliente.Cliente;
                 pantalla.matrizLabels[numero][numero].getIcon() == null
                 && pantalla.matrizLabels[numero][numero+1].getIcon() == null){
                     
+                //matrizComponentes[numero][numero] = componenteNuevo;
                 pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
                 pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         }
@@ -217,12 +219,12 @@ import Cliente_Servidor.Cliente.Cliente;
     
     //Getter && Settter
 
-    public static boolean isIsConectar() {
+    public  boolean isIsConectar() {
         return isConectar;
     }
 
-    public static void setIsConectar() {
-        Controlador_Adquisicion.isConectar = !isConectar;
+    public  void setIsConectar() {
+        this.isConectar = !isConectar;
         if(isConectar && !isMover && !isComprado){
            pantalla.getBtnConectar().setText("Conectando");
            pantalla.getBtnConectar().setBackground(Color.green);

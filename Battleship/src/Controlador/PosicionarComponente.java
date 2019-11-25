@@ -19,12 +19,14 @@ public class PosicionarComponente implements MouseListener{
     int otroI = 0, OtroJ = 0;
     JLabel label;
     JLabel[][] matrizLabels;
+    Controlador_Adquisicion controlador;
     private double y;
     
-    public PosicionarComponente(JLabel label, JLabel[][] matrizLabels, int i, int j){
+    public PosicionarComponente(JLabel label, JLabel[][] matrizLabels, int i, int j,Controlador_Adquisicion _controlador){
         this.label = label;
         this.matrizLabels = matrizLabels;
         label.addMouseListener(this);
+        this.controlador = _controlador;
         this.i=i;
         this.j=j;        
     }
@@ -32,136 +34,138 @@ public class PosicionarComponente implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e){
         
-        if(Controlador_Adquisicion.isConectar && Controlador_Adquisicion.getComponente(i, j) != null){ 
-            if(Controlador_Adquisicion.getComponente(i, j) instanceof Conector)
+        if(controlador.isConectar && controlador.getComponente(i, j) != null){ 
+            if(controlador.getComponente(i, j) instanceof Conector)
             {   
                 //Establecer el conector que se va a usar
-                Controlador_Adquisicion.conectorAux = (Conector) Controlador_Adquisicion.getComponente(i, j);
+                controlador.conectorAux = (Conector) controlador.getComponente(i, j);
             }
             
-            else if(Controlador_Adquisicion.getComponente(i, j) instanceof FuentePoder
-            && Controlador_Adquisicion.conectorAux != null)
+            else if(controlador.getComponente(i, j) instanceof FuentePoder
+            && controlador.conectorAux != null)
             {   
                 //Establecer la fuente
                 //Un conector puede cambiar de fuente ? 
-                Controlador_Adquisicion.conectorAux.setFuente( (FuentePoder) Controlador_Adquisicion.getComponente(i, j));
+                controlador.conectorAux.setFuente( (FuentePoder) controlador.getComponente(i, j));
             }
             
-            else if(Controlador_Adquisicion.conectorAux != null
-            &&  Controlador_Adquisicion.conectorAux.getFuente() != null)
+            else if(controlador.conectorAux != null
+            &&  controlador.conectorAux.getFuente() != null)
             {   
                 //Agregar el destino y crear la arista
                 //Si este componente ya habia sido agregado no se hace nada
-                boolean fueAgregado =  Controlador_Adquisicion.conectorAux.addDestino(Controlador_Adquisicion.getComponente(i, j));
+                boolean fueAgregado =  controlador.conectorAux.addDestino(controlador.getComponente(i, j));
                 if(fueAgregado){
-                    Controlador_Adquisicion.grafo.addArista
-                        (Controlador_Adquisicion.conectorAux.getFuente().getVertice(), 
-                        Controlador_Adquisicion.getComponente(i, j).getVertice(), 
-                        Controlador_Adquisicion.conectorAux);
+                    controlador.grafo.addArista
+                        (controlador.conectorAux.getFuente().getVertice(), 
+                        controlador.getComponente(i, j).getVertice(), 
+                        controlador.conectorAux);
                     
-                    Controlador_Adquisicion.conectorAux = null;
-                    Controlador_Adquisicion.setIsConectar();
+                    controlador.conectorAux = null;
+                    controlador.setIsConectar();
                     
-                    System.out.println(Controlador_Adquisicion.grafo.toString());
-                    
+                    System.out.println(controlador.grafo.toString());
+                    controlador.trazarConexiones();
                     
                     
                 } else System.out.println("Ya habia sido agregado");
+                
             }
         }
         
-        else if(Controlador_Adquisicion.isComprado){ //Compro un componente y lo va a posicionar
-            if(Controlador_Adquisicion.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
-                if(Controlador_Adquisicion.getComponente(i, j) == null)                  
+        else if(controlador.isComprado){ //Compro un componente y lo va a posicionar
+            if(controlador.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
+                if(controlador.getComponente(i, j) == null)                  
                     mover();
                 //ERROR
             }
             //ERROR
         }
         else{
-            if(Controlador_Adquisicion.isMover){ //Va a mover un componente de la matriz a este label
-                if(Controlador_Adquisicion.componenteAux != null){ 
-                    if(Controlador_Adquisicion.getComponente(i, j) == null)
+            if(controlador.isMover){ //Va a mover un componente de la matriz a este label
+                if(controlador.componenteAux != null){ 
+                    if(controlador.getComponente(i, j) == null)
                         mover();
                 }
             }
             
-            else if(Controlador_Adquisicion.getComponente(i, j) != null){ //Va a mover este elemento
-                Controlador_Adquisicion.isMover = true;
-                Controlador_Adquisicion.componenteAux = Controlador_Adquisicion.getComponente(i, j);
+            else if(controlador.getComponente(i, j) != null){ //Va a mover este elemento
+                controlador.isMover = true;
+                controlador.componenteAux = controlador.getComponente(i, j);
                 
                 //CUANDO ES 4X4 
-                if(Controlador_Adquisicion.componenteAux instanceof FuentePoder){
+                if(controlador.componenteAux instanceof FuentePoder){
                     if(i<19 && j<19 &&
-                    Controlador_Adquisicion.getComponente(i, j) instanceof FuentePoder &&
-                    Controlador_Adquisicion.getComponente(i, j+1) instanceof FuentePoder &&
-                    Controlador_Adquisicion.getComponente(i+1, j) instanceof FuentePoder &&
-                    Controlador_Adquisicion.getComponente(i+1, j+1) instanceof FuentePoder )
+                    controlador.getComponente(i, j) instanceof FuentePoder &&
+                    controlador.getComponente(i, j+1) instanceof FuentePoder &&
+                    controlador.getComponente(i+1, j) instanceof FuentePoder &&
+                    controlador.getComponente(i+1, j+1) instanceof FuentePoder )
                     {
-                        Controlador_Adquisicion.matrizComponentes[i][j] = null;
+                        controlador.matrizComponentes[i][j] = null;
                         matrizLabels[i][j].setIcon(null);  
                         
-                        Controlador_Adquisicion.matrizComponentes[i][j+1] = null;
+                        controlador.matrizComponentes[i][j+1] = null;
                         matrizLabels[i][j+1].setIcon(null);  
                         
-                        Controlador_Adquisicion.matrizComponentes[i+1][j] = null;
+                        controlador.matrizComponentes[i+1][j] = null;
                         matrizLabels[i+1][j].setIcon(null);  
                         
-                        Controlador_Adquisicion.matrizComponentes[i+1][j+1] = null;
+                        controlador.matrizComponentes[i+1][j+1] = null;
                         matrizLabels[i+1][j+1].setIcon(null);  
                     
                     } else {
-                        Controlador_Adquisicion.componenteAux = null;
-                        Controlador_Adquisicion.isMover = false;
+                        controlador.componenteAux = null;
+                        controlador.isMover = false;
                         return;
                     }
                 }
                 
-                else if(!Controlador_Adquisicion.componenteAux.isIs1x1()){
-                    if(Controlador_Adquisicion.componenteAux.isIsVertical()){
+                else if(!controlador.componenteAux.isIs1x1()){
+                    if(controlador.componenteAux.isIsVertical()){
                         if(i>=0 && 
-                        Controlador_Adquisicion.getComponente(i+1, j)!=null && 
-                        Controlador_Adquisicion.getComponente(i+1, j).getTipoComponente() == 
-                        Controlador_Adquisicion.componenteAux.getTipoComponente())
+                        controlador.getComponente(i+1, j)!=null && 
+                        controlador.getComponente(i+1, j).getTipoComponente() == 
+                        controlador.componenteAux.getTipoComponente())
                             
                         {
-                                Controlador_Adquisicion.isArrIzq = true;
-                                Controlador_Adquisicion.matrizComponentes[i+1][j] = null;
+                                controlador.isArrIzq = true;
+                                controlador.matrizComponentes[i+1][j] = null;
                                 matrizLabels[i+1][j].setIcon(null);  
                                 
-                                Controlador_Adquisicion.matrizComponentes[i][j] = null;
+                                controlador.matrizComponentes[i][j] = null;
                                 matrizLabels[i][j].setIcon(null);
                                 
                         } else{
-                            Controlador_Adquisicion.componenteAux = null;
-                            Controlador_Adquisicion.isMover = false;
+                            controlador.componenteAux = null;
+                            controlador.isMover = false;
                             return;
                         }
    
                     }
                     else{ //ES HORIZONTAL
                         if(j>=0 &&
-                            Controlador_Adquisicion.getComponente(i, j+1)!=null&&
-                            Controlador_Adquisicion.getComponente(i, j+1).getTipoComponente() == 
-                            Controlador_Adquisicion.componenteAux.getTipoComponente())
+                            controlador.getComponente(i, j+1)!=null&&
+                            controlador.getComponente(i, j+1).getTipoComponente() == 
+                            controlador.componenteAux.getTipoComponente())
                         {
-                            Controlador_Adquisicion.isArrIzq = true;
-                            Controlador_Adquisicion.matrizComponentes[i][j+1] = null;
+                            controlador.isArrIzq = true;
+                            controlador.matrizComponentes[i][j+1] = null;
                             matrizLabels[i][j+1].setIcon(null);
                             
-                            Controlador_Adquisicion.matrizComponentes[i][j] = null;
+                            controlador.matrizComponentes[i][j] = null;
                             matrizLabels[i][j].setIcon(null);
                             
                         } else{
-                            Controlador_Adquisicion.componenteAux = null;
-                            Controlador_Adquisicion.isMover = false;
+                            controlador.componenteAux = null;
+                            controlador.isMover = false;
                             return;
                         }       
                     }
                 }
                                
-                Controlador_Adquisicion.matrizComponentes[i][j] = null;
+                controlador.matrizComponentes[i][j] = null;
                 matrizLabels[i][j].setIcon(null);
+                controlador.getPantalla().setBackground(Color.red);
             }
         }
     }
@@ -176,24 +180,24 @@ public class PosicionarComponente implements MouseListener{
     
     public void mover(){
        // QUE NO SE PUEDA PONER EN EL 20;
-        if(Controlador_Adquisicion.componenteAux.isIs1x1()){
+        if(controlador.componenteAux.isIs1x1()){
             Point pointThis = posicionar_ij(this.label);
             this.i = (int) pointThis.getY();
             this.y = (int) pointThis.getX();
-            if(Controlador_Adquisicion.getComponente(this.i, this.j) == null){
-               this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux; 
+            if(controlador.getComponente(this.i, this.j) == null){
+               this.label.setIcon(controlador.componenteAux.getImagen());
+                controlador.matrizComponentes[i][j] = controlador.componenteAux; 
             }
             else return;
         }
         //CUANDO ES 4X4 TODO TERRENO TOYOTA FUENTE DE PODER
         
-        else if(Controlador_Adquisicion.componenteAux instanceof FuentePoder){
+        else if(controlador.componenteAux instanceof FuentePoder){
             if(i<19 && j<19 &&
-            Controlador_Adquisicion.getComponente(i, j) == null &&
-            Controlador_Adquisicion.getComponente(i, j+1) == null &&
-            Controlador_Adquisicion.getComponente(i+1, j) == null &&
-            Controlador_Adquisicion.getComponente(i+1, j+1) == null){
+            controlador.getComponente(i, j) == null &&
+            controlador.getComponente(i, j+1) == null &&
+            controlador.getComponente(i+1, j) == null &&
+            controlador.getComponente(i+1, j+1) == null){
                 
                 JLabel otroLabel;
                 Point otroPoint;
@@ -202,32 +206,32 @@ public class PosicionarComponente implements MouseListener{
                 Point pointThis = posicionar_ij(this.label);
                 this.i = (int) pointThis.getY();
                 this.y = (int) pointThis.getX();
-                this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
+                this.label.setIcon(controlador.componenteAux.getImagen());
+                controlador.matrizComponentes[i][j] = controlador.componenteAux;
                 
                 //Muevo j+1
                 otroLabel = matrizLabels[i][j+1];
                 otroPoint = posicionar_ij(otroLabel);
                 this.otroI = (int) otroPoint.getY();
                 this.OtroJ = (int) otroPoint.getX();         
-                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                otroLabel.setIcon(controlador.componenteAux.getImagen());
+                controlador.matrizComponentes[otroI][OtroJ] = controlador.componenteAux;
                 
                 //Muevo i+1
                 otroLabel = matrizLabels[i+1][j];
                 otroPoint = posicionar_ij(otroLabel);
                 this.otroI = (int) otroPoint.getY();
                 this.OtroJ = (int) otroPoint.getX();         
-                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                otroLabel.setIcon(controlador.componenteAux.getImagen());
+                controlador.matrizComponentes[otroI][OtroJ] = controlador.componenteAux;
                 
                 //Muevo i+1, j+1
                 otroLabel = matrizLabels[i+1][j+1];
                 otroPoint = posicionar_ij(otroLabel);
                 this.otroI = (int) otroPoint.getY();
                 this.OtroJ = (int) otroPoint.getX();         
-                otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                otroLabel.setIcon(controlador.componenteAux.getImagen());
+                controlador.matrizComponentes[otroI][OtroJ] = controlador.componenteAux;
                 
             } else return;
         }
@@ -235,20 +239,20 @@ public class PosicionarComponente implements MouseListener{
         //TODOS LOS DEMÁS
         else{
                       
-            if(Controlador_Adquisicion.componenteAux.isIsVertical()){
-                if(i<19 && Controlador_Adquisicion.getComponente(i+1, j) == null){
+            if(controlador.componenteAux.isIsVertical()){
+                if(i<19 && controlador.getComponente(i+1, j) == null){
                     Point pointThis = posicionar_ij(this.label);
                     this.i = (int) pointThis.getY();
                     this.y = (int) pointThis.getX();
                     
-                    if((Controlador_Adquisicion.componenteAux.isIsVertical()&&i==19)
-                    ||(!Controlador_Adquisicion.componenteAux.isIsVertical()&&j==19)) return;
+                    if((controlador.componenteAux.isIsVertical()&&i==19)
+                    ||(!controlador.componenteAux.isIsVertical()&&j==19)) return;
 
-                    if(Controlador_Adquisicion.getComponente(i, j) != null) return;
+                    if(controlador.getComponente(i, j) != null) return;
 
-                    this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
+                    this.label.setIcon(controlador.componenteAux.getImagen());
 
-                    Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
+                    controlador.matrizComponentes[i][j] = controlador.componenteAux;
                     
                     //LA SEGUNDO LABEL ES EL DE ABAJO
                     JLabel otroLabel = matrizLabels[i+1][j];
@@ -256,8 +260,8 @@ public class PosicionarComponente implements MouseListener{
                     this.otroI = (int) otroPoint.getY();
                     this.OtroJ = (int) otroPoint.getX();
                     
-                    otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    Controlador_Adquisicion.matrizComponentes[otroI][OtroJ] = Controlador_Adquisicion.componenteAux;
+                    otroLabel.setIcon(controlador.componenteAux.getImagen());
+                    controlador.matrizComponentes[otroI][OtroJ] = controlador.componenteAux;
                 }
                 else return;
         
@@ -265,17 +269,17 @@ public class PosicionarComponente implements MouseListener{
             
             else{
                 //ES HORIZANTAL
-                if(j<19 && Controlador_Adquisicion.getComponente(i, j+1) == null){
+                if(j<19 && controlador.getComponente(i, j+1) == null){
                     Point pointThis = posicionar_ij(this.label);
                     this.i = (int) pointThis.getY();
                     this.y = (int) pointThis.getX();
-                    if((Controlador_Adquisicion.componenteAux.isIsVertical()&&i==19)||(!Controlador_Adquisicion.componenteAux.isIsVertical()&&j==19))
+                    if((controlador.componenteAux.isIsVertical()&&i==19)||(!controlador.componenteAux.isIsVertical()&&j==19))
                         return;
 
-                    if(Controlador_Adquisicion.getComponente(i, j) != null) return;
+                    if(controlador.getComponente(i, j) != null) return;
 
-                    this.label.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    Controlador_Adquisicion.matrizComponentes[i][j] = Controlador_Adquisicion.componenteAux;
+                    this.label.setIcon(controlador.componenteAux.getImagen());
+                    controlador.matrizComponentes[i][j] = controlador.componenteAux;
                     
                     //LA SEGUNDO LABEL ES EL DE DERECHA
                     JLabel otroLabel = matrizLabels[i][j+1];
@@ -283,27 +287,27 @@ public class PosicionarComponente implements MouseListener{
                     this.otroI = (int) otroPoint.getY();
                     this.OtroJ = (int) otroPoint.getX();
                     
-                    otroLabel.setIcon(Controlador_Adquisicion.componenteAux.getImagen());
-                    Controlador_Adquisicion.matrizComponentes[this.otroI][this.OtroJ] = Controlador_Adquisicion.componenteAux;
+                    otroLabel.setIcon(controlador.componenteAux.getImagen());
+                    controlador.matrizComponentes[this.otroI][this.OtroJ] = controlador.componenteAux;
                 }
                 else return;
                  
             }
         }
-        Controlador_Adquisicion.componenteAux.getPoint().setLocation(j, i);
-        if(Controlador_Adquisicion.isComprado && !(Controlador_Adquisicion.componenteAux instanceof Conector)){ //Creo el vertice
-            Vertice vertice = new Vertice(Controlador_Adquisicion.componenteAux);
-            Controlador_Adquisicion.componenteAux.setVertice(vertice);
-            Controlador_Adquisicion.grafo.addVertice(vertice);
+        controlador.componenteAux.getPoint().setLocation(j, i);
+        if(controlador.isComprado && !(controlador.componenteAux instanceof Conector)){ //Creo el vertice
+            Vertice vertice = new Vertice(controlador.componenteAux);
+            controlador.componenteAux.setVertice(vertice);
+            controlador.grafo.addVertice(vertice);
             System.out.println("Se creo un Vertice:  Cordenada: " +  vertice.getComponente().getPoint().y + "," + vertice.getComponente().getPoint().x);
         }
         
-        Controlador_Adquisicion.componenteAux = null;
-        Controlador_Adquisicion.isComprado = false;
-        Controlador_Adquisicion.isMover = false;
-        Controlador_Adquisicion.pantalla.getPanelJugador().setBackground(Color.red);
-        Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
-       
+        controlador.componenteAux = null;
+        controlador.isComprado = false;
+        controlador.isMover = false;
+        controlador.pantalla.getLabelInstruccion().setVisible(false);
+        controlador.trazarConexiones();
+        System.out.println("LLEGUE AL FINAL DE MOVERSH");
     }
 
     @Override
