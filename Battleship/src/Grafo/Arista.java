@@ -48,5 +48,10 @@ public class Arista {
         this.conector = conector;
     }
 
+    public String toString(){
+        return origin.getComponente().getTipoComponente().toString() 
+        + "-> " + distance 
+        + " -> " + destination.getComponente().getTipoComponente().toString() + "\n";
+    }
     
 }

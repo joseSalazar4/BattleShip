@@ -464,7 +464,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-       
+        Controlador.Controlador_Adquisicion.setIsConectar();
     }//GEN-LAST:event_btnConectarActionPerformed
 
     /**
@@ -678,5 +678,15 @@ private void rellenarMatriz(){
     public JLabel getjLabelCarga(){
         return this.jLabelCarga;
     }
+
+    public JButton getBtnConectar() {
+        return btnConectar;
+    }
+
+    public void setBtnConectar(JButton btnConectar) {
+        this.btnConectar = btnConectar;
+    }
+    
+    
     
 }

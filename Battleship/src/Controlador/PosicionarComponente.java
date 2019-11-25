@@ -31,7 +31,45 @@ public class PosicionarComponente implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e){
         
-        if(Controlador_Adquisicion.isComprado){ //Compro un componente y lo va a posicionar
+        if(Controlador_Adquisicion.isConectar && Controlador_Adquisicion.getComponente(i, j) != null){ 
+            if(Controlador_Adquisicion.getComponente(i, j) instanceof Conector)
+            {   
+                //Establecer el conector que se va a usar
+                Controlador_Adquisicion.conectorAux = (Conector) Controlador_Adquisicion.getComponente(i, j);
+            }
+            
+            else if(Controlador_Adquisicion.getComponente(i, j) instanceof FuentePoder
+            && Controlador_Adquisicion.conectorAux != null)
+            {   
+                //Establecer la fuente
+                //Un conector puede cambiar de fuente ? 
+                Controlador_Adquisicion.conectorAux.setFuente( (FuentePoder) Controlador_Adquisicion.getComponente(i, j));
+            }
+            
+            else if(Controlador_Adquisicion.conectorAux != null
+            &&  Controlador_Adquisicion.conectorAux.getFuente() != null)
+            {   
+                //Agregar el destino y crear la arista
+                //Si este componente ya habia sido agregado no se hace nada
+                boolean fueAgregado =  Controlador_Adquisicion.conectorAux.addDestino(Controlador_Adquisicion.getComponente(i, j));
+                if(fueAgregado){
+                    Controlador_Adquisicion.grafo.addArista
+                        (Controlador_Adquisicion.conectorAux.getFuente().getVertice(), 
+                        Controlador_Adquisicion.getComponente(i, j).getVertice(), 
+                        Controlador_Adquisicion.conectorAux);
+                    
+                    Controlador_Adquisicion.conectorAux = null;
+                    Controlador_Adquisicion.setIsConectar();
+                    
+                    System.out.println(Controlador_Adquisicion.grafo.toString());
+                    
+                    //Refresh lineas
+                    
+                } else System.out.println("Ya habia sido agregado");
+            }
+        }
+        
+        else if(Controlador_Adquisicion.isComprado){ //Compro un componente y lo va a posicionar
             if(Controlador_Adquisicion.componenteAux != null){ // Verifica si donde lo va a mover esté vacio
                 if(Controlador_Adquisicion.getComponente(i, j) == null)                  
                     mover();

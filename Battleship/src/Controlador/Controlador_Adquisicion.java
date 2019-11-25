@@ -11,9 +11,11 @@ import Cliente_Servidor.Cliente.Cliente;
 import Grafo.Grafo;
 import static battleship.Componente.tipoComponente.Remolino;
 import static battleship.Componente.tipoComponente.Conector;
+import battleship.Conector;
 import battleship.FactoryComponente;
 import battleship.ItemCompra;
 import static battleship.ItemCompra.REMOLINO;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -27,8 +29,9 @@ import javax.swing.JOptionPane;
     FactoryComponente factoryComponente;
     private int X1, Y1, X2, Y2;
     private Controlador_Cliente controladorCliente;
-    public static boolean isComprado = false, isMover = false, isArrIzq = false;
+    public static boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
     public static Componente componenteAux = null;
+    public static Conector conectorAux = null;
     public static Componente[][] matrizComponentes = new Componente[20][20];
     public static Grafo grafo = new Grafo();
    
@@ -186,9 +189,31 @@ import javax.swing.JOptionPane;
     }
     
     //Getter && Settter
+
+    public static boolean isIsConectar() {
+        return isConectar;
+    }
+
+    public static void setIsConectar() {
+        Controlador_Adquisicion.isConectar = !isConectar;
+        if(isConectar && !isMover && !isComprado){
+           pantalla.getBtnConectar().setText("Conectando");
+           pantalla.getBtnConectar().setBackground(Color.green);
+        }
+            
+        else{
+            isConectar = false;
+           pantalla.getBtnConectar().setText("Conectar");
+           pantalla.getBtnConectar().setBackground(Color.red);
+        } 
+            
+    }
+    
+    
     public GUIAdquisicion getPantalla() {
         return pantalla;
     }
+    
 
     public void setPantalla(GUIAdquisicion pantalla) {
         this.pantalla = pantalla;

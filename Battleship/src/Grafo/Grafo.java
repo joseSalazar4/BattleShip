@@ -1,4 +1,5 @@
 package Grafo;
+import battleship.Conector;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,14 @@ public class Grafo {
         vertices.add(vertice);
     }
     
-    public void addArista(Vertice origen, Vertice destino){
-        origen.addArista
-        (new Arista(origen, destino, origen.getComponente().getPoint().distance(destino.getComponente().getPoint())));
-        destino.addArista
-        (new Arista(destino, origen, destino.getComponente().getPoint().distance(origen.getComponente().getPoint())));
+    public void addArista(Vertice origen, Vertice destino, Conector conector){
+        Arista aristaOrigen = new Arista(origen, destino, origen.getComponente().getPoint().distance(destino.getComponente().getPoint()));
+        aristaOrigen.setConector(conector);
+        origen.addArista(aristaOrigen);
+        
+        Arista aristaDestino = new Arista(destino, origen, destino.getComponente().getPoint().distance(origen.getComponente().getPoint()));
+        aristaDestino.setConector(conector);
+        destino.addArista(aristaDestino);
     }
    
     public void removeArista(Point point){
@@ -35,5 +39,13 @@ public class Grafo {
                   vertice.getAristas().remove(arista);
             }
         }
+    }
+    
+    public String toString(){
+        String str = "---GRAFO---";
+        for(Vertice vertice : this.vertices)
+            str += vertice.toString();
+        
+        return str;
     }
 }

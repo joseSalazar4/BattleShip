@@ -34,4 +34,12 @@ public class Vertice {
     public void addArista(Arista arista){
         aristas.add(arista);
     }
+    
+    public String toString(){
+        String str = "\n" + this.componente.getTipoComponente().toString() + ": " + this.componente.getPoint().toString() + "\n";
+        for(Arista arista : this.aristas)
+            str += arista.toString();
+        
+        return str;
+    }
 }
