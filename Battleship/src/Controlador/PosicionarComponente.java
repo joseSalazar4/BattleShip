@@ -307,7 +307,7 @@ public class PosicionarComponente implements MouseListener{
         controlador.isMover = false;
         controlador.pantalla.getLabelInstruccion().setVisible(false);
         
-                controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
+        controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
         controlador.trazarConexiones();
         System.out.println("LLEGUE AL FINAL DE MOVERSH");
     }

@@ -136,6 +136,7 @@ import Cliente_Servidor.Cliente.Cliente;
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
         graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());
+        System.out.println("x1: "+x1*pantalla.getTAMANNO()+" y1: "+ y1*pantalla.getTAMANNO()+" x2: "+ x2* pantalla.getTAMANNO()+" y2: "+y2* pantalla.getTAMANNO());
     }
     
     public void colocarFuentePoder(){
