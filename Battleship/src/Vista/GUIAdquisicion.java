@@ -98,9 +98,9 @@ private void rellenarMatriz(){
         lblDinero = new javax.swing.JLabel();
         lblnickName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabelCarga = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabelCantMina1 = new javax.swing.JLabel();
-        jLabelCarga = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 255, 51));
@@ -332,6 +332,7 @@ private void rellenarMatriz(){
 
         jPanelJugador.setBackground(new java.awt.Color(0, 102, 255));
         jPanelJugador.setForeground(new java.awt.Color(1, 1, 1));
+        jPanelJugador.setOpaque(false);
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 
         javax.swing.GroupLayout jPanelJugadorLayout = new javax.swing.GroupLayout(jPanelJugador);
@@ -410,6 +411,9 @@ private void rellenarMatriz(){
         jLabel2.setText("Previsualización de su Océano ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        jLabelCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ezgif.com-resize.gif"))); // NOI18N
+        getContentPane().add(jLabelCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 630, -1, 90));
+
         jLabel6.setBackground(new java.awt.Color(0, 61, 101));
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setOpaque(true);
@@ -418,9 +422,6 @@ private void rellenarMatriz(){
         jLabelCantMina1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCantMina1.setText("Mina: 0");
         getContentPane().add(jLabelCantMina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 100, -1, -1));
-
-        jLabelCarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ezgif.com-resize.gif"))); // NOI18N
-        getContentPane().add(jLabelCarga, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 630, 140, 90));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

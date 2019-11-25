@@ -25,8 +25,7 @@ import Cliente_Servidor.Cliente.Cliente;
     public class Controlador_Adquisicion {
     Cliente cliente;
     static GUIAdquisicion pantalla; 
-    FactoryComponente factoryComponente;
-    private int X1, Y1, X2, Y2;
+    FactoryComponente factoryComponente; 
     private Controlador_Cliente controladorCliente;
     public boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
     public  Componente componenteAux = null;
@@ -36,12 +35,12 @@ import Cliente_Servidor.Cliente.Cliente;
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
-    public Controlador_Adquisicion(Cliente cliente) {
+    public Controlador_Adquisicion(Cliente cliente, Controlador_Cliente controladorC) {
         this.cliente = cliente;
         this.pantalla = new GUIAdquisicion(this);
         this.pantalla.setVisible(true);
-        X1= Y1 = 0;
-        X2=  Y2 = 900;
+        this.controladorCliente = controladorC;
+
         
         cargarDatosDelJugador();
         
@@ -65,7 +64,8 @@ import Cliente_Servidor.Cliente.Cliente;
        
     public void iniciarPartida() throws InterruptedException{
         pantalla.getjLabelCarga().setVisible(true);
-       // controladorCliente.setMatrizJugadorComp(Controlador_Adquisicion.matrizComponentes);
+        System.out.println("Activé el gif");
+        controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
         pantalla.getButtonFuente().setEnabled(false);
@@ -74,7 +74,9 @@ import Cliente_Servidor.Cliente.Cliente;
         pantalla.getButtonConector().setEnabled(false);
         
         try {
-            cliente.controlador.esperarEnemigos();
+            cliente.controlador.esperarEnemigos(); 
+            pantalla.getjLabelCarga().setVisible(false);
+            
             //Conectar con el servidor y decir que listo.
         } catch (IOException ex) {
             Logger.getLogger(Controlador_Adquisicion.class.getName()).log(Level.SEVERE, null, ex);
@@ -237,9 +239,8 @@ import Cliente_Servidor.Cliente.Cliente;
            pantalla.getBtnConectar().setText("Conectar");
            pantalla.getBtnConectar().setBackground(Color.red);
         } 
-            
+          
     }
-    
     
     public GUIAdquisicion getPantalla() {
         return pantalla;
