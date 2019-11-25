@@ -173,21 +173,20 @@ import Cliente_Servidor.Cliente.Cliente;
         componenteNuevo.setVertice(vertice);
         grafo.addVertice(vertice);
         
-        
         int numero = 0;
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        if(pantalla.matrizLabels[numero][numero].getIcon() == null){
-        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = componenteNuevo;
+        while(pantalla.matrizLabels[numero][numero].getIcon() != null) {
+            for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         }
-        else colocarRemolino();
-        //Segundo Remolino
-        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        if(pantalla.matrizLabels[numero][numero].getIcon() == null){
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
         matrizComponentes[numero][numero] = componenteNuevo;        
+   
+        for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        while(pantalla.matrizLabels[numero][numero].getIcon() != null) {
+            for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         }
-        else colocarRemolino();        
+        pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
+        matrizComponentes[numero][numero] = componenteNuevo;        
     }
     public void colocarMercado(){
         
