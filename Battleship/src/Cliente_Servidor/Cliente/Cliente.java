@@ -64,10 +64,12 @@ public class Cliente {
     
     public void finalizoAdquisicion() throws IOException{ //EStoy Listo
          outputStream.writeInt(4);
+         System.out.println("LO ENVIO AL SERVIDOR");
     }
     
     public void finalizarTurno() throws IOException{
         outputStream.writeInt(5);
+        
     }
     
     

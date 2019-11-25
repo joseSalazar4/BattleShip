@@ -50,8 +50,8 @@ public class ThreadServidor extends Thread{
             pantalla.addStatus(".::" + ip + " = " + nickName);
             
             while(activo){
-                opcion = inputStream.readInt();
-                
+                opcion = (int) inputStream.readInt();
+                System.out.println("Opcion: " + opcion);
                 switch(opcion){
                     case 1: //IDK
                         System.out.println("IDK");
@@ -66,23 +66,9 @@ public class ThreadServidor extends Thread{
                         for(ThreadServidor cliente: servidor.getClientes())
                             cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
-                        
-                    case 4:   //IniciarPartida enviar datos a los enemigos de cada jugador
-                        System.out.println("FINALIZAR ENTRO AL SERVIDOR");
-                        boolean estanTodosListos = true;
-                        estoyListo = true; 
-                        for(ThreadServidor cliente: servidor.getClientes()){
-                            if(!cliente.estoyListo) estanTodosListos = false;
-                        }
-                        
-                        if(estanTodosListos){
-                            System.out.println("ESTAN TODOS LISTOS");
-                            for(ThreadServidor cliente2: servidor.getClientes())
-                                cliente2.reanudarJuego();
-                        }
-                        
+                    case 4:
+                        System.out.println("ME CAGO EN LA PUTA");
                     break;
-                        
                     case 5: //Terminar mi turno
                         servidor.siguienteTurno();
                     break;

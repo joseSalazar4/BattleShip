@@ -35,7 +35,6 @@ public class Servidor extends Thread{
     public void iniciarServidor(int numeroClientes){
         try {
             this.socketServidor = new ServerSocket(PORT);
-            System.out.println("ENTRO A INCIAR SERVIDOR");
             this.pantalla.addStatus("----Iniciando servidor----");
             this.pantalla.addStatus("Esperando usuarios... ");
             int numeroCliente = 1; 

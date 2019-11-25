@@ -54,7 +54,7 @@ public class Controlador_Cliente {
         this.pantallaStartUp.dispose();
         
         this.controladorAdquisicion = new Controlador_Adquisicion(cliente);
-        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();        
+        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();   
     }
     
     public void empezarAJugar(){ //SOLO LA PRIMERA VEZ
@@ -94,15 +94,8 @@ public class Controlador_Cliente {
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
         cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
-        System.out.println("FINALIZO ADQUISICION");
-//        while(!todosListos){
-//              sleep(2000);
-//        }
-//        
-//        //Codigo de reanudar juego
-//        todosListos = false;
+        this.enviarMensaje();
 
-       // reanudarPantallaPrincipal();
     }
     
     
