@@ -3,10 +3,14 @@ package Controlador;
 
 import Cliente_Servidor.Cliente.Cliente;
 import Cliente_Servidor.mensajeGenerico;
+import static Controlador.Controlador_Adquisicion.pantalla;
+import Grafo.Vertice;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import battleship.Componente;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
@@ -22,7 +26,7 @@ public class Controlador_Cliente {
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
-    private JLabel [][] matrizJugadorLbel, matrizEnemigoLbel;
+    private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private Componente [][] matrizJugadorComp, matrizEnemigoComp;
 
     
@@ -32,7 +36,8 @@ public class Controlador_Cliente {
         this.pantallaStartUp = new GUIStartUp(this);
         this.pantallaStartUp.setVisible(true);
         this.pantallaAdquisicion = null;
-        this.pantallaPrincipal = null;
+        this.pantallaPrincipal = new GUICliente(this);
+        this.empezarAJugar();
     }
     
     public void iniciarCliente(String nickName){
@@ -58,29 +63,78 @@ public class Controlador_Cliente {
     }
     
     public void empezarAJugar(){ //SOLO LA PRIMERA VEZ
-        pantallaPrincipal = new GUICliente(this);
-        pantallaPrincipal.setVisible(true);
         for(int i = 0;i<cliente.jugador.getArmasCompradas().size();i++)
             pantallaPrincipal.getComboBoxArmas().addItem(cliente.jugador.getArmasCompradas().get(i).getNombre());
         
+        crearMatrizJugadorLabels();
+        
         String enemigos = "---Empiza la Batalla---\n";
         enemigos += "Tus enemigos: \n";
-        
         for(String enemigo: cliente.jugador.getEnemigos())
             enemigos += enemigo + "\n";
-        
         pantallaPrincipal.getTxtAreaJuego().append(enemigos);
        
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
     
+    public void crearMatrizJugadorLabels(){
+        for(int i = 0; i<20 ;i++){
+            for(int j = 0; j<20 ;j++){
+                JLabel labelNuevo = new JLabel();
+                labelNuevo.setOpaque(false);
+                labelNuevo.setSize(30, 30);
+                labelNuevo.setLocation(j*30, i*30);
+                this.matrizJugadorLbel[i][j] = labelNuevo;
+                this.pantallaPrincipal.getjPanelJugador().add(labelNuevo);
+            }
+        }
+    }
+    
+        public void trazarConexiones(){
+        this.pantallaPrincipal.getjPanelJugador().setBackground(Color.blue);
+            for(Vertice vertice: this.controladorAdquisicion.grafo.getVertices()){        
+                for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
+                    Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
+                    Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
+                    pintarConexion(orig.getPoint().x, orig.getPoint().y, vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y);
+                    pintarConexion(vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y, dest.getPoint().x, dest.getPoint().y);
+                }
+            }
+        }
+    
+    
+    public void pintarConexion(int x1,int  y1,int x2,int y2){
+        Graphics graf = this.pantallaPrincipal.getjPanelJugador().getGraphics();
+        graf.drawLine(x1*30, y1*30, x2* 30, y2* 30);
+    }
+    
+    
+    public void cagarMiOceano(){
+        for(int i= 0; i<20; i++){
+            for(int j=0; j<20; j++){
+                if(this.matrizJugadorComp[i][j] != null)
+                    this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
+            }
+        }
+        
+        trazarConexiones();
+    }
+    
     public void reanudarPantallaPrincipal(){
+        this.pantallaAdquisicion.getjLabelCarga().setVisible(false);
+        try {
+            sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        this.cagarMiOceano();
+        
         this.pantallaAdquisicion.setVisible(false);
         this.pantallaPrincipal.setVisible(true);
-        System.out.println("REANUDO PANTALLA PRINCIPAL");
         
-        //Agregar 
+        
     }
     
     public void cargarEnemigoComboBox(){
@@ -99,8 +153,6 @@ public class Controlador_Cliente {
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
         cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
-        this.enviarMensaje();
-
     }
     
     
@@ -158,6 +210,8 @@ public class Controlador_Cliente {
     public void recibirMensajeJuego(String mensaje){
        this.pantallaPrincipal.getTxtAreaJuego().append(mensaje + "\n");
     }
+    
+    //Metodos del manejo de turnos
     
     public void empezarTurno(){
         //Activar turno

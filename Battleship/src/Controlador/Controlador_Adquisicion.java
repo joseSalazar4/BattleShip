@@ -75,7 +75,7 @@ import Cliente_Servidor.Cliente.Cliente;
         
         try {
             cliente.controlador.esperarEnemigos(); 
-            pantalla.getjLabelCarga().setVisible(false);
+            pantalla.getjLabelCarga().setVisible(true);
             
             //Conectar con el servidor y decir que listo.
         } catch (IOException ex) {

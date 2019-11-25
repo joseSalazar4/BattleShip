@@ -67,9 +67,20 @@ public class ThreadServidor extends Thread{
                             cliente.enviarMensajeJuego(mensajeJuego); 
                     break;
                     case 4:
-                        System.out.println("ME CAGO EN LA PUTA");
+                        this.estoyListo = true;
+                        boolean todosListos = true;
+                        for(ThreadServidor thread : servidor.getClientes()){
+                            if(!thread.estoyListo) todosListos = false;
+                        }
+                        if(todosListos){
+                            for(ThreadServidor thread2 : servidor.getClientes()){
+                                thread2.reanudarJuego();
+                                thread2.estoyListo = false;
+                            }    
+                        }
                     break;
                     case 5: //Terminar mi turno
+
                         servidor.siguienteTurno();
                     break;
                         
@@ -109,6 +120,7 @@ public class ThreadServidor extends Thread{
     public void reanudarJuego() throws IOException{
         System.out.println("REANUDAR JUEGO");
         outputStream.writeInt(4);
+        outputStream.flush();
     }
     
     void empezarTurno() throws IOException {

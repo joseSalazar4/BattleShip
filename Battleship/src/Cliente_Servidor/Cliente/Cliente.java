@@ -55,20 +55,27 @@ public class Cliente {
     public void enviarMensaje(mensajeGenerico mensaje) throws IOException{
         outputStream.writeInt(2);
         outputStream.writeObject(mensaje);
+        outputStream.flush();
+
     }
     
     public void enviarMensajeJuego(String mensaje) throws IOException{
         outputStream.writeInt(3);
         outputStream.writeUTF(mensaje);
+        outputStream.flush();
     }
     
     public void finalizoAdquisicion() throws IOException{ //EStoy Listo
-         outputStream.writeInt(4);
-         System.out.println("LO ENVIO AL SERVIDOR");
+        outputStream.writeInt(4);
+        System.out.println("LO ENVIO AL SERVIDOR");
+        outputStream.flush();
+
     }
     
     public void finalizarTurno() throws IOException{
         outputStream.writeInt(5);
+        outputStream.flush();
+
         
     }
     
