@@ -1,5 +1,5 @@
 
-package battleship;
+package Componentes;
 
 import Grafo.Vertice;
 import java.awt.Point;

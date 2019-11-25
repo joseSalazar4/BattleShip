@@ -80,9 +80,13 @@ public class ThreadServidor extends Thread{
                         }
                     break;
                     case 5: //Terminar mi turno
-
                         servidor.siguienteTurno();
                     break;
+                        
+                    case 7: //Buscar Oceano Enemigo
+                        
+                    break;
+                        
                         
                     // Opcion es el metodo que quiere que el servidor haga 
                 }
@@ -104,17 +108,20 @@ public class ThreadServidor extends Thread{
         }
         outputStream.writeInt(1);
         outputStream.writeObject(enemigos);
+        outputStream.flush();
         
     }
     
     public void enviarMensaje(mensajeGenerico mensaje) throws IOException{
         outputStream.writeInt(2);
         outputStream.writeObject(mensaje);
+        outputStream.flush();
     }
     
     public void enviarMensajeJuego(String mensaje) throws IOException{
         outputStream.writeInt(3);
         outputStream.writeUTF(mensaje);
+        outputStream.flush();
     }
     
     public void reanudarJuego() throws IOException{
@@ -125,11 +132,14 @@ public class ThreadServidor extends Thread{
     
     void empezarTurno() throws IOException {
         outputStream.writeInt(5);
+        outputStream.flush();
     }
     
     public void reanudarAdquisicion() throws IOException{
         outputStream.writeInt(6);
+        outputStream.flush();
     }
+
     
    
 

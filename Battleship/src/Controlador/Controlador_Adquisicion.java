@@ -10,16 +10,16 @@ import Grafo.Vertice;
 import java.awt.Color;
 import java.awt.Graphics;
 import Vista.GUIAdquisicion;
-import battleship.Componente;
-import battleship.Conector;
-import battleship.ItemCompra;
+import Componentes.Componente;
+import Componentes.Conector;
+import Componentes.ItemCompra;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import battleship.FactoryComponente;
-import static battleship.ItemCompra.*;
+import Componentes.FactoryComponente;
+import static Componentes.ItemCompra.*;
 import Cliente_Servidor.Cliente.Cliente;
 
     public class Controlador_Adquisicion {

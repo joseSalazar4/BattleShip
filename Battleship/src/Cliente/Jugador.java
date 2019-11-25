@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Cliente;
-import battleship.Componente;
+import Componentes.Componente;
 import java.util.ArrayList;
 /**
  *

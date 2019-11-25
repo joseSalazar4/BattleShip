@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Componentes.Componente;
 import javax.swing.JLabel;
 import battleship.*;
 import java.awt.Color;

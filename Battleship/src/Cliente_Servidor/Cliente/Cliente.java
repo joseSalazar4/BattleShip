@@ -65,6 +65,7 @@ public class Cliente {
         outputStream.flush();
     }
     
+    
     public void finalizoAdquisicion() throws IOException{ //EStoy Listo
         outputStream.writeInt(4);
         System.out.println("LO ENVIO AL SERVIDOR");
@@ -75,8 +76,12 @@ public class Cliente {
     public void finalizarTurno() throws IOException{
         outputStream.writeInt(5);
         outputStream.flush();
-
-        
+    }
+    
+    public void buscarOceanoEnemigo(String enemigo) throws IOException{
+        outputStream.writeInt(7);
+        outputStream.writeUTF(enemigo);
+        outputStream.flush();
     }
     
     

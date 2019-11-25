@@ -7,7 +7,7 @@ package Vista;
 
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
-import battleship.ItemCompra;
+import Componentes.ItemCompra;
 import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;

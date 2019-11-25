@@ -3,7 +3,7 @@ package Grafo;
 import java.util.ArrayList;
 import java.util.List;
 
-import battleship.Componente;
+import Componentes.Componente;
 import java.awt.Point;
 
 public class Vertice {

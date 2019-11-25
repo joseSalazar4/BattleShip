@@ -1,6 +1,6 @@
 
 package Grafo;
-import battleship.Conector;
+import Componentes.Conector;
 import java.awt.Point;
 
 public class Arista {

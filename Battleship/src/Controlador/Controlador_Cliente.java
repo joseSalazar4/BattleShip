@@ -8,7 +8,8 @@ import Grafo.Vertice;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
-import battleship.Componente;
+import Componentes.Componente;
+import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
@@ -27,7 +28,8 @@ public class Controlador_Cliente {
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
-    private Componente [][] matrizJugadorComp, matrizEnemigoComp;
+    private Componente [][] matrizJugadorComp;
+    private Oceano oceanoEnemigo;
 
     
     public Controlador_Cliente(){ 
@@ -37,7 +39,6 @@ public class Controlador_Cliente {
         this.pantallaStartUp.setVisible(true);
         this.pantallaAdquisicion = null;
         this.pantallaPrincipal = new GUICliente(this);
-        this.empezarAJugar();
     }
     
     public void iniciarCliente(String nickName){
@@ -59,7 +60,10 @@ public class Controlador_Cliente {
         this.pantallaStartUp.dispose();
         
         this.controladorAdquisicion = new Controlador_Adquisicion(cliente, this);
-        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();        
+        this.pantallaAdquisicion = controladorAdquisicion.getPantalla();  
+        
+        this.empezarAJugar();
+
     }
     
     public void empezarAJugar(){ //SOLO LA PRIMERA VEZ
@@ -68,12 +72,9 @@ public class Controlador_Cliente {
         
         crearMatrizJugadorLabels();
         
-        String enemigos = "---Empiza la Batalla---\n";
-        enemigos += "Tus enemigos: \n";
         for(String enemigo: cliente.jugador.getEnemigos())
-            enemigos += enemigo + "\n";
-        pantallaPrincipal.getTxtAreaJuego().append(enemigos);
-       
+            this.pantallaPrincipal.getjComboBoxEnemigos().addItem(enemigo);
+            
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
     }
@@ -91,7 +92,7 @@ public class Controlador_Cliente {
         }
     }
     
-        public void trazarConexiones(){
+    public void trazarConexiones(){
         this.pantallaPrincipal.getjPanelJugador().setBackground(Color.blue);
             for(Vertice vertice: this.controladorAdquisicion.grafo.getVertices()){        
                 for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
@@ -103,12 +104,10 @@ public class Controlador_Cliente {
             }
         }
     
-    
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = this.pantallaPrincipal.getjPanelJugador().getGraphics();
         graf.drawLine(x1*30, y1*30, x2* 30, y2* 30);
     }
-    
     
     public void cagarMiOceano(){
         for(int i= 0; i<20; i++){
@@ -117,7 +116,6 @@ public class Controlador_Cliente {
                     this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
             }
         }
-        
         trazarConexiones();
     }
     
@@ -148,6 +146,24 @@ public class Controlador_Cliente {
         
         //Agregar
     }
+    
+    
+    //METODOS DE PEDIR DATOS DEL ENEMIGO
+    
+    public void buscarOceanoEnemigo() throws IOException{
+        String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
+        cliente.buscarOceanoEnemigo(enemigoBuscado);
+    }
+    
+    public void setOceanoEnemigo(Oceano oceano){
+        this.oceanoEnemigo = oceano;
+    }
+    
+    public void mostrarOceanoEnemigo(){
+        //Recorrer la matriz o el grafo del enemigo y mostrar los componentes
+        //que no esten conectados a una fuente de poder.
+    }
+    
     
     
     //Codigo de renovar juego 

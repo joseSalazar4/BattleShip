@@ -6,8 +6,8 @@
 package Controlador;
 
 import Grafo.Vertice;
-import battleship.Conector;
-import battleship.FuentePoder;
+import Componentes.Conector;
+import Componentes.FuentePoder;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseEvent;

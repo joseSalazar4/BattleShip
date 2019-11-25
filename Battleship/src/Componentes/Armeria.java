@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package Componentes;
 
-import static battleship.Componente.tipoComponente.Armeria;
+import static Componentes.Componente.tipoComponente.Armeria;
 
 /**
  *
