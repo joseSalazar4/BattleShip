@@ -5,18 +5,14 @@
  */
 package Componentes;
 
-import Componentes.Componente;
 import static Componentes.Componente.tipoComponente.Mina;
 
-/**
- *
- * @author mikom
- */
 
 
-public class Mina extends Componente implements Runnable{
+public class Mina extends Componente {
     int aceroGenerado,aceroTotal, tiempo;
-   
+    
+    
     public Mina(int nivelSeleccionado){
         tipoComponente = Mina;
         nombre = "Mina";
@@ -53,18 +49,4 @@ public class Mina extends Componente implements Runnable{
         
     }
 
-    //La mina produce una cantidad de acero cada cierto tiempo.
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(tiempo);
-            aceroTotal+=aceroGenerado;
-        }
-        catch (InterruptedException e) {
-            System.out.println("Se cayó el thread de mina.java");
-            e.printStackTrace();
-        }
-
-
-    }
 }

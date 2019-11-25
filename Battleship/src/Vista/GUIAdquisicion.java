@@ -222,6 +222,7 @@ private void rellenarMatriz(){
         jLabelInstruccionColocado.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
 
+        btnConectar.setBackground(new java.awt.Color(0, 61, 101));
         btnConectar.setText("Conectar :3");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

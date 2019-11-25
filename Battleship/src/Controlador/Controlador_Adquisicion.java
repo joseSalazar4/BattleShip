@@ -124,7 +124,7 @@ import Cliente_Servidor.Cliente.Cliente;
     }
     
     public void trazarConexiones(){
-        this.pantalla.getPanelJugador().setBackground(Color.blue);
+        pantalla.getPanelJugador().setBackground(Color.blue);
         for(Vertice vertice: this.grafo.getVertices()){        
             for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                 Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
@@ -191,6 +191,7 @@ import Cliente_Servidor.Cliente.Cliente;
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
         matrizComponentes[numero][numero] = componenteNuevo;        
     }
+    
     public void colocarMercado(){
         
         Componente componenteNuevo = FactoryComponente.crearComponente(MERCADO, 0);

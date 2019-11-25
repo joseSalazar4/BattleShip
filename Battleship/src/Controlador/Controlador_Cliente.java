@@ -266,5 +266,43 @@ public class Controlador_Cliente {
     public void setMiTurno(boolean miTurno) {
         this.miTurno = miTurno;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public GUIStartUp getPantallaStartUp() {
+        return pantallaStartUp;
+    }
+
+    public GUICliente getPantallaPrincipal() {
+        return pantallaPrincipal;
+    }
+
+    public GUIAdquisicion getPantallaAdquisicion() {
+        return pantallaAdquisicion;
+    }
+
+    public Controlador_Adquisicion getControladorAdquisicion() {
+        return controladorAdquisicion;
+    }
+
+    public JLabel[][] getMatrizJugadorLbel() {
+        return matrizJugadorLbel;
+    }
+
+    public JLabel[][] getMatrizEnemigoLbel() {
+        return matrizEnemigoLbel;
+    }
+
+    public Componente[][] getMatrizJugadorComp() {
+        return matrizJugadorComp;
+    }
+
+    public Oceano getOceanoEnemigo() {
+        return oceanoEnemigo;
+    }
+    
+    
        
 }

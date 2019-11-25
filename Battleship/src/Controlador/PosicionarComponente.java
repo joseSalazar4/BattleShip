@@ -168,7 +168,6 @@ public class PosicionarComponente implements MouseListener{
                         }       
                     }
                 }
-                               
                 controlador.matrizComponentes[i][j] = null;
                 matrizLabels[i][j].setIcon(null);
                 //controlador.getPantalla().getPanelJugador().setBackground(Color.red);

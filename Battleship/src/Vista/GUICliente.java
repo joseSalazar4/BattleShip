@@ -97,7 +97,6 @@ public class GUICliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
-        setPreferredSize(new java.awt.Dimension(1290, 800));
         setSize(new java.awt.Dimension(1290, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -227,9 +226,9 @@ public class GUICliente extends javax.swing.JFrame {
 
         jPanelTorpedo.setLayout(null);
 
-        jLabel15.setText("500Kg Acero");
+        jLabel15.setText("500 Kg Acero");
         jPanelTorpedo.add(jLabel15);
-        jLabel15.setBounds(20, 6, 73, 16);
+        jLabel15.setBounds(20, 6, 76, 16);
 
         jButton3.setText("Torpedo");
         jPanelTorpedo.add(jButton3);
@@ -237,7 +236,7 @@ public class GUICliente extends javax.swing.JFrame {
 
         getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 120, 70));
 
-        jLabel13.setText("2000Kg Acero");
+        jLabel13.setText("2000 Kg Acero");
 
         jButton2.setText("Bomba");
 
@@ -264,7 +263,7 @@ public class GUICliente extends javax.swing.JFrame {
 
         getContentPane().add(jPanelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 110, 60));
 
-        jLabel14.setText("1000Kg Acero");
+        jLabel14.setText("1000 Kg Acero");
 
         jButton5.setText("Multi-Shot");
 
