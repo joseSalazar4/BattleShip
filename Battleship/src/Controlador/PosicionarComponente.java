@@ -165,7 +165,7 @@ public class PosicionarComponente implements MouseListener{
                                
                 controlador.matrizComponentes[i][j] = null;
                 matrizLabels[i][j].setIcon(null);
-                controlador.getPantalla().setBackground(Color.red);
+                controlador.getPantalla().getPanelJugador().setBackground(Color.red);
             }
         }
     }
@@ -306,6 +306,8 @@ public class PosicionarComponente implements MouseListener{
         controlador.isComprado = false;
         controlador.isMover = false;
         controlador.pantalla.getLabelInstruccion().setVisible(false);
+        
+        controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
         controlador.trazarConexiones();
         System.out.println("LLEGUE AL FINAL DE MOVERSH");
     }
