@@ -73,7 +73,7 @@ import javax.swing.JOptionPane;
        
     public void iniciarPartida() throws InterruptedException{
         pantalla.getjLabelCarga().setVisible(true);
-        controladorCliente.setMatrizJugadorComp(matrizComponentes);
+       // controladorCliente.setMatrizJugadorComp(Controlador_Adquisicion.matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
         pantalla.getButtonFuente().setEnabled(false);
@@ -127,6 +127,7 @@ import javax.swing.JOptionPane;
     }
    
     public static Componente getComponente(int i, int j){
+        
         return matrizComponentes[i][j]; 
     }
     

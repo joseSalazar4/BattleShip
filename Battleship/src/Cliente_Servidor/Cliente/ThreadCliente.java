@@ -47,7 +47,7 @@ public class ThreadCliente extends Thread{
                         break;
                     case 4: 
                         //cliente.controlador; pregunt
-                        cliente.controlador.setTodosListos(true);
+                        cliente.controlador.reanudarPantallaPrincipal();
                         break;
                     case 5: //Comienza el turno de este Jugador
                         cliente.controlador.empezarTurno();

@@ -68,6 +68,7 @@ public class ThreadServidor extends Thread{
                     break;
                         
                     case 4:   //IniciarPartida enviar datos a los enemigos de cada jugador
+                        System.out.println("FINALIZAR ENTRO AL SERVIDOR");
                         boolean estanTodosListos = true;
                         estoyListo = true; 
                         for(ThreadServidor cliente: servidor.getClientes()){
@@ -75,6 +76,7 @@ public class ThreadServidor extends Thread{
                         }
                         
                         if(estanTodosListos){
+                            System.out.println("ESTAN TODOS LISTOS");
                             for(ThreadServidor cliente2: servidor.getClientes())
                                 cliente2.reanudarJuego();
                         }
@@ -119,6 +121,7 @@ public class ThreadServidor extends Thread{
     }
     
     public void reanudarJuego() throws IOException{
+        System.out.println("REANUDAR JUEGO");
         outputStream.writeInt(4);
     }
     

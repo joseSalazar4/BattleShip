@@ -78,6 +78,7 @@ public class Controlador_Cliente {
     public void reanudarPantallaPrincipal(){
         this.pantallaAdquisicion.setVisible(false);
         this.pantallaPrincipal.setVisible(true);
+        System.out.println("REANUDO PANTALLA PRINCIPAL");
         
         //Agregar 
     }
@@ -93,14 +94,15 @@ public class Controlador_Cliente {
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
         cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
-        while(!todosListos){
-              sleep(2000);
-        }
-        
-        //Codigo de reanudar juego
-        todosListos = false;
+        System.out.println("FINALIZO ADQUISICION");
+//        while(!todosListos){
+//              sleep(2000);
+//        }
+//        
+//        //Codigo de reanudar juego
+//        todosListos = false;
 
-        reanudarPantallaPrincipal();
+       // reanudarPantallaPrincipal();
     }
     
     
