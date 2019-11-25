@@ -13,10 +13,9 @@ import java.util.ArrayList;
 public class Jugador {
     //Usar atributos privados y programar los getter && setter de los atributos que lo ocupen
     
-    private int dinero;
-    //public Armeria armas[];
+    private int dinero, acero;
     private String nombre;
-    private boolean perdio, turnoAtacar;
+    private boolean perdio;
     private ArrayList<String> enemigos;
     private ArrayList<Componente> armasCompradas;
     
@@ -70,6 +69,14 @@ public class Jugador {
 
     public void setEnemigos(ArrayList<String> enemigos) {
         this.enemigos = enemigos;
+    }
+
+    public int getAcero() {
+        return acero;
+    }
+
+    public void setAcero(int acero) {
+        this.acero = acero;
     }
     
     

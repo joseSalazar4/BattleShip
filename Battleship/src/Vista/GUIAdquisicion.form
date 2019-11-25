@@ -427,6 +427,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnConectar">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="65" green="3d" red="0" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Conectar :3"/>
           </Properties>
           <Events>

@@ -23,6 +23,6 @@ public class Remolino extends Componente{
         armaUsada = null;
         this.is1x1 = true;
         nombre = "Remolino";
-        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Mina.png"));
+        this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"));
     }
 }

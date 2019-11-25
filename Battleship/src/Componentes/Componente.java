@@ -14,12 +14,14 @@ public class Componente implements Cloneable, Serializable{
     public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conector, FuenteEnergia, Remolino}
     tipoComponente tipoComponente;
     Point point = new Point();
+    ArrayList<Point> golpes;
     ImageIcon imagen;
     
     Vertice vertice;
             
     public Componente(){
         nombre = "";
+        golpes = new ArrayList<Point>();
     }
     
     public void setTipoComponente(tipoComponente comp){

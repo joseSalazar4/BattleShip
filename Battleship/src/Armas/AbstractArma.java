@@ -2,7 +2,7 @@
 package Armas;
 
 public abstract class AbstractArma {
-    private int costo;
+    int costo;
     
     public abstract void atacar();
 }
