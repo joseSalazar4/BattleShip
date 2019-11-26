@@ -22,6 +22,9 @@ import Componentes.FactoryComponente;
 import static Componentes.ItemCompra.*;
 import Cliente_Servidor.Cliente.Cliente;
 import Componentes.Armeria;
+import static Componentes.Componente.tipoComponente.Mina;
+import Componentes.Mina;
+import Componentes.ThreadProductoraAcero;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -136,6 +139,21 @@ import Componentes.Armeria;
             componenteAux = FactoryComponente.crearComponente(item, extra);
             System.out.println(extra);
         
+            if(item== ItemCompra.ARMERIA){
+                Armeria armeriaAux = (Armeria) componenteAux;
+                armeriaAux.arma.setControlador(controladorCliente);
+                componenteAux = armeriaAux;
+                
+            }
+            
+             if(item == ItemCompra.MINA){
+                Mina minaAux =(Mina) componenteAux;
+                ThreadProductoraAcero threadAux = new ThreadProductoraAcero(minaAux, this.controladorCliente.getCliente().jugador.getSemaforoAcero(),this.controladorCliente);
+                minaAux.setThreadProductor(threadAux);
+                this.controladorCliente.getThreadsProductores().add(threadAux);
+                threadAux.start();
+            }
+            
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
         
@@ -258,13 +276,124 @@ import Componentes.Armeria;
         return pantalla;
     }
     
-
     public void setPantalla(GUIAdquisicion pantalla) {
         this.pantalla = pantalla;
     }
     
     public String getNomJugador(){
        return cliente.jugador.getNombre();
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public FactoryComponente getFactoryComponente() {
+        return factoryComponente;
+    }
+
+    public void setFactoryComponente(FactoryComponente factoryComponente) {
+        this.factoryComponente = factoryComponente;
+    }
+
+    public Controlador_Cliente getControladorCliente() {
+        return controladorCliente;
+    }
+
+    public void setControladorCliente(Controlador_Cliente controladorCliente) {
+        this.controladorCliente = controladorCliente;
+    }
+
+    public boolean isIsComprado() {
+        return isComprado;
+    }
+
+    public void setIsComprado(boolean isComprado) {
+        this.isComprado = isComprado;
+    }
+
+    public boolean isIsArrIzq() {
+        return isArrIzq;
+    }
+
+    public void setIsArrIzq(boolean isArrIzq) {
+        this.isArrIzq = isArrIzq;
+    }
+
+    public Componente getComponenteAux() {
+        return componenteAux;
+    }
+
+    public void setComponenteAux(Componente componenteAux) {
+        this.componenteAux = componenteAux;
+    }
+
+    public Conector getConectorAux() {
+        return conectorAux;
+    }
+
+    public void setConectorAux(Conector conectorAux) {
+        this.conectorAux = conectorAux;
+    }
+
+    public Componente[][] getMatrizComponentes() {
+        return matrizComponentes;
+    }
+
+    public void setMatrizComponentes(Componente[][] matrizComponentes) {
+        this.matrizComponentes = matrizComponentes;
+    }
+
+    public static Grafo getGrafo() {
+        return grafo;
+    }
+
+    public static void setGrafo(Grafo grafo) {
+        Controlador_Adquisicion.grafo = grafo;
+    }
+
+    public int getCtdMinas() {
+        return ctdMinas;
+    }
+
+    public void setCtdMinas(int ctdMinas) {
+        this.ctdMinas = ctdMinas;
+    }
+
+    public int getCtdFuentesPoder() {
+        return ctdFuentesPoder;
+    }
+
+    public void setCtdFuentesPoder(int ctdFuentesPoder) {
+        this.ctdFuentesPoder = ctdFuentesPoder;
+    }
+
+    public int getCtdTemplos() {
+        return ctdTemplos;
+    }
+
+    public void setCtdTemplos(int ctdTemplos) {
+        this.ctdTemplos = ctdTemplos;
+    }
+
+    public int getCtdArmerias() {
+        return ctdArmerias;
+    }
+
+    public void setCtdArmerias(int ctdArmerias) {
+        this.ctdArmerias = ctdArmerias;
+    }
+
+    public int getCtdTotalElementos() {
+        return ctdTotalElementos;
+    }
+
+    public void setCtdTotalElementos(int ctdTotalElementos) {
+        this.ctdTotalElementos = ctdTotalElementos;
     }
      
 }

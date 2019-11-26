@@ -50,4 +50,36 @@ public class Mina extends Componente {
         
     }
 
+    public int getAceroGenerado() {
+        return aceroGenerado;
+    }
+
+    public void setAceroGenerado(int aceroGenerado) {
+        this.aceroGenerado = aceroGenerado;
+    }
+
+    public int getAceroTotal() {
+        return aceroTotal;
+    }
+
+    public void setAceroTotal(int aceroTotal) {
+        this.aceroTotal = aceroTotal;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public ThreadProductoraAcero getThreadProductor() {
+        return threadProductor;
+    }
+
+    public void setThreadProductor(ThreadProductoraAcero threadProductor) {
+        this.threadProductor = threadProductor;
+    }
+
 }

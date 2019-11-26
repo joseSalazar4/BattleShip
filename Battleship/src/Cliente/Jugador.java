@@ -6,6 +6,7 @@
 package Cliente;
 import Componentes.Componente;
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 /**
  *
  * @author mikom
@@ -16,6 +17,7 @@ public class Jugador {
     private int dinero, acero;
     private String nombre;
     private boolean perdio;
+    private Semaphore semaforoAcero;
     private ArrayList<String> enemigos;
     private ArrayList<Componente> armasCompradas;
     
@@ -28,6 +30,7 @@ public class Jugador {
         nombre = nombreJugador;
         enemigos = new ArrayList<String>();
         armasCompradas = new ArrayList<Componente>();
+        semaforoAcero = new Semaphore(1);
 
     }
     
@@ -45,6 +48,14 @@ public class Jugador {
 
     public void setDinero(int dinero) {
         this.dinero = dinero;
+    }
+
+    public Semaphore getSemaforoAcero() {
+        return semaforoAcero;
+    }
+
+    public void setSemaforoAcero(Semaphore semaforoAcero) {
+        this.semaforoAcero = semaforoAcero;
     }
 
     public String getNombre() {

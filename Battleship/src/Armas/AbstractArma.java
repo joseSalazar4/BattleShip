@@ -14,6 +14,7 @@ public abstract class AbstractArma implements Serializable{
     int costo;
     String nombre;
     Oceano oceano;
+    Controlador_Cliente controlador;
     marcarCasillaEnemigo casilla;
     String jugador;
     
@@ -98,6 +99,14 @@ public abstract class AbstractArma implements Serializable{
 
     public Oceano getOceano() {
         return oceano;
+    }
+
+    public Controlador_Cliente getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador_Cliente controlador) {
+        this.controlador = controlador;
     }
 
     public void setOceano(Oceano oceano) {

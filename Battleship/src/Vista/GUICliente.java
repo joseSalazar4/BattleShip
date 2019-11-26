@@ -6,6 +6,7 @@
 package Vista;
 
 import Componentes.Componente;
+import Controlador.Controlador_Cliente;
 import Grafo.Vertice;
 import javax.swing.JLabel;
 import battleship.*;
@@ -90,10 +91,10 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelDinero = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelAcero = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -179,8 +180,8 @@ public class GUICliente extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 20));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 260, -1, -1));
 
-        jLabel6.setText("Dinero:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
+        jLabelDinero.setText("Dinero:");
+        getContentPane().add(jLabelDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 2, 18)); // NOI18N
         jLabel8.setText("Mis Recursos");
@@ -188,8 +189,8 @@ public class GUICliente extends javax.swing.JFrame {
 
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 100, -1));
 
-        jLabel9.setText("Acero:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
+        jLabelAcero.setText("Acero:");
+        getContentPane().add(jLabelAcero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
 
         jButton1.setText("Usar Arma!");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -427,10 +428,10 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAcero;
+    private javax.swing.JLabel jLabelDinero;
     private javax.swing.JPanel jPanelBomba;
     private javax.swing.JPanel jPanelEnemigo;
     private javax.swing.JPanel jPanelJugador;
@@ -506,6 +507,30 @@ public class GUICliente extends javax.swing.JFrame {
 
     public JPanel getjPanelBomba() {
         return jPanelBomba;
+    }
+
+    public Controlador_Cliente getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador_Cliente controlador) {
+        this.controlador = controlador;
+    }
+
+    public JLabel getjLabelAcero() {
+        return jLabelAcero;
+    }
+
+    public void setjLabelAcero(JLabel jLabelAcero) {
+        this.jLabelAcero = jLabelAcero;
+    }
+
+    public JLabel getjLabelDinero() {
+        return jLabelDinero;
+    }
+
+    public void setjLabelDinero(JLabel jLabelDinero) {
+        this.jLabelDinero = jLabelDinero;
     }
 
     public void setjPanelBomba(JPanel jPanelBomba) {

@@ -21,13 +21,13 @@ public class ThreadProductoraAcero extends Thread{
     boolean activo = false;
     Controlador_Cliente controlador;
     
-    ThreadProductoraAcero(Mina minaProd, Semaphore semaphore, Controlador_Cliente controladorP){
+    public ThreadProductoraAcero(Mina minaProd, Semaphore semaphore, Controlador_Cliente controladorP){
         minaProductora = minaProd;
         semaf = semaphore;
         controlador = controladorP;
         
     }
-    
+
     
     @SuppressWarnings("SleepWhileInLoop")
     @Override
@@ -43,6 +43,7 @@ public class ThreadProductoraAcero extends Thread{
                     t+=minaProductora.aceroGenerado;
                     System.out.println(t);
                     controlador.getCliente().jugador.setAcero(t);
+                    controlador.cargarRecursos();
 
                     semaf.release();
                 }
@@ -58,4 +59,37 @@ public class ThreadProductoraAcero extends Thread{
             }
         }
     }
+    
+    public Mina getMinaProductora() {
+        return minaProductora;
+    }
+
+    public void setMinaProductora(Mina minaProductora) {
+        this.minaProductora = minaProductora;
+    }
+
+    public Semaphore getSemaf() {
+        return semaf;
+    }
+
+    public void setSemaf(Semaphore semaf) {
+        this.semaf = semaf;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public Controlador_Cliente getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador_Cliente controlador) {
+        this.controlador = controlador;
+    }
+        
 }

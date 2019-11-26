@@ -17,7 +17,6 @@ import Componentes.FuentePoder;
 import Componentes.Remolino;
 import Componentes.ThreadProductoraAcero;
 import Grafo.Arista;
-import Grafo.Grafo;
 import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,6 +24,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -189,6 +190,14 @@ public class Controlador_Cliente implements Serializable{
         trazarConexiones();
     }
     
+    public void reanudarProdAcero(){
+        for(ThreadProductoraAcero thread : this.threadsProductores) thread.setActivo(true);
+    }
+    
+    public void detenerProdAcero(){
+        for(ThreadProductoraAcero thread : this.threadsProductores) thread.setActivo(false);
+    }
+    
     public void reanudarPantallaPrincipal(){
         this.pantallaAdquisicion.getjLabelCarga().setVisible(false);
         try {
@@ -200,20 +209,44 @@ public class Controlador_Cliente implements Serializable{
         this.cargarMiOceano();
         
         this.pantallaAdquisicion.setVisible(false);
-        this.pantallaPrincipal.setVisible(true);
         
+        this.pantallaPrincipal.setVisible(true);
+        this.reanudarProdAcero();
+        cargarRecursos();
         
     }
         
+    public void comprarArma(int precio) throws InterruptedException{
+        Semaphore semaf = cliente.jugador.getSemaforoAcero();
+        sleep(100);
+        semaf.tryAcquire(8, TimeUnit.SECONDS);
+        
+        int t = cliente.jugador.getAcero();
+        if(t>precio){
+            cliente.jugador.setAcero(t-=precio);
+        }
+        else JOptionPane.showMessageDialog(null, "No tiene suficiente Acero!\nIntentelo de nuevo.        ");
+        
+        cargarRecursos();
+
+        semaf.release();
+                    
+}
     public void reanudarPantallaAdquisicion(){
         this.controladorAdquisicion.actualizarMatrizComponentes();
         this.pantallaAdquisicion.setVisible(true);
         this.pantallaPrincipal.setVisible(false);
-        
+        this.detenerProdAcero();
+        cargarRecursos();
         //Agregar
     }
     
     //METODOS DE PEDIR DATOS DEL ENEMIGO
+    
+    public void cargarRecursos(){
+        this.pantallaPrincipal.getjLabelAcero().setText("Acero: "+this.cliente.jugador.getAcero());
+        this.pantallaPrincipal.getjLabelDinero().setText("Dinero: "+this.cliente.jugador.getDinero());        
+    }
     
     public void buscarOceanoEnemigo() throws IOException {
         if(miTurno){
@@ -242,7 +275,7 @@ public class Controlador_Cliente implements Serializable{
         if(!miTurno){
             if(this.controladorAdquisicion.matrizComponentes == null) System.out.println("Matriz is NULL");
             Oceano miOceano = new Oceano();
-            miOceano.grafo = this.controladorAdquisicion.grafo;
+            miOceano.grafo = controladorAdquisicion.grafo;
             this.controladorAdquisicion.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
             miOceano.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
             miOceano.enemigo = this.cliente.jugador.getNombre();
@@ -450,6 +483,30 @@ public class Controlador_Cliente implements Serializable{
 
     public Oceano getOceanoEnemigo() {
         return oceanoEnemigo;
+    }
+
+    public boolean isActualizarEnemigo() {
+        return actualizarEnemigo;
+    }
+
+    public void setActualizarEnemigo(boolean actualizarEnemigo) {
+        this.actualizarEnemigo = actualizarEnemigo;
+    }
+
+    public ArrayList<Armeria> getArmerias() {
+        return armerias;
+    }
+
+    public void setArmerias(ArrayList<Armeria> armerias) {
+        this.armerias = armerias;
+    }
+
+    public ArrayList<ThreadProductoraAcero> getThreadsProductores() {
+        return threadsProductores;
+    }
+
+    public void setThreadsProductores(ArrayList<ThreadProductoraAcero> threadsProductores) {
+        this.threadsProductores = threadsProductores;
     }
     
     
