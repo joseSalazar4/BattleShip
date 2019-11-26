@@ -36,6 +36,7 @@ public class GUICliente extends javax.swing.JFrame {
         this.jPanelTorpedo.setVisible(false);
         this.jPanelTrumpedo.setVisible(false);
         this.jPanelMultiShot.setVisible(false);
+        this.jLabelTextoFabricar.setVisible(false);
      
     }
     @SuppressWarnings("unchecked")
@@ -92,7 +93,7 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabelAcero = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jLabelTextoFabricar = new javax.swing.JLabel();
         jPanelTrumpedo = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jButtonTrumpedo = new javax.swing.JButton();
@@ -191,8 +192,8 @@ public class GUICliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 110, 40));
 
-        jLabel10.setText("Click para fabricar!");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
+        jLabelTextoFabricar.setText("Click para fabricar!");
+        getContentPane().add(jLabelTextoFabricar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -366,7 +367,6 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed
-       
         AbstractArma armaAux = new Trumpedo();
         armaAux.atacar();         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTrumpedoActionPerformed
@@ -417,7 +417,6 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTorpedo;
     private javax.swing.JButton jButtonTrumpedo;
     private javax.swing.JComboBox jComboBoxEnemigos;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -430,6 +429,7 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabelAcero;
     private javax.swing.JLabel jLabelDinero;
+    private javax.swing.JLabel jLabelTextoFabricar;
     private javax.swing.JPanel jPanelBomba;
     private javax.swing.JPanel jPanelEnemigo;
     private javax.swing.JPanel jPanelJugador;
@@ -525,6 +525,14 @@ public class GUICliente extends javax.swing.JFrame {
 
     public void setjPanelEnemigo(JPanel jPanelEnemigo) {
         this.jPanelEnemigo = jPanelEnemigo;
+    }
+
+    public JLabel getjLabelTextoFabricar() {
+        return jLabelTextoFabricar;
+    }
+
+    public void setjLabelTextoFabricar(JLabel jLabelTextoFabricar) {
+        this.jLabelTextoFabricar = jLabelTextoFabricar;
     }
 
     public JPanel getjPanelMultiShot() {

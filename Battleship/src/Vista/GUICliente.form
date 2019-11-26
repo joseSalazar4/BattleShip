@@ -219,7 +219,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel10">
+    <Component class="javax.swing.JLabel" name="jLabelTextoFabricar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Click para fabricar!"/>
       </Properties>

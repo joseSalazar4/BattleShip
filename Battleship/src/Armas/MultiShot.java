@@ -50,7 +50,6 @@ public class MultiShot extends AbstractArma  {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MultiShot.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
             }
             else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
         }

@@ -7,10 +7,6 @@ package Armas;
 
 import battleship.Oceano;
 
-/**
- *
- * @author mikom
- */
 public class Bomba extends AbstractArma {
 
     public Bomba(){
@@ -21,6 +17,8 @@ public class Bomba extends AbstractArma {
     }
     
     @Override
+    
+    //ALCANCE DE 2X1 O 1X2 tons una linea de dos bloques Tratara igual que las imagenes derecha y abajo tons menos validaciones
     public Oceano atacar() {
         
         return this.oceano;

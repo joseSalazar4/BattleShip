@@ -161,15 +161,19 @@ public class Controlador_Cliente implements Serializable{
             Armeria armaTemp = (Armeria) comp;
             if(armaTemp.arma instanceof Torpedo){
                 this.pantallaPrincipal.getjPanelTorpedo().setVisible(true);
+                this.pantallaPrincipal.getjLabelTextoFabricar().setVisible(true);
             }
             else if(armaTemp.arma instanceof MultiShot){
                 this.pantallaPrincipal.getjPanelMultiShot().setVisible(true);
+                this.pantallaPrincipal.getjLabelTextoFabricar().setVisible(true);                
             }
             else if(armaTemp.arma instanceof Trumpedo){
                 this.pantallaPrincipal.getjPanelTrumpedo().setVisible(true);
+                this.pantallaPrincipal.getjLabelTextoFabricar().setVisible(true);                
             }
             else if(armaTemp.arma instanceof Bomba){
                 this.pantallaPrincipal.getjPanelBomba().setVisible(true);
+                this.pantallaPrincipal.getjLabelTextoFabricar().setVisible(true);                
             }
             armerias.add(armaTemp);
         }
