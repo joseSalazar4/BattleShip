@@ -91,8 +91,8 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jButtonArmeria1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jPanelEnemigo = new javax.swing.JPanel();
         jComboBoxEnemigos = new javax.swing.JComboBox();
+        jPanelEnemigo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
@@ -150,7 +150,7 @@ public class GUICliente extends javax.swing.JFrame {
         getContentPane().add(jPanelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 600, 600));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/ocean2.PNG"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 26, 600, 604));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 600, 600));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 16)); // NOI18N
         jLabel3.setText("Mi Oceano");
@@ -310,6 +310,17 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
 
+        jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEnemigosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBoxEnemigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 240, 30));
+
+        jPanelEnemigo.setBackground(new java.awt.Color(255, 102, 102));
+        jPanelEnemigo.setOpaque(false);
+        jPanelEnemigo.setPreferredSize(new java.awt.Dimension(600, 600));
+
         javax.swing.GroupLayout jPanelEnemigoLayout = new javax.swing.GroupLayout(jPanelEnemigo);
         jPanelEnemigo.setLayout(jPanelEnemigoLayout);
         jPanelEnemigoLayout.setHorizontalGroup(
@@ -322,13 +333,6 @@ public class GUICliente extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanelEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
-
-        jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxEnemigosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboBoxEnemigos, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, 240, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
