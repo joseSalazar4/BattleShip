@@ -311,8 +311,8 @@ public class PosicionarComponente implements MouseListener{
         controlador.componenteAux = null;
         controlador.isComprado = false;
         controlador.isMover = false;
-        controlador.pantalla.getLabelInstruccion().setVisible(false);
-        controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
+        Controlador_Adquisicion.pantalla.getLabelInstruccion().setVisible(false);
+        //controlador.getPantalla().getPanelJugador().setBackground(Color.blue);
     }
 
     @Override
