@@ -466,6 +466,14 @@ public class Controlador_Cliente implements Serializable{
         this.labelEnemigoSeleccionado = labelEnemigoSeleccionado;
     }
 
+    public int getCantEscudo() {
+        return cantEscudo;
+    }
+
+    public void setCantEscudo(int cantEscudo) {
+        this.cantEscudo = cantEscudo;
+    }
+
 
 
     public ImageIcon getImageAnterior() {
