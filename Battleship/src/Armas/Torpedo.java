@@ -11,7 +11,7 @@ package Armas;
  */
 public class Torpedo extends AbstractArma {
 
-    Torpedo(){
+    public Torpedo(){
         costo = 500;
         nombre = "Torpedo";
     }

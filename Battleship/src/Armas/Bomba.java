@@ -11,7 +11,7 @@ package Armas;
  */
 public class Bomba extends AbstractArma {
 
-    Bomba(){
+    public Bomba(){
         costo = 2000;
         nombre = "Bomba";
     }
