@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import static Componentes.Componente.tipoComponente.Remolino;
 import Grafo.Vertice;
 import Componentes.Conector;
 import Componentes.FuentePoder;
@@ -50,7 +51,8 @@ public class PosicionarComponente implements MouseListener{
             }
             
             else if(controlador.conectorAux != null
-            &&  controlador.conectorAux.getFuente() != null)
+            &&  controlador.conectorAux.getFuente() != null 
+            &&  controlador.conectorAux.getTipoComponente() != Remolino)
             {   
                 //Agregar el destino y crear la arista
                 //Si este componente ya habia sido agregado no se hace nada
@@ -93,9 +95,11 @@ public class PosicionarComponente implements MouseListener{
                 }
             }
             
-            else if(controlador.getComponente(i, j) != null){ //Va a mover este elemento
+            else if(controlador.getComponente(i, j) != null && controlador.getComponente(i, j).getTipoComponente()!= Remolino ){ //Va a mover este elemento
                 controlador.isMover = true;
                 controlador.componenteAux = controlador.getComponente(i, j);
+                
+                
                 
                 //CUANDO ES 4X4 
                 if(controlador.componenteAux instanceof FuentePoder){
