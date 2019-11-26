@@ -50,8 +50,8 @@ import Componentes.Armeria;
         colocarMercado();
         colocarRemolino();
 
-        
     }
+    
     public void cargarDatosDelJugador(){
         pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
@@ -65,14 +65,15 @@ import Componentes.Armeria;
        
     public void iniciarPartida() throws InterruptedException{
         pantalla.getjLabelCarga().setVisible(true);
-        System.out.println("Activé el gif");
         controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
+        pantalla.getBtnConectar().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
         pantalla.getButtonFuente().setEnabled(false);
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
         pantalla.getButtonConector().setEnabled(false);
+        pantalla.getjLabelInstruccionColocado().setText("Esperando Jugadores...");
         
         try {
             cliente.controlador.esperarEnemigos(); 
@@ -117,7 +118,14 @@ import Componentes.Armeria;
         System.out.println(ctdMinas +" "+ ctdConectores +" "+ ctdMercados +" "+ ctdFuentesPoder +" "+ ctdTemplos +" "+ ctdArmerias);
     }
     
-
+ 
+    public int verificarOpcionExtra(ItemCompra item){
+        if(item == ItemCompra.ARMERIA) return (pantalla.getComboBoxArmeria().getSelectedIndex()+1);
+        else if(item == ItemCompra.MINA)  return (pantalla.getComboBoxMina().getSelectedIndex()+1);
+        //Si no es ninguna no debemos hacer nada difernete
+        else return 0;
+    }
+    
     public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
         
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
@@ -127,10 +135,12 @@ import Componentes.Armeria;
         
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
+            System.out.println(extra);
             if(item == ItemCompra.ARMERIA){
                 Armeria armeriaAux = (Armeria) componenteAux;
-                armeriaAux.setControlador(this.controladorCliente);
-                armeriaAux.arma.setControlador(this.controladorCliente);
+                armeriaAux.setControlador(controladorCliente);
+                System.out.println(armeriaAux.arma);
+                armeriaAux.arma.setControlador(controladorCliente);
                 componenteAux = armeriaAux;
             }
         
@@ -229,14 +239,6 @@ import Componentes.Armeria;
         }
         else colocarMercado();
         
-    }
-     
-      
-    public int verificarOpcionExtra(ItemCompra item){
-        if(item.equals("ARMERIA")) return pantalla.getComboBoxArmeria().getSelectedIndex();
-        else if(item.equals("MINA"))  return pantalla.getComboBoxMina().getSelectedIndex();
-        //Si no es ninguna no debemos hacer nada difernete
-        else return 0;
     }
     
     //Getter && Settter

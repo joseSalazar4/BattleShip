@@ -15,6 +15,7 @@ public abstract class AbstractArma implements Serializable{
     Controlador_Cliente controlador;
     
     public AbstractArma(Controlador_Cliente controlador){
+        super();
         this.controlador = controlador;
     }
     
