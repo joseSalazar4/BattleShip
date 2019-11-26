@@ -6,6 +6,7 @@
 package Vista;
 
 import Componentes.Componente;
+import Grafo.Vertice;
 import javax.swing.JLabel;
 import battleship.*;
 import java.awt.Color;
@@ -26,21 +27,14 @@ import javax.swing.JTextField;
  * @author mikom
  */
 public class GUICliente extends javax.swing.JFrame {
-    int X1, Y1, X2, Y2;
     JLabel [][] matrizLabels = new JLabel [20][20];
     Componente [][] matrizLogica;
     Controlador.Controlador_Cliente controlador;
    // public GUICliente(Componente [][] _matrizLogica, Controlador.Controlador_Cliente controlador) {
     public GUICliente(Controlador.Controlador_Cliente controlador){
-        X1 = Y1 = 0;
-        X2=  Y2 = 200;
         initComponents();
         this.controlador = controlador;
-        
-        Graphics g = this.jPanelJugador.getGraphics();
-        g.setColor(Color.white);
-        g.drawLine(X1, Y1, X2, Y2);
-       // matrizLogica = _matrizLogica;
+     
     }
     @SuppressWarnings("unchecked")
     
@@ -64,7 +58,31 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButtonEnvMensaje = new javax.swing.JButton();
         txtFieldMensajes = new javax.swing.JTextField();
-        jPanelJugador = new javax.swing.JPanel();
+        jPanelJugador = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(Graphics g) {
+                int tamanno = 30, x1,x2,y1,y2;
+                super.paintComponent(g);
+                for(Vertice vertice: Controlador.Controlador_Adquisicion.grafo.getVertices()){
+                    for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
+                        Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
+                        Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
+                        x1 = orig.getPoint().x;
+                        y1 = orig.getPoint().y;
+                        x2 = vertice.getAristas().get(k).getConector().getPoint().x;
+                        y2 = vertice.getAristas().get(k).getConector().getPoint().y;
+                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+
+                        x1 = vertice.getAristas().get(k).getConector().getPoint().x;
+                        y1 = vertice.getAristas().get(k).getConector().getPoint().y;
+                        x2 = dest.getPoint().x;
+                        y2 = dest.getPoint().y;
+                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+                    }
+                }
+            }
+        };
+        ;
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
