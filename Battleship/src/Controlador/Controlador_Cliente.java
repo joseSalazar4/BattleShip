@@ -40,16 +40,17 @@ public class Controlador_Cliente implements Serializable{
     private boolean todosListos;
     private Oceano oceanoEnemigo;
     private boolean miTurno = false;
+    private boolean escudoAct = false;
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
     private boolean actualizarEnemigo = false;
     private Componente [][] matrizJugadorComp;
     private GUIAdquisicion pantallaAdquisicion;
+    private marcarCasillaEnemigo labelEnemigoSeleccionado;
     private Controlador_Adquisicion controladorAdquisicion;
     private ArrayList<Armeria> armerias = new ArrayList<>();
-    private marcarCasillaEnemigo labelEnemigoSeleccionado;
-    private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private ArrayList<ThreadProductoraAcero> threadsProductores = new ArrayList<>();
+    private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     
     
     public Controlador_Cliente(){ 
@@ -263,6 +264,10 @@ public class Controlador_Cliente implements Serializable{
         mostrarOceanoEnemigo();
     }
     
+    public void encenderEscudo(){
+        escudoAct = true;
+    }
+    
     public void enviarMiOceano() throws IOException{
         if(!miTurno){
             if(this.controladorAdquisicion.matrizComponentes == null) System.out.println("Matriz is NULL");
@@ -463,6 +468,14 @@ public class Controlador_Cliente implements Serializable{
 
     public JLabel[][] getMatrizJugadorLbel() {
         return matrizJugadorLbel;
+    }
+
+    public boolean isEscudoAct() {
+        return escudoAct;
+    }
+
+    public void setEscudoAct(boolean escudoAct) {
+        this.escudoAct = escudoAct;
     }
 
     public JLabel[][] getMatrizEnemigoLbel() {

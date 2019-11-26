@@ -62,6 +62,14 @@ public class Jugador {
         this.semaforoAcero = semaforoAcero;
     }
 
+    public int getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(int escudo) {
+        this.escudo = escudo;
+    }
+
     public String getNombre() {
         return nombre;
     }

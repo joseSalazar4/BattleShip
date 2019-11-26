@@ -24,7 +24,9 @@ public class Torpedo extends AbstractArma {
         super();
         costo = 500;
         nombre = "Torpedo";
+        escudo = this.controlador.getCliente().jugador.getEscudo();
     }
+    
     @Override
     //impacta una sola casilla (1x1). Fabricarlo tiene un costo de 500 Kg.
     public Oceano atacar() {

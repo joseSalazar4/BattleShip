@@ -15,12 +15,14 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 public abstract class AbstractArma implements Serializable{
-    int costo;
+    public int costo, escudo ;
     String nombre;
     Oceano oceano;
     Controlador_Cliente controlador;
     marcarCasillaEnemigo casilla;
     String jugador;
+    boolean escudoActivado = false;
+    
     
     public abstract Oceano atacar();
     

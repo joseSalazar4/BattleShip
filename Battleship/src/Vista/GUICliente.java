@@ -369,7 +369,7 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldMensajesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controlador 
+        controlador.encenderEscudo();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed

@@ -23,9 +23,15 @@ public class MultiShot extends AbstractArma  {
         super();
         costo = 1000;
         nombre = "Multishot";
+        escudo = this.controlador.getCliente().jugador.getEscudo();
     }
+    
+    
     @Override
         //Si impacta una casilla genera 4 tiros aleatorios más recursivamente. Por cada 
+    
+    
+    
     public Oceano atacar() {
         if(casilla != null && oceano != null){
             Point point = new Point(casilla.getJ(), casilla.getI());
