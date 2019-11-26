@@ -22,6 +22,7 @@ public class Armeria extends Componente{
         this.is2x2 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png"));
         
+        //Torpedo, Multi-Shot, Bomba, Trumpedo
         switch(tipoArmaProducir){
             case 1:
                 break;

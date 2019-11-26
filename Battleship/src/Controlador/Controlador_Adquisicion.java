@@ -125,18 +125,8 @@ import Cliente_Servidor.Cliente.Cliente;
     
     public void trazarConexiones(){
         this.pantalla.getPanelJugador().repaint();
-
-        /*for(Vertice vertice: this.grafo.getVertices()){        
-            for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
-                Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
-                Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
-                pintarConexion(orig.getPoint().x, orig.getPoint().y, vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y);
-                pintarConexion(vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y, dest.getPoint().x, dest.getPoint().y);
-            }
-        }*/
     }
-    
-    
+ 
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
         graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());

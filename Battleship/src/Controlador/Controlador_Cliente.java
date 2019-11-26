@@ -19,6 +19,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -33,6 +34,7 @@ public class Controlador_Cliente {
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
+    private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private Componente [][] matrizJugadorComp;
     private Oceano oceanoEnemigo;
@@ -149,6 +151,7 @@ public class Controlador_Cliente {
             else if(armaTemp.arma instanceof Bomba){
                 this.pantallaPrincipal.getjPanelBomba().setVisible(true);
             }
+            armerias.add(armaTemp);
         }
         else return;
     }
