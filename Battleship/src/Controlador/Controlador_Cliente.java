@@ -270,6 +270,7 @@ public class Controlador_Cliente {
                         }
                     }
                 }
+                else labelEnemigo.setIcon(null);
             }
         }
     }
@@ -279,33 +280,7 @@ public class Controlador_Cliente {
     public void esperarEnemigos() throws InterruptedException, IOException{
         cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
     }
-    
-    
-    
-    public void usarArma(){
-        String armaUtilizada = (String) pantallaPrincipal.getComboBoxArmas().getSelectedItem();
-        if(armaUtilizada == "Torpedo"){
-            
-        }
-        else if (armaUtilizada == "Trumpedo"){
-            
-        }
-        else if(armaUtilizada == "Bomba"){
-            
-        }
-        
-        else if(armaUtilizada == "Multi-shot"){
-            
-        }
-        
-        else if(armaUtilizada == "Barco"){
-            
-        }
-        else{
-            System.out.println("ERROR AL UTILIZAR ARMA");
-        }
-    }
-    
+       
     
     //Metodos del Chat
     
