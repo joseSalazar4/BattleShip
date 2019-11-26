@@ -7,12 +7,13 @@ package Componentes;
 
 import Componentes.Componente;
 import static Componentes.Componente.tipoComponente.FuenteEnergia;
+import java.io.Serializable;
 
 /**
  *
  * @author mikom
  */
-public class FuentePoder extends Componente {
+public class FuentePoder extends Componente implements Serializable{
     FuentePoder(){
         
         this.is2x2 = true;
