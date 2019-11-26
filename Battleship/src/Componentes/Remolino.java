@@ -8,13 +8,14 @@ package Componentes;
 import Componentes.Componente;
 import Componentes.Armeria;
 import static Componentes.Componente.tipoComponente.Remolino;
+import java.io.Serializable;
 
 /**
  *
  * @author mikom
  */
 
-public class Remolino extends Componente{
+public class Remolino extends Componente implements Serializable{
     
     Armeria armaUsada;
     

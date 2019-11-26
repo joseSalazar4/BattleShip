@@ -175,11 +175,13 @@ public class Controlador_Cliente {
     
     public void setOceanoEnemigo(Oceano oceano){
         this.oceanoEnemigo = oceano;
+        if(oceanoEnemigo == null) System.out.println("Oceano enemigo is NULL");
         //Pintar oceano enemigo
         mostrarOceanoEnemigo();
     }
     
     public void enviarMiOceano() throws IOException{
+        if(matrizJugadorComp == null) System.out.println("Matriz is NULL");
         Oceano miOceano = new Oceano();
         miOceano.grafo = this.controladorAdquisicion.grafo;
         miOceano.matrizComponentes = this.matrizJugadorComp;
@@ -187,9 +189,15 @@ public class Controlador_Cliente {
     }
     
     public void mostrarOceanoEnemigo(){
+        System.out.println("ENTRO A MOSTRAR OCEANO ENEMIGO");
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
-                Componente componenteEnemigo = oceanoEnemigo.matrizComponentes[i][j];
+                Componente componenteEnemigo = null;
+                try {
+                    componenteEnemigo = oceanoEnemigo.matrizComponentes[i][j];
+                } catch (Exception e) { System.out.println("EXCEPCION : " + e);
+                
+                }
                 JLabel labelEnemigo = this.matrizEnemigoLbel[i][j];
                 if(componenteEnemigo != null){
                     labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
@@ -197,8 +205,7 @@ public class Controlador_Cliente {
                         Conector conectorEnemigo = (Conector) componenteEnemigo;
                         if(conectorEnemigo.getFuente() != null){
                             labelEnemigo.setIcon(null); 
-                        }
-                                                       
+                        }                                
                     }
                     else{ //Si no es un conector
                         if(componenteEnemigo instanceof FuentePoder){

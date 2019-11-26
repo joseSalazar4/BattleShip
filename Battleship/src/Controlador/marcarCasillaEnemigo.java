@@ -19,7 +19,6 @@ public class marcarCasillaEnemigo implements MouseListener {
         this.controlador = controlador;
         this.label.addMouseListener(this);
         this.image = image;
-       // this.label.setOpaque(false);
 
         this.i = i;
         this.j = j;

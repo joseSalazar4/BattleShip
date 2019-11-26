@@ -5,10 +5,12 @@
  */
 package Componentes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author eadan97
  */
-public enum ItemCompra {
+public enum ItemCompra implements Serializable {
     FUENTEDEENERGIA, CONECTOR, MERCADO, MINA, ARMERIA, TEMPLO, TORPEDO, MULTISHOT, BOMBA, TRUMPEDO, REMOLINO, BARCO, ESPACIOMUERTO
 }

@@ -157,10 +157,12 @@ public class ThreadServidor extends Thread{
     public void recibirOceano(Oceano oceano) throws IOException{
         outputStream.writeInt(7);
         outputStream.writeObject(oceano);
+        outputStream.flush();
     }
     
     public void enviarOceano() throws IOException{
         outputStream.writeInt(8);
+        outputStream.flush();
     }
     
 
