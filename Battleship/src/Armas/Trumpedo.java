@@ -17,7 +17,7 @@ public class Trumpedo extends AbstractArma {
     public Trumpedo(){
         super();
         costo = 5000;
-        escudo = this.controlador.getCliente().jugador.getEscudo();
+
         nombre = "Trumpedo";
         
     }

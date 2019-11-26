@@ -23,7 +23,6 @@ public class MultiShot extends AbstractArma  {
         super();
         costo = 1000;
         nombre = "Multishot";
-        escudo = this.controlador.getCliente().jugador.getEscudo();
     }
     
     

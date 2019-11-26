@@ -41,6 +41,7 @@ public class Controlador_Cliente implements Serializable{
     private Oceano oceanoEnemigo;
     private boolean miTurno = false;
     private boolean escudoAct = false;
+    private int cantEscudo = 0;
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
     private boolean actualizarEnemigo = false;

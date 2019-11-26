@@ -13,7 +13,6 @@ public class Bomba extends AbstractArma {
         super();
         costo = 2000;
         nombre = "Bomba";
-        escudo = this.controlador.getCliente().jugador.getEscudo();
     }
     
     @Override
