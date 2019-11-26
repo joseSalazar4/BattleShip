@@ -100,13 +100,13 @@ private void rellenarMatriz(){
                         y1 = orig.getPoint().y;
                         x2 = vertice.getAristas().get(k).getConector().getPoint().x;
                         y2 = vertice.getAristas().get(k).getConector().getPoint().y;
-                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+                        g.drawLine((x1*tamanno)+8, (y1*tamanno)+8, (x2* tamanno)+8, (y2* tamanno)+8);
 
                         x1 = vertice.getAristas().get(k).getConector().getPoint().x;
                         y1 = vertice.getAristas().get(k).getConector().getPoint().y;
                         x2 = dest.getPoint().x;
                         y2 = dest.getPoint().y;
-                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+                        g.drawLine((x1*tamanno)+8, (y1*tamanno)+8, (x2* tamanno)+8, (y2* tamanno)+8);
                     }
                 }
             }

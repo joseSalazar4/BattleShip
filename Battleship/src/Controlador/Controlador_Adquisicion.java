@@ -25,6 +25,7 @@ import Componentes.Armeria;
 import static Componentes.Componente.tipoComponente.Mina;
 import Componentes.Mina;
 import Componentes.ThreadProductoraAcero;
+import java.awt.Point;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -196,7 +197,9 @@ import Componentes.ThreadProductoraAcero;
             matrizComponentes[numero][numero] = componenteNuevo;
             matrizComponentes[numero][numero+1] = componenteNuevo;
             matrizComponentes[numero+1][numero] = componenteNuevo;
-            matrizComponentes[numero+1][numero+1] = componenteNuevo;      
+            matrizComponentes[numero+1][numero+1] = componenteNuevo; 
+            
+            componenteNuevo.setPoint(new Point(numero,numero));
             
             pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
             pantalla.matrizLabels[numero+1][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Fuente.png")));
@@ -219,14 +222,19 @@ import Componentes.ThreadProductoraAcero;
             for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         }
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = componenteNuevo;        
+        matrizComponentes[numero][numero] = componenteNuevo; 
+        componenteNuevo.setPoint(new Point(numero,numero));
    
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
+        
+        
         while(pantalla.matrizLabels[numero][numero].getIcon() != null) {
             for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         }
+        
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
         matrizComponentes[numero][numero] = componenteNuevo;        
+        componenteNuevo.setPoint(new Point(numero,numero));
     }
     
     public void colocarMercado(){
@@ -244,6 +252,9 @@ import Componentes.ThreadProductoraAcero;
                     
                 matrizComponentes[numero][numero] = componenteNuevo;
                 matrizComponentes[numero][numero+1] = componenteNuevo;
+                
+                componenteNuevo.setPoint(new Point(numero,numero));
+                
                 pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
                 pantalla.matrizLabels[numero][numero+1].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Mercado.png")));
         }
