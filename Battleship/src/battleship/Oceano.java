@@ -17,4 +17,5 @@ public class Oceano implements Serializable {
     public String enemigo;
     public Grafo grafo;
     public Componente[][] matrizComponentes;
+    public String historialAtaque = "";
 }

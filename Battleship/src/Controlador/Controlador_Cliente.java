@@ -21,6 +21,7 @@ import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
+import java.io.Serializable;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultCaret;
 
-public class Controlador_Cliente {
+public class Controlador_Cliente implements Serializable{
     private Cliente cliente;
     private boolean todosListos;
     private boolean miTurno = false;
@@ -41,7 +42,6 @@ public class Controlador_Cliente {
     private Controlador_Adquisicion controladorAdquisicion;
     private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
-    private Componente [][] matrizJugadorComp;
     private Oceano oceanoEnemigo;
     
     private marcarCasillaEnemigo labelEnemigoSeleccionado;
@@ -177,9 +177,9 @@ public class Controlador_Cliente {
     public void cargarMiOceano(){
         for(int i= 0; i<20; i++){
             for(int j=0; j<20; j++){
-                if(this.matrizJugadorComp[i][j] != null){
-                    habilitarPanelArmas(matrizJugadorComp[i][j]);
-                    this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
+                if(this.controladorAdquisicion.matrizComponentes[i][j] != null){
+                    habilitarPanelArmas(controladorAdquisicion.matrizComponentes[i][j]);
+                    this.matrizJugadorLbel[i][j].setIcon(this.controladorAdquisicion.matrizComponentes[i][j].getImagen());
                 }
             }
         }
@@ -237,10 +237,11 @@ public class Controlador_Cliente {
     
     public void enviarMiOceano() throws IOException{
         if(!miTurno){
-            if(matrizJugadorComp == null) System.out.println("Matriz is NULL");
+            if(this.controladorAdquisicion.matrizComponentes == null) System.out.println("Matriz is NULL");
             Oceano miOceano = new Oceano();
             miOceano.grafo = this.controladorAdquisicion.grafo;
-            miOceano.matrizComponentes = this.matrizJugadorComp;
+            this.controladorAdquisicion.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
+            miOceano.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
             miOceano.enemigo = this.cliente.jugador.getNombre();
             if(miOceano.matrizComponentes != null){
                 cliente.enviarMiOceano(miOceano);
@@ -248,8 +249,6 @@ public class Controlador_Cliente {
                 System.out.println(miOceano.grafo); 
             }  
         }
-
-        
     }
     
     public void mostrarOceanoEnemigo(){
@@ -306,7 +305,7 @@ public class Controlador_Cliente {
     }
     
     public void actualizarMiOceano(Oceano oceano){
-        this.matrizJugadorComp = oceano.matrizComponentes;
+        this.controladorAdquisicion.matrizComponentes = oceano.matrizComponentes;
         this.controladorAdquisicion.grafo = oceano.grafo;
     }
     
@@ -358,10 +357,12 @@ public class Controlador_Cliente {
     }
     
     public void finalizarTurno() throws IOException{
-        this.miTurno = false;
-        this.actualizarEnemigo = false;
+        if(miTurno){
+           this.miTurno = false;
         if(actualizarEnemigo) this.enviarActualizacion();
         cliente.finalizarTurno();
+        this.actualizarEnemigo = false; 
+        }  
     }
        
     
@@ -371,8 +372,9 @@ public class Controlador_Cliente {
         matrizJugadorLbel = matrizN;
     
     }
+    
     public void setMatrizJugadorComp(Componente [][] matrizN){
-        matrizJugadorComp = matrizN;
+        controladorAdquisicion.matrizComponentes = matrizN;
     }
 
     public boolean isTodosListos() {
@@ -440,7 +442,7 @@ public class Controlador_Cliente {
     }
 
     public Componente[][] getMatrizJugadorComp() {
-        return matrizJugadorComp;
+        return controladorAdquisicion.matrizComponentes;
     }
 
     public Oceano getOceanoEnemigo() {

@@ -5,20 +5,23 @@
  */
 package Armas;
 
+import battleship.Oceano;
+
 /**
  *
  * @author mikom
  */
 public class Bomba extends AbstractArma {
 
-    public Bomba(Controlador.Controlador_Cliente controlador){
-        super(controlador);
+    public Bomba(){
+        super();
         costo = 2000;
         nombre = "Bomba";
     }
     
     @Override
-    public void atacar() {
+    public Oceano atacar() {
         
+        return this.oceano;
     }    
 }

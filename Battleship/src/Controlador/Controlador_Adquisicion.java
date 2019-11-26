@@ -65,7 +65,6 @@ import Componentes.Armeria;
        
     public void iniciarPartida() throws InterruptedException{
         pantalla.getjLabelCarga().setVisible(true);
-        controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
         pantalla.getBtnConectar().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
@@ -136,13 +135,6 @@ import Componentes.Armeria;
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
             System.out.println(extra);
-            if(item == ItemCompra.ARMERIA){
-                Armeria armeriaAux = (Armeria) componenteAux;
-                armeriaAux.setControlador(controladorCliente);
-                System.out.println(armeriaAux.arma);
-                armeriaAux.arma.setControlador(controladorCliente);
-                componenteAux = armeriaAux;
-            }
         
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;

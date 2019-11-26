@@ -13,7 +13,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Cliente {
+public class Cliente implements Serializable{
     public Jugador jugador;
     public Controlador.Controlador_Cliente controlador;
     
@@ -92,6 +92,7 @@ public class Cliente {
     }
     
     public void actualizarDatos(Oceano oceano) throws IOException{
+        System.out.println("Envie la actualizacion");
         outputStream.writeInt(9);
         outputStream.writeObject(oceano);
         outputStream.flush();

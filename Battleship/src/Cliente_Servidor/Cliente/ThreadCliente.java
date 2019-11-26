@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ThreadCliente extends Thread{
+public class ThreadCliente extends Thread implements Serializable{
     Cliente cliente;
     ObjectInputStream inputStream;
     boolean activo = true;

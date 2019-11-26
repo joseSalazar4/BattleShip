@@ -5,6 +5,7 @@ import Componentes.Componente;
 import Componentes.Conector;
 import Componentes.EspacioMuerto;
 import Controlador.Controlador_Cliente;
+import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 import java.awt.Point;
 import java.io.Serializable;
@@ -12,50 +13,44 @@ import java.io.Serializable;
 public abstract class AbstractArma implements Serializable{
     int costo;
     String nombre;
-    Controlador_Cliente controlador;
+    Oceano oceano;
+    marcarCasillaEnemigo casilla;
+    String jugador;
     
-    public AbstractArma(Controlador_Cliente controlador){
-        super();
-        this.controlador = controlador;
-    }
-    
-    public abstract void atacar();
+    public abstract Oceano atacar();
     
     public boolean golpear(Componente componente, Oceano oceano, Point point){
         if(componente != null){
             if(componente instanceof Conector){
                 oceano.grafo.removeArista(componente.getPoint());
                 destruirComponente(componente);
-                controlador.enviarMensajeJuego(
-                    controlador.getCliente().jugador.getNombre() + " destruyó un conector de " 
-                    + controlador.getOceanoEnemigo().enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre);
+                oceano.historialAtaque =
+                    jugador + " destruyó un conector de " 
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
             }
             else if(componente.is1x1){
                 oceano.grafo.removeVertice(componente.getVertice());
                 destruirComponente(componente);
-                controlador.enviarMensajeJuego(
-                    controlador.getCliente().jugador.getNombre() + " destruyó un "+ componente.getNombre() +" de " 
-                    + controlador.getOceanoEnemigo().enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre);
+                oceano.historialAtaque =
+                    jugador + " destruyó un " + componente.getNombre() + " de "
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
 
             }
             else if(componente.is2x2 || !componente.is1x1){
                 for(Point golpe : componente.getGolpes()){
                     if(golpe.x == point.x && golpe.y == point.y){
-                       controlador.enviarMensajeJuego(
-                            controlador.getCliente().jugador.getNombre() + " volvio a golpear la "+ componente.getNombre() +" del oceano de " 
-                            + controlador.getOceanoEnemigo().enemigo 
-                            + " en la posición " + point.x  + "," + point.y + " usando " + nombre); 
+                      oceano.historialAtaque =
+                        jugador + " volvió a golpear " + componente.getNombre() + " del oceano de"
+                        + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre; 
                        return false;
                     }
                 }
                 componente.getGolpes().add(point);
                 
-                controlador.enviarMensajeJuego(
-                    controlador.getCliente().jugador.getNombre() + " golpeó una "+ componente.getNombre() +" del oceano de " 
-                    + controlador.getOceanoEnemigo().enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre);
+                oceano.historialAtaque = 
+                    jugador + " golpeó una "+ componente.getNombre() +" del oceano de " 
+                    + oceano.enemigo 
+                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
                 
                 int ctdGolpes = 2;
                 if(componente.is2x2) ctdGolpes = 4;
@@ -64,17 +59,17 @@ public abstract class AbstractArma implements Serializable{
                     oceano.grafo.removeVertice(componente.getVertice());
                     destruirComponente(componente);    
                     
-                    controlador.enviarMensajeJuego(
-                    controlador.getCliente().jugador.getNombre() + " destruyó una "+ componente.getNombre() +" del oceano de " 
-                    + controlador.getOceanoEnemigo().enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre);
+                    oceano.historialAtaque = 
+                    jugador + " destruyó una "+ componente.getNombre() +" del oceano de " 
+                    + oceano.enemigo 
+                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
                 }
             }
         }
         else{
-            controlador.enviarMensajeJuego(
-                    controlador.getCliente().jugador.getNombre() + " fallo un disparo usando " + nombre + " al oceano de " 
-                    + controlador.getOceanoEnemigo().enemigo);
+            oceano.historialAtaque = 
+                    jugador + " falló un disparo en el oceano de " 
+                    + oceano.enemigo;
             return false;
         }
         
@@ -85,24 +80,45 @@ public abstract class AbstractArma implements Serializable{
     }
  
     public void destruirComponente(Componente componente){
-        this.controlador.getOceanoEnemigo().matrizComponentes[componente.getPoint().y][componente.getPoint().x] = new EspacioMuerto();
+        this.oceano.matrizComponentes[componente.getPoint().y][componente.getPoint().x] = new EspacioMuerto();
     }
     
     public boolean cobrarAcero(){
+        //Implementar
         return true;
-        
     }
 
-    public Controlador_Cliente getControlador() {
-        return controlador;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setControlador(Controlador_Cliente controlador) {
-        this.controlador = controlador;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Oceano getOceano() {
+        return oceano;
+    }
+
+    public void setOceano(Oceano oceano) {
+        this.oceano = oceano;
+    }
+
+    public String getJugador() {
+        return jugador;
+    }
+
+    public void setJugador(String jugador) {
+        this.jugador = jugador;
+    }
+
+    public marcarCasillaEnemigo getCasilla() {
+        return casilla;
+    }
+
+    public void setCasilla(marcarCasillaEnemigo casilla) {
+        this.casilla = casilla;
     }
     
     
-    
-    
-
 }

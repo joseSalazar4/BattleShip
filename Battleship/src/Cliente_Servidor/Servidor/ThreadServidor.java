@@ -101,6 +101,7 @@ public class ThreadServidor extends Thread{
                     case 9:
                         Oceano oceanoActualizacion = (Oceano) inputStream.readObject();
                         for(ThreadServidor thread : servidor.getClientes()){
+                            System.out.println("Actualizacion enviada a" + oceanoActualizacion.enemigo);
                             if(thread.nickName.equals(oceanoActualizacion.enemigo)) 
                                 thread.actualizarMiOceano(oceanoActualizacion);
                         }
@@ -163,17 +164,22 @@ public class ThreadServidor extends Thread{
     //Busqueda de Oceano Enemigo
     
     public void recibirOceano(Oceano oceano) throws IOException{
+        System.out.println(nickName + " recibiendo oceano ");
+        outputStream.flush();
         outputStream.writeInt(7);
         outputStream.writeObject(oceano);
         outputStream.flush();
     }
     
     public void enviarOceano() throws IOException{
+        System.out.println(nickName + " enviando oceano a otro jugador");
+        outputStream.flush();
         outputStream.writeInt(8);
         outputStream.flush();
     }
     
     public void actualizarMiOceano(Oceano oceano) throws IOException{
+        System.out.println(nickName + " actualizando su oceano ");
         outputStream.writeInt(9);
         outputStream.writeObject(oceano);
         outputStream.flush();

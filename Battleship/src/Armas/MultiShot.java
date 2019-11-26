@@ -9,6 +9,7 @@ import Componentes.Componente;
 import Componentes.EspacioMuerto;
 import Controlador.Controlador_Cliente;
 import Controlador.marcarCasillaEnemigo;
+import battleship.Oceano;
 import java.awt.Point;
 import java.util.Random;
 
@@ -18,42 +19,42 @@ import java.util.Random;
  */
 public class MultiShot extends AbstractArma  {
     Random random = new Random();
-    public MultiShot(Controlador_Cliente controlador){
-        super(controlador);
+    public MultiShot(){
+        super();
         costo = 1000;
         nombre = "Multishot";
     }
     @Override
         //Si impacta una casilla genera 4 tiros aleatorios más recursivamente. Por cada 
-    public void atacar() {
-        marcarCasillaEnemigo casilla = controlador.getLabelEnemigoSeleccionado();
-        if(casilla != null && controlador.getOceanoEnemigo() != null){
+    public Oceano atacar() {
+        if(casilla != null && oceano != null){
             Point point = new Point(casilla.getJ(), casilla.getI());
-            Componente componente = controlador.getOceanoEnemigo().matrizComponentes[point.y][point.x];
+            Componente componente = oceano.matrizComponentes[point.y][point.x];
             if(!(componente instanceof EspacioMuerto)){
                 if(cobrarAcero()){
-                    boolean golpe = golpear(componente, controlador.getOceanoEnemigo(), point);
+                    boolean golpe = golpear(componente, oceano, point);
                     if(golpe){
-                        controlador.enviarMensajeJuego(
-                        controlador.getCliente().jugador.getNombre() + " obtuvo CUATRO torpedos"); 
+                        oceano.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
                         ataqueMultiShot();
                     }
                     
                 }
-                else controlador.recibirMensajeJuego("ACERO INSUFICIENTE");
+                else oceano.historialAtaque += "\n ACERO INSUFICIENTE";
                 
             }
-            else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA");
+            else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
         }
-        else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA");
+        else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA";
+        
+        return oceano;
     }
     
     public void ataqueMultiShot(){
         for(int i = 0; i<4; i++){
             Point pointRandom = new Point(random.nextInt(19), random.nextInt(19));
-            Componente componente = controlador.getOceanoEnemigo().matrizComponentes[pointRandom.y][pointRandom.x];
+            Componente componente = oceano.matrizComponentes[pointRandom.y][pointRandom.x];
             if(!(componente instanceof EspacioMuerto)){
-             golpear(componente, controlador.getOceanoEnemigo(), pointRandom);     
+             golpear(componente, oceano, pointRandom);     
             } 
         }
     } 

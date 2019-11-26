@@ -9,6 +9,7 @@ import Componentes.Componente;
 import Componentes.EspacioMuerto;
 import Controlador.Controlador_Cliente;
 import Controlador.marcarCasillaEnemigo;
+import battleship.Oceano;
 import java.awt.Point;
 
 /**
@@ -17,26 +18,27 @@ import java.awt.Point;
  */
 public class Torpedo extends AbstractArma {
 
-    public Torpedo(Controlador_Cliente controlador){
-        super(controlador);
+    public Torpedo(){
+        super();
         costo = 500;
         nombre = "Torpedo";
     }
     @Override
     //impacta una sola casilla (1x1). Fabricarlo tiene un costo de 500 Kg.
-    public void atacar() {
-        marcarCasillaEnemigo casilla = controlador.getLabelEnemigoSeleccionado();
-        if(casilla != null && controlador.getOceanoEnemigo() != null){
+    public Oceano atacar() {
+        if(casilla != null && oceano != null){
             Point point = new Point(casilla.getJ(), casilla.getI());
-            Componente componente = controlador.getOceanoEnemigo().matrizComponentes[point.y][point.x];
+            Componente componente = oceano.matrizComponentes[point.y][point.x];
             if(!(componente instanceof EspacioMuerto)){
-                if(cobrarAcero()) golpear(componente, controlador.getOceanoEnemigo(), point);
-                else controlador.recibirMensajeJuego("ACERO INSUFICIENTE");
+                if(cobrarAcero()) golpear(componente, oceano, point);
+                else oceano.historialAtaque += "\n ACERO INSUFICIENTE";
                 
             }
-            else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA");
+            else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
         }
-        else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA");
+        else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA";
+        
+        return oceano;
     }
     
 }

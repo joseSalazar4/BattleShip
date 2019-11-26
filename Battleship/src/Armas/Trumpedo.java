@@ -9,36 +9,33 @@ import Componentes.Componente;
 import Componentes.EspacioMuerto;
 import Controlador.Controlador_Cliente;
 import Controlador.marcarCasillaEnemigo;
+import battleship.Oceano;
 import java.awt.Point;
 
-/**
- *
- * @author mikom
- */
 public class Trumpedo extends AbstractArma {
 
-    public Trumpedo(Controlador_Cliente controlador){
-        super(controlador);
+    public Trumpedo(){
+        super();
         costo = 5000;
         nombre = "Trumpedo";
     }
-    public void atacar() {
+    public Oceano atacar() {
         if(cobrarAcero()){
             
-            marcarCasillaEnemigo casilla = controlador.getLabelEnemigoSeleccionado();
-            if(casilla != null && controlador.getOceanoEnemigo() != null){
+            if(casilla != null && oceano != null){
                 Point point = new Point(casilla.getJ(), casilla.getI());
-                Componente componente = controlador.getOceanoEnemigo().matrizComponentes[point.y][point.x];
+                Componente componente = oceano.matrizComponentes[point.y][point.x];
                 if(!(componente instanceof EspacioMuerto)){
-                    golpear(componente, controlador.getOceanoEnemigo(), point);   
+                    golpear(componente, oceano, point);   
                 }
-                else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA");
+                else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
+                
             }
-            else controlador.recibirMensajeJuego("SELECCIONE UNA CASILLA");
-        
-            
+            else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
         }
-        else controlador.recibirMensajeJuego("ACERO INSUFICIENTE");
-    }
+        else oceano.historialAtaque += "\n ACERO INSUFICIENTE"; 
+        
+        return oceano;
+    } 
     
 }
