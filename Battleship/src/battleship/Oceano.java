@@ -5,6 +5,7 @@
  */
 package battleship;
 
+import Cliente.Jugador;
 import Componentes.Componente;
 import Grafo.Grafo;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 public class Oceano implements Serializable {
     public String enemigo;
     public Grafo grafo;
+    public Jugador jugador;
     public Componente[][] matrizComponentes;
     public String historialAtaque = "";
 }

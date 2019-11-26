@@ -14,7 +14,7 @@ import java.util.concurrent.Semaphore;
 public class Jugador {
     //Usar atributos privados y programar los getter && setter de los atributos que lo ocupen
     
-    private int dinero, acero, escudo ;
+    private int dinero, acero, escudo  ;
     private String nombre;
     private boolean perdio;
     private Semaphore semaforoAcero;
@@ -23,11 +23,7 @@ public class Jugador {
     
     public Jugador(String nombreJugador){
         dinero = 200000;
-        
-        int m = 0;
-        for(int i=0;i<10;i++) m = (int) (Math.random() * 4) + 2;
-        
-        escudo  = m;
+       
         acero = 0 ;
         perdio = false;
         enemigos = null;

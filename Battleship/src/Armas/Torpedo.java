@@ -7,8 +7,6 @@ package Armas;
 
 import Componentes.Componente;
 import Componentes.EspacioMuerto;
-import Controlador.Controlador_Cliente;
-import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 import java.awt.Point;
 import java.util.logging.Level;
@@ -24,7 +22,6 @@ public class Torpedo extends AbstractArma {
         super();
         costo = 500;
         nombre = "Torpedo";
-        escudo = this.controlador.getCliente().jugador.getEscudo();
     }
     
     @Override
