@@ -7,8 +7,6 @@ package Armas;
 
 import Componentes.Componente;
 import Componentes.EspacioMuerto;
-import Controlador.Controlador_Cliente;
-import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 import java.awt.Point;
 import java.util.Random;

@@ -9,6 +9,10 @@ import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 import java.awt.Point;
 import java.io.Serializable;
+import static java.lang.Thread.sleep;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
+import javax.swing.JOptionPane;
 
 public abstract class AbstractArma implements Serializable{
     int costo;
@@ -84,9 +88,28 @@ public abstract class AbstractArma implements Serializable{
         this.oceano.matrizComponentes[componente.getPoint().y][componente.getPoint().x] = new EspacioMuerto();
     }
     
-    public boolean cobrarAcero(){
-        //Implementar
-        return true;
+    public boolean cobrarAcero() throws InterruptedException{
+        
+        Semaphore semaf = controlador.getCliente().jugador.getSemaforoAcero();
+        sleep(100);
+        semaf.tryAcquire(8, TimeUnit.SECONDS);
+        
+        int t = controlador.getCliente().jugador.getAcero();
+        
+        if(t>=costo){
+            controlador.getCliente().jugador.setAcero(t-=costo);
+            semaf.release();
+            controlador.cargarRecursos();
+            return true;
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "No tiene suficiente Acero!\nIntentelo de nuevo.        ");
+            semaf.release();
+            controlador.cargarRecursos();
+            return false;
+        }
+
     }
 
     public String getNombre() {

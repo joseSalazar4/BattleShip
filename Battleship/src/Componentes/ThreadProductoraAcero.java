@@ -35,8 +35,7 @@ public class ThreadProductoraAcero extends Thread{
         while(true){
             while(activo){
                 try {
-                    //sleep(minaProductora.tiempo);  PONER CUANDO SIRVA
-                    sleep(3000);
+                    sleep(minaProductora.tiempo);  
                     semaf.tryAcquire(2, TimeUnit.SECONDS);
 
                     int t = controlador.getCliente().jugador.getAcero();

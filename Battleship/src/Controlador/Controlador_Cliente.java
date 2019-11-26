@@ -198,7 +198,7 @@ public class Controlador_Cliente implements Serializable{
         for(ThreadProductoraAcero thread : this.threadsProductores) thread.setActivo(false);
     }
     
-    public void reanudarPantallaPrincipal(){
+    public void reanudarPantallaPrincipal() throws InterruptedException{
         this.pantallaAdquisicion.getjLabelCarga().setVisible(false);
         try {
             sleep(1000);
@@ -217,22 +217,10 @@ public class Controlador_Cliente implements Serializable{
     }
         
     public void comprarArma(int precio) throws InterruptedException{
-        Semaphore semaf = cliente.jugador.getSemaforoAcero();
-        sleep(100);
-        semaf.tryAcquire(8, TimeUnit.SECONDS);
         
-        int t = cliente.jugador.getAcero();
-        if(t>precio){
-            cliente.jugador.setAcero(t-=precio);
-        }
-        else JOptionPane.showMessageDialog(null, "No tiene suficiente Acero!\nIntentelo de nuevo.        ");
-        
-        cargarRecursos();
-
-        semaf.release();
                     
 }
-    public void reanudarPantallaAdquisicion(){
+    public void reanudarPantallaAdquisicion() throws InterruptedException{
         this.controladorAdquisicion.actualizarMatrizComponentes();
         this.pantallaAdquisicion.setVisible(true);
         this.pantallaPrincipal.setVisible(false);
@@ -243,9 +231,13 @@ public class Controlador_Cliente implements Serializable{
     
     //METODOS DE PEDIR DATOS DEL ENEMIGO
     
-    public void cargarRecursos(){
+    public void cargarRecursos() throws InterruptedException{
+        Semaphore semaf = cliente.jugador.getSemaforoAcero();
+        sleep(100);
+        semaf.tryAcquire(8, TimeUnit.SECONDS);
         this.pantallaPrincipal.getjLabelAcero().setText("Acero: "+this.cliente.jugador.getAcero());
         this.pantallaPrincipal.getjLabelDinero().setText("Dinero: "+this.cliente.jugador.getDinero());        
+        semaf.release();
     }
     
     public void buscarOceanoEnemigo() throws IOException {
