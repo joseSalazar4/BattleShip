@@ -53,7 +53,7 @@ public class ThreadCliente extends Thread{
                     case 5: //Comienza el turno de este Jugador
                         cliente.controlador.empezarTurno();
                         break;
-                    case 6:
+                    case 6: //
                         cliente.controlador.reanudarPantallaAdquisicion();
                         break;
                     case 7:
@@ -62,6 +62,11 @@ public class ThreadCliente extends Thread{
                         break;
                     case 8:
                         cliente.controlador.enviarMiOceano();
+                        break;
+                    
+                    case 9: //Recibe la actualizacion de Mi oceano
+                        Oceano oceanoActualizacion = (Oceano) inputStream.readObject();
+                        cliente.controlador.actualizarMiOceano(oceanoActualizacion);
                         break;
                         
                         

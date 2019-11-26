@@ -5,13 +5,16 @@
  */
 package Armas;
 
+import Controlador.Controlador_Cliente;
+
 /**
  *
  * @author mikom
  */
 public class Trumpedo extends AbstractArma {
 
-    public Trumpedo(){
+    public Trumpedo(Controlador_Cliente controlador){
+        super(controlador);
         costo = 5000;
         nombre = "Trumpedo";
     }

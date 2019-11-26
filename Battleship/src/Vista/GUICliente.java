@@ -115,6 +115,7 @@ public class GUICliente extends javax.swing.JFrame {
         jComboBoxEnemigos = new javax.swing.JComboBox();
         jPanelEnemigo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        btnFinalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
@@ -211,7 +212,7 @@ public class GUICliente extends javax.swing.JFrame {
                 jCheckBoxComprarActionPerformed(evt);
             }
         });
-        getContentPane().add(jCheckBoxComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 690, -1, -1));
+        getContentPane().add(jCheckBoxComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -356,6 +357,14 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
 
+        btnFinalizar.setText("Finalizar");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 710, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -396,12 +405,21 @@ public class GUICliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBoxEnemigosActionPerformed
 
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        try {
+            controlador.finalizarTurno();
+        } catch (IOException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnFinalizarActionPerformed
+
     /**
      * @param args the command line arguments
      */
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

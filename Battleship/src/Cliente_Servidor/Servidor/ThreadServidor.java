@@ -98,6 +98,14 @@ public class ThreadServidor extends Thread{
                         }
                     break;
                         
+                    case 9:
+                        Oceano oceanoActualizacion = (Oceano) inputStream.readObject();
+                        for(ThreadServidor thread : servidor.getClientes()){
+                            if(thread.nickName.equals(oceanoActualizacion.enemigo)) 
+                                thread.actualizarMiOceano(oceanoActualizacion);
+                        }
+                    break;
+                        
                         
                     // Opcion es el metodo que quiere que el servidor haga 
                 }
@@ -162,6 +170,12 @@ public class ThreadServidor extends Thread{
     
     public void enviarOceano() throws IOException{
         outputStream.writeInt(8);
+        outputStream.flush();
+    }
+    
+    public void actualizarMiOceano(Oceano oceano) throws IOException{
+        outputStream.writeInt(9);
+        outputStream.writeObject(oceano);
         outputStream.flush();
     }
     

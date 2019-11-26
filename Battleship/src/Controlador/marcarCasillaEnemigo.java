@@ -29,9 +29,9 @@ public class marcarCasillaEnemigo implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         System.out.println("MOUSE CLICKED"); 
         if(controlador.getLabelEnemigoSeleccionado() != null){
-            controlador.getLabelEnemigoSeleccionado().setIcon(controlador.getImageAnterior());
+            controlador.getLabelEnemigoSeleccionado().getLabel().setIcon(controlador.getImageAnterior());
         }
-        controlador.setLabelEnemigoSeleccionado(label);
+        controlador.setLabelEnemigoSeleccionado(this);
         controlador.setImageAnterior((ImageIcon) label.getIcon());
         this.label.setIcon(image);
         
@@ -48,5 +48,39 @@ public class marcarCasillaEnemigo implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e){}
+
+    public JLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(JLabel label) {
+        this.label = label;
+    }
+
+    public Controlador_Cliente getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador_Cliente controlador) {
+        this.controlador = controlador;
+    }
+
+    public int getI() {
+        return i;
+    }
+
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    public int getJ() {
+        return j;
+    }
+
+    public void setJ(int j) {
+        this.j = j;
+    }
+    
+    
     
 }

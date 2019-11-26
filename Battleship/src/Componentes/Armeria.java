@@ -8,6 +8,7 @@ package Componentes;
 import Armas.AbstractArma;
 import Armas.*;
 import static Componentes.Componente.tipoComponente.Armeria;
+import Controlador.Controlador_Cliente;
 
 /**
  *
@@ -17,6 +18,7 @@ import static Componentes.Componente.tipoComponente.Armeria;
 //USAR FACTORY METHOD
 public class Armeria extends Componente{
     public AbstractArma arma;
+    Controlador_Cliente controlador;
     public Armeria(int tipoArmaProducir){
         this.tipoComponente = Armeria;
         this.is1x1 = false;
@@ -26,16 +28,16 @@ public class Armeria extends Componente{
         //Torpedo, Multi-Shot, Bomba, Trumpedo
         switch(tipoArmaProducir){
             case 1:
-                arma = new Torpedo();
+                arma = new Torpedo(controlador);
                 break;
             case 2:
-                arma = new MultiShot();
+                arma = new MultiShot(controlador);
                 break;
             case 3:
-                arma = new Bomba();
+                arma = new Bomba(controlador);
                 break;
             case 4:
-                arma = new Trumpedo();
+                arma = new Trumpedo(controlador);
                 break;
         }
         
@@ -44,4 +46,14 @@ public class Armeria extends Componente{
     public void setTipoComponente(tipoComponente comp){
         this.tipoComponente = comp;
     }
+
+    public Controlador_Cliente getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(Controlador_Cliente controlador) {
+        this.controlador = controlador;
+    }
+    
+    
 }

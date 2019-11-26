@@ -13,6 +13,7 @@ public class Componente implements Cloneable, Serializable{
     public boolean isVertical=false, is1x1, is2x2;  
     public enum tipoComponente implements Serializable {Armeria,Mina, Templo, Mercado, Conector, FuenteEnergia, Remolino}
     tipoComponente tipoComponente;
+    boolean muerto = false;
     Point point = new Point();
     ArrayList<Point> golpes;
     ImageIcon imagen;
@@ -21,7 +22,7 @@ public class Componente implements Cloneable, Serializable{
             
     public Componente(){
         nombre = "";
-        golpes = new ArrayList<Point>();
+        golpes = new ArrayList<>();
     }
     
     public void setTipoComponente(tipoComponente comp){
@@ -87,5 +88,22 @@ public class Componente implements Cloneable, Serializable{
     public void setPoint(Point point) {
         this.point = point;
     }
-  
+
+    public ArrayList<Point> getGolpes() {
+        return golpes;
+    }
+
+    public void setGolpes(ArrayList<Point> golpes) {
+        this.golpes = golpes;
+    }
+
+    public boolean isMuerto() {
+        return muerto;
+    }
+
+    public void setMuerto(boolean muerto) {
+        this.muerto = muerto;
+    }
+    
+    
 }

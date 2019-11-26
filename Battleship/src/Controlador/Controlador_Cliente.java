@@ -12,6 +12,7 @@ import Vista.GUIStartUp;
 import Componentes.Componente;
 import static Componentes.Componente.tipoComponente.Armeria;
 import Componentes.Conector;
+import Componentes.EspacioMuerto;
 import Componentes.FuentePoder;
 import Componentes.Remolino;
 import Grafo.Arista;
@@ -32,6 +33,7 @@ public class Controlador_Cliente {
     private Cliente cliente;
     private boolean todosListos;
     private boolean miTurno = false;
+    private boolean actualizarEnemigo = false;
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
@@ -41,7 +43,7 @@ public class Controlador_Cliente {
     private Componente [][] matrizJugadorComp;
     private Oceano oceanoEnemigo;
     
-    private JLabel labelEnemigoSeleccionado;
+    private marcarCasillaEnemigo labelEnemigoSeleccionado;
     ImageIcon imageAnterior;
 
     
@@ -187,6 +189,7 @@ public class Controlador_Cliente {
     }
         
     public void reanudarPantallaAdquisicion(){
+        this.controladorAdquisicion.actualizarMatrizComponentes();
         this.pantallaAdquisicion.setVisible(true);
         this.pantallaPrincipal.setVisible(false);
         
@@ -205,15 +208,16 @@ public class Controlador_Cliente {
     
     public void setOceanoEnemigo(Oceano oceano){
         this.oceanoEnemigo = oceano;
+        this.actualizarEnemigo = true;
         if(oceanoEnemigo == null) System.out.println("Oceano enemigo is NULL");
         //Pintar oceano enemigo
-        oceanoEnemigo.grafo = (Grafo) oceanoEnemigo.grafo;
-        for(Vertice vertice : oceanoEnemigo.grafo.getVertices()){
-           vertice = (Vertice) vertice;
-           for(Arista arista : vertice.getAristas()){
-               arista = (Arista) arista;
-           }
-        }
+//        oceanoEnemigo.grafo = (Grafo) oceanoEnemigo.grafo;
+//        for(Vertice vertice : oceanoEnemigo.grafo.getVertices()){
+//           vertice = (Vertice) vertice;
+//           for(Arista arista : vertice.getAristas()){
+//               arista = (Arista) arista;
+//           }
+//        }
         mostrarOceanoEnemigo();
     }
     
@@ -223,6 +227,7 @@ public class Controlador_Cliente {
             Oceano miOceano = new Oceano();
             miOceano.grafo = this.controladorAdquisicion.grafo;
             miOceano.matrizComponentes = this.matrizJugadorComp;
+            miOceano.enemigo = this.cliente.jugador.getNombre();
             if(miOceano.matrizComponentes != null){
                 cliente.enviarMiOceano(miOceano);
                 System.out.println("ENVIE MI GRAFO: ");
@@ -238,13 +243,19 @@ public class Controlador_Cliente {
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 Componente componenteEnemigo = null;
+                JLabel labelEnemigo = this.matrizEnemigoLbel[i][j];
                 try {
                     componenteEnemigo = oceanoEnemigo.matrizComponentes[i][j];
+                    if(componenteEnemigo.isMuerto()){
+                        componenteEnemigo = new EspacioMuerto();
+                        labelEnemigo.setIcon(componenteEnemigo.getImagen());
+                        return;
+                    }
                 } catch (Exception e) {}
-                JLabel labelEnemigo = this.matrizEnemigoLbel[i][j];
                 if(componenteEnemigo != null){
                     labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
-                    if(componenteEnemigo instanceof Conector){
+                    if(componenteEnemigo instanceof EspacioMuerto) return;
+                    else if(componenteEnemigo instanceof Conector){
                         Conector conectorEnemigo = (Conector) componenteEnemigo;
                         if(conectorEnemigo.getFuente() != null){
                            labelEnemigo.setIcon(null); 
@@ -275,6 +286,16 @@ public class Controlador_Cliente {
         }
     }
   
+    //Enviar Actualizacion de Datos
+    public void enviarActualizacion() throws IOException{
+        cliente.actualizarDatos(oceanoEnemigo);
+    }
+    
+    public void actualizarMiOceano(Oceano oceano){
+        this.matrizJugadorComp = oceano.matrizComponentes;
+        this.controladorAdquisicion.grafo = oceano.grafo;
+    }
+    
     
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
@@ -303,8 +324,12 @@ public class Controlador_Cliente {
      
     //Metodos de los mensajes de informacion del juego
     
-    public void enviarMensajeJuego(String mensaje) throws IOException{
-        cliente.enviarMensajeJuego(mensaje);
+    public void enviarMensajeJuego(String mensaje){
+        try {
+            cliente.enviarMensajeJuego(mensaje);
+        } catch (IOException ex) {
+            Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void recibirMensajeJuego(String mensaje){
@@ -320,6 +345,8 @@ public class Controlador_Cliente {
     
     public void finalizarTurno() throws IOException{
         this.miTurno = false;
+        this.actualizarEnemigo = false;
+        if(actualizarEnemigo) this.enviarActualizacion();
         cliente.finalizarTurno();
     }
        
@@ -351,13 +378,15 @@ public class Controlador_Cliente {
         this.miTurno = miTurno;
     }
 
-    public JLabel getLabelEnemigoSeleccionado() {
+    public marcarCasillaEnemigo getLabelEnemigoSeleccionado() {
         return labelEnemigoSeleccionado;
     }
 
-    public void setLabelEnemigoSeleccionado(JLabel labelEnemigoSeleccionado) {
+    public void setLabelEnemigoSeleccionado(marcarCasillaEnemigo labelEnemigoSeleccionado) {
         this.labelEnemigoSeleccionado = labelEnemigoSeleccionado;
     }
+
+
 
     public ImageIcon getImageAnterior() {
         return imageAnterior;

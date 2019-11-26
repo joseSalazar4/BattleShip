@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import Componentes.FactoryComponente;
 import static Componentes.ItemCompra.*;
 import Cliente_Servidor.Cliente.Cliente;
+import Componentes.Armeria;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -82,6 +83,27 @@ import Cliente_Servidor.Cliente.Cliente;
             Logger.getLogger(Controlador_Adquisicion.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void actualizarMatrizComponentes(){
+        if(controladorCliente.getMatrizJugadorComp() != null)
+            this.matrizComponentes = controladorCliente.getMatrizJugadorComp();        
+        pantalla.getButtonMina().setEnabled(true);
+        pantalla.getButtonTemplo().setEnabled(true);        
+        pantalla.getButtonFuente().setEnabled(true);
+        pantalla.getButtonArmeria().setEnabled(true);
+        pantalla.getButtonMercado().setEnabled(true);
+        pantalla.getButtonConector().setEnabled(true);
+        
+        for(int i= 0; i<20; i++){
+            for(int j=0; j<20; j++){
+                if(this.matrizComponentes[i][j] != null){
+                    this.pantalla.matrizLabels[i][j].setIcon(this.matrizComponentes[i][j].getImagen());
+                }
+                else this.pantalla.matrizLabels[i][j].setIcon(null);
+            }
+        }
+        this.trazarConexiones();
+    }
         
     public void agregarElementoComprado(Componente.tipoComponente elemento){
         if(elemento == Componente.tipoComponente.Armeria) this.ctdArmerias++;
@@ -95,9 +117,7 @@ import Cliente_Servidor.Cliente.Cliente;
         System.out.println(ctdMinas +" "+ ctdConectores +" "+ ctdMercados +" "+ ctdFuentesPoder +" "+ ctdTemplos +" "+ ctdArmerias);
     }
     
-    
-    
-    
+
     public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
         
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
@@ -107,6 +127,12 @@ import Cliente_Servidor.Cliente.Cliente;
         
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
+            if(item == ItemCompra.ARMERIA){
+                Armeria armeriaAux = (Armeria) componenteAux;
+                armeriaAux.setControlador(this.controladorCliente);
+                armeriaAux.arma.setControlador(this.controladorCliente);
+                componenteAux = armeriaAux;
+            }
         
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;

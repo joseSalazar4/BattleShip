@@ -11,7 +11,8 @@ package Armas;
  */
 public class Bomba extends AbstractArma {
 
-    public Bomba(){
+    public Bomba(Controlador.Controlador_Cliente controlador){
+        super(controlador);
         costo = 2000;
         nombre = "Bomba";
     }

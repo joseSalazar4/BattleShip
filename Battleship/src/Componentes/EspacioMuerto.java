@@ -13,7 +13,7 @@ import Componentes.Componente;
  */
 public class EspacioMuerto extends Componente {
     
-    EspacioMuerto(){
+    public EspacioMuerto(){
         is1x1 = true;
         imagen = new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/golpe.png"));
     }

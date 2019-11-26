@@ -78,6 +78,7 @@ public class Servidor extends Thread{
     public void siguienteTurno() throws IOException{
         clientes.get(turno).empezarTurno();
         if(turno == 0){
+            broadcastHistorial("Terminó la ronda \n Iniciando tiempo de Adquisicion...");
             for(ThreadServidor thread: clientes)
                 thread.reanudarAdquisicion();
         }

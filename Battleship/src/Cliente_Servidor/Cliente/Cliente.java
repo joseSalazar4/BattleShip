@@ -91,6 +91,12 @@ public class Cliente {
         outputStream.flush();
     }
     
+    public void actualizarDatos(Oceano oceano) throws IOException{
+        outputStream.writeInt(9);
+        outputStream.writeObject(oceano);
+        outputStream.flush();
+    }
+    
     
     //Getter && Setter
 
