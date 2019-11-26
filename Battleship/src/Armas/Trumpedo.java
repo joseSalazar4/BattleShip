@@ -22,10 +22,9 @@ public class Trumpedo extends AbstractArma {
         
     }
     
-    public Oceano atacar() {
+    public Oceano atacar(){
         try {
             if(cobrarAcero()){
-                
                 if(casilla != null && oceano != null){
                     Point point = new Point(casilla.getJ(), casilla.getI());
                     Componente componente = oceano.matrizComponentes[point.y][point.x];

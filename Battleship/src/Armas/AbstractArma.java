@@ -4,6 +4,8 @@ package Armas;
 import Componentes.Componente;
 import Componentes.Conector;
 import Componentes.EspacioMuerto;
+import Componentes.FuentePoder;
+import Componentes.Remolino;
 import Controlador.Controlador_Cliente;
 import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
@@ -15,10 +17,9 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 public abstract class AbstractArma implements Serializable{
-    public int costo, escudo ;
+    public int costo, escudo;
     String nombre;
     Oceano oceano;
-    Controlador_Cliente controlador;
     marcarCasillaEnemigo casilla;
     String jugador;
     boolean escudoActivado = false;
@@ -31,52 +32,54 @@ public abstract class AbstractArma implements Serializable{
             if(componente instanceof Conector){
                 oceano.grafo.removeArista(componente.getPoint());
                 destruirComponente(componente);
-                oceano.historialAtaque =
+                oceano.historialAtaque +=
                     jugador + " destruyó un conector de " 
-                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
             }
             else if(componente.is1x1){
+                if(componente instanceof Remolino) oceano.golpeoRemolino = true;
                 oceano.grafo.removeVertice(componente.getVertice());
                 destruirComponente(componente);
-                oceano.historialAtaque =
+                oceano.historialAtaque +=
                     jugador + " destruyó un " + componente.getNombre() + " de "
-                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
 
             }
             else if(componente.is2x2 || !componente.is1x1){
                 for(Point golpe : componente.getGolpes()){
                     if(golpe.x == point.x && golpe.y == point.y){
-                      oceano.historialAtaque =
+                      oceano.historialAtaque +=
                         jugador + " volvió a golpear " + componente.getNombre() + " del oceano de"
-                        + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre; 
+                        + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n"; 
                        return false;
                     }
                 }
                 componente.getGolpes().add(point);
                 
-                oceano.historialAtaque = 
+                oceano.historialAtaque += 
                     jugador + " golpeó una "+ componente.getNombre() +" del oceano de " 
                     + oceano.enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
+                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
                 
                 int ctdGolpes = 2;
                 if(componente.is2x2) ctdGolpes = 4;
                 
                 if(componente.getGolpes().size() >= ctdGolpes){
+                    if(componente instanceof FuentePoder) oceano.destryoFuente = true;
                     oceano.grafo.removeVertice(componente.getVertice());
                     destruirComponente(componente);    
                     
-                    oceano.historialAtaque = 
+                    oceano.historialAtaque += 
                     jugador + " destruyó una "+ componente.getNombre() +" del oceano de " 
                     + oceano.enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre;
+                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
                 }
             }
         }
         else{
-            oceano.historialAtaque = 
+            oceano.historialAtaque += 
                     jugador + " falló un disparo en el oceano de " 
-                    + oceano.enemigo;
+                    + oceano.enemigo + "\n";
             return false;
         }
         
