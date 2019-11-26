@@ -97,7 +97,6 @@ public class GUICliente extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jCheckBoxComprar = new javax.swing.JCheckBox();
         jPanelTrumpedo = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -205,14 +204,6 @@ public class GUICliente extends javax.swing.JFrame {
 
         jLabel10.setText("Click para fabricar!");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, -1, -1));
-
-        jCheckBoxComprar.setText("Comprar");
-        jCheckBoxComprar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxComprarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jCheckBoxComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -384,10 +375,6 @@ public class GUICliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jCheckBoxComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxComprarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxComprarActionPerformed
-
     private void jButtonArmeria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeria1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonArmeria1ActionPerformed
@@ -427,7 +414,6 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonArmeria1;
     private javax.swing.JButton jButtonEnvMensaje;
-    private javax.swing.JCheckBox jCheckBoxComprar;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBoxEnemigos;
     private javax.swing.JLabel jLabel10;
@@ -510,13 +496,6 @@ public class GUICliente extends javax.swing.JFrame {
         this.jButtonEnvMensaje = jButtonEnvMensaje;
     }
 
-    public JCheckBox getjCheckBoxComprar() {
-        return jCheckBoxComprar;
-    }
-
-    public void setjCheckBoxComprar(JCheckBox jCheckBoxComprar) {
-        this.jCheckBoxComprar = jCheckBoxComprar;
-    }
 
     public JComboBox getjComboBoxEnemigos() {
         return jComboBoxEnemigos;
