@@ -181,6 +181,35 @@ public class Controlador_Cliente implements Serializable{
         else return;
     }
     
+    public void Bomba(){
+        
+    }
+    
+    public void MultiShot(){
+        
+    }
+    
+    public void Torpedo(){
+        if(this.oceanoEnemigo != null){
+            for(Armeria armeria : this.armerias){
+                if(armeria.getArma().getNombre().equals("Torpedo")){
+                    this.oceanoEnemigo.jugador = this.cliente.jugador;
+                    armeria.getArma().setCasilla(labelEnemigoSeleccionado);
+                    armeria.getArma().setNombre(this.cliente.jugador.getNombre());
+                    armeria.getArma().setOceano(oceanoEnemigo);
+                }     
+            }
+        }
+    }
+    
+    public void Trumpedo(){
+        
+    }
+    
+    public void Barco(){
+        
+    }
+    
     public void cargarMiOceano(){
         for(int i= 0; i<20; i++){
             for(int j=0; j<20; j++){

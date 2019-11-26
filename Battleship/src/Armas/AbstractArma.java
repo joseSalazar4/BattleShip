@@ -129,14 +129,6 @@ public abstract class AbstractArma implements Serializable{
         return oceano;
     }
 
-    public Controlador_Cliente getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(Controlador_Cliente controlador) {
-        this.controlador = controlador;
-    }
-
     public void setOceano(Oceano oceano) {
         this.oceano = oceano;
     }

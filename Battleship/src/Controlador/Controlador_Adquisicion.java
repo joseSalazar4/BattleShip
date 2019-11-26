@@ -139,13 +139,6 @@ import java.awt.Point;
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
             System.out.println(extra);
-        
-            if(item== ItemCompra.ARMERIA){
-                Armeria armeriaAux = (Armeria) componenteAux;
-                armeriaAux.arma.setControlador(controladorCliente);
-                componenteAux = armeriaAux;
-                
-            }
             
              if(item == ItemCompra.MINA){
                 Mina minaAux =(Mina) componenteAux;

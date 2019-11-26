@@ -46,5 +46,15 @@ public class Armeria extends Componente{
         this.tipoComponente = comp;
     }
 
+    public AbstractArma getArma() {
+        return arma;
+    }
+
+    public void setArma(AbstractArma arma) {
+        this.arma = arma;
+    }
+    
+    
+
    
 }
