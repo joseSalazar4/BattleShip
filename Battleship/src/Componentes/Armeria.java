@@ -6,6 +6,7 @@
 package Componentes;
 
 import Armas.AbstractArma;
+import Armas.*;
 import static Componentes.Componente.tipoComponente.Armeria;
 
 /**
@@ -25,13 +26,17 @@ public class Armeria extends Componente{
         //Torpedo, Multi-Shot, Bomba, Trumpedo
         switch(tipoArmaProducir){
             case 1:
+                arma = new Torpedo();
                 break;
             case 2:
+                arma = new MultiShot();
                 break;
             case 3:
+                arma = new Bomba();
                 break;
             case 4:
-           
+                arma = new Trumpedo();
+                break;
         }
         
     }

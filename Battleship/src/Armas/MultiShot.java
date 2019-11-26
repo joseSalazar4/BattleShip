@@ -10,7 +10,7 @@ package Armas;
  * @author mikom
  */
 public class MultiShot extends AbstractArma  {
-    MultiShot(){
+    public MultiShot(){
         costo = 1000;
         nombre = "Multishot";
     }
