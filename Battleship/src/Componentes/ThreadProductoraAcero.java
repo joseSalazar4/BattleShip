@@ -27,9 +27,9 @@ public class ThreadProductoraAcero extends Thread{
         
     }
     
-     @Override
+    
     @SuppressWarnings("SleepWhileInLoop")
-     
+    @Override
     public void run(){                
         while(activo){
             try {

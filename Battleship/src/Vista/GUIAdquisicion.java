@@ -5,9 +5,11 @@
  */
 package Vista;
 
+import Componentes.Componente;
 import Controlador.Controlador_Adquisicion;
 import Controlador.PosicionarComponente;
 import Componentes.ItemCompra;
+import Grafo.Vertice;
 import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,7 +86,30 @@ private void rellenarMatriz(){
         jLabel24 = new javax.swing.JLabel();
         jLabelInstruccionColocado = new javax.swing.JLabel();
         btnConectar = new javax.swing.JButton();
-        jPanelJugador = new javax.swing.JPanel();
+        jPanelJugador = new javax.swing.JPanel(){
+            @Override
+            public void paintComponent(Graphics g) {
+                int tamanno = Controlador_Adquisicion.pantalla.getTAMANNO(), x1,x2,y1,y2;
+                super.paintComponent(g);
+                for(Vertice vertice: Controlador_Adquisicion.grafo.getVertices()){
+                    for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
+                        Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
+                        Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
+                        x1 = orig.getPoint().x;
+                        y1 = orig.getPoint().y;
+                        x2 = vertice.getAristas().get(k).getConector().getPoint().x;
+                        y2 = vertice.getAristas().get(k).getConector().getPoint().y;
+                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+
+                        x1 = vertice.getAristas().get(k).getConector().getPoint().x;
+                        y1 = vertice.getAristas().get(k).getConector().getPoint().y;
+                        x2 = dest.getPoint().x;
+                        y2 = dest.getPoint().y;
+                        g.drawLine(x1*tamanno, y1*tamanno, x2* tamanno, y2* tamanno);
+                    }
+                }
+            }
+        };
         jLabel10 = new javax.swing.JLabel();
         jLabelCantMercado = new javax.swing.JLabel();
         jLabelCantFuentePoder = new javax.swing.JLabel();
@@ -333,6 +358,7 @@ private void rellenarMatriz(){
 
         jPanelJugador.setBackground(new java.awt.Color(0, 102, 255));
         jPanelJugador.setForeground(new java.awt.Color(1, 1, 1));
+        jPanelJugador.setToolTipText("");
         jPanelJugador.setOpaque(false);
         jPanelJugador.setPreferredSize(new java.awt.Dimension(600, 600));
 

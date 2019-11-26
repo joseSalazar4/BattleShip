@@ -1,14 +1,16 @@
 
 package Controlador;
 
+import Armas.*;
 import Cliente_Servidor.Cliente.Cliente;
 import Cliente_Servidor.mensajeGenerico;
-import static Controlador.Controlador_Adquisicion.pantalla;
+import Componentes.Armeria;
 import Grafo.Vertice;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import Componentes.Componente;
+import static Componentes.Componente.tipoComponente.Armeria;
 import Componentes.Conector;
 import Componentes.FuentePoder;
 import Grafo.Arista;
@@ -17,6 +19,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -31,6 +34,7 @@ public class Controlador_Cliente {
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
+    private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private Componente [][] matrizJugadorComp;
     private Oceano oceanoEnemigo;
@@ -132,10 +136,31 @@ public class Controlador_Cliente {
         graf.drawLine(x1*30, y1*30, x2* 30, y2* 30);
     }
     
-    public void cagarMiOceano(){
+    public void habilitarPanelArmas(Componente comp){
+        if(comp.getTipoComponente()==Armeria){
+            Armeria armaTemp = (Armeria) comp;
+            if(armaTemp.arma instanceof Torpedo){
+                this.pantallaPrincipal.getjPanelTorpedo().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof MultiShot){
+                this.pantallaPrincipal.getjPanelMultiShot().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof Trumpedo){
+                this.pantallaPrincipal.getjPanelTrumpedo().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof Bomba){
+                this.pantallaPrincipal.getjPanelBomba().setVisible(true);
+            }
+            armerias.add(armaTemp);
+        }
+        else return;
+    }
+    
+    public void cargarMiOceano(){
         for(int i= 0; i<20; i++){
             for(int j=0; j<20; j++){
                 if(this.matrizJugadorComp[i][j] != null)
+                    habilitarPanelArmas(matrizJugadorComp[i][j]);
                     this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
             }
         }
@@ -150,7 +175,7 @@ public class Controlador_Cliente {
             Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        this.cagarMiOceano();
+        this.cargarMiOceano();
         
         this.pantallaAdquisicion.setVisible(false);
         this.pantallaPrincipal.setVisible(true);

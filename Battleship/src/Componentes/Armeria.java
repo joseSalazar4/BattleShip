@@ -5,6 +5,7 @@
  */
 package Componentes;
 
+import Armas.AbstractArma;
 import static Componentes.Componente.tipoComponente.Armeria;
 
 /**
@@ -14,12 +15,24 @@ import static Componentes.Componente.tipoComponente.Armeria;
 
 //USAR FACTORY METHOD
 public class Armeria extends Componente{
-    
+    public AbstractArma arma;
     public Armeria(int tipoArmaProducir){
         this.tipoComponente = Armeria;
         this.is1x1 = false;
         this.is2x2 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png"));
+        
+        //Torpedo, Multi-Shot, Bomba, Trumpedo
+        switch(tipoArmaProducir){
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+           
+        }
         
     }
     

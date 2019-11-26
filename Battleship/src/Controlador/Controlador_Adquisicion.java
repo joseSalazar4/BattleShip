@@ -24,14 +24,14 @@ import Cliente_Servidor.Cliente.Cliente;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
-    static GUIAdquisicion pantalla; 
+    public static GUIAdquisicion pantalla; 
     FactoryComponente factoryComponente;  
     private Controlador_Cliente controladorCliente;
     public boolean isComprado = false, isMover = false, isArrIzq = false, isConectar = false;
     public  Componente componenteAux = null;
     public  Conector conectorAux = null;
     public Componente[][] matrizComponentes = new Componente[20][20];
-    public Grafo grafo = new Grafo();
+    public static Grafo grafo = new Grafo();
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
@@ -124,18 +124,9 @@ import Cliente_Servidor.Cliente.Cliente;
     }
     
     public void trazarConexiones(){
-        pantalla.getPanelJugador().setBackground(Color.blue);
-        for(Vertice vertice: this.grafo.getVertices()){        
-            for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
-                Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
-                Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
-                pintarConexion(orig.getPoint().x, orig.getPoint().y, vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y);
-                pintarConexion(vertice.getAristas().get(k).getConector().getPoint().x, vertice.getAristas().get(k).getConector().getPoint().y, dest.getPoint().x, dest.getPoint().y);
-            }
-        }
+        this.pantalla.getPanelJugador().repaint();
     }
-    
-    
+ 
     public void pintarConexion(int x1,int  y1,int x2,int y2){
         Graphics graf = pantalla.getPanelJugador().getGraphics();
         graf.drawLine(x1*pantalla.getTAMANNO(), y1*pantalla.getTAMANNO(), x2* pantalla.getTAMANNO(), y2* pantalla.getTAMANNO());
