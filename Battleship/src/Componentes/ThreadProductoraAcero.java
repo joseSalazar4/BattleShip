@@ -35,12 +35,8 @@ public class ThreadProductoraAcero extends Thread{
         while(true){
             while(activo){
                 try {
-<<<<<<< HEAD
                     //sleep(minaProductora.tiempo);  PONER CUANDO SIRVA
                     sleep(3000);
-=======
-                    sleep(3000); 
->>>>>>> master
                     semaf.tryAcquire(2, TimeUnit.SECONDS);
 
                     int t = controlador.getCliente().jugador.getAcero();
@@ -56,11 +52,7 @@ public class ThreadProductoraAcero extends Thread{
             }
             try {
                 sleep(1000);
-<<<<<<< HEAD
-                System.out.println("ESOTY ESPERANDO PA ENTRAR AL THREAD");
-=======
                 System.out.println("Estoy esperando a que jueguen");
->>>>>>> master
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadProductoraAcero.class.getName()).log(Level.SEVERE, null, ex);
             }

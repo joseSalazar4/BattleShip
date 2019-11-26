@@ -15,6 +15,7 @@ import Componentes.Conector;
 import Componentes.EspacioMuerto;
 import Componentes.FuentePoder;
 import Componentes.Remolino;
+import Componentes.ThreadProductoraAcero;
 import Grafo.Arista;
 import Grafo.Grafo;
 import battleship.Oceano;
@@ -31,13 +32,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultCaret;
 
-<<<<<<< Updated upstream
 public class Controlador_Cliente implements Serializable{
-=======
-public class Controlador_Cliente {
-    
+
     ImageIcon imageAnterior;
->>>>>>> Stashed changes
     private Cliente cliente;
     private boolean todosListos;
     private Oceano oceanoEnemigo;
@@ -48,21 +45,11 @@ public class Controlador_Cliente {
     private Componente [][] matrizJugadorComp;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
-<<<<<<< HEAD
-    private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
-=======
-    private marcarCasillaEnemigo labelEnemigoSeleccionado;
     private ArrayList<Armeria> armerias = new ArrayList<>();
->>>>>>> master
+    private marcarCasillaEnemigo labelEnemigoSeleccionado;
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
-<<<<<<< Updated upstream
-    private Oceano oceanoEnemigo;
-=======
     private ArrayList<ThreadProductoraAcero> threadsProductores = new ArrayList<>();
     
->>>>>>> Stashed changes
-    
-
     
     public Controlador_Cliente(){ 
         todosListos = false;
