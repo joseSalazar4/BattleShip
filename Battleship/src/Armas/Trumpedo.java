@@ -13,6 +13,7 @@ public class Trumpedo extends AbstractArma {
 
     Trumpedo(){
         costo = 5000;
+        nombre = "Trumpedo";
     }
     @Override
     public void atacar() {

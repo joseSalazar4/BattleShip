@@ -13,6 +13,7 @@ public class Bomba extends AbstractArma {
 
     Bomba(){
         costo = 2000;
+        nombre = "Bomba";
     }
     
     @Override

@@ -1,14 +1,16 @@
 
 package Controlador;
 
+import Armas.*;
 import Cliente_Servidor.Cliente.Cliente;
 import Cliente_Servidor.mensajeGenerico;
-import static Controlador.Controlador_Adquisicion.pantalla;
+import Componentes.Armeria;
 import Grafo.Vertice;
 import Vista.GUIAdquisicion;
 import Vista.GUICliente;
 import Vista.GUIStartUp;
 import Componentes.Componente;
+import static Componentes.Componente.tipoComponente.Armeria;
 import Componentes.Conector;
 import Componentes.FuentePoder;
 import Grafo.Arista;
@@ -132,10 +134,30 @@ public class Controlador_Cliente {
         graf.drawLine(x1*30, y1*30, x2* 30, y2* 30);
     }
     
-    public void cagarMiOceano(){
+    public void habilitarPanelArmas(Componente comp){
+        if(comp.getTipoComponente()==Armeria){
+            Armeria armaTemp = (Armeria) comp;
+            if(armaTemp.arma instanceof Torpedo){
+                this.pantallaPrincipal.getjPanelTorpedo().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof MultiShot){
+                this.pantallaPrincipal.getjPanelMultiShot().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof Trumpedo){
+                this.pantallaPrincipal.getjPanelTrumpedo().setVisible(true);
+            }
+            else if(armaTemp.arma instanceof Bomba){
+                this.pantallaPrincipal.getjPanelBomba().setVisible(true);
+            }
+        }
+        else return;
+    }
+    
+    public void cargarMiOceano(){
         for(int i= 0; i<20; i++){
             for(int j=0; j<20; j++){
                 if(this.matrizJugadorComp[i][j] != null)
+                    habilitarPanelArmas(matrizJugadorComp[i][j]);
                     this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
             }
         }
@@ -150,7 +172,7 @@ public class Controlador_Cliente {
             Logger.getLogger(Controlador_Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        this.cagarMiOceano();
+        this.cargarMiOceano();
         
         this.pantallaAdquisicion.setVisible(false);
         this.pantallaPrincipal.setVisible(true);

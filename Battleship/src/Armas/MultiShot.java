@@ -12,6 +12,7 @@ package Armas;
 public class MultiShot extends AbstractArma  {
     MultiShot(){
         costo = 1000;
+        nombre = "Multishot";
     }
     @Override
         //Si impacta una casilla genera 4 tiros aleatorios más recursivamente. Por cada 

@@ -498,6 +498,10 @@ public class GUICliente extends javax.swing.JFrame {
         this.jPanelEnemigo = jPanelEnemigo;
     }
 
+    public JPanel getjPanelMultiShot() {
+        return jPanelMultiShot;
+    }
+
     public JPanel getjPanelJugador() {
         return jPanelJugador;
     }
