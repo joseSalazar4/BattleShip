@@ -31,21 +31,37 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultCaret;
 
+<<<<<<< Updated upstream
 public class Controlador_Cliente implements Serializable{
+=======
+public class Controlador_Cliente {
+    
+    ImageIcon imageAnterior;
+>>>>>>> Stashed changes
     private Cliente cliente;
     private boolean todosListos;
+    private Oceano oceanoEnemigo;
     private boolean miTurno = false;
-    private boolean actualizarEnemigo = false;
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
+    private boolean actualizarEnemigo = false;
+    private Componente [][] matrizJugadorComp;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
+<<<<<<< HEAD
     private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
-    private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
-    private Oceano oceanoEnemigo;
-    
+=======
     private marcarCasillaEnemigo labelEnemigoSeleccionado;
-    ImageIcon imageAnterior;
+    private ArrayList<Armeria> armerias = new ArrayList<>();
+>>>>>>> master
+    private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
+<<<<<<< Updated upstream
+    private Oceano oceanoEnemigo;
+=======
+    private ArrayList<ThreadProductoraAcero> threadsProductores = new ArrayList<>();
+    
+>>>>>>> Stashed changes
+    
 
     
     public Controlador_Cliente(){ 
@@ -139,7 +155,7 @@ public class Controlador_Cliente implements Serializable{
     
     public void trazarConexiones(){
         this.pantallaPrincipal.getjPanelJugador().setBackground(Color.blue);
-            for(Vertice vertice: this.controladorAdquisicion.grafo.getVertices()){        
+            for(Vertice vertice: controladorAdquisicion.grafo.getVertices()){        
                 for(int k = 0 ;k<vertice.getAristas().size()  ;k++){
                     Componente orig = vertice.getAristas().get(k).getOrigin().getComponente();
                     Componente dest = vertice.getAristas().get(k).getDestination().getComponente();
