@@ -13,9 +13,11 @@ import java.io.Serializable;
  *
  * @author Personal
  */
-public class Oceano implements Serializable {
+public class Oceano implements Serializable{
     public String enemigo;
     public Grafo grafo;
     public Componente[][] matrizComponentes;
     public String historialAtaque = "";
+    public boolean golpeoRemolino = false;
+    public boolean destryoFuente = false;
 }
