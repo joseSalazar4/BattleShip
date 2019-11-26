@@ -189,7 +189,7 @@ public class Controlador_Cliente {
     }
     
     public void resumirProdAcero(){
-       for( ThreadProductoraAcero threadAux : threadsProductores) threadAux.setActivo(true);
+       for( ThreadProductoraAcero threadAux : threadsProductores    ) threadAux.setActivo(true);
     }
     
     public void detenerProdAcero(){

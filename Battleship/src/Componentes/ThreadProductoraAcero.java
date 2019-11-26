@@ -37,6 +37,7 @@ public class ThreadProductoraAcero extends Thread{
                     int t = controlador.getCliente().jugador.getAcero();
                     t+=minaProductora.aceroGenerado;
                     controlador.getCliente().jugador.setAcero(t);
+                    controlador.getPantallaPrincipal().getjLabelAcero().setText(Integer.toString(t));
 
                     semaf.release();
                 }
