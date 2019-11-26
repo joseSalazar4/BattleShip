@@ -50,8 +50,8 @@ import Componentes.Armeria;
         colocarMercado();
         colocarRemolino();
 
-        
     }
+    
     public void cargarDatosDelJugador(){
         pantalla.getLblnickName().setText(cliente.jugador.getNombre());
         pantalla.getLblDinero().setText("Dinero: $" + cliente.jugador.getDinero());
@@ -65,14 +65,15 @@ import Componentes.Armeria;
        
     public void iniciarPartida() throws InterruptedException{
         pantalla.getjLabelCarga().setVisible(true);
-        System.out.println("Activé el gif");
         controladorCliente.setMatrizJugadorComp(matrizComponentes);
         pantalla.getButtonMina().setEnabled(false);
+        pantalla.getBtnConectar().setEnabled(false);
         pantalla.getButtonTemplo().setEnabled(false);        
         pantalla.getButtonFuente().setEnabled(false);
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
         pantalla.getButtonConector().setEnabled(false);
+        pantalla.getjLabelInstruccionColocado().setText("Esperando Jugadores...");
         
         try {
             cliente.controlador.esperarEnemigos(); 
@@ -127,10 +128,11 @@ import Componentes.Armeria;
         
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
+            
             if(item == ItemCompra.ARMERIA){
                 Armeria armeriaAux = (Armeria) componenteAux;
-                armeriaAux.setControlador(this.controladorCliente);
-                armeriaAux.arma.setControlador(this.controladorCliente);
+                armeriaAux.setControlador(controladorCliente);
+                armeriaAux.arma.setControlador(controladorCliente);
                 componenteAux = armeriaAux;
             }
         

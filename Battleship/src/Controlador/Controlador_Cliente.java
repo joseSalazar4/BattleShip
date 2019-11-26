@@ -27,6 +27,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.text.DefaultCaret;
 
 public class Controlador_Cliente {
@@ -105,6 +106,19 @@ public class Controlador_Cliente {
                 this.matrizJugadorLbel[i][j] = labelNuevo;
                 this.pantallaPrincipal.getjPanelJugador().add(labelNuevo);
             }
+        }
+    }
+    
+    public void mostrarInfoCompraPrivada(String fraseCompra){
+        String[] options = {"Comprar", "Denegar"};
+        int opcionCompra = JOptionPane.showOptionDialog(null, fraseCompra, "Información de compra",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if(opcionCompra == 1){
+            //llamar a alguien o maybe llamar esto desde el server y
+            //luego return algo segun lo que eligio?
+        }
+        else{
+            
         }
     }
     
