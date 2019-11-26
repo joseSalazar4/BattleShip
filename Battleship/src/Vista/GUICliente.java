@@ -100,18 +100,16 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanelTrumpedo = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jButtonTrumpedo = new javax.swing.JButton();
         jPanelTorpedo = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        jButtonTorpedo = new javax.swing.JButton();
         jPanelBomba = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonBomba = new javax.swing.JButton();
         jPanelMultiShot = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel25 = new javax.swing.JLabel();
-        jButtonArmeria1 = new javax.swing.JButton();
+        jButtonMultiShot = new javax.swing.JButton();
         jComboBoxEnemigos = new javax.swing.JComboBox();
         jPanelEnemigo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -208,10 +206,10 @@ public class GUICliente extends javax.swing.JFrame {
 
         jLabel11.setText("5000Kg Acero");
 
-        jButton4.setText("Trumpedo");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonTrumpedo.setText("Trumpedo");
+        jButtonTrumpedo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonTrumpedoActionPerformed(evt);
             }
         });
 
@@ -222,7 +220,7 @@ public class GUICliente extends javax.swing.JFrame {
             .addGroup(jPanelTrumpedoLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanelTrumpedoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonTrumpedo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -232,7 +230,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(jButtonTrumpedo)
                 .addContainerGap())
         );
 
@@ -244,15 +242,25 @@ public class GUICliente extends javax.swing.JFrame {
         jPanelTorpedo.add(jLabel15);
         jLabel15.setBounds(20, 6, 76, 16);
 
-        jButton3.setText("Torpedo");
-        jPanelTorpedo.add(jButton3);
-        jButton3.setBounds(20, 30, 80, 32);
+        jButtonTorpedo.setText("Torpedo");
+        jButtonTorpedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTorpedoActionPerformed(evt);
+            }
+        });
+        jPanelTorpedo.add(jButtonTorpedo);
+        jButtonTorpedo.setBounds(20, 30, 80, 32);
 
         getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 120, 70));
 
         jLabel13.setText("2000 Kg Acero");
 
-        jButton2.setText("Bomba");
+        jButtonBomba.setText("Bomba");
+        jButtonBomba.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBombaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBombaLayout = new javax.swing.GroupLayout(jPanelBomba);
         jPanelBomba.setLayout(jPanelBombaLayout);
@@ -261,7 +269,7 @@ public class GUICliente extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBombaLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanelBombaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonBomba, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addContainerGap())
         );
@@ -271,7 +279,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jButtonBomba)
                 .addGap(19, 19, 19))
         );
 
@@ -279,7 +287,12 @@ public class GUICliente extends javax.swing.JFrame {
 
         jLabel14.setText("1000 Kg Acero");
 
-        jButton5.setText("Multi-Shot");
+        jButtonMultiShot.setText("Multi-Shot");
+        jButtonMultiShot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMultiShotActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelMultiShotLayout = new javax.swing.GroupLayout(jPanelMultiShot);
         jPanelMultiShot.setLayout(jPanelMultiShotLayout);
@@ -289,7 +302,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addGroup(jPanelMultiShotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelMultiShotLayout.createSequentialGroup()
                         .addGap(5, 5, 5)
-                        .addComponent(jButton5))
+                        .addComponent(jButtonMultiShot))
                     .addGroup(jPanelMultiShotLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -301,25 +314,11 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jButtonMultiShot)
                 .addGap(14, 14, 14))
         );
 
         getContentPane().add(jPanelMultiShot, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 600, 110, 70));
-
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Barcos espía");
-        getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 260, -1, -1));
-
-        jButtonArmeria1.setBackground(new java.awt.Color(0, 61, 101));
-        jButtonArmeria1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonArmeria1.setText("$1500");
-        jButtonArmeria1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonArmeria1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonArmeria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
 
         jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,13 +375,9 @@ public class GUICliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonArmeria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonArmeria1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonArmeria1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTrumpedoActionPerformed
 
     private void jComboBoxEnemigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEnemigosActionPerformed
         try {
@@ -401,6 +396,18 @@ public class GUICliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
+    private void jButtonTorpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTorpedoActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTorpedoActionPerformed
+
+    private void jButtonBombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBombaActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBombaActionPerformed
+
+    private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed
+        controlador.getArmerias().        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMultiShotActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -409,12 +416,11 @@ public class GUICliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButtonArmeria1;
+    private javax.swing.JButton jButtonBomba;
     private javax.swing.JButton jButtonEnvMensaje;
+    private javax.swing.JButton jButtonMultiShot;
+    private javax.swing.JButton jButtonTorpedo;
+    private javax.swing.JButton jButtonTrumpedo;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBoxEnemigos;
     private javax.swing.JLabel jLabel10;
@@ -424,7 +430,6 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -482,11 +487,11 @@ public class GUICliente extends javax.swing.JFrame {
     }
 
     public JButton getjButtonArmeria1() {
-        return jButtonArmeria1;
+        return jButtonBarcoEspia;
     }
 
     public void setjButtonArmeria1(JButton jButtonArmeria1) {
-        this.jButtonArmeria1 = jButtonArmeria1;
+        this.jButtonBarcoEspia = jButtonArmeria1;
     }
 
     public JButton getjButtonEnvMensaje() {

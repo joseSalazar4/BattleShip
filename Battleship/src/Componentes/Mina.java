@@ -24,27 +24,27 @@ public class Mina extends Componente {
             case 1:
                 costo = 1000;
                 aceroGenerado = 50;
-                tiempo = 60;
+                tiempo = 60000;
                 break;
             case 2:
                 costo = 1700;
                 aceroGenerado = 120;
-                tiempo = 50;
+                tiempo = 50000;
                 break;
             case 3:
                 costo  = 2700;
                 aceroGenerado = 180;
-                tiempo = 450;
+                tiempo = 450000;
                 break;
             case 4:
                 costo = 3200;
                 aceroGenerado = 210;
-                tiempo = 40;
+                tiempo = 40000;
                 break;
             case 5:    
                 costo = 4800;
                 aceroGenerado = 260;
-                tiempo = 35;
+                tiempo = 35000;
                 break;
         }
         

@@ -10,6 +10,8 @@ import Componentes.EspacioMuerto;
 import battleship.Oceano;
 import java.awt.Point;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,15 +31,19 @@ public class MultiShot extends AbstractArma  {
             Point point = new Point(casilla.getJ(), casilla.getI());
             Componente componente = oceano.matrizComponentes[point.y][point.x];
             if(!(componente instanceof EspacioMuerto)){
-                if(cobrarAcero()){
-                    boolean golpe = golpear(componente, oceano, point);
-                    if(golpe){
-                        oceano.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
-                        ataqueMultiShot();
+                try {
+                    if(cobrarAcero()){
+                        boolean golpe = golpear(componente, oceano, point);
+                        if(golpe){
+                            oceano.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
+                            ataqueMultiShot();
+                        }
+                        
                     }
-                    
+                    else oceano.historialAtaque += "\n ACERO INSUFICIENTE";                    
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MultiShot.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                else oceano.historialAtaque += "\n ACERO INSUFICIENTE";
                 
             }
             else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
