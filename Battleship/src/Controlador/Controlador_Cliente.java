@@ -13,6 +13,7 @@ import Componentes.Componente;
 import static Componentes.Componente.tipoComponente.Armeria;
 import Componentes.Conector;
 import Componentes.FuentePoder;
+import Componentes.Remolino;
 import Grafo.Arista;
 import battleship.Oceano;
 import java.awt.Color;
@@ -159,9 +160,10 @@ public class Controlador_Cliente {
     public void cargarMiOceano(){
         for(int i= 0; i<20; i++){
             for(int j=0; j<20; j++){
-                if(this.matrizJugadorComp[i][j] != null)
+                if(this.matrizJugadorComp[i][j] != null){
                     habilitarPanelArmas(matrizJugadorComp[i][j]);
                     this.matrizJugadorLbel[i][j].setIcon(this.matrizJugadorComp[i][j].getImagen());
+                }
             }
         }
         trazarConexiones();
@@ -229,20 +231,20 @@ public class Controlador_Cliente {
                     if(componenteEnemigo instanceof Conector){
                         Conector conectorEnemigo = (Conector) componenteEnemigo;
                         if(conectorEnemigo.getFuente() != null){
-                            labelEnemigo.setIcon(null); 
+                           labelEnemigo.setIcon(null); 
                         }                                
                     }
                     else{ //Si no es un conector
-                        if(componenteEnemigo instanceof FuentePoder){
-                            labelEnemigo.setIcon(null);
+                        if(componenteEnemigo instanceof FuentePoder || componenteEnemigo instanceof Remolino){
+                           labelEnemigo.setIcon(null);
                         }
                         else{
                             //Cuando no es una Fuente de Poder
                             if(componenteEnemigo.getVertice().getAristas() != null &&
                             !componenteEnemigo.getVertice().getAristas().isEmpty()){
                                 for(Arista arista : componenteEnemigo.getVertice().getAristas()){
-                                    if(arista.getDestination().getComponente() instanceof FuentePoder){
-                                        labelEnemigo.setIcon(null);
+                                    if(arista.getOrigin().getComponente() instanceof FuentePoder){
+                                       labelEnemigo.setIcon(null);
                                     }        
                                 }
                             }

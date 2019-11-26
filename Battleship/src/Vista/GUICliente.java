@@ -90,9 +90,9 @@ public class GUICliente extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jButtonArmeria1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jComboBoxEnemigos = new javax.swing.JComboBox();
         jPanelEnemigo = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
@@ -306,10 +306,6 @@ public class GUICliente extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonArmeria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, -1, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/oceanEnemigo.PNG"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
-
         jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEnemigosActionPerformed(evt);
@@ -333,6 +329,10 @@ public class GUICliente extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanelEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/oceanEnemigo.PNG"))); // NOI18N
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
