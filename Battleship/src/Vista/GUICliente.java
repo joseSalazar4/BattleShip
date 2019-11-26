@@ -496,7 +496,6 @@ public class GUICliente extends javax.swing.JFrame {
         this.jButtonEnvMensaje = jButtonEnvMensaje;
     }
 
-
     public JComboBox getjComboBoxEnemigos() {
         return jComboBoxEnemigos;
     }

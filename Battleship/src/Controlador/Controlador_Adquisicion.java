@@ -118,7 +118,14 @@ import Componentes.Armeria;
         System.out.println(ctdMinas +" "+ ctdConectores +" "+ ctdMercados +" "+ ctdFuentesPoder +" "+ ctdTemplos +" "+ ctdArmerias);
     }
     
-
+ 
+    public int verificarOpcionExtra(ItemCompra item){
+        if(item == ItemCompra.ARMERIA) return (pantalla.getComboBoxArmeria().getSelectedIndex()+1);
+        else if(item == ItemCompra.MINA)  return (pantalla.getComboBoxMina().getSelectedIndex()+1);
+        //Si no es ninguna no debemos hacer nada difernete
+        else return 0;
+    }
+    
     public void ejecutarCompra(int precio, ItemCompra item, boolean isVert){
         
         if(this.cliente.jugador.getDinero()< precio) JOptionPane.showMessageDialog(null, "No Tiene suficiente dinero!");
@@ -128,10 +135,11 @@ import Componentes.Armeria;
         
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
-            
+            System.out.println(extra);
             if(item == ItemCompra.ARMERIA){
                 Armeria armeriaAux = (Armeria) componenteAux;
                 armeriaAux.setControlador(controladorCliente);
+                System.out.println(armeriaAux.arma);
                 armeriaAux.arma.setControlador(controladorCliente);
                 componenteAux = armeriaAux;
             }
@@ -231,14 +239,6 @@ import Componentes.Armeria;
         }
         else colocarMercado();
         
-    }
-     
-      
-    public int verificarOpcionExtra(ItemCompra item){
-        if(item.equals("ARMERIA")) return pantalla.getComboBoxArmeria().getSelectedIndex();
-        else if(item.equals("MINA"))  return pantalla.getComboBoxMina().getSelectedIndex();
-        //Si no es ninguna no debemos hacer nada difernete
-        else return 0;
     }
     
     //Getter && Settter

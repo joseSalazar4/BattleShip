@@ -24,7 +24,7 @@ public class FactoryComponente {
                 return new Armeria(opcionExtra);
                
             case MINA:
-                return new Mina(opcionExtra+1);  //Porque viene index desde 0-4
+                return new Mina(opcionExtra); 
                 
             case TEMPLO:
                 return new Templo();
