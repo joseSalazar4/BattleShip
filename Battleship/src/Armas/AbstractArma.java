@@ -84,7 +84,6 @@ public abstract class AbstractArma implements Serializable{
     }
     
     public boolean cobrarAcero(){
-        //Implementar
         return true;
     }
 
