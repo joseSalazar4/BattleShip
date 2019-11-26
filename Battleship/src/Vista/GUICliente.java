@@ -34,6 +34,10 @@ public class GUICliente extends javax.swing.JFrame {
     public GUICliente(Controlador.Controlador_Cliente controlador){
         initComponents();
         this.controlador = controlador;
+        this.jPanelBomba.setVisible(false);
+        this.jPanelTorpedo.setVisible(false);
+        this.jPanelTrumpedo.setVisible(false);
+        this.jPanelMultiShot.setVisible(false);
      
     }
     @SuppressWarnings("unchecked")
