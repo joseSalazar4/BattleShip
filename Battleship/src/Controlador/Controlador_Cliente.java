@@ -15,7 +15,6 @@ import Componentes.Conector;
 import Componentes.EspacioMuerto;
 import Componentes.FuentePoder;
 import Componentes.Remolino;
-import Componentes.ThreadProductoraAcero;
 import Grafo.Arista;
 import Grafo.Grafo;
 import battleship.Oceano;
@@ -41,7 +40,6 @@ public class Controlador_Cliente implements Serializable{
     private GUICliente pantallaPrincipal;
     private GUIAdquisicion pantallaAdquisicion;
     private Controlador_Adquisicion controladorAdquisicion;
-    private ArrayList<ThreadProductoraAcero> threadsProductores;    
     private ArrayList<Armeria> armerias = new ArrayList<Armeria>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private Oceano oceanoEnemigo;
@@ -186,14 +184,6 @@ public class Controlador_Cliente implements Serializable{
             }
         }
         trazarConexiones();
-    }
-    
-    public void resumirProdAcero(){
-       for( ThreadProductoraAcero threadAux : threadsProductores    ) threadAux.setActivo(true);
-    }
-    
-    public void detenerProdAcero(){
-       for( ThreadProductoraAcero threadAux : threadsProductores) threadAux.setActivo(false);
     }
     
     public void reanudarPantallaPrincipal(){
@@ -410,30 +400,6 @@ public class Controlador_Cliente implements Serializable{
 
     public void setLabelEnemigoSeleccionado(marcarCasillaEnemigo labelEnemigoSeleccionado) {
         this.labelEnemigoSeleccionado = labelEnemigoSeleccionado;
-    }
-
-    public boolean isActualizarEnemigo() {
-        return actualizarEnemigo;
-    }
-
-    public void setActualizarEnemigo(boolean actualizarEnemigo) {
-        this.actualizarEnemigo = actualizarEnemigo;
-    }
-
-    public ArrayList<ThreadProductoraAcero> getThreadsProductores() {
-        return threadsProductores;
-    }
-
-    public void setThreadsProductores(ArrayList<ThreadProductoraAcero> threadsProductores) {
-        this.threadsProductores = threadsProductores;
-    }
-
-    public ArrayList<Armeria> getArmerias() {
-        return armerias;
-    }
-
-    public void setArmerias(ArrayList<Armeria> armerias) {
-        this.armerias = armerias;
     }
 
 

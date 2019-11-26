@@ -10,9 +10,7 @@ import static Componentes.Componente.tipoComponente.Mina;
 
 
 public class Mina extends Componente {
-    
     int aceroGenerado,aceroTotal, tiempo;
-    private ThreadProductoraAcero threadProductor;
     
     
     public Mina(int nivelSeleccionado){
@@ -49,30 +47,6 @@ public class Mina extends Componente {
                 break;
         }
         
-    }
-
-    public int getAceroGenerado() {
-        return aceroGenerado;
-    }
-
-    public void setThreadProductor(ThreadProductoraAcero threadProductor) {
-        this.threadProductor = threadProductor;
-    }
-
-    public int getAceroTotal() {
-        return aceroTotal;
-    }
-
-    public int getTiempo() {
-        return tiempo;
-    }
-
-    public ThreadProductoraAcero getThreadProductor() {
-        return threadProductor;
-    }
-
-    public boolean isIs2x2() {
-        return is2x2;
     }
 
 }

@@ -11,13 +11,17 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author mikom
+ */
 public class ThreadProductoraAcero extends Thread{
-    private Mina minaProductora;
-    private Semaphore semaf;
-    private boolean activo = false;
-    private Controlador_Cliente controlador;
+    Mina minaProductora;
+    Semaphore semaf;
+    boolean activo = false;
+    Controlador_Cliente controlador;
     
-    public ThreadProductoraAcero(Mina minaProd, Semaphore semaphore, Controlador_Cliente controladorP){
+    ThreadProductoraAcero(Mina minaProd, Semaphore semaphore, Controlador_Cliente controladorP){
         minaProductora = minaProd;
         semaf = semaphore;
         controlador = controladorP;
@@ -27,62 +31,31 @@ public class ThreadProductoraAcero extends Thread{
     
     @SuppressWarnings("SleepWhileInLoop")
     @Override
-    public void run(){
+    public void run(){          
         while(true){
             while(activo){
                 try {
-                    sleep(minaProductora.tiempo); 
+                    //sleep(minaProductora.tiempo);  PONER CUANDO SIRVA
+                    sleep(3000);
                     semaf.tryAcquire(2, TimeUnit.SECONDS);
 
                     int t = controlador.getCliente().jugador.getAcero();
                     t+=minaProductora.aceroGenerado;
+                    System.out.println(t);
                     controlador.getCliente().jugador.setAcero(t);
-                    controlador.getPantallaPrincipal().getjLabelAcero().setText(Integer.toString(t));
 
                     semaf.release();
                 }
                 catch (InterruptedException ex) {
                     Logger.getLogger(ThreadProductoraAcero.class.getName()).log(Level.SEVERE, null, ex);
                 }   
-
             }
-            try { 
+            try {
                 sleep(1000);
+                System.out.println("ESOTY ESPERANDO PA ENTRAR AL THREAD");
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadProductoraAcero.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    public Mina getMinaProductora() {
-        return minaProductora;
-    }
-
-    public void setMinaProductora(Mina minaProductora) {
-        this.minaProductora = minaProductora;
-    }
-
-    public Semaphore getSemaf() {
-        return semaf;
-    }
-
-    public void setSemaf(Semaphore semaf) {
-        this.semaf = semaf;
-    }
-
-    public boolean isActivo() {
-        return activo;
-    }
-
-    public void setActivo(boolean activo) {
-        this.activo = activo;
-    }
-
-    public Controlador_Cliente getControlador() {
-        return controlador;
-    }
-
-    public void setControlador(Controlador_Cliente controlador) {
-        this.controlador = controlador;
     }
 }

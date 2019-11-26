@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 import Componentes.FactoryComponente;
 import static Componentes.ItemCompra.*;
 import Cliente_Servidor.Cliente.Cliente;
-import Componentes.*;
+import Componentes.Armeria;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -135,15 +135,7 @@ import Componentes.*;
             int extra = verificarOpcionExtra(item);
             componenteAux = FactoryComponente.crearComponente(item, extra);
             System.out.println(extra);
-            
-            if(item == ItemCompra.MINA){
-                Mina minaAux =(Mina) componenteAux;
-                ThreadProductoraAcero threadAux = new ThreadProductoraAcero(minaAux, this.controladorCliente.getCliente().jugador.getSemaforoAcero(), this.controladorCliente);
-                minaAux.setThreadProductor(threadAux);
-                this.controladorCliente.getThreadsProductores().add(threadAux);
-                threadAux.start();
-            }
-                    
+        
             if(isVert) componenteAux.setIsVertical(isVert);
             isComprado=true;
         
