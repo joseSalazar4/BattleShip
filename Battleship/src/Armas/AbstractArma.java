@@ -89,6 +89,7 @@ public abstract class AbstractArma implements Serializable{
     }
     
     public boolean cobrarAcero(){
+        //this.costo;
         return true;
         
     }
