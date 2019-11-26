@@ -75,6 +75,8 @@ public class ThreadCliente extends Thread implements Serializable{
                 Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         }

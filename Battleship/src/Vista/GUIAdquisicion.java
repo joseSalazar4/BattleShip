@@ -257,6 +257,8 @@ private void rellenarMatriz(){
             }
         });
 
+        jButtonBarco.setBackground(new java.awt.Color(0, 61, 101));
+        jButtonBarco.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBarco.setText("Barco $2500");
         jButtonBarco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -507,7 +509,7 @@ private void rellenarMatriz(){
     }//GEN-LAST:event_btnConectarActionPerformed
 
     private void jButtonBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarcoActionPerformed
-        // TODO add your handling code here:
+                // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBarcoActionPerformed
 
     /**

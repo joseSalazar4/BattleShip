@@ -216,10 +216,10 @@ public class Controlador_Cliente implements Serializable{
         
     }
         
-    public void comprarArma(int precio) throws InterruptedException{
-        
-                    
-}
+    public void comprarBarco(){
+            
+    }
+    
     public void reanudarPantallaAdquisicion() throws InterruptedException{
         this.controladorAdquisicion.actualizarMatrizComponentes();
         this.pantallaAdquisicion.setVisible(true);

@@ -5,19 +5,16 @@
  */
 package Vista;
 
+import Armas.*;
 import Componentes.Componente;
 import Controlador.Controlador_Cliente;
 import Grafo.Vertice;
 import javax.swing.JLabel;
-import battleship.*;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -190,13 +187,13 @@ public class GUICliente extends javax.swing.JFrame {
         jLabelAcero.setText("Acero:");
         getContentPane().add(jLabelAcero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
 
-        jButton1.setText("Usar Arma!");
+        jButton1.setText("Usar Comodín");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, 100, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 120, 40));
 
         jLabel12.setText("Armas Compradas");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
@@ -372,11 +369,13 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldMensajesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        controlador 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed
-                // TODO add your handling code here:
+       
+        AbstractArma armaAux = new Trumpedo();
+        armaAux.atacar();         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTrumpedoActionPerformed
 
     private void jComboBoxEnemigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEnemigosActionPerformed
@@ -397,15 +396,18 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void jButtonTorpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTorpedoActionPerformed
-                // TODO add your handling code here:
+        AbstractArma armaAux = new Torpedo();
+        armaAux.atacar();        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTorpedoActionPerformed
 
     private void jButtonBombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBombaActionPerformed
-                // TODO add your handling code here:
+        AbstractArma armaAux = new Bomba();
+        armaAux.atacar();
     }//GEN-LAST:event_jButtonBombaActionPerformed
 
     private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed
-        controlador.getArmerias().        // TODO add your handling code here:
+        AbstractArma armaAux = new MultiShot();
+        armaAux.atacar();
     }//GEN-LAST:event_jButtonMultiShotActionPerformed
 
     /**
@@ -484,14 +486,6 @@ public class GUICliente extends javax.swing.JFrame {
     
     public JComboBox getComboBoxArmas(){
         return this.jComboBox1;
-    }
-
-    public JButton getjButtonArmeria1() {
-        return jButtonBarcoEspia;
-    }
-
-    public void setjButtonArmeria1(JButton jButtonArmeria1) {
-        this.jButtonBarcoEspia = jButtonArmeria1;
     }
 
     public JButton getjButtonEnvMensaje() {
