@@ -11,7 +11,7 @@ public class Componente implements Cloneable, Serializable{
     String nombre;
     int costo;
     public boolean isVertical=false, is1x1, is2x2;  
-    public enum tipoComponente {Armeria,Mina, Templo, Mercado, Conector, FuenteEnergia, Remolino}
+    public enum tipoComponente implements Serializable {Armeria,Mina, Templo, Mercado, Conector, FuenteEnergia, Remolino}
     tipoComponente tipoComponente;
     Point point = new Point();
     ArrayList<Point> golpes;
@@ -87,9 +87,5 @@ public class Componente implements Cloneable, Serializable{
     public void setPoint(Point point) {
         this.point = point;
     }
-    
-    
-    
-    
-    
+  
 }

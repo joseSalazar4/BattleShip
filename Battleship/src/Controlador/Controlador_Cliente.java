@@ -15,6 +15,7 @@ import Componentes.Conector;
 import Componentes.FuentePoder;
 import Componentes.Remolino;
 import Grafo.Arista;
+import Grafo.Grafo;
 import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -194,25 +195,42 @@ public class Controlador_Cliente {
     
     //METODOS DE PEDIR DATOS DEL ENEMIGO
     
-    public void buscarOceanoEnemigo() throws IOException{
-        System.out.println("Buscando oceano enemigo");
-        String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
-        cliente.buscarOceanoEnemigo(enemigoBuscado);
+    public void buscarOceanoEnemigo() throws IOException {
+        if(miTurno){
+            System.out.println("Buscando oceano enemigo");
+            String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
+            cliente.buscarOceanoEnemigo(enemigoBuscado); 
+        }
     }
     
     public void setOceanoEnemigo(Oceano oceano){
         this.oceanoEnemigo = oceano;
         if(oceanoEnemigo == null) System.out.println("Oceano enemigo is NULL");
         //Pintar oceano enemigo
+        oceanoEnemigo.grafo = (Grafo) oceanoEnemigo.grafo;
+        for(Vertice vertice : oceanoEnemigo.grafo.getVertices()){
+           vertice = (Vertice) vertice;
+           for(Arista arista : vertice.getAristas()){
+               arista = (Arista) arista;
+           }
+        }
         mostrarOceanoEnemigo();
     }
     
     public void enviarMiOceano() throws IOException{
-        if(matrizJugadorComp == null) System.out.println("Matriz is NULL");
-        Oceano miOceano = new Oceano();
-        miOceano.grafo = this.controladorAdquisicion.grafo;
-        miOceano.matrizComponentes = this.matrizJugadorComp;
-        cliente.enviarMiOceano(miOceano);
+        if(!miTurno){
+            if(matrizJugadorComp == null) System.out.println("Matriz is NULL");
+            Oceano miOceano = new Oceano();
+            miOceano.grafo = this.controladorAdquisicion.grafo;
+            miOceano.matrizComponentes = this.matrizJugadorComp;
+            if(miOceano.matrizComponentes != null){
+                cliente.enviarMiOceano(miOceano);
+                System.out.println("ENVIE MI GRAFO: ");
+                System.out.println(miOceano.grafo); 
+            }  
+        }
+
+        
     }
     
     public void mostrarOceanoEnemigo(){
@@ -222,9 +240,7 @@ public class Controlador_Cliente {
                 Componente componenteEnemigo = null;
                 try {
                     componenteEnemigo = oceanoEnemigo.matrizComponentes[i][j];
-                } catch (Exception e) { System.out.println("EXCEPCION : " + e);
-                
-                }
+                } catch (Exception e) {}
                 JLabel labelEnemigo = this.matrizEnemigoLbel[i][j];
                 if(componenteEnemigo != null){
                     labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
@@ -240,10 +256,13 @@ public class Controlador_Cliente {
                         }
                         else{
                             //Cuando no es una Fuente de Poder
+                            System.out.println("GRAFO ENEMIGO");
+                            System.out.println(oceanoEnemigo.grafo);
                             if(componenteEnemigo.getVertice().getAristas() != null &&
                             !componenteEnemigo.getVertice().getAristas().isEmpty()){
                                 for(Arista arista : componenteEnemigo.getVertice().getAristas()){
-                                    if(arista.getOrigin().getComponente() instanceof FuentePoder){
+                                    System.out.println("SI HAY ARISTAS");
+                                    if(arista.getDestination().getComponente() != null){
                                        labelEnemigo.setIcon(null);
                                     }        
                                 }

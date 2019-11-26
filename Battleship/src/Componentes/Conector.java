@@ -7,12 +7,13 @@ package Componentes;
 
 import Componentes.Componente;
 import static Componentes.Componente.tipoComponente.Conector;
+import java.io.Serializable;
 import java.util.ArrayList;
 /**
  *
  * @author mikom
  */
-public class Conector extends Componente {
+public class Conector extends Componente implements Serializable {
     
     FuentePoder fuente;
     ArrayList<Componente> destinos;
