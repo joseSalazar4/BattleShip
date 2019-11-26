@@ -20,7 +20,6 @@ public abstract class AbstractArma implements Serializable{
     public int costo, escudo;
     String nombre;
     Oceano oceano;
-    Controlador_Cliente controlador;
     marcarCasillaEnemigo casilla;
     String jugador;
     boolean escudoActivado = false;
