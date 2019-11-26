@@ -90,10 +90,8 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabelDinero = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         jLabelAcero = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanelTrumpedo = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -182,10 +180,8 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel8.setText("Mis Recursos");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
 
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 160, 100, -1));
-
         jLabelAcero.setText("Acero:");
-        getContentPane().add(jLabelAcero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
+        getContentPane().add(jLabelAcero, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, -1, -1));
 
         jButton1.setText("Usar Comodín");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -193,13 +189,10 @@ public class GUICliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 120, 40));
-
-        jLabel12.setText("Armas Compradas");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 110, 40));
 
         jLabel10.setText("Click para fabricar!");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 340, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -231,7 +224,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 110, 70));
+        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 110, 70));
 
         jPanelTorpedo.setLayout(null);
 
@@ -248,7 +241,7 @@ public class GUICliente extends javax.swing.JFrame {
         jPanelTorpedo.add(jButtonTorpedo);
         jButtonTorpedo.setBounds(20, 30, 80, 32);
 
-        getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 120, 70));
+        getContentPane().add(jPanelTorpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 120, 70));
 
         jLabel13.setText("2000 Kg Acero");
 
@@ -280,7 +273,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        getContentPane().add(jPanelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, 110, 60));
+        getContentPane().add(jPanelBomba, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, 110, 60));
 
         jLabel14.setText("1000 Kg Acero");
 
@@ -315,7 +308,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
-        getContentPane().add(jPanelMultiShot, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 600, 110, 70));
+        getContentPane().add(jPanelMultiShot, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 600, 100, 70));
 
         jComboBoxEnemigos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,13 +338,13 @@ public class GUICliente extends javax.swing.JFrame {
         jLabel7.setText("jLabel7");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 600, 600));
 
-        btnFinalizar.setText("Finalizar");
+        btnFinalizar.setText("Finalizar Turno");
         btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 710, -1, -1));
+        getContentPane().add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 710, 120, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -423,11 +416,9 @@ public class GUICliente extends javax.swing.JFrame {
     private javax.swing.JButton jButtonMultiShot;
     private javax.swing.JButton jButtonTorpedo;
     private javax.swing.JButton jButtonTrumpedo;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBoxEnemigos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -482,14 +473,6 @@ public class GUICliente extends javax.swing.JFrame {
 
     public void setTxtFieldMensajes(JTextField txtFieldMensajes) {
         this.txtFieldMensajes = txtFieldMensajes;
-    }
-    
-    public JComboBox getComboBoxArmas(){
-        return this.jComboBox1;
-    }
-
-    public JButton getjButtonEnvMensaje() {
-        return jButtonEnvMensaje;
     }
 
     public void setjButtonEnvMensaje(JButton jButtonEnvMensaje) {

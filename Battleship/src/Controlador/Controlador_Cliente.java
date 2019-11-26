@@ -87,10 +87,7 @@ public class Controlador_Cliente implements Serializable{
 
     }
     
-    public void empezarAJugar(){ //SOLO LA PRIMERA VEZ
-        for(int i = 0;i<cliente.jugador.getArmasCompradas().size();i++)
-            pantallaPrincipal.getComboBoxArmas().addItem(cliente.jugador.getArmasCompradas().get(i).getNombre());
-        
+    public void empezarAJugar(){ //SOLO LA PRIMERA VEZ        
         crearMatrizJugadorLabels();
         crearMatrizEnemigoLabels();
         
