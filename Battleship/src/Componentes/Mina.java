@@ -12,7 +12,7 @@ import static Componentes.Componente.tipoComponente.Mina;
 public class Mina extends Componente {
     
     int aceroGenerado,aceroTotal, tiempo;
-    private ThreadProductoraAcero threadProductor;
+    private ThreadProductoraAcero threadProductor = null;
     
     
     public Mina(int nivelSeleccionado){
