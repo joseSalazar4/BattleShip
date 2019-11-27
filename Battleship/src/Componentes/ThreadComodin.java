@@ -48,8 +48,8 @@ public class ThreadComodin extends Thread {
                 }   
             }
             try {
-
-                sleep(300000);  
+                sleep(1000);  
+                //sleep(300000);  
                 activo = true;
                 System.out.println("Pasaron los 5 mins tenemos COMODIN");
             } catch (InterruptedException ex) {
