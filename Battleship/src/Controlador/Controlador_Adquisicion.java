@@ -228,15 +228,13 @@ import java.util.ArrayList;
         grafo.addVertice(vertice2);
         
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
-        
-        
         while(pantalla.matrizLabels[numero][numero].getIcon() != null) {
             for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         }
         
         pantalla.matrizLabels[numero][numero].setIcon(new ImageIcon(getClass().getResource("/Vista/Resources/Remolino.png"))); 
-        matrizComponentes[numero][numero] = componenteNuevo;        
-        componenteNuevo.setPoint(new Point(numero,numero));
+        matrizComponentes[numero][numero] = componenteNuevo2;        
+        componenteNuevo2.setPoint(new Point(numero,numero));
     }
     
     public void colocarMercado(){

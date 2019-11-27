@@ -64,8 +64,6 @@ public class BarcoEspia extends Thread {
             System.out.println("IF 1");
             for(int k = iAux;k<iAux+7;k++){
                 for(int l = jAux;l<jAux+7;l++){
-                    //if((iAux+7)/2 == (jAux+7)/2) textoEspia += " BarcoEspia ";
-                    
                     if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="--N/A--";
                     else textoEspia+="--"+controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+"--";
                     
