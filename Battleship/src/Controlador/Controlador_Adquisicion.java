@@ -76,6 +76,7 @@ import java.awt.Point;
         pantalla.getButtonArmeria().setEnabled(false);
         pantalla.getButtonMercado().setEnabled(false);
         pantalla.getButtonConector().setEnabled(false);
+        pantalla.getBtnConectar().setEnabled(false);
         pantalla.getjLabelInstruccionColocado().setText("Esperando Jugadores...");
         
         try {
