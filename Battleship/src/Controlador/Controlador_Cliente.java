@@ -332,6 +332,8 @@ public class Controlador_Cliente implements Serializable{
 //           }
 //        }
         mostrarOceanoEnemigo();
+        System.out.println("Recibi Oceano");
+        System.out.println(oceano.grafo);
     }
     
     public void encenderEscudo(){
@@ -369,7 +371,11 @@ public class Controlador_Cliente implements Serializable{
                 } catch (Exception e) {}
                 if(componenteEnemigo != null){
                     labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
-                    if(componenteEnemigo instanceof EspacioMuerto) return;
+                    if(componenteEnemigo instanceof EspacioMuerto){
+                        labelEnemigo.setIcon(componenteEnemigo.getImagen()); // Si NO esta conectado
+                        System.out.println("ES UN ESPACIO MUERTO");
+                        return;
+                    }
                     else if(componenteEnemigo instanceof Conector){
                         Conector conectorEnemigo = (Conector) componenteEnemigo;
                         if(conectorEnemigo.getFuente() != null){
@@ -407,6 +413,7 @@ public class Controlador_Cliente implements Serializable{
     public void actualizarMiOceano(Oceano oceano){
         this.controladorAdquisicion.matrizComponentes = oceano.matrizComponentes;
         this.controladorAdquisicion.grafo = oceano.grafo;
+        System.out.println(oceano.grafo);
     }
     
     

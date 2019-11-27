@@ -78,7 +78,6 @@ public abstract class AbstractArma implements Serializable{
                 if(componente.getGolpes().size() >= ctdGolpes){
                     if(componente instanceof FuentePoder) datos.destryoFuente = true;
                     Point verticeEliminado = componente.getPoint();
-                    componente.setVertice(null);
                     oceano.grafo.removeVertice(verticeEliminado);
                     destruirComponente(componente);    
                     

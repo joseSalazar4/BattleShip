@@ -55,7 +55,6 @@ public class ThreadProductoraAcero extends Thread{
             }
             try {
                 sleep(2000);
-                System.out.println("Estoy esperando a que jueguen");
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadProductoraAcero.class.getName()).log(Level.SEVERE, null, ex);
             }

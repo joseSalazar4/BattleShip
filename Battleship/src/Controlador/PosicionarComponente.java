@@ -101,9 +101,7 @@ public class PosicionarComponente implements MouseListener{
             && !(controlador.getComponente(i, j) instanceof EspacioMuerto)){ //Va a mover este elemento
                 controlador.isMover = true;
                 controlador.componenteAux = controlador.getComponente(i, j);
-                
-                
-                
+
                 //CUANDO ES 4X4 
                 if(controlador.componenteAux instanceof FuentePoder){
                     if(i<19 && j<19 &&
