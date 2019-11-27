@@ -189,16 +189,23 @@ public class Controlador_Cliente implements Serializable{
         
     }
     
-    public void Torpedo(){
+    public void Torpedo() throws InterruptedException{
         if(this.oceanoEnemigo != null){
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Torpedo")){
+                    if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
+                    armeria.getArma().setEscudoActivado(escudoAct);
                     this.oceanoEnemigo.jugador = this.cliente.jugador;
                     armeria.getArma().setCasilla(labelEnemigoSeleccionado);
                     armeria.getArma().setNombre(this.cliente.jugador.getNombre());
                     armeria.getArma().setOceano(oceanoEnemigo);
+                    
+                    armeria.getArma().atacar();
                 }     
             }
+            
+            cargarRecursos();
+            
         }
     }
     

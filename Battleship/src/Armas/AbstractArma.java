@@ -148,6 +148,28 @@ public abstract class AbstractArma implements Serializable{
     public void setCasilla(marcarCasillaEnemigo casilla) {
         this.casilla = casilla;
     }
+
+    public AbstractArma(int costo, int escudo) {
+        this.costo = costo;
+        this.escudo = escudo;
+    }
+
+    public int getEscudo() {
+        return escudo;
+    }
+
+    public void setEscudo(int escudo) {
+        this.escudo = escudo;
+    }
+
+    public boolean isEscudoActivado() {
+        return escudoActivado;
+    }
+
+    public void setEscudoActivado(boolean escudoActivado) {
+        this.escudoActivado = escudoActivado;
+    }
+    
     
     
 }
