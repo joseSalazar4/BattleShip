@@ -19,10 +19,10 @@ public class Grafo implements Serializable{
         this.vertices = vertices;
     }
     
-    public void removeVertice(Vertice vertice){
+    public void removeVertice(Point vertice){
        for(Vertice v : this.vertices){
-           if(v.getComponente().getPoint().x == vertice.getComponente().getPoint().x &&
-              v.getComponente().getPoint().y == vertice.getComponente().getPoint().y){
+           if(v.getComponente().getPoint().x == vertice.x &&
+              v.getComponente().getPoint().y == vertice.y){
                for(Arista a : v.getAristas()){
                    for(Arista aDestino: a.getDestination().getAristas()){
                        if(aDestino.getDestination().equals(v)){

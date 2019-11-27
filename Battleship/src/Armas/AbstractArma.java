@@ -42,7 +42,8 @@ public abstract class AbstractArma implements Serializable{
             }
             else if(componente.is1x1){
                 if(componente instanceof Remolino) datos.golpeoRemolino = true;
-                oceano.grafo.removeVertice(componente.getVertice());
+                Point verticeEliminado = componente.getPoint();
+                oceano.grafo.removeVertice(verticeEliminado);
                 destruirComponente(componente);
                 datos.historialAtaque +=
                     jugador + " destruyó un " + componente.getNombre() + " de "
@@ -70,7 +71,8 @@ public abstract class AbstractArma implements Serializable{
                 
                 if(componente.getGolpes().size() >= ctdGolpes){
                     if(componente instanceof FuentePoder) datos.destryoFuente = true;
-                    oceano.grafo.removeVertice(componente.getVertice());
+                    Point verticeEliminado = componente.getPoint();
+                    oceano.grafo.removeVertice(verticeEliminado);
                     destruirComponente(componente);    
                     
                     datos.historialAtaque += 

@@ -53,6 +53,8 @@ public class Controlador_Cliente implements Serializable{
     private ArrayList<Armeria> armerias = new ArrayList<>();
     private ArrayList<ThreadProductoraAcero> threadsProductores = new ArrayList<>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
+    private String oceanoBuscadoEnemigo = "";
+    private boolean yaAtacado = false;
     
     
     public Controlador_Cliente(){ 
@@ -191,7 +193,6 @@ public class Controlador_Cliente implements Serializable{
     
     public void Torpedo() throws InterruptedException{
         if(this.oceanoEnemigo != null){
-            System.out.println("Oceano no es nulo");
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Torpedo")){
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
@@ -212,10 +213,10 @@ public class Controlador_Cliente implements Serializable{
                     }
                     else System.out.println("OCEANO NUEVO ES NULL");
                     if(datos.golpeoRemolino){
-                        //Aqui se programa el despiche
+                        System.out.println("Golpeo un remolino");
                     }
                     if(datos.destryoFuente){
-                        //Aqui el otro despiche
+                        System.out.println("Destruyo una fuente");
                     }
                     
                     this.cliente.jugador = datos.jugador;
@@ -224,6 +225,7 @@ public class Controlador_Cliente implements Serializable{
                     mostrarOceanoEnemigo();
                     cargarRecursos();
                     
+                    this.yaAtacado = true;
                     return;
                     
                 }  
@@ -306,10 +308,13 @@ public class Controlador_Cliente implements Serializable{
     }
     
     public void buscarOceanoEnemigo() throws IOException {
-        if(miTurno){
-            System.out.println("Buscando oceano enemigo");
+        if(miTurno && !yaAtacado){
             String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
-            cliente.buscarOceanoEnemigo(enemigoBuscado); 
+            if(!enemigoBuscado.equals(this.oceanoBuscadoEnemigo)){
+                this.oceanoBuscadoEnemigo = enemigoBuscado;
+                System.out.println("Buscando oceano enemigo");
+                cliente.buscarOceanoEnemigo(enemigoBuscado); 
+            }   
         }
     }
     
