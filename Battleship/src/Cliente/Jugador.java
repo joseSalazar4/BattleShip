@@ -23,7 +23,7 @@ public class Jugador {
     
     public Jugador(String nombreJugador){
         dinero = 200000;
-       
+        
         acero = 0 ;
         perdio = false;
         enemigos = null;
