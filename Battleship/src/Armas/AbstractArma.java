@@ -94,24 +94,20 @@ public abstract class AbstractArma implements Serializable{
     }
     
     public boolean cobrarAcero() throws InterruptedException{
-        
-        Semaphore semaf = controlador.getCliente().jugador.getSemaforoAcero();
+        Semaphore semaf = oceano.jugador.getSemaforoAcero();
         sleep(100);
         semaf.tryAcquire(8, TimeUnit.SECONDS);
         
-        int t = controlador.getCliente().jugador.getAcero();
+        int t = oceano.jugador.getAcero();
         
         if(t>=costo){
-            controlador.getCliente().jugador.setAcero(t-=costo);
+            oceano.jugador.setAcero(t-=costo);
             semaf.release();
-            controlador.cargarRecursos();
             return true;
         }
-        
         else{
             JOptionPane.showMessageDialog(null, "No tiene suficiente Acero!\nIntentelo de nuevo.        ");
             semaf.release();
-            controlador.cargarRecursos();
             return false;
         }
 

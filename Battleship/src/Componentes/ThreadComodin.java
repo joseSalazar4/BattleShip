@@ -33,11 +33,14 @@ public class ThreadComodin extends Thread {
         while(true){
             while(activo){
                 try {
-                    sleep(300000);  
+                    int m = 0;
+                    for(int i=0;i<6;i++) m = (int) (Math.random() * 4) + 2;
+        
                     semaf.tryAcquire(4, TimeUnit.SECONDS);
-                    controlador.getCantEscudo();
-                    controlador.cargarRecursos();
-
+                    
+                    controlador.setCantEscudo(m);
+                    controlador.setEscudoAct(true);
+                    
                     semaf.release();
                 }
                 catch (InterruptedException ex) {
@@ -45,14 +48,16 @@ public class ThreadComodin extends Thread {
                 }   
             }
             try {
-                sleep(2000);
-                System.out.println("Estoy esperando a que jueguen");
+
+                sleep(300000);  
+                activo = true;
+                System.out.println("Pasaron los 5 mins tenemos COMODIN");
             } catch (InterruptedException ex) {
                 Logger.getLogger(ThreadProductoraAcero.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
-    
+    }
     
     
 }
