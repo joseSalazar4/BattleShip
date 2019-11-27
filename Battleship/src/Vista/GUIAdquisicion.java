@@ -86,7 +86,6 @@ private void rellenarMatriz(){
         jLabel24 = new javax.swing.JLabel();
         jLabelInstruccionColocado = new javax.swing.JLabel();
         btnConectar = new javax.swing.JButton();
-        jButtonBarco = new javax.swing.JButton();
         jPanelJugador = new javax.swing.JPanel(){
             @Override
             public void paintComponent(Graphics g) {
@@ -249,20 +248,12 @@ private void rellenarMatriz(){
         jLabelInstruccionColocado.setText("Ubique el elemento comprado!");
 
         btnConectar.setBackground(new java.awt.Color(0, 61, 101));
+        btnConectar.setFont(new java.awt.Font("Dialog", 2, 16)); // NOI18N
         btnConectar.setForeground(new java.awt.Color(255, 255, 255));
-        btnConectar.setText("Conectar :3");
+        btnConectar.setText("Conectar ");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConectarActionPerformed(evt);
-            }
-        });
-
-        jButtonBarco.setBackground(new java.awt.Color(0, 61, 101));
-        jButtonBarco.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBarco.setText("Barco $2500");
-        jButtonBarco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBarcoActionPerformed(evt);
             }
         });
 
@@ -279,7 +270,7 @@ private void rellenarMatriz(){
                             .addComponent(jLabel19)
                             .addComponent(jLabel22)
                             .addComponent(jLabel21))
-                        .addGap(30, 44, Short.MAX_VALUE))
+                        .addGap(30, 41, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -287,21 +278,18 @@ private void rellenarMatriz(){
                             .addComponent(jButtonMercado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonMina, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonArmeria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(btnConectar))
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jComboBox2, 0, 127, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, 130, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonFuente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonConector, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox3, 0, 126, Short.MAX_VALUE)
-                            .addComponent(jButtonBarco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +305,10 @@ private void rellenarMatriz(){
                         .addContainerGap()
                         .addComponent(jLabelInstruccionColocado)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,12 +351,11 @@ private void rellenarMatriz(){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConectar)
-                    .addComponent(jButtonBarco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInstruccionColocado))
+                .addComponent(btnConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelInstruccionColocado)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 290, 410));
@@ -444,7 +435,7 @@ private void rellenarMatriz(){
         lblnickName.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblnickName.setForeground(new java.awt.Color(255, 255, 255));
         lblnickName.setText("nickName");
-        getContentPane().add(lblnickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
+        getContentPane().add(lblnickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -508,10 +499,6 @@ private void rellenarMatriz(){
         controlador.setIsConectar();
     }//GEN-LAST:event_btnConectarActionPerformed
 
-    private void jButtonBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarcoActionPerformed
-                // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBarcoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -551,7 +538,6 @@ private void rellenarMatriz(){
     private javax.swing.JButton btnConectar;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButtonArmeria;
-    private javax.swing.JButton jButtonBarco;
     private javax.swing.JButton jButtonConector;
     private javax.swing.JButton jButtonFuente;
     private javax.swing.JButton jButtonMercado;

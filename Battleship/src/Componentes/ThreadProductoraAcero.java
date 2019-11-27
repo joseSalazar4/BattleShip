@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class ThreadProductoraAcero extends Thread{
     Mina minaProductora;
     Semaphore semaf;
+    int tiempo, cantPorGenerar ;
     boolean activo = false;
     Controlador_Cliente controlador;
     
@@ -25,6 +26,8 @@ public class ThreadProductoraAcero extends Thread{
         minaProductora = minaProd;
         semaf = semaphore;
         controlador = controladorP;
+        tiempo = minaProductora.tiempo;
+        cantPorGenerar = minaProductora.aceroGenerado;
         
     }
 
@@ -35,11 +38,11 @@ public class ThreadProductoraAcero extends Thread{
         while(true){
             while(activo){
                 try {
-                    sleep(minaProductora.tiempo);  
+                    sleep(tiempo);  
                     semaf.tryAcquire(2, TimeUnit.SECONDS);
 
                     int t = controlador.getCliente().jugador.getAcero();
-                    t+=minaProductora.aceroGenerado;
+                    t+=this.cantPorGenerar;
                     System.out.println(t);
                     controlador.getCliente().jugador.setAcero(t);
                     controlador.cargarRecursos();
@@ -73,6 +76,22 @@ public class ThreadProductoraAcero extends Thread{
 
     public void setSemaf(Semaphore semaf) {
         this.semaf = semaf;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
+    }
+
+    public int getCantPorGenerar() {
+        return cantPorGenerar;
+    }
+
+    public void setCantPorGenerar(int cantPorGenerar) {
+        this.cantPorGenerar = cantPorGenerar;
     }
 
     public boolean isActivo() {
