@@ -53,13 +53,15 @@ public class BarcoEspia extends Thread {
         int iAux, jAux;
         String textoEspia = "";
         
+        iAux = i-3;
+        jAux = j-3;
+        
         
         //Escenario donde no se sale de ningun borde (Mejor escenario)
         if(i>=3 && j>=3 && i<17 && j<17){
-            iAux = i-3;
-            jAux = j-3;
-            for(int k = iAux;k<7;k++){
-                for(int l = jAux;l<7;l++){
+            
+            for(int k = iAux;k<iAux+7;k++){
+                for(int l = jAux;l<jAux+7;l++){
                     if(k == l) textoEspia+=" BarcoEspia ";
                     else{
                         if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
@@ -69,18 +71,99 @@ public class BarcoEspia extends Thread {
                 textoEspia+="\n";
             }
         }
-        else if(i-3<0){
-            if(j-3<0){
-                
+        
+        //Escenario donde se pone mas a la izq
+        else if(iAux<0){
+            //Muy a la izquierda y muy arriba
+            if(jAux<0){
+                for(int k = 0;k<iAux+7;k++){
+                    for(int l = 0;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
+            
+                }   
+            }
+            //Muy a la izquierda y muy abajo
+            else if(j+3>19){
+                for(int k = iAux;k<iAux+7;k++){
+                    for(int l = jAux;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
+            
+                }
+            }
+            //Solo esta muy a la izquierda
+            else{
+                for(int k = iAux;k<iAux+7;k++){
+                    for(int l = jAux;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
+            
+                }
+            }
+        }
+            
+        //Escenario donde se pone mas a la Derecha
+        else if(i+3>19){
+            
+            //Ademas, esta mas arriba
+            if(jAux<0){
+                for(int k = iAux;k<iAux+7;k++){
+                    for(int l = jAux;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
+                }
+            }
+            //Ademas, esta mas abajo
+            else if(j+3>19){
+                for(int k = iAux;k<iAux+7;k++){
+                    for(int l = jAux;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
+            
+                }
             }
             
-        }
-        else if(true){
+            //Solo esta muy a la derecha
+            else{
+                for(int k = iAux;k<iAux+7;k++){
+                    for(int l = jAux;l<jAux+7;l++){
+                        if(k == l) textoEspia+=" BarcoEspia ";
+                        else{
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                        }
+                    }
+                    textoEspia+="\n";
             
-        }
-        
-        
+                }
+            }
         JOptionPane.showMessageDialog(null, textoEspia);
+        }
     }
-    
 }
