@@ -38,7 +38,7 @@ public abstract class AbstractArma implements Serializable{
                 destruirComponente(componente);
                 datos.historialAtaque +=
                     jugador + " destruyó un conector de " 
-                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + this.nombre + "\n";
             }
             else if(componente.is1x1){
                 if(componente instanceof Remolino) datos.golpeoRemolino = true;
@@ -46,7 +46,7 @@ public abstract class AbstractArma implements Serializable{
                 destruirComponente(componente);
                 datos.historialAtaque +=
                     jugador + " destruyó un " + componente.getNombre() + " de "
-                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
+                    + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " +  this.nombre + "\n";
 
             }
             else if(componente.is2x2 || !componente.is1x1){
@@ -54,7 +54,7 @@ public abstract class AbstractArma implements Serializable{
                     if(golpe.x == point.x && golpe.y == point.y){
                       datos.historialAtaque +=
                         jugador + " volvió a golpear " + componente.getNombre() + " del oceano de"
-                        + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n"; 
+                        + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " +  this.nombre + "\n"; 
                        return false;
                     }
                 }
@@ -63,7 +63,7 @@ public abstract class AbstractArma implements Serializable{
                 datos.historialAtaque += 
                     jugador + " golpeó una "+ componente.getNombre() +" del oceano de " 
                     + oceano.enemigo 
-                    + " en la posición (" + point.x  + "," + point.y + ") usando " + nombre + "\n";
+                    + " en la posición (" + point.x  + "," + point.y + ") usando " +  this.nombre + "\n";
                 
                 int ctdGolpes = 2;
                 if(componente.is2x2) ctdGolpes = 4;
