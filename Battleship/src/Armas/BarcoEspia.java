@@ -19,7 +19,7 @@ public class BarcoEspia extends Thread {
     int i,j;
     Controlador_Cliente controlador;
     
-    BarcoEspia(Controlador_Cliente controladorP){
+    public  BarcoEspia(Controlador_Cliente controladorP){
         controlador  = controladorP;
         i = j = 0;
     }
@@ -29,11 +29,13 @@ public class BarcoEspia extends Thread {
         while(true){
             while(activo){
                 try {
+                    System.out.println("AQUI VAMOS A PONER LA VARA ");
                     //sleep(90000);  DESOCOMENTAR CUANDO FUNCIONE
                     sleep(1000);
                     i = controlador.getLabelEnemigoSeleccionado().getI();
                     j = controlador.getLabelEnemigoSeleccionado().getJ();
                     obtenerInformacion(i, j);
+                    activo = false;
                 }
                 catch (InterruptedException ex) {
                     Logger.getLogger(BarcoEspia.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,6 +43,7 @@ public class BarcoEspia extends Thread {
    
             }
             try {
+                sleep(1000);
                 sleep(1000);
             } 
             catch (InterruptedException ex) {
@@ -166,6 +169,7 @@ public class BarcoEspia extends Thread {
             
                 }
             }
+            System.out.println(textoEspia);
         JOptionPane.showMessageDialog(null, textoEspia);
         }
     }

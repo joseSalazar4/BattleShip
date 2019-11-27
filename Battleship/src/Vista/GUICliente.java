@@ -354,6 +354,11 @@ public class GUICliente extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, -1, -1));
 
         jButtonBarcoEspía.setText("Barco Espía");
+        jButtonBarcoEspía.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBarcoEspíaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonBarcoEspía, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
 
         pack();
@@ -411,6 +416,14 @@ public class GUICliente extends javax.swing.JFrame {
     private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed
   
     }//GEN-LAST:event_jButtonMultiShotActionPerformed
+
+    private void jButtonBarcoEspíaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarcoEspíaActionPerformed
+        try {
+            controlador.Barco();        // TODO add your handling code here:
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButtonBarcoEspíaActionPerformed
 
     /**
      * @param args the command line arguments
