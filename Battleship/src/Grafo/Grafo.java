@@ -14,7 +14,7 @@ public class Grafo implements Serializable{
         return vertices;
     }
 
-    public void setVertices(ArrayList<Vertice> vertices) {
+    public void setVertices(ArrayList<Vertice> vertices){
         this.vertices = vertices;
     }
     

@@ -194,7 +194,6 @@ public class Controlador_Cliente implements Serializable{
         if(this.oceanoEnemigo != null){
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Multishot")){
-                    
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
                     armeria.getArma().setEscudoActivado(escudoAct);
                     DatosDeAtaque datos = new DatosDeAtaque();
@@ -206,52 +205,7 @@ public class Controlador_Cliente implements Serializable{
                     armeria.getArma().setJugador(this.cliente.getNickName());
                             
                     Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
-                    if(oceanoNuevo != null){
-                        this.oceanoEnemigo = oceanoNuevo;
-                        System.out.println("GRAFO NUEVO");
-                        System.out.println(this.oceanoEnemigo.grafo);
-                    }
-                    else System.out.println("OCEANO NUEVO ES NULL");
-                    if(datos.golpeoRemolino){
-                        System.out.println("Golpeo un remolino");
-                    }
-                    if(datos.destryoFuente){
-                        System.out.println("Destruyo una fuente");
-                    }
                     
-                    this.cliente.jugador = datos.jugador;
-                    enviarMensajeJuego(datos.historialAtaque);
-                    
-                    mostrarOceanoEnemigo();
-                    cargarRecursos();
-                    
-                    this.yaAtacado = true;
-                    return;
-                    
-                }  
-            } 
-            System.out.println("NO SE ENCONTRO EL ARMA");
-            return;
-        }
-        System.out.println("OCEANO ES NULL");
-        return;
-    }
-    
-    public void Torpedo() throws InterruptedException{
-        if(this.oceanoEnemigo != null){
-            for(Armeria armeria : this.armerias){
-                if(armeria.getArma().getNombre().equals("Torpedo")){
-                    if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
-                    armeria.getArma().setEscudoActivado(escudoAct);
-                    DatosDeAtaque datos = new DatosDeAtaque();
-                    datos.jugador = this.cliente.jugador;
-                    datos.golpeoRemolino = false;
-                    datos.destryoFuente = false;
-                    armeria.getArma().setOceano(oceanoEnemigo);
-                    armeria.getArma().setDatos(datos);
-                    armeria.getArma().setJugador(this.cliente.getNickName());
-                            
-                    Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
                     if(oceanoNuevo != null){
                         this.oceanoEnemigo = oceanoNuevo;
                         System.out.println("GRAFO NUEVO");
@@ -269,6 +223,8 @@ public class Controlador_Cliente implements Serializable{
                         this.controladorAdquisicion.colocarFuentePoder();
                     }
                     
+                    if(escudoAct && cantEscudo > 0) cantEscudo--;
+                    
                     this.cliente.jugador = datos.jugador;
                     enviarMensajeJuego(datos.historialAtaque);
                     mostrarOceanoEnemigo();
@@ -283,7 +239,57 @@ public class Controlador_Cliente implements Serializable{
             return;
         }
         System.out.println("OCEANO ES NULL");
-        return;
+    }
+    
+    public void Torpedo() throws InterruptedException{
+        if(this.oceanoEnemigo != null){
+            for(Armeria armeria : this.armerias){
+                if(armeria.getArma().getNombre().equals("Torpedo")){
+                    if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
+                    armeria.getArma().setEscudoActivado(escudoAct);
+                    DatosDeAtaque datos = new DatosDeAtaque();
+                    datos.jugador = this.cliente.jugador;
+                    datos.golpeoRemolino = false;
+                    datos.destryoFuente = false;
+                    armeria.getArma().setOceano(oceanoEnemigo);
+                    armeria.getArma().setDatos(datos);
+                    armeria.getArma().setJugador(this.cliente.getNickName());
+                            
+                    Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
+                    
+                    if(oceanoNuevo != null){
+                        this.oceanoEnemigo = oceanoNuevo;
+                        System.out.println("GRAFO NUEVO");
+                        System.out.println(this.oceanoEnemigo.grafo);
+                    }
+                    else System.out.println("OCEANO NUEVO ES NULL");
+                    
+                    if(datos.golpeoRemolino){
+                        System.out.println("Golpeo un remolino");
+                        
+                    }
+                    
+                    if(datos.destryoFuente){
+                        System.out.println("Destruyo una fuente");
+                        this.controladorAdquisicion.colocarFuentePoder();
+                    }
+                    
+                    if(escudoAct && cantEscudo > 0) cantEscudo--;
+                    
+                    this.cliente.jugador = datos.jugador;
+                    enviarMensajeJuego(datos.historialAtaque);
+                    mostrarOceanoEnemigo();
+                    cargarRecursos();
+                    
+                    this.yaAtacado = true;
+                    return;
+                    
+                }  
+            } 
+            System.out.println("NO SE ENCONTRO EL ARMA");
+            return;
+        }
+        System.out.println("OCEANO ES NULL");
     }
     
     public void Trumpedo(){
@@ -365,7 +371,7 @@ public class Controlador_Cliente implements Serializable{
         semaf.release();
     }
     
-    public void buscarOceanoEnemigo() throws IOException {
+    public void buscarOceanoEnemigo() throws IOException{
         if(miTurno){
             String enemigoBuscado = this.pantallaPrincipal.getjComboBoxEnemigos().getSelectedItem().toString();
             if(!enemigoBuscado.equals(this.oceanoBuscadoEnemigo)){

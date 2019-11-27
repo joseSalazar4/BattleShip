@@ -33,7 +33,13 @@ public abstract class AbstractArma implements Serializable{
     
     public boolean golpear(Componente componente, Oceano oceano, Point point, DatosDeAtaque datos){
         if(componente != null){
-            if(componente instanceof Conector){
+            if(escudoActivado && escudo > 0){
+                escudo--;
+                datos.historialAtaque +=
+                    oceano.enemigo + " tiene un escudo protector \n";
+                return false;
+            }
+            else if(componente instanceof Conector){
                 oceano.grafo.removeArista(componente.getPoint());
                 destruirComponente(componente);
                 datos.historialAtaque +=

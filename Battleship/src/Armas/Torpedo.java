@@ -23,7 +23,7 @@ public class Torpedo extends AbstractArma {
         super();
         //costo = 500; //Prueba
         costo = 0;
-        nombre = "Torpedo";
+        super.nombre = "Torpedo";
     }
     
     @Override

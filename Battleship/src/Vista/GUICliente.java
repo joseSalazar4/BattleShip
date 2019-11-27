@@ -414,7 +414,11 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBombaActionPerformed
 
     private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed
-  
+        try {
+            controlador.MultiShot();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonMultiShotActionPerformed
 
     private void jButtonBarcoEspíaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBarcoEspíaActionPerformed

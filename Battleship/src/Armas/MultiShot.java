@@ -24,7 +24,7 @@ public class MultiShot extends AbstractArma  {
     public MultiShot(){
         super();
         costo = 1000;
-        nombre = "Multishot";
+        super.nombre = "Multishot";
     }
     
     
@@ -56,7 +56,7 @@ public class MultiShot extends AbstractArma  {
         }
         else datos.historialAtaque += "\n SELECCIONE UNA CASILLA";
         
-        return oceano;
+        return super.oceano;
     }
     
     public void ataqueMultiShot(){
