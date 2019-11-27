@@ -110,6 +110,8 @@ public class GUICliente extends javax.swing.JFrame {
         jPanelEnemigo = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         btnFinalizar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonBarcoEspía = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1290, 800));
@@ -190,10 +192,11 @@ public class GUICliente extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 110, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 110, 40));
 
-        jLabelTextoFabricar.setText("Click para fabricar!");
-        getContentPane().add(jLabelTextoFabricar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, -1, -1));
+        jLabelTextoFabricar.setFont(new java.awt.Font("Segoe UI Symbol", 2, 15)); // NOI18N
+        jLabelTextoFabricar.setText(" Click para fabricar");
+        getContentPane().add(jLabelTextoFabricar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 130, -1));
 
         jLabel11.setText("5000Kg Acero");
 
@@ -225,7 +228,7 @@ public class GUICliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 320, 110, 70));
+        getContentPane().add(jPanelTrumpedo, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 110, 70));
 
         jPanelTorpedo.setLayout(null);
 
@@ -347,6 +350,12 @@ public class GUICliente extends javax.swing.JFrame {
         });
         getContentPane().add(btnFinalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 710, 120, -1));
 
+        jLabel1.setText("$2500");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 260, -1, -1));
+
+        jButtonBarcoEspía.setText("Barco Espía");
+        getContentPane().add(jButtonBarcoEspía, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -411,12 +420,14 @@ public class GUICliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinalizar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonBarcoEspía;
     private javax.swing.JButton jButtonBomba;
     private javax.swing.JButton jButtonEnvMensaje;
     private javax.swing.JButton jButtonMultiShot;
     private javax.swing.JButton jButtonTorpedo;
     private javax.swing.JButton jButtonTrumpedo;
     private javax.swing.JComboBox jComboBoxEnemigos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

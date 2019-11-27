@@ -46,5 +46,4 @@ public class Torpedo extends AbstractArma {
         
         return super.oceano;
     }
-    
 }
