@@ -180,6 +180,7 @@ public class ThreadServidor extends Thread{
     
     public void actualizarMiOceano(Oceano oceano) throws IOException{
         System.out.println(nickName + " actualizando su oceano ");
+        outputStream.flush();
         outputStream.writeInt(9);
         outputStream.writeObject(oceano);
         outputStream.flush();

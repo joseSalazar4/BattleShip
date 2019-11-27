@@ -414,10 +414,10 @@ public class Controlador_Cliente implements Serializable{
     public void actualizarMiOceano(Oceano oceano){
         this.controladorAdquisicion.matrizComponentes = oceano.matrizComponentes;
         this.controladorAdquisicion.grafo = oceano.grafo;
+        cargarMiOceano();
         System.out.println(oceano.grafo);
     }
-    
-    
+        
     //Codigo de renovar juego 
     public void esperarEnemigos() throws InterruptedException, IOException{
         cliente.finalizoAdquisicion(); //Envia al servidor que ya esta listo
