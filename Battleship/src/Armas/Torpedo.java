@@ -18,11 +18,9 @@ import java.util.logging.Logger;
  * @author mikom
  */
 public class Torpedo extends AbstractArma {
-
     public Torpedo(){
         super();
-        //costo = 500; //Prueba
-        costo = 0;
+        costo = 500;
         super.nombre = "Torpedo";
     }
     

@@ -45,7 +45,6 @@ public class MultiShot extends AbstractArma  {
                             datos.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
                             ataqueMultiShot();
                         }
-                        
                     }
                     else datos.historialAtaque += "\n ACERO INSUFICIENTE";                    
                 } catch (InterruptedException ex) {

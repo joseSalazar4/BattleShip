@@ -18,6 +18,7 @@ import Componentes.Remolino;
 import Componentes.ThreadProductoraAcero;
 import Grafo.Arista;
 import Cliente.DatosDeAtaque;
+import Cliente.Jugador;
 import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import static java.lang.Thread.sleep;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -191,12 +193,59 @@ public class Controlador_Cliente implements Serializable{
         else return;
     }
     
-    public void Bomba(){
-        
+    public void Bomba() throws InterruptedException{
+        if(this.oceanoEnemigo != null && miTurno){
+            for(Armeria armeria : this.armerias){
+                if(armeria.getArma().getNombre().equals("Bomba")){
+                    if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
+                    armeria.getArma().setEscudoActivado(escudoAct);
+                    DatosDeAtaque datos = new DatosDeAtaque();
+                    datos.jugador = this.cliente.jugador;
+                    datos.golpeoRemolino = false;
+                    datos.destryoFuente = false;
+                    armeria.getArma().setOceano(oceanoEnemigo);
+                    armeria.getArma().setDatos(datos);
+                    armeria.getArma().setJugador(this.cliente.getNickName());
+                            
+                    Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
+                    
+                    if(oceanoNuevo != null){
+                        this.oceanoEnemigo = oceanoNuevo;
+                        System.out.println("GRAFO NUEVO");
+                        System.out.println(this.oceanoEnemigo.grafo);
+                    }
+                    else System.out.println("OCEANO NUEVO ES NULL");
+                    
+                    if(datos.golpeoRemolino){
+                        System.out.println("Golpeo un remolino");
+                        
+                    }
+                    
+                    if(datos.destryoFuente){
+                        System.out.println("Destruyo una fuente");
+                        this.controladorAdquisicion.colocarFuentePoder();
+                    }
+                    
+                    if(escudoAct && cantEscudo > 0) cantEscudo--;
+                    
+                    this.cliente.jugador = datos.jugador;
+                    enviarMensajeJuego(datos.historialAtaque);
+                    mostrarOceanoEnemigo();
+                    cargarRecursos();
+                    
+                    this.yaAtacado = true;
+                    return;
+                    
+                }  
+            } 
+            System.out.println("NO SE ENCONTRO EL ARMA");
+            return;
+        }
+        System.out.println("OCEANO ES NULL");
     }
     
     public void MultiShot() throws InterruptedException{
-        if(this.oceanoEnemigo != null){
+        if(this.oceanoEnemigo != null && miTurno){
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Multishot")){
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
@@ -247,7 +296,7 @@ public class Controlador_Cliente implements Serializable{
     }
     
     public void Torpedo() throws InterruptedException{
-        if(this.oceanoEnemigo != null){
+        if(this.oceanoEnemigo != null && miTurno){
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Torpedo")){
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
@@ -297,8 +346,96 @@ public class Controlador_Cliente implements Serializable{
         System.out.println("OCEANO ES NULL");
     }
     
-    public void Trumpedo(){
-        
+    public void Trumpedo() throws InterruptedException{
+        if(this.oceanoEnemigo != null && miTurno){
+            for(Armeria armeria : this.armerias){
+                if(armeria.getArma().getNombre().equals("Trumpedo")){
+                    if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
+                    armeria.getArma().setEscudoActivado(escudoAct);
+                    DatosDeAtaque datos = new DatosDeAtaque();
+                    datos.jugador = this.cliente.jugador;
+                    datos.golpeoRemolino = false;
+                    datos.destryoFuente = false;
+                    armeria.getArma().setOceano(oceanoEnemigo);
+                    armeria.getArma().setDatos(datos);
+                    armeria.getArma().setJugador(this.cliente.getNickName());
+                            
+                    Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
+                    
+                    if(oceanoNuevo != null){
+                        this.oceanoEnemigo = oceanoNuevo;
+                        System.out.println("GRAFO NUEVO");
+                        System.out.println(this.oceanoEnemigo.grafo);
+                    }
+                    else System.out.println("OCEANO NUEVO ES NULL");
+                    
+                    if(datos.golpeoRemolino){
+                        System.out.println("Golpeo un remolino");
+                        
+                    }
+                    
+                    if(datos.destryoFuente){
+                        System.out.println("Destruyo una fuente");
+                        this.controladorAdquisicion.colocarFuentePoder();
+                    }
+                    
+                    if(escudoAct && cantEscudo > 0) cantEscudo--;
+                    
+                    this.cliente.jugador = datos.jugador;
+                    enviarMensajeJuego(datos.historialAtaque);
+                    mostrarOceanoEnemigo();
+                    cargarRecursos();
+                    
+                    this.yaAtacado = true;
+                    return;
+                    
+                }  
+            } 
+            System.out.println("NO SE ENCONTRO EL ARMA");
+            return;
+        }
+        System.out.println("OCEANO ES NULL");
+    }
+    
+    public void metodoRemolino() throws InterruptedException{
+        for(Armeria armeria : this.armerias){
+            if(armeria.getArma().getNombre().equals("Torpedo")){
+                if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
+                armeria.getArma().setEscudoActivado(escudoAct);
+                DatosDeAtaque datos = new DatosDeAtaque();
+                datos.jugador = new Jugador("Remolino");
+                datos.jugador.setAcero(100000);
+                datos.jugador.setDinero(100000);
+                Oceano miOceano = new Oceano();
+                miOceano.grafo = controladorAdquisicion.grafo;
+                this.controladorAdquisicion.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
+                miOceano.enemigo = this.cliente.jugador.getNombre();
+                armeria.getArma().setOceano(miOceano);
+                armeria.getArma().setDatos(datos);
+                armeria.getArma().setJugador("El Remolino");
+                Random random = new Random();
+                datos.historialAtaque += "Remolino devolvio tres torpedos\n";
+                for(int i=0; i<3; i++){
+                    marcarCasillaEnemigo nuevaCasilla = new marcarCasillaEnemigo(null, random.nextInt(18), random.nextInt(18), this, imageAnterior);
+                    miOceano = armeria.getArma().atacar(nuevaCasilla);
+                    armeria.getArma().setOceano(miOceano);
+                }
+                
+                if(miOceano != null){
+                    this.controladorAdquisicion.matrizComponentes = miOceano.matrizComponentes;
+                    this.controladorAdquisicion.grafo = miOceano.grafo; 
+                }
+                
+                if(escudoAct && cantEscudo > 0) cantEscudo--;
+
+                enviarMensajeJuego(datos.historialAtaque);
+                cargarMiOceano();
+                cargarRecursos();
+                return;
+                    
+                }  
+            } 
+            System.out.println("NO SE ENCONTRO EL ARMA");
     }
     
     public void Barco() throws InterruptedException{

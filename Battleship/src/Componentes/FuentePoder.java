@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class FuentePoder extends Componente implements Serializable{
     FuentePoder(){
-        
+        this.nombre = "Fuente de Poder";
         this.is2x2 = true;
         this.is1x1 = false;
         this.tipoComponente = FuenteEnergia;
