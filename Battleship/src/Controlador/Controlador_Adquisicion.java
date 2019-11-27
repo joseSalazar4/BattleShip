@@ -143,7 +143,7 @@ import java.awt.Point;
              if(item == ItemCompra.MINA){
                 Mina minaAux =(Mina) componenteAux;
                 ThreadProductoraAcero threadAux = new ThreadProductoraAcero(minaAux, this.controladorCliente.getCliente().jugador.getSemaforoAcero(),this.controladorCliente);
-                minaAux.setThreadProductor(threadAux);
+                //minaAux.setThreadProductor(threadAux);
                 this.controladorCliente.getThreadsProductores().add(threadAux);
                 threadAux.start();
             }

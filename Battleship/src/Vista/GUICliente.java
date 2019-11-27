@@ -367,8 +367,7 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed
-        AbstractArma armaAux = new Trumpedo();
-        armaAux.atacar();         // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonTrumpedoActionPerformed
 
     private void jComboBoxEnemigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEnemigosActionPerformed
@@ -389,18 +388,19 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinalizarActionPerformed
 
     private void jButtonTorpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTorpedoActionPerformed
-        AbstractArma armaAux = new Torpedo();
-        armaAux.atacar();        // TODO add your handling code here:
+        try {
+            controlador.Torpedo();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonTorpedoActionPerformed
 
     private void jButtonBombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBombaActionPerformed
-        AbstractArma armaAux = new Bomba();
-        armaAux.atacar();
+
     }//GEN-LAST:event_jButtonBombaActionPerformed
 
     private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed
-        AbstractArma armaAux = new MultiShot();
-        armaAux.atacar();
+  
     }//GEN-LAST:event_jButtonMultiShotActionPerformed
 
     /**

@@ -3,11 +3,12 @@ package Controlador;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.UIManager;
 
-public class marcarCasillaEnemigo implements MouseListener {
+public class marcarCasillaEnemigo implements MouseListener, Serializable{
     JLabel label;
     Controlador_Cliente controlador;
     int i, j;

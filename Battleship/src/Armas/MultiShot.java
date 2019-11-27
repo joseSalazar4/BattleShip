@@ -7,6 +7,8 @@ package Armas;
 
 import Componentes.Componente;
 import Componentes.EspacioMuerto;
+import Cliente.DatosDeAtaque;
+import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 import java.awt.Point;
 import java.util.Random;
@@ -31,28 +33,28 @@ public class MultiShot extends AbstractArma  {
     
     
     
-    public Oceano atacar() {
+    public Oceano atacar(marcarCasillaEnemigo casilla) {
         if(casilla != null && oceano != null){
             Point point = new Point(casilla.getJ(), casilla.getI());
             Componente componente = oceano.matrizComponentes[point.y][point.x];
             if(!(componente instanceof EspacioMuerto)){
                 try {
                     if(cobrarAcero()){
-                        boolean golpe = golpear(componente, oceano, point);
+                        boolean golpe = golpear(componente, oceano, point, datos);
                         if(golpe){
-                            oceano.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
+                            datos.historialAtaque += "\n" + jugador + "obtuvo CUATRO torpedos";
                             ataqueMultiShot();
                         }
                         
                     }
-                    else oceano.historialAtaque += "\n ACERO INSUFICIENTE";                    
+                    else datos.historialAtaque += "\n ACERO INSUFICIENTE";                    
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MultiShot.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
+            else datos.historialAtaque += "\n SELECCIONE UNA CASILLA QUE NO HAYA SIDO DESTRUIDA";
         }
-        else oceano.historialAtaque += "\n SELECCIONE UNA CASILLA";
+        else datos.historialAtaque += "\n SELECCIONE UNA CASILLA";
         
         return oceano;
     }
@@ -62,7 +64,7 @@ public class MultiShot extends AbstractArma  {
             Point pointRandom = new Point(random.nextInt(19), random.nextInt(19));
             Componente componente = oceano.matrizComponentes[pointRandom.y][pointRandom.x];
             if(!(componente instanceof EspacioMuerto)){
-             golpear(componente, oceano, pointRandom);     
+             golpear(componente, oceano, pointRandom, datos);     
             } 
         }
     } 

@@ -5,12 +5,12 @@
  */
 package Armas;
 
+import Controlador.marcarCasillaEnemigo;
 import battleship.Oceano;
 
 public class Bomba extends AbstractArma {
 
     public Bomba(){
-        super();
         costo = 2000;
         nombre = "Bomba";
     }
@@ -18,7 +18,7 @@ public class Bomba extends AbstractArma {
     @Override
     
     //ALCANCE DE 2X1 O 1X2 tons una linea de dos bloques Tratara igual que las imagenes derecha y abajo tons menos validaciones
-    public Oceano atacar() {
+    public Oceano atacar(marcarCasillaEnemigo casilla) {
         
         return this.oceano;
     }    

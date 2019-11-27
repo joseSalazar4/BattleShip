@@ -5,13 +5,14 @@
  */
 package Cliente;
 import Componentes.Componente;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 /**
  *
  * @author mikom
  */
-public class Jugador {
+public class Jugador implements Serializable {
     //Usar atributos privados y programar los getter && setter de los atributos que lo ocupen
     
     private int dinero, acero, escudo  ;

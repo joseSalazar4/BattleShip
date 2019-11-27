@@ -17,6 +17,7 @@ import Componentes.FuentePoder;
 import Componentes.Remolino;
 import Componentes.ThreadProductoraAcero;
 import Grafo.Arista;
+import Cliente.DatosDeAtaque;
 import battleship.Oceano;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -195,24 +196,27 @@ public class Controlador_Cliente implements Serializable{
                 if(armeria.getArma().getNombre().equals("Torpedo")){
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
                     armeria.getArma().setEscudoActivado(escudoAct);
-                    this.oceanoEnemigo.jugador = this.cliente.jugador;
-                    this.oceanoEnemigo.golpeoRemolino = false;
-                    this.oceanoEnemigo.destryoFuente = false;
-                    armeria.getArma().setCasilla(labelEnemigoSeleccionado);
+                    DatosDeAtaque datos = new DatosDeAtaque();
+                    datos.jugador = this.cliente.jugador;
+                    datos.golpeoRemolino = false;
+                    datos.destryoFuente = false;
                     armeria.getArma().setNombre(this.cliente.jugador.getNombre());
                     armeria.getArma().setOceano(oceanoEnemigo);
-                    
-                    
-                    this.oceanoEnemigo = armeria.getArma().atacar();
-                    if(this.oceanoEnemigo.golpeoRemolino){
+                    armeria.getArma().setDatos(datos);
+                    armeria.getArma().setJugador(this.cliente.getNickName());
+                            
+                    Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
+                    if(oceanoNuevo != null) this.oceanoEnemigo = oceanoNuevo;
+                    else System.out.println("OCEANO NUEVO ES NULL");
+                    if(datos.golpeoRemolino){
                         //Aqui se programa el despiche
                     }
-                    if(this.oceanoEnemigo.destryoFuente){
+                    if(datos.destryoFuente){
                         //Aqui el otro despiche
                     }
                     
-                    this.cliente.jugador = oceanoEnemigo.jugador;
-                    enviarMensajeJuego(this.oceanoEnemigo.historialAtaque);
+                    this.cliente.jugador = datos.jugador;
+                    enviarMensajeJuego(datos.historialAtaque);
                     
                     mostrarOceanoEnemigo();
                 }     

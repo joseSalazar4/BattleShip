@@ -8,6 +8,7 @@ import Componentes.FuentePoder;
 import Componentes.Remolino;
 import Controlador.Controlador_Cliente;
 import Controlador.marcarCasillaEnemigo;
+import Cliente.DatosDeAtaque;
 import battleship.Oceano;
 import java.awt.Point;
 import java.io.Serializable;
@@ -20,27 +21,30 @@ public abstract class AbstractArma implements Serializable{
     public int costo, escudo;
     String nombre;
     Oceano oceano;
-    marcarCasillaEnemigo casilla;
+    DatosDeAtaque datos;
     String jugador;
     boolean escudoActivado = false;
     
+    public AbstractArma(){
+        
+    }
     
-    public abstract Oceano atacar();
+    public abstract Oceano atacar(marcarCasillaEnemigo casilla);
     
-    public boolean golpear(Componente componente, Oceano oceano, Point point){
+    public boolean golpear(Componente componente, Oceano oceano, Point point, DatosDeAtaque datos){
         if(componente != null){
             if(componente instanceof Conector){
                 oceano.grafo.removeArista(componente.getPoint());
                 destruirComponente(componente);
-                oceano.historialAtaque +=
+                datos.historialAtaque +=
                     jugador + " destruyó un conector de " 
                     + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
             }
             else if(componente.is1x1){
-                if(componente instanceof Remolino) oceano.golpeoRemolino = true;
+                if(componente instanceof Remolino) datos.golpeoRemolino = true;
                 oceano.grafo.removeVertice(componente.getVertice());
                 destruirComponente(componente);
-                oceano.historialAtaque +=
+                datos.historialAtaque +=
                     jugador + " destruyó un " + componente.getNombre() + " de "
                     + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
 
@@ -48,7 +52,7 @@ public abstract class AbstractArma implements Serializable{
             else if(componente.is2x2 || !componente.is1x1){
                 for(Point golpe : componente.getGolpes()){
                     if(golpe.x == point.x && golpe.y == point.y){
-                      oceano.historialAtaque +=
+                      datos.historialAtaque +=
                         jugador + " volvió a golpear " + componente.getNombre() + " del oceano de"
                         + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n"; 
                        return false;
@@ -56,20 +60,20 @@ public abstract class AbstractArma implements Serializable{
                 }
                 componente.getGolpes().add(point);
                 
-                oceano.historialAtaque += 
+                datos.historialAtaque += 
                     jugador + " golpeó una "+ componente.getNombre() +" del oceano de " 
                     + oceano.enemigo 
-                    + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
+                    + " en la posición (" + point.x  + "," + point.y + ") usando " + nombre + "\n";
                 
                 int ctdGolpes = 2;
                 if(componente.is2x2) ctdGolpes = 4;
                 
                 if(componente.getGolpes().size() >= ctdGolpes){
-                    if(componente instanceof FuentePoder) oceano.destryoFuente = true;
+                    if(componente instanceof FuentePoder) datos.destryoFuente = true;
                     oceano.grafo.removeVertice(componente.getVertice());
                     destruirComponente(componente);    
                     
-                    oceano.historialAtaque += 
+                    datos.historialAtaque += 
                     jugador + " destruyó una "+ componente.getNombre() +" del oceano de " 
                     + oceano.enemigo 
                     + " en la posición " + point.x  + "," + point.y + " usando " + nombre + "\n";
@@ -77,7 +81,7 @@ public abstract class AbstractArma implements Serializable{
             }
         }
         else{
-            oceano.historialAtaque += 
+            datos.historialAtaque += 
                     jugador + " falló un disparo en el oceano de " 
                     + oceano.enemigo + "\n";
             return false;
@@ -94,14 +98,14 @@ public abstract class AbstractArma implements Serializable{
     }
     
     public boolean cobrarAcero() throws InterruptedException{
-        Semaphore semaf = oceano.jugador.getSemaforoAcero();
+        Semaphore semaf = datos.jugador.getSemaforoAcero();
         sleep(100);
         semaf.tryAcquire(8, TimeUnit.SECONDS);
         
-        int t = oceano.jugador.getAcero();
+        int t = datos.jugador.getAcero();
         
         if(t>=costo){
-            oceano.jugador.setAcero(t-=costo);
+            datos.jugador.setAcero(t-=costo);
             semaf.release();
             return true;
         }
@@ -137,14 +141,6 @@ public abstract class AbstractArma implements Serializable{
         this.jugador = jugador;
     }
 
-    public marcarCasillaEnemigo getCasilla() {
-        return casilla;
-    }
-
-    public void setCasilla(marcarCasillaEnemigo casilla) {
-        this.casilla = casilla;
-    }
-
     public AbstractArma(int costo, int escudo) {
         this.costo = costo;
         this.escudo = escudo;
@@ -164,6 +160,14 @@ public abstract class AbstractArma implements Serializable{
 
     public void setEscudoActivado(boolean escudoActivado) {
         this.escudoActivado = escudoActivado;
+    }
+
+    public DatosDeAtaque getDatos() {
+        return datos;
+    }
+
+    public void setDatos(DatosDeAtaque datos) {
+        this.datos = datos;
     }
     
     

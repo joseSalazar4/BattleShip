@@ -3,20 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package battleship;
+package Cliente;
 
-import Cliente.Jugador;
-import Componentes.Componente;
-import Grafo.Grafo;
 import java.io.Serializable;
 
 /**
  *
  * @author Personal
  */
-public class Oceano implements Serializable{
-    public String enemigo;
-    public Grafo grafo;
-    public Componente[][] matrizComponentes;
-  
+public class DatosDeAtaque implements Serializable{
+    public Jugador jugador;
+    public String historialAtaque = "";
+    public boolean golpeoRemolino = false;
+    public boolean destryoFuente = false;
 }
