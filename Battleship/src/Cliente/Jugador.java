@@ -23,7 +23,7 @@ public class Jugador implements Serializable {
     private ArrayList<Componente> armasCompradas;
     
     public Jugador(String nombreJugador){
-        dinero = 200000;
+        dinero = 20000;
         
         acero = 0 ;
         perdio = false;

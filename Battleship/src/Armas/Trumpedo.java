@@ -18,8 +18,7 @@ public class Trumpedo extends AbstractArma {
     public int torpedosRestantes = 10;
     public Trumpedo(){
         super();
-        //costo = 5000;
-        costo = 200;
+        costo = 5000;
 
         nombre = "Trumpedo";
         

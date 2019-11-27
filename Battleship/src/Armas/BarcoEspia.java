@@ -29,9 +29,8 @@ public class BarcoEspia extends Thread {
         while(true){
             while(activo){
                 try {
-                    System.out.println("AQUI VAMOS A PONER LA VARA ");
-                    //sleep(90000);  DESOCOMENTAR CUANDO FUNCIONE
-                    sleep(1000);
+                    System.out.println("AQUI VAMOS Mandando el barquitooo ");
+                    sleep(90000);
                     i = controlador.getLabelEnemigoSeleccionado().getI();
                     j = controlador.getLabelEnemigoSeleccionado().getJ();
                     obtenerInformacion(i, j);
