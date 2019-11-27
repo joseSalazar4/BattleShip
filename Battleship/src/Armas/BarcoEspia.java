@@ -29,6 +29,7 @@ public class BarcoEspia extends Thread {
         while(true){
             while(activo){
                 try {
+                    System.out.println("AQUI VAMOS A PONER LA VARA ");
                     //sleep(90000);  DESOCOMENTAR CUANDO FUNCIONE
                     sleep(1000);
                     i = controlador.getLabelEnemigoSeleccionado().getI();
@@ -168,6 +169,7 @@ public class BarcoEspia extends Thread {
             
                 }
             }
+            System.out.println(textoEspia);
         JOptionPane.showMessageDialog(null, textoEspia);
         }
     }
