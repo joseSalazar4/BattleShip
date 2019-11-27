@@ -66,6 +66,7 @@ public class Controlador_Cliente implements Serializable{
         this.pantallaAdquisicion = null;
         this.pantallaPrincipal = new GUICliente(this);
         this.barcoEspia = new BarcoEspia(this);
+        barcoEspia.start();
     }
     
     public void iniciarCliente(String nickName){
@@ -295,7 +296,7 @@ public class Controlador_Cliente implements Serializable{
         else{
             this.cliente.jugador.setDinero(din-2500);
             this.cargarRecursos();
-            this.barcoEspia.activo = true;
+            barcoEspia.activo = true;
         }
 
     }
