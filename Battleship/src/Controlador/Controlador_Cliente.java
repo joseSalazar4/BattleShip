@@ -102,6 +102,11 @@ public class Controlador_Cliente implements Serializable{
             
         DefaultCaret caret = (DefaultCaret)this.pantallaPrincipal.getTxtAreaChat().getCaret();
         caret.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
+        
+        DefaultCaret caret2 = (DefaultCaret)this.pantallaPrincipal.getTxtAreaJuego().getCaret();
+        caret2.setUpdatePolicy(DefaultCaret.OUT_BOTTOM);
+        
+        
     }
     
     public void crearMatrizJugadorLabels(){
