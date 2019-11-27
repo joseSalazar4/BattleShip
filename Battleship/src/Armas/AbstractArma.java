@@ -97,7 +97,7 @@ public abstract class AbstractArma implements Serializable{
         else{
             datos.historialAtaque += 
                     jugador + " falló un disparo en el oceano de " 
-                    + oceano.enemigo + "\n";
+                    + oceano.enemigo + " en la coordenada " + point.x  + "," + point.y + "\n";
             return false;
         }
         
