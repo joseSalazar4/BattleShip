@@ -74,7 +74,9 @@ public class BarcoEspia extends Thread {
         
         //Escenario donde se pone mas a la izq
         else if(iAux<0){
+            
             //Muy a la izquierda y muy arriba
+            //CORRECTO
             if(jAux<0){
                 for(int k = 0;k<iAux+7;k++){
                     for(int l = 0;l<jAux+7;l++){
@@ -135,6 +137,7 @@ public class BarcoEspia extends Thread {
                 }
             }
             //Ademas, esta mas abajo
+            //CORRECTO
             else if(j+3>19){
                 for(int k = iAux;k<iAux+7;k++){
                     for(int l = jAux;l<jAux+7;l++){
