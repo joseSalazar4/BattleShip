@@ -46,6 +46,7 @@ public class Controlador_Cliente implements Serializable{
     private GUIStartUp pantallaStartUp; 
     private GUICliente pantallaPrincipal;
     private boolean actualizarEnemigo = false;
+    private BarcoEspia barcoEspia;
     private Componente [][] matrizJugadorComp;
     private GUIAdquisicion pantallaAdquisicion;
     private marcarCasillaEnemigo labelEnemigoSeleccionado;
@@ -54,7 +55,7 @@ public class Controlador_Cliente implements Serializable{
     private ArrayList<ThreadProductoraAcero> threadsProductores = new ArrayList<>();
     private JLabel [][] matrizJugadorLbel = new JLabel[20][20], matrizEnemigoLbel = new JLabel[20][20];
     private String oceanoBuscadoEnemigo = "";
-    private boolean yaAtacado = false;
+    private boolean yaAtacado = false, barcoActivo = false;
     
     
     public Controlador_Cliente(){ 
@@ -64,6 +65,7 @@ public class Controlador_Cliente implements Serializable{
         this.pantallaStartUp.setVisible(true);
         this.pantallaAdquisicion = null;
         this.pantallaPrincipal = new GUICliente(this);
+        this.barcoEspia = new BarcoEspia(this);
     }
     
     public void iniciarCliente(String nickName){
@@ -241,8 +243,15 @@ public class Controlador_Cliente implements Serializable{
         
     }
     
-    public void Barco(){
-        
+    public void Barco() throws InterruptedException{
+        int din = this.cliente.jugador.getDinero();
+        if(din<2500) JOptionPane.showMessageDialog(null, "No tiene suficiente dinero para comprar un barco!");
+        else{
+            this.cliente.jugador.setDinero(din-2500);
+            this.cargarRecursos();
+            this.barcoEspia.activo = true;
+        }
+
     }
     
     public void cargarMiOceano(){
@@ -285,7 +294,7 @@ public class Controlador_Cliente implements Serializable{
     }
         
     public void comprarBarco(){
-            
+        
     }
     
     public void reanudarPantallaAdquisicion() throws InterruptedException{
