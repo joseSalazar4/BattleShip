@@ -86,7 +86,6 @@ public class Controlador_Cliente implements Serializable{
         this.pantallaAdquisicion = controladorAdquisicion.getPantalla();  
         
         this.empezarAJugar();
-
     }
     
     public void empezarAJugar(){ //SOLO LA PRIMERA VEZ        
@@ -192,6 +191,7 @@ public class Controlador_Cliente implements Serializable{
     
     public void Torpedo() throws InterruptedException{
         if(this.oceanoEnemigo != null){
+            System.out.println("Oceano no es nulo");
             for(Armeria armeria : this.armerias){
                 if(armeria.getArma().getNombre().equals("Torpedo")){
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
@@ -200,13 +200,16 @@ public class Controlador_Cliente implements Serializable{
                     datos.jugador = this.cliente.jugador;
                     datos.golpeoRemolino = false;
                     datos.destryoFuente = false;
-                    armeria.getArma().setNombre(this.cliente.jugador.getNombre());
                     armeria.getArma().setOceano(oceanoEnemigo);
                     armeria.getArma().setDatos(datos);
                     armeria.getArma().setJugador(this.cliente.getNickName());
                             
                     Oceano oceanoNuevo = armeria.getArma().atacar(this.labelEnemigoSeleccionado);
-                    if(oceanoNuevo != null) this.oceanoEnemigo = oceanoNuevo;
+                    if(oceanoNuevo != null){
+                        this.oceanoEnemigo = oceanoNuevo;
+                        System.out.println("GRAFO NUEVO");
+                        System.out.println(this.oceanoEnemigo.grafo);
+                    }
                     else System.out.println("OCEANO NUEVO ES NULL");
                     if(datos.golpeoRemolino){
                         //Aqui se programa el despiche
@@ -219,12 +222,17 @@ public class Controlador_Cliente implements Serializable{
                     enviarMensajeJuego(datos.historialAtaque);
                     
                     mostrarOceanoEnemigo();
-                }     
-            }
-            
-            cargarRecursos();
-            
+                    cargarRecursos();
+                    
+                    return;
+                    
+                }  
+            } 
+            System.out.println("NO SE ENCONTRO EL ARMA");
+            return;
         }
+        System.out.println("OCEANO ES NULL");
+        return;
     }
     
     public void Trumpedo(){
@@ -341,7 +349,6 @@ public class Controlador_Cliente implements Serializable{
     }
     
     public void mostrarOceanoEnemigo(){
-        System.out.println("ENTRO A MOSTRAR OCEANO ENEMIGO");
         for(int i = 0; i<20 ;i++){
             for(int j = 0; j<20 ;j++){
                 Componente componenteEnemigo = null;
@@ -369,8 +376,6 @@ public class Controlador_Cliente implements Serializable{
                         }
                         else{
                             //Cuando no es una Fuente de Poder
-                            System.out.println("GRAFO ENEMIGO");
-                            System.out.println(oceanoEnemigo.grafo);
                             if(componenteEnemigo.getVertice().getAristas() != null &&
                             !componenteEnemigo.getVertice().getAristas().isEmpty()){
                                 for(Arista arista : componenteEnemigo.getVertice().getAristas()){
