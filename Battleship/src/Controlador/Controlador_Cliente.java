@@ -292,6 +292,7 @@ public class Controlador_Cliente implements Serializable{
         this.controladorAdquisicion.actualizarMatrizComponentes();
         this.pantallaAdquisicion.setVisible(true);
         this.pantallaPrincipal.setVisible(false);
+        this.pantallaAdquisicion.getBtnConectar().setEnabled(true);
         this.detenerProdAcero();
         cargarRecursos();
         //Agregar

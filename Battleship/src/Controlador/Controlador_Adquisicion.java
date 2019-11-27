@@ -219,6 +219,12 @@ import java.awt.Point;
         matrizComponentes[numero][numero] = componenteNuevo; 
         componenteNuevo.setPoint(new Point(numero,numero));
    
+        
+        Componente componenteNuevo2 = FactoryComponente.crearComponente(REMOLINO, 0);
+        Vertice vertice2 = new Vertice(componenteNuevo2);
+        componenteNuevo2.setVertice(vertice2);
+        grafo.addVertice(vertice2);
+        
         for(int i = 0;i<cliente.jugador.getNombre().length();i++)  numero = (int) (Math.random() * 18) + 1;  
         
         
