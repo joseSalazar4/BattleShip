@@ -381,7 +381,11 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonTrumpedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTrumpedoActionPerformed
-
+        try {
+            controlador.Trumpedo();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonTrumpedoActionPerformed
 
     private void jComboBoxEnemigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEnemigosActionPerformed
@@ -410,7 +414,11 @@ public class GUICliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonTorpedoActionPerformed
 
     private void jButtonBombaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBombaActionPerformed
-
+        try {
+            controlador.Bomba();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(GUICliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonBombaActionPerformed
 
     private void jButtonMultiShotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiShotActionPerformed

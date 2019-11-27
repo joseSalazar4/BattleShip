@@ -20,6 +20,7 @@ public class Armeria extends Componente{
     public AbstractArma arma;
     public Armeria(int tipoArmaProducir){
         this.tipoComponente = Armeria;
+        this.nombre = "Armeria";
         this.is1x1 = false;
         this.is2x2 = false;
         this.imagen=new javax.swing.ImageIcon(getClass().getResource("/Vista/Resources/Armeria.png"));
