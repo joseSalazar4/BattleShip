@@ -26,6 +26,7 @@ import static Componentes.Componente.tipoComponente.Mina;
 import Componentes.Mina;
 import Componentes.ThreadProductoraAcero;
 import java.awt.Point;
+import java.util.ArrayList;
 
     public class Controlador_Adquisicion {
     Cliente cliente;
@@ -37,6 +38,7 @@ import java.awt.Point;
     public  Conector conectorAux = null;
     public Componente[][] matrizComponentes = new Componente[20][20];
     public static Grafo grafo = new Grafo();
+    private ArrayList<Componente> componentesObtenidos = new ArrayList<>();
    
     private int ctdMinas = 0, ctdConectores = 0, ctdMercados = 0, ctdFuentesPoder = 0, ctdTemplos = 0, ctdArmerias = 0, ctdTotalElementos = 0;
     
