@@ -69,7 +69,10 @@ public class BarcoEspia extends Thread {
                 textoEspia+="\n";
             }
         }
-        else if(true){
+        else if(i-3<0){
+            if(j-3<0){
+                
+            }
             
         }
         else if(true){
