@@ -218,6 +218,7 @@ public class Controlador_Cliente implements Serializable{
                     
                     if(datos.golpeoRemolino){
                         System.out.println("Golpeo un remolino");
+                        metodoRemolino();
                         
                     }
                     
@@ -269,6 +270,7 @@ public class Controlador_Cliente implements Serializable{
                     
                     if(datos.golpeoRemolino){
                         System.out.println("Golpeo un remolino");
+                        metodoRemolino();
                         
                     }
                     
@@ -320,6 +322,7 @@ public class Controlador_Cliente implements Serializable{
                     
                     if(datos.golpeoRemolino){
                         System.out.println("Golpeo un remolino");
+                        metodoRemolino();
                         
                     }
                     
@@ -371,6 +374,8 @@ public class Controlador_Cliente implements Serializable{
                     
                     if(datos.golpeoRemolino){
                         System.out.println("Golpeo un remolino");
+                        metodoRemolino();
+                        
                         
                     }
                     
@@ -408,7 +413,7 @@ public class Controlador_Cliente implements Serializable{
                 datos.jugador.setDinero(100000);
                 Oceano miOceano = new Oceano();
                 miOceano.grafo = controladorAdquisicion.grafo;
-                this.controladorAdquisicion.matrizComponentes = this.controladorAdquisicion.matrizComponentes;
+                miOceano.matrizComponentes = controladorAdquisicion.matrizComponentes;
                 miOceano.enemigo = this.cliente.jugador.getNombre();
                 armeria.getArma().setOceano(miOceano);
                 armeria.getArma().setDatos(datos);
@@ -416,7 +421,7 @@ public class Controlador_Cliente implements Serializable{
                 Random random = new Random();
                 datos.historialAtaque += "Remolino devolvio tres torpedos\n";
                 for(int i=0; i<3; i++){
-                    marcarCasillaEnemigo nuevaCasilla = new marcarCasillaEnemigo(null, random.nextInt(18), random.nextInt(18), this, imageAnterior);
+                    marcarCasillaEnemigo nuevaCasilla = new marcarCasillaEnemigo(new JLabel(), random.nextInt(18), random.nextInt(18), this, imageAnterior);
                     miOceano = armeria.getArma().atacar(nuevaCasilla);
                     armeria.getArma().setOceano(miOceano);
                 }
