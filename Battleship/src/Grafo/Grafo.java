@@ -26,6 +26,7 @@ public class Grafo implements Serializable{
                    for(Arista aDestino: a.getDestination().getAristas()){
                        if(aDestino.getDestination().equals(v)){
                            a.getDestination().getAristas().remove(aDestino);
+                           break;
                        }
                    }
                }
