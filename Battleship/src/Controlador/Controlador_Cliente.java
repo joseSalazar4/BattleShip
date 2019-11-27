@@ -196,11 +196,25 @@ public class Controlador_Cliente implements Serializable{
                     if(this.escudoAct) armeria.getArma().escudo = this.cantEscudo;
                     armeria.getArma().setEscudoActivado(escudoAct);
                     this.oceanoEnemigo.jugador = this.cliente.jugador;
+                    this.oceanoEnemigo.golpeoRemolino = false;
+                    this.oceanoEnemigo.destryoFuente = false;
                     armeria.getArma().setCasilla(labelEnemigoSeleccionado);
                     armeria.getArma().setNombre(this.cliente.jugador.getNombre());
                     armeria.getArma().setOceano(oceanoEnemigo);
                     
-                    armeria.getArma().atacar();
+                    
+                    this.oceanoEnemigo = armeria.getArma().atacar();
+                    if(this.oceanoEnemigo.golpeoRemolino){
+                        //Aqui se programa el despiche
+                    }
+                    if(this.oceanoEnemigo.destryoFuente){
+                        //Aqui el otro despiche
+                    }
+                    
+                    this.cliente.jugador = oceanoEnemigo.jugador;
+                    enviarMensajeJuego(this.oceanoEnemigo.historialAtaque);
+                    
+                    mostrarOceanoEnemigo();
                 }     
             }
             
