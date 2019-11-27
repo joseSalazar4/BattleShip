@@ -252,6 +252,7 @@ public class Controlador_Cliente implements Serializable{
                     habilitarPanelArmas(controladorAdquisicion.matrizComponentes[i][j]);
                     this.matrizJugadorLbel[i][j].setIcon(this.controladorAdquisicion.matrizComponentes[i][j].getImagen());
                 }
+                else this.matrizJugadorLbel[i][j].setIcon(null);
             }
         }
         trazarConexiones();
@@ -458,9 +459,11 @@ public class Controlador_Cliente implements Serializable{
     public void finalizarTurno() throws IOException{
         if(miTurno){
            this.miTurno = false;
-        if(actualizarEnemigo) this.enviarActualizacion();
-        cliente.finalizarTurno();
-        this.actualizarEnemigo = false; 
+            if(actualizarEnemigo) this.enviarActualizacion();
+            cliente.finalizarTurno();
+            this.yaAtacado = false;
+            this.oceanoBuscadoEnemigo = "";
+            this.actualizarEnemigo = false; 
         }  
     }
        

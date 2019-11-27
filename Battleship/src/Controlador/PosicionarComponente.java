@@ -8,6 +8,7 @@ package Controlador;
 import static Componentes.Componente.tipoComponente.Remolino;
 import Grafo.Vertice;
 import Componentes.Conector;
+import Componentes.EspacioMuerto;
 import Componentes.FuentePoder;
 import java.awt.Color;
 import java.awt.Point;
@@ -95,7 +96,9 @@ public class PosicionarComponente implements MouseListener{
                 }
             }
             
-            else if(controlador.getComponente(i, j) != null && controlador.getComponente(i, j).getTipoComponente()!= Remolino ){ //Va a mover este elemento
+            else if(controlador.getComponente(i, j) != null 
+            && controlador.getComponente(i, j).getTipoComponente()!= Remolino
+            && !(controlador.getComponente(i, j) instanceof EspacioMuerto)){ //Va a mover este elemento
                 controlador.isMover = true;
                 controlador.componenteAux = controlador.getComponente(i, j);
                 

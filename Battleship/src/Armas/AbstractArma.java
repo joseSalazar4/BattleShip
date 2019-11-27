@@ -41,7 +41,13 @@ public abstract class AbstractArma implements Serializable{
                     + oceano.enemigo + " en la posición " + point.x  + "," + point.y + " usando " + this.nombre + "\n";
             }
             else if(componente.is1x1){
-                if(componente instanceof Remolino) datos.golpeoRemolino = true;
+                if(componente instanceof Remolino){
+                    datos.golpeoRemolino = true;
+                    datos.historialAtaque +=
+                    jugador + " golpeo un REMOLINO del oceano de " 
+                    + oceano.enemigo + "\n";
+                    return true;
+                }
                 Point verticeEliminado = componente.getPoint();
                 oceano.grafo.removeVertice(verticeEliminado);
                 destruirComponente(componente);
@@ -72,6 +78,7 @@ public abstract class AbstractArma implements Serializable{
                 if(componente.getGolpes().size() >= ctdGolpes){
                     if(componente instanceof FuentePoder) datos.destryoFuente = true;
                     Point verticeEliminado = componente.getPoint();
+                    componente.setVertice(null);
                     oceano.grafo.removeVertice(verticeEliminado);
                     destruirComponente(componente);    
                     
@@ -96,7 +103,22 @@ public abstract class AbstractArma implements Serializable{
     }
  
     public void destruirComponente(Componente componente){
-        this.oceano.matrizComponentes[componente.getPoint().y][componente.getPoint().x] = new EspacioMuerto();
+        EspacioMuerto muerto = new EspacioMuerto();
+        int i = componente.getPoint().y;
+        int j = componente.getPoint().x;
+        this.oceano.matrizComponentes[i][j] = muerto;
+        if(componente.is1x1) return;
+        else if(componente.is2x2){
+            this.oceano.matrizComponentes[i][j+1] = muerto;
+            this.oceano.matrizComponentes[i+1][j] = muerto;
+            this.oceano.matrizComponentes[i+1][j+1] = muerto;
+        }
+        else if(componente.isVertical){
+            this.oceano.matrizComponentes[i+1][j] = muerto;
+        }else{
+            //es horizontal
+            this.oceano.matrizComponentes[i][j+1] = muerto;
+        }
     }
     
     public boolean cobrarAcero() throws InterruptedException{

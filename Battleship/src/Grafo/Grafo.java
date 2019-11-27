@@ -3,19 +3,18 @@ import Componentes.Conector;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Grafo implements Serializable{
-    private List<Vertice> vertices;
+    private ArrayList<Vertice> vertices;
 
     public Grafo(){
         vertices = new ArrayList<>();
     }
-    public List<Vertice> getVertices() {
+    public ArrayList<Vertice> getVertices() {
         return vertices;
     }
 
-    public void setVertices(List<Vertice> vertices) {
+    public void setVertices(ArrayList<Vertice> vertices) {
         this.vertices = vertices;
     }
     
@@ -32,6 +31,7 @@ public class Grafo implements Serializable{
                }
                
                this.vertices.remove(v);
+               return;
            }
        }
     }
@@ -53,8 +53,10 @@ public class Grafo implements Serializable{
     public void removeArista(Point point){
         for (Vertice vertice : vertices){
             for (Arista arista : vertice.getAristas()) {
-              if(arista.getConector().getPoint().x == point.x && arista.getConector().getPoint().y == point.y) 
-                  vertice.getAristas().remove(arista);
+              if(arista.getConector().getPoint().x == point.x && arista.getConector().getPoint().y == point.y){
+                 vertice.getAristas().remove(arista); 
+                 return;
+                }     
             }
         }
     }
