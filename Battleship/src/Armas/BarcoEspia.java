@@ -44,7 +44,6 @@ public class BarcoEspia extends Thread {
             }
             try {
                 sleep(1000);
-                sleep(1000);
             } 
             catch (InterruptedException ex) {
                 Logger.getLogger(BarcoEspia.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,17 +57,18 @@ public class BarcoEspia extends Thread {
         
         iAux = i-3;
         jAux = j-3;
-        
+        System.out.println("ENTRE A OBTENER INFO");
+
         
         //Escenario donde no se sale de ningun borde (Mejor escenario)
         if(i>=3 && j>=3 && i<17 && j<17){
-            
+            System.out.println("IF 1");
             for(int k = iAux;k<iAux+7;k++){
                 for(int l = jAux;l<jAux+7;l++){
-                    if(k == l) textoEspia+=" BarcoEspia ";
+                    if((iAux+7)/2 == (jAux+7)/2) textoEspia+=" BarcoEspia ";
                     else{
-                        if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
-                        else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="--N/A--";
+                        else textoEspia+="--"+controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+"--";
                     }
                 }
                 textoEspia+="\n";
@@ -161,16 +161,16 @@ public class BarcoEspia extends Thread {
                     for(int l = jAux;l<jAux+7;l++){
                         if(k == l) textoEspia+=" BarcoEspia ";
                         else{
-                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+="N/A";
+                            if(controlador.getOceanoEnemigo().matrizComponentes[k][l] == null) textoEspia+=" N/A ";
                             else textoEspia+=controlador.getOceanoEnemigo().matrizComponentes[k][l].getNombre()+" ";
                         }
                     }
                     textoEspia+="\n";
-            
                 }
             }
-            System.out.println(textoEspia);
-        JOptionPane.showMessageDialog(null, textoEspia);
         }
+        System.out.println(textoEspia);
+        JOptionPane.showMessageDialog(null, textoEspia);
     }
+    
 }
